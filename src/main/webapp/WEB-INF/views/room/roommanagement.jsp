@@ -49,32 +49,6 @@
                             <div class="datatable-dropdown">
                                 <div class="mb-0">
                                     <label class="small mb-2">체크박스를 클릭하면 원하는 객실 필터링 조회가 가능합니다</label>
-<%--                                    <div class="">--%>
-<%--                                        <label>객실상태</label>--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="roomstatus" value="공실"> 공실 <div class="badge rounded-pill" style="background-color: #1a1f71; color: white;">공실</div>--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="roomstatus" value="재실"> 재실 <div class="badge bg-warning text-white rounded-pill">Full-time</div>--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="roomstatus" value="예약확정"> 예약확정 <div class="badge bg-blue text-white rounded-pill">Full-time</div>--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="roomstatus" value="청소요청"> 청소요청 <div class="badge bg-info text-white rounded-pill">Full-time</div>--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="roomstatus" value="청소중"> 청소중 <div class="badge rounded-pill" style="background-color: #8B4513; color: white;">Full-time</div>--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="roomstatus" value="퇴실"> 퇴실 <div class="badge bg-green text-white rounded-pill">Full-time</div>--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="roomstatus" value="객실점검"> 객실점검 <div class="badge text-white rounded-pill" style="background-color: #00673f;">Full-time</div>--%>
-<%--                                    </div>--%>
-<%--                                    <div>--%>
-<%--                                        <label>층별</label>--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="floors" value="1"> 1층--%>
-<%--                                        <input  class="form-check-input" type="checkbox" name="floors" value="2"> 2층--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="floors" value="3"> 3층--%>
-<%--                                        <input  class="form-check-input" type="checkbox" name="floors" value="4"> 4층--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="floors" value="5"> 5층--%>
-<%--                                        <input class="form-check-input" type="checkbox" name="floors" value="6"> 6층--%>
-
-<%--                                    </div>--%>
-<%--                                    <div class="">--%>
-<%--                                        <label>룸타입</label>--%>
-<%--                                        <input  class="form-check-input" type="checkbox" name="roomTypes" value="single"> 싱글룸--%>
-<%--                                        <input  class="form-check-input" type="checkbox" name="roomTypes" value="double"> 더블룸--%>
-<%--                                        <input  class="form-check-input" type="checkbox" name="roomTypes" value="suite"> 스위트룸--%>
-<%--                                    </div>--%>
                                     <table class="table table-bordered">
                                         <tbody>
                                         <tr>
@@ -233,7 +207,48 @@
                                     <thead><tr></tr></thead>
                                  <%--   <thead><tr><th data-sortable="true" style="width: 16.023738872403563%;"><a href="#" class="datatable-sorter">Name</a></th><th data-sortable="true" style="width: 23.664688427299705%;"><a href="#" class="datatable-sorter">Position</a></th><th data-sortable="true" style="width: 12.314540059347182%;"><a href="#" class="datatable-sorter">Office</a></th><th data-sortable="true" style="width: 7.195845697329377%;"><a href="#" class="datatable-sorter">Age</a></th><th data-sortable="true" style="width: 11.498516320474778%;"><a href="#" class="datatable-sorter">Start date</a></th><th data-sortable="true" style="width: 10.682492581602373%;"><a href="#" class="datatable-sorter">Salary</a></th><th data-sortable="true" style="width: 8.902077151335313%;"><a href="#" class="datatable-sorter">Status</a></th><th data-sortable="true" style="width: 9.718100890207715%;"><a href="#" class="datatable-sorter">Actions</a></th></tr></thead>--%>
                                     <tbody>
-                                    <tr data-index="0"><td>Tiger Nixon</td><td>System Architect</td><td>Edinburgh</td><td>61</td><td>2011/04/25</td><td>$320,800</td><td><div class="badge bg-primary text-white rounded-pill">Full-time</div></td><td></td></tr>
+                                    <tr data-index="1" class="floor">
+                                        <c:forEach items="${room}" var="room">
+                                            <c:if test="${room.floor == 1}">
+                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
+                                    <tr data-index="2" class="floor">
+                                        <c:forEach items="${room}" var="room">
+                                            <c:if test="${room.floor == 2}">
+                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
+                                    <tr data-index="3" class="floor">
+                                        <c:forEach items="${room}" var="room">
+                                            <c:if test="${room.floor == 3}">
+                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
+                                    <tr data-index="4" class="floor">
+                                        <c:forEach items="${room}" var="room">
+                                            <c:if test="${room.floor == 4}">
+                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
+                                    <tr data-index="5" class="floor">
+                                        <c:forEach items="${room}" var="room">
+                                            <c:if test="${room.floor == 5}">
+                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
+                                    <tr data-index="6" class="floor">
+                                        <c:forEach items="${room}" var="room">
+                                            <c:if test="${room.floor == 6}">
+                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
