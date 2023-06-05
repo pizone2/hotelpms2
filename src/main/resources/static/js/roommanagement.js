@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     // 체크박스가 표시되었을 때만 숨김처리 될 수 있도록 filtersApplied 변수 선언 (체크박스를 선택 안하면 전체 객실이 표시)
     let filtersApplied = false;
@@ -49,4 +50,20 @@ $(document).ready(function() {
         // 필터 적용 플래그를 true로 설정
         filtersApplied = true;
     }
+
+
+    ////////////// 선택된 룸 갯수를 세주는 곳//////////////////////////////////////
+    // class="tdroom" 의 갯수는 총 몇개니?
+    let tdroomCount = $('.tdroom').length;
+
+    // 콘솔창에서 룸갯수 확인
+    console.log('Number of <td> elements with class="tdroom":', tdroomCount);
+
+    // form-check-label-tdroomCount 클래스를 let divElement 변수로 선언 
+    let divElement = $('.form-check-label-tdroomCount');
+
+    //divElement 변수에 갯수 넣어주기
+    divElement.text(tdroomCount + "개");
 });
+
+

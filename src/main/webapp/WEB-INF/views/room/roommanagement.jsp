@@ -189,7 +189,7 @@
                                             </th>
                                             <td>
                                             <div class="form-check-inline">
-                                                <label class="form-check-label">000개</label>
+                                                <label class="form-check-label-tdroomCount"></label>
                                             </div>
                                             </td>
                                         </tr>
@@ -210,42 +210,42 @@
                                     <tr data-index="1" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 1}">
-                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                                <td class="tdroom" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
                                             </c:if>
                                         </c:forEach>
                                     </tr>
                                     <tr data-index="2" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 2}">
-                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                                <td class="tdroom" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
                                             </c:if>
                                         </c:forEach>
                                     </tr>
                                     <tr data-index="3" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 3}">
-                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                                <td class="tdroom" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
                                             </c:if>
                                         </c:forEach>
                                     </tr>
                                     <tr data-index="4" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 4}">
-                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                                <td class="tdroom" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
                                             </c:if>
                                         </c:forEach>
                                     </tr>
                                     <tr data-index="5" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 5}">
-                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                                <td class="tdroom" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
                                             </c:if>
                                         </c:forEach>
                                     </tr>
                                     <tr data-index="6" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 6}">
-                                                <td style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
+                                                <td class="tdroom" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;">${room.roomNumber} <br> ${room.roomType}</td>
                                             </c:if>
                                         </c:forEach>
                                     </tr>
