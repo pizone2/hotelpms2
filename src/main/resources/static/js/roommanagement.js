@@ -38,13 +38,31 @@ $(document).ready(function() {
         console.log('예약 상태 필터:', selectedRoomTypes);
 
         // 선택된 층이 하나 이상일 때 전체 층 숨김 표시
-        if (filtersApplied || selectedFloors.length > 0) {
+        if (filtersApplied || selectedFloors.length > 0 ) {
             $('tr.floor').hide();
         }
 
         // 선택된 층만 표시
         selectedFloors.forEach(function(floor) {
             $('tr.floor[data-index="' + floor + '"]').show();
+        });
+
+
+        //객실타입 체크박스가 1개 이상 선택되면 전체 객실을 숨김 표시
+        if (filtersApplied || selectedRoomTypes.length > 0) {
+            $('td.tdroom').hide();
+        }
+
+        //체크밗스에 선택된 값을 roomType 변수에 담아서 td.tdroom.roomType 클래스명인 애들만 보여줘
+        selectedRoomTypes.forEach(function(roomType) {
+            $('td.tdroom.' + roomType).show();
+        });
+
+        //
+        let matchingTdElements = $('td.tdroom.' + selectedRoomTypes.join(',td.tdroom.'));
+        matchingTdElements.show();
+        matchingTdElements.each(function(index, element) {
+            console.log($(element).attr('class'));
         });
 
         // 필터 적용 플래그를 true로 설정
