@@ -49,13 +49,19 @@ $(document).ready(function() {
 
         // 필터 적용 플래그를 true로 설정
         filtersApplied = true;
+
+
+        // 재시작되었을 때 선택된 룸 갯수만 세주기
+        let visibleTdroomElements = $('.tdroom:visible');
+        console.log('<td> 중 class="tdroom"인것의 갯수는:' + visibleTdroomElements.length);
+        divElement.text(visibleTdroomElements.length + "개");
     }
 
 
     ////////////// 선택된 룸 갯수를 세주는 곳//////////////////////////////////////
     // class="tdroom" 의 갯수는 총 몇개니?
     let tdroomCount = $('.tdroom').length;
-
+   //let visibleTdroomElements = $('.tdroom:visible');
     // 콘솔창에서 룸갯수 확인
     console.log('Number of <td> elements with class="tdroom":', tdroomCount);
 
