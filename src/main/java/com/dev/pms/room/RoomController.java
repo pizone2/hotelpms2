@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 public class RoomController {
 
+    //URL 주소 변경해주기 테스트 URL room/rm
     @GetMapping ("rm")
     public ModelAndView room() throws  Exception{
-
         ModelAndView mv = new ModelAndView();
         mv.setViewName("room/roommanagement");
         return mv;
