@@ -48,17 +48,14 @@
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">객실 상태 보고 </h5>
+                                    <h5 class="modal-title">청소 스케줄 등록 </h5>
                                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form>
-                                        <div class="mb-3"><label for="exampleFormControlInput1">객실</label><input class="form-control form-control-solid" id="exampleFormControlInput1" type="text" placeholder="101호"></div>
-                                        <div class="mb-3"><label for="exampleFormControlInput1">소속</label><input class="form-control form-control-solid" id="exampleFormControlInput2" type="text" placeholder="청소2팀 001번"></div>
-                                        <div class="mb-3"><label for="exampleFormControlInput1">사진첨부</label><input class="form-control form-control-solid" id="exampleFormControlInput3" type="text" placeholder="사진"></div>
-
-
-                                        <div class="mb-0"><label for="exampleFormControlTextarea1">비고</label><textarea class="form-control form-control-solid" id="exampleFormControlTextarea1" rows="3"></textarea></div>
+                                        <div class="mb-3"><label for="exampleFormControlInput1">시작날짜</label><input class="form-control form-control-solid" id="exampleFormControlInput1" type="date"></div>
+                                        <div class="mb-3"><label for="exampleFormControlInput1">종료날짜</label><input class="form-control form-control-solid" id="exampleFormControlInput2" type="date"></div>
+                                        <div class="mb-3"><label for="exampleFormControlInput1">팀 번호</label><input class="form-control form-control-solid" id="exampleFormControlInput3" type="number" min="0"></div>
                                     </form>
 
                                 </div>
@@ -179,9 +176,6 @@
                                         <div class="card mb-4">
                                             <div class="card-header">체크 리스트
 
-                                                    <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalLg">
-                                                        <span class="material-symbols-outlined align-middle">mail</span>
-                                                    </button>
 
                                             </div>
                                             <div class="card-body">
@@ -298,6 +292,7 @@
                                     </div>
                                     <div class="col-xl-6 col-xxl-12">
                                         <!-- Project tracker card example-->
+                                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalLg">스케줄 등록</button>
 
                                     </div>
                                 </div>

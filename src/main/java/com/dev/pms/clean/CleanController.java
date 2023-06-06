@@ -29,4 +29,9 @@ public class CleanController {
         return mv;
     }
 
+    public ModelAndView updateSchedule(CalenderVO calenderVO) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        return mv;
+    }
+
 }
