@@ -5,8 +5,8 @@
 <mapper namespace="com.dev.pms.clean.CleanDAO">
 
     <select id="getCleanList" parameterType="CalenderVO" resultType="CalenderVO">
-        SELECT *
-        FROM calender
+        SELECT SCHEDULENUMBER, SCHEDULEENDDATE, SCHEDULESTARTDATE
+        FROM CALENDER
     </select>
 
 

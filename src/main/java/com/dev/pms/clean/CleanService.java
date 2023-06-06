@@ -11,9 +11,9 @@ public class CleanService {
     @Autowired
     private CleanDAO cleanDAO;
 
-    public List<CalenderVO>getCleanList(CalenderVO calenderVO){
+    public List<CalenderVO>getCleanList(CalenderVO calenderVO)throws Exception{
 
-        return
+        return cleanDAO.getCleanList(calenderVO);
 
     }
 }

@@ -127,25 +127,22 @@
                                 <!-- 풀 캘린더 사용 -->
                                 <div id='calendar' class="mb-4"></div>
                                 <script>
-                                    $(document).ready(function() {
-                                        $('#calendar').fullCalendar({
-                                            header: {
-                                                left: 'prev,next today',
-                                                center: 'title',
-                                                right: 'month,agendaWeek,agendaDay'
-                                            },
-                                            timeZone: 'UTC',
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        let calendarEl = document.getElementById('calendar');
+                                        let calendar = new FullCalendar.Calendar(calendarEl, {
+                                            initialView: 'dayGridMonth',
                                             events: [
+
                                                 <c:forEach var="event" items="${events}">
                                                 {
-                                                    title: '${event.title}',
-                                                    start: '${event.start}',
-                                                    end: '${event.end}'
+                                                    title: '${event.scheduleNumber}',
+                                                    start: '${event.scheduleStartdate}',
+                                                    end: '${event.scheduleEnddate}'
                                                 },
                                                 </c:forEach>
-                                                // Add additional events here
                                             ]
                                         });
+                                        calendar.render();
                                     });
                                 </script>
 
@@ -314,7 +311,7 @@
                 </footer>
             </div>
         </div>
-        <script src="/js/calendar.js"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
