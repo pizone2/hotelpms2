@@ -23,6 +23,10 @@ public class RoomController {
         ModelAndView mv = new ModelAndView();
         //객실 호수를 받아오는 Roomlist 선언
         List<RoomVO> roomVOList = roomService.getRoomList();
+        // 객실 상태를 받아오는 ReservedList 선언
+        List<ReservedVO> reservedVOList = roomService.getRoomStatus();
+
+        mv.addObject("status",reservedVOList);
         mv.addObject("room",roomVOList);
         mv.setViewName("room/roommanagement");
         return mv;

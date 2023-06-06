@@ -8,6 +8,7 @@ public interface RoomDAO {
 
     public List<RoomVO> getRoomList() throws Exception;
 
+    public List<ReservedVO> getRoomStatus() throws Exception;
 
 }
 

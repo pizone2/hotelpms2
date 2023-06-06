@@ -12,10 +12,13 @@ public class RoomService {
     @Autowired
     private RoomDAO roomDAO;
 
+
     public List<RoomVO> getRoomList() throws Exception{
         return roomDAO.getRoomList();
     }
 
-
+    public List<ReservedVO> getRoomStatus() throws Exception{
+        return roomDAO.getRoomStatus();
+    }
 
 }
