@@ -135,14 +135,24 @@
 
                                                 <c:forEach var="event" items="${events}">
                                                 {
-                                                    title: '${event.scheduleNumber}',
+                                                    title: '청소팀${event.scheduleNumber}팀',
                                                     start: '${event.scheduleStartdate}',
-                                                    end: '${event.scheduleEnddate}'
+                                                    end: '${event.scheduleEnddate}',
+                                                    color: getRandomColor()
                                                 },
                                                 </c:forEach>
                                             ]
                                         });
                                         calendar.render();
+                                        function getRandomColor() {
+                                            let letters = '0123456789ABCDEF';
+                                            let color = '#';
+                                            for (let i = 0; i < 6; i++) {
+                                                color += letters[Math.floor(Math.random() * 16)];
+                                            }
+                                            return color;
+                                        }
+
                                     });
                                 </script>
 
