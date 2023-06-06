@@ -17,18 +17,10 @@
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-        <script>
 
-            document.addEventListener('DOMContentLoaded', function() {
-                let calendarEl = document.getElementById('calendar');
-                let calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth'
-                });
-                calendar.render();
-            });
-        </script>
     </head>
     <body class="nav-fixed">
+
     <c:import url="../temp/topheader.jsp"></c:import>
         <div id="layoutSidenav">
             <c:import url="../temp/leftheader.jsp"></c:import>
@@ -134,6 +126,28 @@
 
                                 <!-- 풀 캘린더 사용 -->
                                 <div id='calendar' class="mb-4"></div>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#calendar').fullCalendar({
+                                            header: {
+                                                left: 'prev,next today',
+                                                center: 'title',
+                                                right: 'month,agendaWeek,agendaDay'
+                                            },
+                                            timeZone: 'UTC',
+                                            events: [
+                                                <c:forEach var="event" items="${events}">
+                                                {
+                                                    title: '${event.title}',
+                                                    start: '${event.start}',
+                                                    end: '${event.end}'
+                                                },
+                                                </c:forEach>
+                                                // Add additional events here
+                                            ]
+                                        });
+                                    });
+                                </script>
 
 
                                 <!-- Illustration dashboard card example-->
@@ -300,6 +314,7 @@
                 </footer>
             </div>
         </div>
+        <script src="/js/calendar.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
