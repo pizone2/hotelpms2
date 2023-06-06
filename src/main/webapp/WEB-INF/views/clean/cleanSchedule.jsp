@@ -13,6 +13,7 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="/css/styles.css" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
@@ -48,6 +49,36 @@
                             </div>
                         </div>
                     </header>
+
+                    <!-- Large modal -->
+
+                    <div class="modal fade" id="exampleModalLg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">객실 상태 보고 </h5>
+                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="mb-3"><label for="exampleFormControlInput1">객실</label><input class="form-control form-control-solid" id="exampleFormControlInput1" type="text" placeholder="101호"></div>
+                                        <div class="mb-3"><label for="exampleFormControlInput1">소속</label><input class="form-control form-control-solid" id="exampleFormControlInput2" type="text" placeholder="청소2팀 001번"></div>
+                                        <div class="mb-3"><label for="exampleFormControlInput1">사진첨부</label><input class="form-control form-control-solid" id="exampleFormControlInput3" type="text" placeholder="사진"></div>
+
+
+                                        <div class="mb-0"><label for="exampleFormControlTextarea1">비고</label><textarea class="form-control form-control-solid" id="exampleFormControlTextarea1" rows="3"></textarea></div>
+                                    </form>
+
+                                </div>
+                                <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
                     <!-- Main page content-->
                     <div class="container-xl px-4 mt-n10">
                         <div class="row">
@@ -125,7 +156,13 @@
                                     <div class="col-xl-6 col-xxl-12">
                                         <!-- Team members / people dashboard card example-->
                                         <div class="card mb-4">
-                                            <div class="card-header">People</div>
+                                            <div class="card-header">체크 리스트
+
+                                                    <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalLg">
+                                                        <span class="material-symbols-outlined align-middle">mail</span>
+                                                    </button>
+
+                                            </div>
                                             <div class="card-body">
                                                 <!-- Item 1-->
                                                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -240,38 +277,7 @@
                                     </div>
                                     <div class="col-xl-6 col-xxl-12">
                                         <!-- Project tracker card example-->
-                                        <div class="card card-header-actions mb-4">
-                                            <div class="card-header">
-                                                Projects
-                                                <a class="btn btn-sm btn-primary-soft text-primary" href="#!">Create New</a>
-                                            </div>
-                                            <div class="card-body">
-                                                <!-- Progress item 1-->
-                                                <div class="d-flex align-items-center justify-content-between small mb-1">
-                                                    <div class="fw-bold">Server Setup</div>
-                                                    <div class="small">25%</div>
-                                                </div>
-                                                <div class="progress mb-3"><div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div>
-                                                <!-- Progress item 2-->
-                                                <div class="d-flex align-items-center justify-content-between small mb-1">
-                                                    <div class="fw-bold">Database Migration</div>
-                                                    <div class="small">50%</div>
-                                                </div>
-                                                <div class="progress mb-3"><div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
-                                                <!-- Progress item 3-->
-                                                <div class="d-flex align-items-center justify-content-between small mb-1">
-                                                    <div class="fw-bold">Version Release</div>
-                                                    <div class="small">75%</div>
-                                                </div>
-                                                <div class="progress mb-3"><div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
-                                                <!-- Progress item 4-->
-                                                <div class="d-flex align-items-center justify-content-between small mb-1">
-                                                    <div class="fw-bold">Product Listings</div>
-                                                    <div class="small">100%</div>
-                                                </div>
-                                                <div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div></div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <!-- Illustration dashboard card example-->
