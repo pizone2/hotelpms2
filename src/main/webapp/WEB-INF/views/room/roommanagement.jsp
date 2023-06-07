@@ -211,7 +211,7 @@
                                     <tr data-index="1" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 1}">
-                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;" id="pa${room.roomNumber}">
+                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; " id="pa${room.roomNumber}">
                                                         ${room.roomNumber} <br> ${room.roomType} <br>
                                                     <c:forEach items="${status}" var="status">
                                                         <c:if test="${room.roomNumber == status.roomNumber}">
@@ -227,7 +227,7 @@
                                    <tr data-index="2" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 2}">
-                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;" id="pa${room.roomNumber}" >
+                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center;" id="pa${room.roomNumber}" >
                                                         ${room.roomNumber} <br> ${room.roomType} <br>
                                                     <c:forEach items="${status}" var="status">
                                                         <c:if test="${room.roomNumber == status.roomNumber}">
@@ -243,7 +243,7 @@
                                     <tr data-index="3" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 3}">
-                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;"  id="pa${room.roomNumber}">${room.roomNumber} <br> ${room.roomType}  <br>
+                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center;"  id="pa${room.roomNumber}">${room.roomNumber} <br> ${room.roomType}  <br>
                                                     <c:forEach items="${status}" var="status">
                                                         <c:if test="${room.roomNumber == status.roomNumber}">
                                                          <div class="tdroom ${room.roomType} ${status.roomStatus}" id="ch${room.roomNumber}"> ${status.roomStatus}</div>
@@ -256,7 +256,7 @@
                                     <tr data-index="4" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 4}">
-                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;"  id="pa${room.roomNumber}">${room.roomNumber} <br> ${room.roomType}  <br>
+                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center;"  id="pa${room.roomNumber}">${room.roomNumber} <br> ${room.roomType}  <br>
                                                     <c:forEach items="${status}" var="status">
                                                         <c:if test="${room.roomNumber == status.roomNumber}">
                                                             <div class="tdroom ${room.roomType} ${status.roomStatus}" id="ch${room.roomNumber}"> ${status.roomStatus}</div>
@@ -269,7 +269,7 @@
                                     <tr data-index="5" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 5}">
-                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;"  id="pa${room.roomNumber}">${room.roomNumber} <br> ${room.roomType}  <br>
+                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center;"  id="pa${room.roomNumber}">${room.roomNumber} <br> ${room.roomType}  <br>
                                                     <c:forEach items="${status}" var="status">
                                                         <c:if test="${room.roomNumber == status.roomNumber}">
                                                             <div class="tdroom ${room.roomType} ${status.roomStatus}" id="ch${room.roomNumber}"> ${status.roomStatus}</div>
@@ -282,7 +282,7 @@
                                     <tr data-index="6" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 6}">
-                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; border: 1px solid black;"  id="pa${room.roomNumber}"> ${room.roomNumber} <br> ${room.roomType}  <br>
+                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center;"  id="pa${room.roomNumber}"> ${room.roomNumber} <br> ${room.roomType}  <br>
                                                     <c:forEach items="${status}" var="status">
                                                         <c:if test="${room.roomNumber == status.roomNumber}">
                                                             <div class="tdroom ${room.roomType} ${status.roomStatus}" id="ch${room.roomNumber}"> ${status.roomStatus}</div>

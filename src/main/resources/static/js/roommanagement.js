@@ -1,21 +1,37 @@
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    var tdElements = document.querySelectorAll("td[id^='pa']");
-    var divElements = document.querySelectorAll("div[id^='ch']");
+    let tdElements = document.querySelectorAll("td[id^='pa']");
+    let divElements = document.querySelectorAll("div[id^='ch']");
 
-    for (var i = 0; i < tdElements.length; i++) {
-        var tdElement = tdElements[i];
-        var divElement = divElements[i];
-        //var roomNumber = ""; // ${room.roomNumber}에 해당하는 값을 설정
-        var roomNumber = tdElement.id.substring(2);
+    for (let i = 0; i < tdElements.length; i++) {
+        let tdElement = tdElements[i];
+        let divElement = divElements[i];
+        let roomNumber = tdElement.id.substring(2);
 
         if (tdElement.id === "pa" + roomNumber && divElement.id === "ch" + roomNumber) {
-            // ${room.roomNumber}와 일치하는 요소에 대해 동작 수행
-            // 예시: 스타일 변경
+
             tdElement.className = divElement.className;
 
-            // 원하는 작업 수행
+            if (tdElement.className.includes("예약완료")) {
+                tdElement.classList.add("bg-blue", "text-white");
+            } else if (tdElement.className.includes("청소요청")) {
+                tdElement.classList.add("bg-info", "text-white");
+            } else if (tdElement.className.includes("예약가능")) {
+                tdElement.style.backgroundColor = "#1a1f71";
+                tdElement.style.color = "white";
+            } else if (tdElement.className.includes("재실")) {
+                tdElement.classList.add("bg-warning", "text-white");
+            } else if (tdElement.className.includes("청소중")) {
+                tdElement.style.backgroundColor = "#8B4513";
+                tdElement.style.color = "white";
+            } else if (tdElement.className.includes("퇴실")) {
+                tdElement.classList.add("bg-green", "text-white");
+            } else if (tdElement.className.includes("객실점검")) {
+                tdElement.style.backgroundColor = "#00673f";
+                tdElement.style.color = "white";
+            }
+
         }
     }
 });
@@ -60,34 +76,68 @@ $(document).ready(function() {
         console.log('객실 유형 필터:', selectedFloors);
         console.log('예약 상태 필터:', selectedRoomTypes);
 
-        // 선택된 층이 하나 이상일 때 전체 층 숨김 표시
+/////////////////////////////// ////층별 필터처리///////////////////////////////////////////////////////////////////////
+
+       // 선택된 층이 하나 이상일 때 전체 층 숨김 표시
         if (filtersApplied || selectedFloors.length > 0 ) {
             $('tr.floor').hide();
+        } else if (filtersApplied || selectedFloors.length == 0 ) {
+            $('tr.floor').show();
         }
 
         // 선택된 층만 표시
-        selectedFloors.forEach(function(floor) {
-            $('tr.floor[data-index="' + floor + '"]').show();
-        });
+        if (selectedFloors.length === 0) {
+            $('tr.floor').show();
+        } else {
+            selectedFloors.forEach(function(floor) {
+                $('tr.floor[data-index="' + floor + '"]').show();
+            });
+        }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //객실타입 체크박스가 1개 이상 선택되면 전체 객실을 숨김 표시
         if (filtersApplied || selectedRoomTypes.length > 0) {
             $('td.tdroom').hide();
+        } else if  (filtersApplied || selectedRoomTypes.length  == 0) {
+            $('td.tdroom').show();
+        }
+        // //체크박스에 선택된 값을 roomType 변수에 담아서 td.tdroom.roomType 클래스명인 애들만 보여줘
+
+
+        if (selectedRoomTypes.length === 0) {
+            $('td.tdroom').show();
+        } else {
+            selectedRoomTypes.forEach(function (roomType) {
+                $('td.tdroom').filter(function () {
+                    return $(this).attr('class').match(new RegExp('\\btdroom\\b.*\\b' + roomType + '\\b'));
+                }).show();
+            });
         }
 
-        //체크밗스에 선택된 값을 roomType 변수에 담아서 td.tdroom.roomType 클래스명인 애들만 보여줘
-        selectedRoomTypes.forEach(function(roomType) {
-            $('td.tdroom.' + roomType).show();
-        });
-
-        //
-        let matchingTdElements = $('td.tdroom.' + selectedRoomTypes.join(',td.tdroom.'));
+        let matchingTdElements = $(selectedRoomTypes.map(roomType => 'td.tdroom.' + roomType).join(','));
         matchingTdElements.show();
         matchingTdElements.each(function(index, element) {
             console.log($(element).attr('class'));
         });
 
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+        //객실상태 체크박스가 1개 이상 선택되면 전체 객실을 숨김 표시
+        if (filtersApplied || selectedRoomstatus.length > 0) {
+            $('td.tdroom').hide();
+        }
+
+
+        selectedRoomstatus.forEach(function(roomstatus) {
+            console.log("안녕",roomstatus);
+            $('td.tdroom').filter(function() {
+                return $(this).attr('class').match(new RegExp('\\btdroom\\b.*\\b' + roomstatus + '\\b'));
+            }).show();
+        });
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
         // 필터 적용 플래그를 true로 설정
         filtersApplied = true;
 
@@ -95,13 +145,13 @@ $(document).ready(function() {
         // 재시작되었을 때 선택된 룸 갯수만 세주기
         let visibleTdroomElements = $('.tdroom:visible');
         console.log('<td> 중 class="tdroom"인것의 갯수는:' + visibleTdroomElements.length);
-        divElement.text(visibleTdroomElements.length + "개");
+        divElement.text(visibleTdroomElements.length/2 + "개");
     }
 
 
     ////////////// 선택된 룸 갯수를 세주는 곳//////////////////////////////////////
     // class="tdroom" 의 갯수는 총 몇개니?
-    let tdroomCount = $('.tdroom').length;
+    let tdroomCount = $('.tdroom').length/2;
    //let visibleTdroomElements = $('.tdroom:visible');
     // 콘솔창에서 룸갯수 확인
     console.log('Number of <td> elements with class="tdroom":', tdroomCount);
