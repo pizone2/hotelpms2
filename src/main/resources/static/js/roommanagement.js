@@ -104,22 +104,46 @@ $(document).ready(function() {
         }
         // //체크박스에 선택된 값을 roomType 변수에 담아서 td.tdroom.roomType 클래스명인 애들만 보여줘
 
+        // 체크박스 값이 변경될 때마다 필터 적용
+        $('input[name="roomTypes"]').change(function () {
+            applyFilters();
+        });
+        // 필터 적용 함수
+        function applyFilters() {
+            // 객실 유형별 필터
+            if (selectedRoomTypes.length === 0) {
+                $('td.tdroom').show();
+            } else {
+                $('td.tdroom').hide(); // 모든 td.tdroom 요소 숨김
+                selectedRoomTypes.forEach(function (roomType) {
+                    $('td.tdroom.' + roomType).show(); // 선택된 roomType에 해당하는 td.tdroom 요소만 보여줌
+                });
+            }
 
-        if (selectedRoomTypes.length === 0) {
-            $('td.tdroom').show();
-        } else {
-            selectedRoomTypes.forEach(function (roomType) {
-                $('td.tdroom').filter(function () {
-                    return $(this).attr('class').match(new RegExp('\\btdroom\\b.*\\b' + roomType + '\\b'));
-                }).show();
-            });
+
         }
 
-        let matchingTdElements = $(selectedRoomTypes.map(roomType => 'td.tdroom.' + roomType).join(','));
-        matchingTdElements.show();
-        matchingTdElements.each(function(index, element) {
-            console.log($(element).attr('class'));
-        });
+
+// // 체크박스 값이 변경될 때마다 필터 적용
+//         $('input[name="roomTypes"]').change(function () {
+//             applyFilters();
+//         });
+//         if (selectedRoomTypes.length === 0) {
+//             $('td.tdroom').show();
+//         } else {
+//             selectedRoomTypes.forEach(function (roomType) {
+//                 $('td.tdroom').filter(function () {
+//                     return $(this).attr('class').split(' ').some(function (className) {
+//                         return className.startsWith('tdroom') && className.includes(roomType);
+//                     });
+//                 }).show();
+//             });
+//         }
+//         let matchingTdElements = $(selectedRoomTypes.map(roomType => 'td.tdroom.' + roomType).join(','));
+//         matchingTdElements.show();
+//         matchingTdElements.each(function(index, element) {
+//             console.log($(element).attr('class'));
+//         });
 
     //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -129,14 +153,26 @@ $(document).ready(function() {
         }
 
 
-        selectedRoomstatus.forEach(function(roomstatus) {
-            console.log("안녕",roomstatus);
-            $('td.tdroom').filter(function() {
-                return $(this).attr('class').match(new RegExp('\\btdroom\\b.*\\b' + roomstatus + '\\b'));
-            }).show();
-        });
-
-
+        // if ( selectedRoomstatus.length === 0) {
+        //     $('td.tdroom').show();
+        // } else {
+        //     selectedRoomstatus.forEach(function (roomstatus) {
+        //         console.log("안녕", roomstatus);
+        //         $('td.tdroom').filter(function () {
+        //             return $(this).attr('class').match(new RegExp("^tdroom.*" + roomstatus + "*"));
+        //         }).show();
+        //     });
+        // }
+        if (selectedRoomstatus.length === 0) {
+            $('td.tdroom').show();
+        } else {
+            selectedRoomstatus.forEach(function (roomstatus) {
+                console.log("안녕", roomstatus);
+                $('td.tdroom').filter(function () {
+                    return $(this).hasClass(roomstatus);
+                }).show();
+            });
+        }
     ///////////////////////////////////////////////////////////////////////////////////////////
         // 필터 적용 플래그를 true로 설정
         filtersApplied = true;

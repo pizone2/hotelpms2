@@ -58,7 +58,7 @@
                                             </th>
                                             <td>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" name="roomstatus" value="공실" id="roomstatus1">
+                                                    <input class="form-check-input" type="checkbox" name="roomstatus" value="예약가능" id="roomstatus1">
                                                     <label class="form-check-label" for="roomstatus1">공실</label>
                                                     <div class="badge rounded-pill" style="background-color: #1a1f71; color: white;">공실</div>
                                                 </div>
@@ -70,7 +70,7 @@
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" name="roomstatus" value="예약확정" id="roomstatus3">
+                                                    <input class="form-check-input" type="checkbox" name="roomstatus" value="예약완료" id="roomstatus3">
                                                     <label class="form-check-label" for="roomstatus3">예약확정</label>
                                                     <div class="badge bg-blue text-white rounded-pill">Full-time</div>
                                                 </div>
