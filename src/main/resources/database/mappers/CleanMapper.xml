@@ -9,6 +9,16 @@
         FROM CALENDER
     </select>
 
+    <insert id="insertSchedule" parameterType="CalenderVO">
+        INSERT INTO CALENDER(SCHEDULENUMBER,SCHEDULEENDDATE,SCHEDULESTARTDATE)
+        VALUES (#{scheduleNumber},#{scheduleEnddate},#{scheduleStartdate})
+    </insert>
 
+    <delete id="deleteSchedule" parameterType="CalenderVO">
+        DELETE
+        FROM CALENDER
+        WHERE SCHEDULENUMBER = #{scheduleNumber}
+
+    </delete>
 
 </mapper>

@@ -9,4 +9,6 @@ public interface CleanDAO {
 
     public List<CalenderVO>getCleanList(CalenderVO calenderVO)throws Exception;
 
+    public int insertSchedule(CalenderVO calenderVO)throws Exception;
+    public int deleteSchedule(CalenderVO calenderVO)throws Exception;
 }
