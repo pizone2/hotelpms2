@@ -165,7 +165,7 @@
                                             scheduleNumber : scheduleNumber
                                         }
                                     })
-
+                                        info.event.remove();
                                     },
                                     initialView: 'dayGridMonth',
                                     events: [
