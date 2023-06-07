@@ -155,17 +155,43 @@
                                 let calendarEl = document.getElementById('calendar');
                                 let calendar = new FullCalendar.Calendar(calendarEl, {
                                     eventClick: function(info) {
-                                        alert('Event: ' + info.event.title);
-                                        alert('이벤트를 삭제 합니다');
-                                        let scheduleNumber = info.event.title
-                                    $.ajax({
-                                        url : "/deleteSchedule",
-                                        type : "POST",
-                                        data : {
-                                            scheduleNumber : scheduleNumber
+                                        let scheduleNumber = info.event.title;
+
+                                        // Prompt user for action (edit or delete)
+                                        let action = prompt('Event: ' + scheduleNumber + '\n\n선택하세요: \n1. 수정\n2. 삭제');
+
+                                        if (action === '1') {
+                                            // Perform edit action
+                                            alert('1번 수정: ' + scheduleNumber);
+                                            // Add your edit logic here
+
+                                        } else if (action === '2') {
+                                            // Perform delete action
+                                            alert('2번 삭제: ' + scheduleNumber);
+                                            // Add your delete logic here
+                                            $.ajax({
+                                                url: "/deleteSchedule",
+                                                type: "POST",
+                                                data: {
+                                                    scheduleNumber: scheduleNumber
+                                                },
+                                                success: function(response) {
+                                                    if (response === 'success') {
+                                                        info.event.remove();
+                                                        alert('이벤트 삭제 완료');
+                                                    } else {
+                                                        alert('이벤트 삭제 실패.');
+                                                    }
+                                                },
+                                                error: function() {
+                                                    alert('스케줄 삭제 완료.');
+                                                    info.event.remove();
+                                                }
+                                            });
+                                        } else {
+                                            // Invalid action or cancel
+                                            return;
                                         }
-                                    })
-                                        info.event.remove();
                                     },
                                     initialView: 'dayGridMonth',
                                     events: [
