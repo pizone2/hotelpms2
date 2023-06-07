@@ -48,7 +48,7 @@
                 </div>
             </header>
 
-            <!-- Large modal -->
+            <!-- 입력 modal -->
 
             <div class="modal fade" id="exampleModalLg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                  aria-hidden="true">
@@ -77,6 +77,45 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary" id="btn" type="submit">등록</button>
+                                    <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 수정 modal -->
+            <div class="modal fade" id="exampleModalLg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">청소 스케줄 등록 </h5>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="insertSchedule2" method="post" action="/insertSchedule">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1">시작날짜</label>
+                                    <input class="form-control form-control-solid" id="exampleFormControlInput1-1"
+                                           name="scheduleStartdate" type="date">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1">종료날짜</label>
+                                    <input class="form-control form-control-solid" id="exampleFormControlInput2-1"
+                                           name="scheduleEnddate" type="date">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1">팀 번호</label>
+                                    <input class="form-control form-control-solid" id="exampleFormControlInput3-1"
+                                           name="scheduleNumber" type="number" min="0">
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" id="btn2" type="submit">등록</button>
                                     <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
 
                                 </div>
@@ -157,18 +196,18 @@
                                     eventClick: function(info) {
                                         let scheduleNumber = info.event.title;
 
-                                        // Prompt user for action (edit or delete)
+
                                         let action = prompt('Event: ' + scheduleNumber + '\n\n선택하세요: \n1. 수정\n2. 삭제');
 
                                         if (action === '1') {
-                                            // Perform edit action
+
                                             alert('1번 수정: ' + scheduleNumber);
-                                            // Add your edit logic here
+
 
                                         } else if (action === '2') {
-                                            // Perform delete action
+
                                             alert('2번 삭제: ' + scheduleNumber);
-                                            // Add your delete logic here
+
                                             $.ajax({
                                                 url: "/deleteSchedule",
                                                 type: "POST",
