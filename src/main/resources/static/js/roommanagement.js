@@ -39,21 +39,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 $(document).ready(function() {
-    // 체크박스가 표시되었을 때만 숨김처리 될 수 있도록 filtersApplied 변수 선언 (체크박스를 선택 안하면 전체 객실이 표시)
+    // 체크박스가 선택된 경우에만 숨기기로 표시되는 filtersApplied 변수를 선언합니다. (체크박스가 선택되지 않은 경우 모든 방이 표시됩니다.)
     let filtersApplied = false;
 
-    // 체크 박스 값이 변경될 때 마다 실행
+    // 체크박스 값이 변경될 때마다 실행됩니다.
     $('input[name="roomstatus"], input[name="floors"], input[name="roomTypes"]').change(function() {
         applyFilters();
     });
 
-    // 체크박스 선택 시 실행
+    // 체크박스가 선택되었을 때 실행됩니다.
     function applyFilters() {
         // 객실 상태
         let selectedRoomstatus = [];
         // 층별
         let selectedFloors = [];
-        // 객실 유형별
+        // 객실 유형
         let selectedRoomTypes = [];
 
         // 객실 상태 필터
@@ -66,26 +66,25 @@ $(document).ready(function() {
             selectedFloors.push($(this).val());
         });
 
-        // 객실 유형별 필터
+        // 객실 유형 필터
         $('input[name="roomTypes"]:checked').each(function() {
             selectedRoomTypes.push($(this).val());
         });
 
-        // 필터 상태값 확인하는 콘솔창
-        console.log('층별 필터:', selectedRoomstatus);
-        console.log('객실 유형 필터:', selectedFloors);
-        console.log('예약 상태 필터:', selectedRoomTypes);
+        // 필터 상태를 확인하기 위해 콘솔에 출력합니다.
+        console.log('객실 상태 필터:', selectedRoomstatus);
+        console.log('객실 층별 필터:', selectedFloors);
+        console.log('객실 타입 필터:', selectedRoomTypes);
 
-/////////////////////////////// ////층별 필터처리///////////////////////////////////////////////////////////////////////
-
-       // 선택된 층이 하나 이상일 때 전체 층 숨김 표시
-        if (filtersApplied || selectedFloors.length > 0 ) {
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 하나 이상의 층이 선택된 경우 모든 층을 숨깁니다.
+        if (filtersApplied || selectedFloors.length > 0) {
             $('tr.floor').hide();
-        } else if (filtersApplied || selectedFloors.length == 0 ) {
+        } else if (filtersApplied || selectedFloors.length === 0) {
             $('tr.floor').show();
         }
 
-        // 선택된 층만 표시
+        // 선택된 층만 보여줍니다.
         if (selectedFloors.length === 0) {
             $('tr.floor').show();
         } else {
@@ -93,110 +92,88 @@ $(document).ready(function() {
                 $('tr.floor[data-index="' + floor + '"]').show();
             });
         }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 필터를 적용하는 함수
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 필터를 적용하는 함수
+        function applyFilters() {
+            // 선택된 객실 유형
+            let selectedRoomTypes = [];
 
-        //객실타입 체크박스가 1개 이상 선택되면 전체 객실을 숨김 표시
-        if (filtersApplied || selectedRoomTypes.length > 0) {
+            // 객실 유형 필터
+            $('input[name="roomTypes"]:checked').each(function() {
+                selectedRoomTypes.push($(this).val());
+            });
+
+            // 모든 td.tdroom 요소를 숨깁니다.
             $('td.tdroom').hide();
-        } else if  (filtersApplied || selectedRoomTypes.length  == 0) {
-            $('td.tdroom').show();
-        }
-        // //체크박스에 선택된 값을 roomType 변수에 담아서 td.tdroom.roomType 클래스명인 애들만 보여줘
 
-        // 체크박스 값이 변경될 때마다 필터 적용
-        $('input[name="roomTypes"]').change(function () {
+            // 선택된 객실 유형에 해당하는 td.tdroom 요소만 보여줍니다.
+            if (selectedRoomTypes.length > 0) {
+                let selector = selectedRoomTypes.map(function(roomType) {
+                    return 'td.tdroom.' + roomType;
+                }).join(',');
+                $(selector).show();
+            } else {
+                // 선택된 객실 유형이 없는 경우 모든 td.tdroom 요소를 보여줍니다.
+                $('td.tdroom').show();
+            }
+        }
+
+// 체크박스 값이 변경될 때마다 필터를 적용합니다.
+        $('input[name="roomTypes"]').change(function() {
             applyFilters();
         });
-        // 필터 적용 함수
-        function applyFilters() {
-            // 객실 유형별 필터
-            if (selectedRoomTypes.length === 0) {
-                $('td.tdroom').show();
-            } else {
-                $('td.tdroom').hide(); // 모든 td.tdroom 요소 숨김
-                selectedRoomTypes.forEach(function (roomType) {
-                    $('td.tdroom.' + roomType).show(); // 선택된 roomType에 해당하는 td.tdroom 요소만 보여줌
-                });
-            }
+
+// 페이지가 로드될 때 초기 필터를 적용합니다.
+        applyFilters();
 
 
-        }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// // 체크박스 값이 변경될 때마다 필터 적용
-//         $('input[name="roomTypes"]').change(function () {
-//             applyFilters();
-//         });
-//         if (selectedRoomTypes.length === 0) {
-//             $('td.tdroom').show();
-//         } else {
-//             selectedRoomTypes.forEach(function (roomType) {
-//                 $('td.tdroom').filter(function () {
-//                     return $(this).attr('class').split(' ').some(function (className) {
-//                         return className.startsWith('tdroom') && className.includes(roomType);
-//                     });
-//                 }).show();
-//             });
-//         }
-//         let matchingTdElements = $(selectedRoomTypes.map(roomType => 'td.tdroom.' + roomType).join(','));
-//         matchingTdElements.show();
-//         matchingTdElements.each(function(index, element) {
-//             console.log($(element).attr('class'));
-//         });
-
-    //////////////////////////////////////////////////////////////////////////////////////////
-
-        //객실상태 체크박스가 1개 이상 선택되면 전체 객실을 숨김 표시
+        // 하나 이상의 객실 상태 체크박스가 선택된 경우 모든 방을 숨깁니다.
         if (filtersApplied || selectedRoomstatus.length > 0) {
             $('td.tdroom').hide();
+        } else if (filtersApplied || selectedRoomstatus.length == 0) {
+            $('td.tdroom').show();
         }
 
-
-        // if ( selectedRoomstatus.length === 0) {
-        //     $('td.tdroom').show();
-        // } else {
-        //     selectedRoomstatus.forEach(function (roomstatus) {
-        //         console.log("안녕", roomstatus);
-        //         $('td.tdroom').filter(function () {
-        //             return $(this).attr('class').match(new RegExp("^tdroom.*" + roomstatus + "*"));
-        //         }).show();
-        //     });
-        // }
+        // 선택된 객실 상태에 해당하는 td.tdroom 요소만 보여줍니다.
         if (selectedRoomstatus.length === 0) {
             $('td.tdroom').show();
         } else {
-            selectedRoomstatus.forEach(function (roomstatus) {
-                console.log("안녕", roomstatus);
-                $('td.tdroom').filter(function () {
+            $('td.tdroom').hide(); // 모든 td.tdroom 요소를 숨깁니다.
+            selectedRoomstatus.forEach(function(roomstatus) {
+                $('td.tdroom').filter(function() {
                     return $(this).hasClass(roomstatus);
-                }).show();
+
+                }).show(); // 선택된 객실 상태에 해당하는 td.tdroom 요소만 보여줍니다.
             });
         }
-    ///////////////////////////////////////////////////////////////////////////////////////////
-        // 필터 적용 플래그를 true로 설정
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 필터가 적용되었음을 표시하는 플래그를 true로 설정합니다.
         filtersApplied = true;
 
-
-        // 재시작되었을 때 선택된 룸 갯수만 세주기
+        // 다시 시작할 때 선택된 방의 수만 계산합니다.
         let visibleTdroomElements = $('.tdroom:visible');
-        console.log('<td> 중 class="tdroom"인것의 갯수는:' + visibleTdroomElements.length);
-        divElement.text(visibleTdroomElements.length/2 + "개");
+        console.log('<td class="tdroom">의 개수:', visibleTdroomElements.length);
+        divElement.text(visibleTdroomElements.length / 2 + "개");
     }
 
+    //////////////////////////////////////////
+    // 선택된 방의 개수 계산
 
-    ////////////// 선택된 룸 갯수를 세주는 곳//////////////////////////////////////
-    // class="tdroom" 의 갯수는 총 몇개니?
-    let tdroomCount = $('.tdroom').length/2;
-   //let visibleTdroomElements = $('.tdroom:visible');
-    // 콘솔창에서 룸갯수 확인
-    console.log('Number of <td> elements with class="tdroom":', tdroomCount);
+    // class="tdroom"인 모든 요소의 개수를 구합니다.
+    let tdroomCount = $('.tdroom').length / 2;
 
-    // form-check-label-tdroomCount 클래스를 let divElement 변수로 선언 
+    // 콘솔 창에서 방의 개수를 확인합니다.
+    console.log('<td> 요소의 개수:', tdroomCount);
+
+    // class="form-check-label-tdroomCount"인 요소를 변수로 선언합니다.
     let divElement = $('.form-check-label-tdroomCount');
 
-    //divElement 변수에 갯수 넣어주기
+    // divElement 변수에 방의 개수를 넣습니다.
     divElement.text(tdroomCount + "개");
 });
-
-
