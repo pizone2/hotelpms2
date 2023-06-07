@@ -1,4 +1,27 @@
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    var tdElements = document.querySelectorAll("td[id^='pa']");
+    var divElements = document.querySelectorAll("div[id^='ch']");
+
+    for (var i = 0; i < tdElements.length; i++) {
+        var tdElement = tdElements[i];
+        var divElement = divElements[i];
+        //var roomNumber = ""; // ${room.roomNumber}에 해당하는 값을 설정
+        var roomNumber = tdElement.id.substring(2);
+
+        if (tdElement.id === "pa" + roomNumber && divElement.id === "ch" + roomNumber) {
+            // ${room.roomNumber}와 일치하는 요소에 대해 동작 수행
+            // 예시: 스타일 변경
+            tdElement.className = divElement.className;
+
+            // 원하는 작업 수행
+        }
+    }
+});
+
+
+
 $(document).ready(function() {
     // 체크박스가 표시되었을 때만 숨김처리 될 수 있도록 filtersApplied 변수 선언 (체크박스를 선택 안하면 전체 객실이 표시)
     let filtersApplied = false;
