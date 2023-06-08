@@ -25,8 +25,11 @@ public class RoomDetailController {
         UserVO userVO = roomService.getManagerInfo();
         //예약한 유저의 예약정보들
         BookingVO bookingVO = roomService.getResDetail(105l);
+        //페이지 정보
+        String pageName = "예약확정";
         mv.addObject("userVO", userVO);
         mv.addObject("bookingVO", bookingVO);
+        mv.addObject("pageName", pageName);
         mv.setViewName("room/resConfirmed");
         return mv;
     }
@@ -64,9 +67,33 @@ public class RoomDetailController {
     }
 
     @PostMapping("checkInSave")
-    public ModelAndView setStatusHouse(BookingVO bookingVO, ReservedVO reservedVO ) throws Exception{
+    public ModelAndView setStatusHouse(BookingVO bookingVO) throws Exception{
         ModelAndView mv = new ModelAndView();
         int result = roomService.setStatusHouse(bookingVO);
+        mv.setViewName("redirect:/room/roommanager");
+        return mv;
+    }
+
+    @GetMapping("houseRoom")
+    public ModelAndView getRoomList() throws Exception {
+        ModelAndView mv = new ModelAndView();
+        //프론트 매니저 정보
+        UserVO userVO = roomService.getManagerInfo();
+        //예약한 유저의 예약정보들
+        BookingVO bookingVO = roomService.getRoomDetail(105l);
+        //페이지 정보
+        String pageName = "재실";
+        mv.addObject("userVO", userVO);
+        mv.addObject("bookingVO", bookingVO);
+        mv.addObject("pageName", pageName);
+        mv.setViewName("room/resConfirmed");
+        return mv;
+    }
+
+    @PostMapping("cleanAskSave")
+    public ModelAndView setStatusClean(BookingVO bookingVO) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        int result = roomService.setCleanAsk(bookingVO);
         mv.setViewName("redirect:/room/roommanager");
         return mv;
     }

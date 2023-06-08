@@ -5,12 +5,21 @@
 <mapper namespace="com.dev.pms.room.RoomDetailDAO">
     <!--예약정보 불러오기-->
     <select id="getResDetail" parameterType="Long" resultMap="getReservationDetail">
-        SELECT DISTINCT B.*, RT.CAPACITY  FROM BOOKING B
+        SELECT B.*, RT.CAPACITY,  RS.* FROM BOOKING B
         INNER JOIN ROOMTYPE RT
         USING(ROOMTYPE)
         INNER JOIN RESERVED RS
         USING(ROOMNUMBER)
-        WHERE ROOMNUMBER = #{roomNumber} AND CHECKINDATE = CURDATE() AND RS.ROOMSTATUS = '예약완료'
+        WHERE ROOMNUMBER = #{roomNumber} AND B.CHECKINDATE = CURDATE() AND RS.RESERVATIONDATE= CURDATE() AND RS.ROOMSTATUS ='예약완료'
+    </select>
+
+    <select id="getRoomDetail" parameterType="Long" resultMap="getReservationDetail">
+        SELECT B.*, RT.CAPACITY  FROM BOOKING B
+        INNER JOIN ROOMTYPE RT
+        USING(ROOMTYPE)
+        INNER JOIN RESERVED RS
+        USING(ROOMNUMBER)
+        WHERE ROOMNUMBER = #{roomNumber} AND CHECKINDATE = CURDATE() AND RS.RESERVATIONDATE= CURDATE() AND RS.ROOMSTATUS = '재실'
     </select>
 
     <resultMap type="BookingVO" id="getReservationDetail">
@@ -69,4 +78,7 @@
         UPDATE RESERVED SET ROOMSTATUS='재실' WHERE ROOMNUMBER =#{roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
     </update>
 
+    <update id="setCleanAsk" parameterType="BookingVO">
+        UPDATE RESERVED SET ROOMSTATUS='청소요청' WHERE ROOMNUMBER =#{roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
+    </update>
 </mapper>

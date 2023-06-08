@@ -15,6 +15,10 @@ public class RoomDetailService {
         return roomDAO.getResDetail(aLong);
     }
 
+    public BookingVO getRoomDetail(Long aLong) throws  Exception{
+        return roomDAO.getRoomDetail(aLong);
+    }
+
     public UserVO getManagerInfo() throws Exception {
         return roomDAO.getManagerInfo();
     }
@@ -36,6 +40,10 @@ public class RoomDetailService {
     }
 
     public int setStatusHouse(BookingVO bookingVO) throws Exception{
+        return roomDAO.setStatusHouse(bookingVO);
+    }
+
+    public int setCleanAsk(BookingVO bookingVO) throws Exception {
         return roomDAO.setStatusHouse(bookingVO);
     }
 }

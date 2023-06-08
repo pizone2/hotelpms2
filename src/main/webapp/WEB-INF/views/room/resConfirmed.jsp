@@ -52,7 +52,7 @@
         <div class="card-header p-4 p-md-5 border-bottom-0 bg-gradient-primary-to-secondary text-white-50">
             <div class="row justify-content-between align-items-center">
                 <div class="col-12 col-lg-auto mb-5 mb-lg-0 text-center text-lg-start">
-                    <div class="h2 text-white mb-0">예약확정</div>
+                    <div class="h2 text-white mb-0">${pageName}</div>
                 </div>
                 <div class="col-12 col-lg-auto text-center text-lg-end">
                     <!-- button -->
@@ -68,12 +68,22 @@
                         </form>
                         <a href="#"><button class="btn btn-dark" type="button">문자발송</button></a>
                         <a href="#"><button class="btn btn-dark" type="button">알림톡발송</button></a>
+                        <c:if test="${pageName eq '예약확정'}">
                         <form id="checkinForm" action="/roomDetail/checkInSave" method="post">
                            <input type="hidden" name="checkinDate" value="${bookingVO.checkinDate}">
                            <input type="hidden" name="checkoutDate" id="updateResCheckout">
                            <input type="hidden" name="roomNumber" value="${bookingVO.roomNumber}">
-                        <button class="btn btn-dark" type="button" id="btn-checkin">체크인</button>
+                                <button class="btn btn-dark" type="button" id="btn-checkin">체크인</button>
                         </form>
+                        </c:if>
+                        <c:if test="${pageName eq '재실'}">
+                        <form id="checkinForm" action="/roomDetail/checkInSave" method="post">
+                            <input type="hidden" name="checkinDate" value="${bookingVO.checkinDate}">
+                            <input type="hidden" name="checkoutDate" id="updateRoomCheckout">
+                            <input type="hidden" name="roomNumber" value="${bookingVO.roomNumber}">
+                                <button class="btn btn-dark" type="button" id="btn-cleanask">청소요청</button>
+                        </form>
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -138,7 +148,7 @@
                             <%--<c:set var="differenceInDays" value="${(checkoutDate.time - checkinDate.time / (1000 * 60 * 60 * 24)) + 1}" />
                             <td><input type="text" value="${fn:substringBefore(differenceInDays, '.')}" disabled></td>--%>
                             <td style="white-space: nowrap;">
-                                <input type="date" value="${bookingVO.checkinDate}" style="width: 100px;" name="checkinDate" disabled> /
+                                <input type="date" value="${bookingVO.checkinDate}" style="width: 120px;" name="checkinDate" disabled> /
                                 15:00
                             </td>
                             <td style="white-space: nowrap;">
