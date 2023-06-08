@@ -8,5 +8,8 @@
         <typeAlias type="com.dev.pms.user.UserVO" alias="UserVO" />
         <typeAlias type="com.dev.pms.room.RoomTypeVO" alias="RoomTypeVO" />
         <typeAlias type="com.dev.pms.room.ReservedVO" alias="ReservedVO" />
+        <typeAlias type="com.dev.pms.room.RoomVO" alias="RoomVO" />
     </typeAliases>
+
+
 </configuration>
