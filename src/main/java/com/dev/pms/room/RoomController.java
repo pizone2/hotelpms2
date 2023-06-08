@@ -18,7 +18,7 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
     //URL 주소 변경해주기 테스트 URL room/rm
-    @GetMapping ("rm")
+    @GetMapping ("roommanager")
     public ModelAndView getRealTimeRoom() throws  Exception{
         ModelAndView mv = new ModelAndView();
         //객실 호수를 받아오는 Roomlist 선언
