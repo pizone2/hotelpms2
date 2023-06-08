@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (tdElement.className.includes("예약완료")) {
                 tdElement.classList.add("bg-blue", "text-white");
+                tdElement.onclick = function() {
+                    window.location.href = "../roomDetail/resConfirmed?roomNumber="+roomNumber+"&roomStatus=예약완료";
+                };
             } else if (tdElement.className.includes("청소요청")) {
                 tdElement.classList.add("bg-info", "text-white");
             } else if (tdElement.className.includes("예약가능")) {
                 tdElement.style.backgroundColor = "#1a1f71";
                 tdElement.style.color = "white";
-                tdElement.onclick = function() {
-                    window.location.href = "../roomDetail/resConfirmed?roomNumber="+roomNumber+"&roomStatus=예약가능";
-                };
             } else if (tdElement.className.includes("재실")) {
                 tdElement.classList.add("bg-warning", "text-white");
             } else if (tdElement.className.includes("청소중")) {
