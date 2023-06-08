@@ -4,16 +4,8 @@
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.dev.pms.clean.CalenderVO" alias="CalenderVO"></typeAlias>
-
-
-
-
-
-
+        <typeAlias type="com.dev.pms.room.RoomVO" alias="RoomVO" />
+        <typeAlias type="com.dev.pms.room.ReservedVO" alias="ReservedVO" />
+        <typeAlias type="com.dev.pms.room.RoomTypeVO" alias="RoomTypeVO" />
     </typeAliases>
-
-
-
-
 </configuration>
