@@ -4,8 +4,12 @@
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.dev.pms.room.RoomVO" alias="RoomVO" />
-        <typeAlias type="com.dev.pms.room.ReservedVO" alias="ReservedVO" />
+        <typeAlias type="com.dev.pms.room.BookingVO" alias="BookingVO" />
+        <typeAlias type="com.dev.pms.user.UserVO" alias="UserVO" />
         <typeAlias type="com.dev.pms.room.RoomTypeVO" alias="RoomTypeVO" />
+        <typeAlias type="com.dev.pms.room.ReservedVO" alias="ReservedVO" />
+        <typeAlias type="com.dev.pms.room.RoomVO" alias="RoomVO" />
     </typeAliases>
+
+
 </configuration>
