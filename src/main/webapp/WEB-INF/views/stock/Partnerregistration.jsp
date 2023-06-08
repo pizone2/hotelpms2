@@ -83,11 +83,15 @@
                                     </div>
                                     <!-- Form Group (email address)-->
                                     <div class="mb-3">
-                                        <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                        <label class="small mb-1" for="inputEmailAddress">상호명</label>
                                         <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com" />
                                     </div>
                                     <div class="mb-3">
-                                        <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                        <label class="small mb-1" for="inputEmailAddress">담당자명</label>
+                                        <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="inputEmailAddress">주소</label>
                                         <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
                                     </div>
                                     <!-- Form Group (Group Selection Checkboxes)-->
