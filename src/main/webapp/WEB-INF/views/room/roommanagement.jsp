@@ -60,43 +60,43 @@
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="roomstatus" value="예약가능" id="roomstatus1">
                                                     <label class="form-check-label" for="roomstatus1">공실</label>
-                                                    <div class="badge rounded-pill" style="background-color: #1a1f71; color: white;">공실</div>
+                                                    <div class="badge rounded-pill roomstatusname1" style="background-color: #1a1f71; color: white;" >공실</div>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="roomstatus" value="재실" id="roomstatus2">
                                                     <label class="form-check-label" for="roomstatus2">재실</label>
-                                                    <div class="badge bg-warning text-white rounded-pill">Full-time</div>
+                                                    <div class="badge bg-warning text-white rounded-pill roomstatusname2" >Full-time</div>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="roomstatus" value="예약완료" id="roomstatus3">
                                                     <label class="form-check-label" for="roomstatus3">예약확정</label>
-                                                    <div class="badge bg-blue text-white rounded-pill">Full-time</div>
+                                                    <div class="badge bg-blue text-white rounded-pill roomstatusname3" >Full-time</div>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="roomstatus" value="청소요청" id="roomstatus4">
                                                     <label class="form-check-label" for="roomstatus4">청소요청</label>
-                                                    <div class="badge bg-info text-white rounded-pill">Full-time</div>
+                                                    <div class="badge bg-info text-white rounded-pill roomstatusname4" >Full-time</div>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="roomstatus" value="청소중" id="roomstatus5">
                                                     <label class="form-check-label" for="roomstatus5">청소중</label>
-                                                    <div class="badge rounded-pill" style="background-color: #8B4513; color: white;">Full-time</div>
+                                                    <div class="badge rounded-pill roomstatusname5" style="background-color: #ff662e; color: white;">Full-time</div>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="roomstatus" value="퇴실" id="roomstatus6">
                                                     <label class="form-check-label" for="roomstatus6">퇴실</label>
-                                                    <div class="badge bg-green text-white rounded-pill">Full-time</div>
+                                                    <div class="badge bg-green text-white rounded-pill roomstatusname6" > Full-time</div>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="roomstatus" value="객실점검" id="roomstatus7">
                                                     <label class="form-check-label" for="roomstatus7">객실점검</label>
-                                                    <div class="badge text-white rounded-pill" style="background-color: #00673f;">Full-time</div>
+                                                    <div class="badge text-white rounded-pill  roomstatusname7" style="background-color: #00673f;" >Full-time</div>
                                                 </div>
                                             </td>
 

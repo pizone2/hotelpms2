@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (tdElement.className.includes("재실")) {
                 tdElement.classList.add("bg-warning", "text-white");
             } else if (tdElement.className.includes("청소중")) {
-                tdElement.style.backgroundColor = "#8B4513";
+                tdElement.style.backgroundColor = "#ff662e";
                 tdElement.style.color = "white";
             } else if (tdElement.className.includes("퇴실")) {
                 tdElement.classList.add("bg-green", "text-white");
@@ -35,6 +35,80 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+
+
+var divElements = document.getElementsByTagName('div');
+var roomstatusnames1 = '예약가능'
+var roomstatusnames2 = '재실'
+var roomstatusnames3 = '예약완료'
+var roomstatusnames4 = '청소요청'
+var roomstatusnames5 = '청소중'
+var roomstatusnames6 = '퇴실'
+var roomstatusnames7 = '객실점검'
+// 클래스 이름이 ${status.roomStatus}인 div 요소들을 카운트할 변수를 초기화합니다.
+var count1 = 0;
+var count2 = 0;
+var count3 = 0;
+var count4 = 0;
+var count5 = 0;
+var count6 = 0;
+var count7 = 0;
+
+
+
+// 각 div 요소에 대해 반복하면서 클래스 이름을 확인하고 카운트를 증가시킵니다.
+for (var i = 0; i < divElements.length; i++) {
+    var className = divElements[i].className;
+
+    // 클래스 이름이 ${status.roomStatus}와 일치하는 경우에만 카운트를 증가시킵니다.
+    if (className.includes(roomstatusnames1)) {
+        count1++;
+    }
+    if (className.includes(roomstatusnames2)) {
+        count2++;
+    }
+    if (className.includes(roomstatusnames3)) {
+        count3++;
+    }
+    if (className.includes(roomstatusnames4)){
+        count4++;
+    }
+    if (className.includes(roomstatusnames5)) {
+        count5++;
+    }
+    if (className.includes(roomstatusnames6)) {
+        count6++;
+    }
+    if (className.includes(roomstatusnames7)) {
+        count7++;
+    }
+
+}
+
+// 결과를 출력합니다.
+console.log('${status.roomStatus} 클래스를 가진 div의 개수: ' + count1);
+console.log('class ${status.roomStatus2}을 가진 div의 개수: ' + count2);
+console.log('class ${status.roomStatus3}을 가진 div의 개수: ' + count3);
+console.log('class ${status.roomStatus4}을 가진 div의 개수: ' + count4);
+console.log('class ${status.roomStatus5}을 가진 div의 개수: ' + count5);
+console.log('class ${status.roomStatus6}을 가진 div의 개수: ' + count6);
+console.log('class ${status.roomStatus7}을 가진 div의 개수: ' + count7);
+
+var count1Element = document.getElementsByClassName('roomstatusname1')[0];
+count1Element.innerHTML = count1;
+var count2Element = document.getElementsByClassName('roomstatusname2')[0];
+count2Element.innerHTML = count2;
+var count3Element = document.getElementsByClassName('roomstatusname3')[0];
+count3Element.innerHTML = count3;
+var count4Element = document.getElementsByClassName('roomstatusname4')[0];
+count4Element.innerHTML = count4;
+var count5Element = document.getElementsByClassName('roomstatusname5')[0];
+count5Element.innerHTML = count5;
+var count6Element = document.getElementsByClassName('roomstatusname6')[0];
+count6Element.innerHTML = count6;
+var count7Element = document.getElementsByClassName('roomstatusname7')[0];
+count7Element.innerHTML = count7;
 
 
 
@@ -92,8 +166,7 @@ $(document).ready(function() {
                 $('tr.floor[data-index="' + floor + '"]').show();
             });
         }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 필터를 적용하는 함수
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // 필터를 적용하는 함수
         function applyFilters() {
@@ -120,12 +193,12 @@ $(document).ready(function() {
             }
         }
 
-// 체크박스 값이 변경될 때마다 필터를 적용합니다.
+        // 체크박스 값이 변경될 때마다 필터를 적용합니다.
         $('input[name="roomTypes"]').change(function() {
             applyFilters();
         });
 
-// 페이지가 로드될 때 초기 필터를 적용합니다.
+        // 페이지가 로드될 때 초기 필터를 적용합니다.
         applyFilters();
 
 
