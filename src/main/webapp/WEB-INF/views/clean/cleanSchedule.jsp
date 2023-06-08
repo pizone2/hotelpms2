@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import = "java.util.Calendar" %>
+<%
+    String Date = new java.text.SimpleDateFormat("yyyy. MM. dd").format(new java.util.Date());
+    String Today = new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date());
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -194,7 +199,7 @@
                                 let calendarEl = document.getElementById('calendar');
                                 let calendar = new FullCalendar.Calendar(calendarEl, {
                                     eventClick: function(info) {
-                                        let scheduleNumber = info.event.title;
+                                        let scheduleNumber = info.event.id;
 
 
                                         let action = prompt('Event: ' + scheduleNumber + '\n\n선택하세요: \n1. 수정\n2. 삭제');
@@ -237,10 +242,11 @@
 
                                         <c:forEach var="event" items="${events}">
                                         {
-                                            title: '${event.scheduleNumber}',
+                                            id : '${event.scheduleNumber}',
+                                            title: '청소${event.scheduleNumber}팀',
                                             start: '${event.scheduleStartdate}',
                                             end: '${event.scheduleEnddate}',
-                                            color: getRandomColor()
+                                            color: getRandomColor(),
                                         },
                                         </c:forEach>
                                     ]
@@ -261,14 +267,13 @@
                         <!-- Illustration dashboard card example-->
                         <div class="card mb-4">
                             <div class="card-body py-5">
+                                       <div class="justify-content-left">
+                                        <c:set value="<%=Date%>" var="today" />
+                                        <h5>${today}</h5>
+                                       </div>
                                 <div class="d-flex flex-column justify-content-center">
-                                    <img class="img-fluid mb-4" src="/assets/img/illustrations/data-report.svg" alt=""
-                                         style="height: 10rem"/>
                                     <div class="text-center px-0 px-lg-5">
-                                        <h5>New reports are here! Generate custom reports now!</h5>
-                                        <p class="mb-4">Our new report generation system is now online. You can start
-                                            creating custom reporting for any documents available on your account.</p>
-                                        <a class="btn btn-primary p-3" href="#!">Get Started</a>
+
                                     </div>
                                 </div>
                             </div>
