@@ -1,0 +1,37 @@
+package com.dev.pms.room;
+
+import com.dev.pms.user.UserVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class RoomService {
+    @Autowired
+    private RoomDAO roomDAO;
+
+    public BookingVO getResDetail(Long aLong) throws  Exception{
+        return roomDAO.getResDetail(aLong);
+    }
+
+    public UserVO getManagerInfo() throws Exception {
+        return roomDAO.getManagerInfo();
+    }
+
+    public List<BookingVO> getResDate(BookingVO bookingVO) throws Exception{
+        return roomDAO.getResDate(bookingVO);
+    }
+
+    public BookingVO getResNowDate(BookingVO bookingVO) throws Exception{
+        return roomDAO.getResNowDate(bookingVO);
+    }
+
+    public int setBookingUpdate(BookingVO bookingVO) throws Exception{
+        return roomDAO.setBookingUpdate(bookingVO);
+    }
+
+    public int setReservedUpdate(ReservedVO reservedVO) throws Exception{
+        return roomDAO.setReservedUpdate(reservedVO);
+    }
+}

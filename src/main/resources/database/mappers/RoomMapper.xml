@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.pms.room.RoomDAO">
+    <!--예약정보 불러오기-->
+    <select id="getResDetail" parameterType="Long" resultMap="getReservationDetail">
+        SELECT B.*, R.CAPACITY  FROM BOOKING B
+        INNER JOIN ROOMTYPE R
+        USING(ROOMTYPE)
+        WHERE ROOMNUMBER = 105 AND CHECKINDATE = CURDATE(); ;
+    </select>
+
+    <resultMap type="BookingVO" id="getReservationDetail">
+        <id column="reservationNumber" property="reservationNumber"/>
+        <result column="roomNumber" property="roomNumber"/>
+        <result column="roomNumber" property="roomNumber"/>
+        <result column="id" property="id"/>
+        <result column="roomType" property="roomType"/>
+        <result column="name" property="name"/>
+        <result column="reservationEmail" property="reservationEmail"/>
+        <result column="guestCount" property="guestCount"/>
+        <result column="checkinDate" property="checkinDate"/>
+        <result column="checkoutDate" property="checkoutDate"/>
+        <result column="phoneNumber" property="phoneNumber"/>
+        <association property="roomTypeVOs" javaType="RoomTypeVO" >
+            <id column="roomType" property="roomType"/>
+            <result column="capacity" property="capacity"/>
+        </association>
+    </resultMap>
+
+    <!--매니저(프론트) 정보 불러오기-->
+    <select id="getManagerInfo" resultType="UserVO">
+        SELECT * FROM USER WHERE ROLENAME='ROLE_MANAGER'
+    </select>
+
+    <!--객실번호에 따른 다른 날짜 예약되어있는지 확인-->
+    <select id="getResDate" parameterType="BookingVO" resultType="BookingVO">
+        SELECT CHECKINDATE ,CHECKOUTDATE
+        FROM BOOKING
+        WHERE ROOMNUMBER = #{roomNumber} AND CHECKOUTDATE > #{checkoutDate}
+    </select>
+
+    <!--객실번호에 따른 오늘날짜-->
+    <select id="getResNowDate" parameterType="BookingVO" resultType="BookingVO">
+        SELECT CHECKINDATE ,CHECKOUTDATE
+        FROM BOOKING
+        WHERE ROOMNUMBER = #{roomNumber} AND CHECKOUTDATE = #{checkoutDate}
+    </select>
+
+    <update id="setBookingUpdate" parameterType="BookingVO">
+        UPDATE BOOKING SET CHECKOUTDATE =#{checkoutDate}, GUESTCOUNT=#{guestCount} WHERE RESERVATIONNUMBER =#{reservationNumber}
+    </update>
+
+    <update id="setReservedUpdate" parameterType="ReservedVO">
+        UPDATE RESERVED SET ROOMSTATUS="예약완료" WHERE ROOMNUMBER =#{roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
+    </update>
+</mapper>
