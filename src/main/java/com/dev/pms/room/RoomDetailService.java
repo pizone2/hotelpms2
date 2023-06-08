@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RoomService {
+public class RoomDetailService {
     @Autowired
-    private RoomDAO roomDAO;
+    private RoomDetailDAO roomDAO;
 
     public BookingVO getResDetail(Long aLong) throws  Exception{
         return roomDAO.getResDetail(aLong);
@@ -33,5 +33,9 @@ public class RoomService {
 
     public int setReservedUpdate(ReservedVO reservedVO) throws Exception{
         return roomDAO.setReservedUpdate(reservedVO);
+    }
+
+    public int setStatusHouse(BookingVO bookingVO) throws Exception{
+        return roomDAO.setStatusHouse(bookingVO);
     }
 }

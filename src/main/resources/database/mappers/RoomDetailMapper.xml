@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dev.pms.room.RoomDAO">
+<mapper namespace="com.dev.pms.room.RoomDetailDAO">
     <!--예약정보 불러오기-->
     <select id="getResDetail" parameterType="Long" resultMap="getReservationDetail">
         SELECT B.*, R.CAPACITY  FROM BOOKING B
@@ -34,6 +34,7 @@
         SELECT * FROM USER WHERE ROLENAME='ROLE_MANAGER'
     </select>
 
+    <!--저장부분-->
     <!--객실번호에 따른 다른 날짜 예약되어있는지 확인-->
     <select id="getResDate" parameterType="BookingVO" resultType="BookingVO">
         SELECT CHECKINDATE ,CHECKOUTDATE
@@ -48,11 +49,22 @@
         WHERE ROOMNUMBER = #{roomNumber} AND CHECKOUTDATE = #{checkoutDate}
     </select>
 
+    <!--BOOKING테이블 업데이트-->
     <update id="setBookingUpdate" parameterType="BookingVO">
         UPDATE BOOKING SET CHECKOUTDATE =#{checkoutDate}, GUESTCOUNT=#{guestCount} WHERE RESERVATIONNUMBER =#{reservationNumber}
     </update>
 
+    <!--RESERVED 테이블 업데이트-->
     <update id="setReservedUpdate" parameterType="ReservedVO">
-        UPDATE RESERVED SET ROOMSTATUS="예약완료" WHERE ROOMNUMBER =#{roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
+        UPDATE RESERVED
+        SET ROOMSTATUS = '예약완료'
+        WHERE ROOMNUMBER = #{roomNumber}
+        AND RESERVATIONDATE <![CDATA[<=]]> #{reservationDate}
+        AND RESERVATIONDATE > (SELECT MAX(RESERVATIONDATE) FROM RESERVED WHERE ROOMSTATUS = '예약완료');
     </update>
+
+    <update id="setStatusHouse" parameterType="BookingVO">
+        UPDATE RESERVED SET ROOMSTATUS='재실' WHERE ROOMNUMBER =#{roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
+    </update>
+
 </mapper>

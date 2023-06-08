@@ -14,6 +14,6 @@ public class ReservedVO {
     private  String roomType;
     private  String roomStatus;
 
-
+    private BookingVO bookingVOs;
 
 }

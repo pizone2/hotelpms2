@@ -21,13 +21,15 @@ window.onload = function() {
 guestSelect.addEventListener('change', function(e) {
     let selectedValue = e.target.value;
     console.log(selectedValue);
-    selectedLong = parseInt(selectedValue, 10);
+    selectedLong = parseInt(selectedValue, 10); //10진수로 변환(String->Number->10진수)
 
+    //이미 선택되었던 것 지움
     let prevSelectedOption = guestSelect.querySelector('.guest-option[data-selected="true"]');
     if (prevSelectedOption) {
         prevSelectedOption.removeAttribute('data-selected');
     }
 
+    //사용자가 선택한거 selected
     let newSelectedOption = guestSelect.querySelector('.guest-option[value="' + selectedValue + '"]');
     newSelectedOption.setAttribute('data-selected', "true");
 
@@ -58,14 +60,14 @@ $("#btn-save").click(function() {
                     $('#updateCheckout').val(ckoutDate)
                     $('#updateReservationDate').val(ckoutDate)
                     $('#updateGuestCount').val(selectedLong)
-                    $('form').submit(); // 수정된 부분: 폼을 제출하는 코드
+                    $('#saveForm').submit(); // 수정된 부분: 폼을 제출하는 코드
                     alert("저장되었습니다.");
                 }
              }else if(key===1) {
                 $('#updateCheckout').val(ckoutDate)
                     $('#updateReservationDate').val(ckoutDate)
                     $('#updateGuestCount').val(selectedLong)
-                    $('form').submit(); // 수정된 부분: 폼을 제출하는 코드
+                    $('#saveForm').submit(); // 수정된 부분: 폼을 제출하는 코드
                 alert("저장되었습니다.")
              }
 
@@ -75,5 +77,14 @@ $("#btn-save").click(function() {
             alert("에러가 발생했습니다.")
         }
     })
+});
+
+$("#btn-checkin").click(function() {
+    let confirmed = confirm("체크인 하시겠습니까?");
+    if(confirmed){
+        $('#updateResCheckout').val( $('#checkoutDate').val())
+        $('#checkinForm').submit();
+        alert("체크인 되었습니다.")
+    }
 });
 

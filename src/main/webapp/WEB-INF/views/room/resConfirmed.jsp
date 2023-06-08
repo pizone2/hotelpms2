@@ -52,14 +52,13 @@
         <div class="card-header p-4 p-md-5 border-bottom-0 bg-gradient-primary-to-secondary text-white-50">
             <div class="row justify-content-between align-items-center">
                 <div class="col-12 col-lg-auto mb-5 mb-lg-0 text-center text-lg-start">
-                    <div class="h2 text-white mb-0">예약등록</div>
+                    <div class="h2 text-white mb-0">예약확정</div>
                 </div>
                 <div class="col-12 col-lg-auto text-center text-lg-end">
                     <!-- button -->
                     <div class="h3 text-white">
                         <button class="btn btn-dark" type="button" id="btn-reset">초기화</button>
-                        <form action="/room/save" method="post">
-                            <input type="hidden" name="checkinDate" value="${bookingVO.checkinDate}">
+                        <form id="saveForm" action="/roomDetail/save" method="post">
                             <input type="hidden" name="checkoutDate" id="updateCheckout">
                             <input type="hidden" name="roomNumber" value="${bookingVO.roomNumber}">
                             <input type="hidden" name="reservationNumber" value="${bookingVO.reservationNumber}">
@@ -69,7 +68,12 @@
                         </form>
                         <a href="#"><button class="btn btn-dark" type="button">문자발송</button></a>
                         <a href="#"><button class="btn btn-dark" type="button">알림톡발송</button></a>
-                        <a href="#"><button class="btn btn-dark" type="button">체크인</button></a>
+                        <form id="checkinForm" action="/roomDetail/checkInSave" method="post">
+                           <input type="hidden" name="checkinDate" value="${bookingVO.checkinDate}">
+                           <input type="hidden" name="checkoutDate" id="updateResCheckout">
+                           <input type="hidden" name="roomNumber" value="${bookingVO.roomNumber}">
+                        <button class="btn btn-dark" type="button" id="btn-checkin">체크인</button>
+                        </form>
                     </div>
                 </div>
             </div>

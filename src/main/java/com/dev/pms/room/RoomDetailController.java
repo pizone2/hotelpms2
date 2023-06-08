@@ -12,11 +12,11 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/room/*")
-public class RoomController {
+@RequestMapping("/roomDetail/*")
+public class RoomDetailController {
 
     @Autowired
-    private RoomService roomService;
+    private RoomDetailService roomService;
 
     @GetMapping("resConfirmed")
     public ModelAndView getBookingList() throws Exception {
@@ -60,6 +60,14 @@ public class RoomController {
         int result = roomService.setBookingUpdate(bookingVO);
         result = roomService.setReservedUpdate(reservedVO);
         mv.setViewName("redirect:./resConfirmed");
+        return mv;
+    }
+
+    @PostMapping("checkInSave")
+    public ModelAndView setStatusHouse(BookingVO bookingVO, ReservedVO reservedVO ) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        int result = roomService.setStatusHouse(bookingVO);
+        mv.setViewName("redirect:/");
         return mv;
     }
 }

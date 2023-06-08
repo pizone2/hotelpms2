@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface RoomDAO {
+public interface RoomDetailDAO {
     public BookingVO getResDetail(Long aLong) throws Exception;
 
     public UserVO getManagerInfo() throws  Exception;
@@ -18,5 +18,7 @@ public interface RoomDAO {
     public int setBookingUpdate(BookingVO bookingVO) throws Exception;
 
     public int setReservedUpdate(ReservedVO reservedVO) throws Exception;
+
+    public int setStatusHouse(BookingVO bookingVO) throws Exception;
 
 }
