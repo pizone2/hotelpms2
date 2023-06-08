@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (tdElement.className.includes("예약가능")) {
                 tdElement.style.backgroundColor = "#1a1f71";
                 tdElement.style.color = "white";
+                tdElement.onclick = function() {
+                    window.location.href = "../roomDetail/resConfirmed?roomNumber="+roomNumber+"&roomStatus=예약가능";
+                };
             } else if (tdElement.className.includes("재실")) {
                 tdElement.classList.add("bg-warning", "text-white");
             } else if (tdElement.className.includes("청소중")) {
