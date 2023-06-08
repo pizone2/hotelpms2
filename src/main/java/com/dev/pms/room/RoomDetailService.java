@@ -39,11 +39,15 @@ public class RoomDetailService {
         return roomDAO.setReservedUpdate(reservedVO);
     }
 
+    public int setRoomUpdate(ReservedVO reservedVO) throws Exception{
+        return roomDAO.setRoomUpdate(reservedVO);
+    }
+
     public int setStatusHouse(BookingVO bookingVO) throws Exception{
         return roomDAO.setStatusHouse(bookingVO);
     }
 
     public int setCleanAsk(BookingVO bookingVO) throws Exception {
-        return roomDAO.setStatusHouse(bookingVO);
+        return roomDAO.setCleanAsk(bookingVO);
     }
 }

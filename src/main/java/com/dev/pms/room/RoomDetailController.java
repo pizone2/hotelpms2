@@ -58,14 +58,21 @@ public class RoomDetailController {
     }
 
     @PostMapping("save")
-    public ModelAndView setSaveCheck(BookingVO bookingVO, ReservedVO reservedVO ) throws Exception{
+    public ModelAndView setSaveCheck(BookingVO bookingVO, ReservedVO reservedVO,String pageName) throws Exception{
         ModelAndView mv = new ModelAndView();
         int result = roomService.setBookingUpdate(bookingVO);
-        result = roomService.setReservedUpdate(reservedVO);
-        mv.setViewName("redirect:./resConfirmed");
+
+        if(pageName.equals("예약확정")){
+            result = roomService.setReservedUpdate(reservedVO);
+            mv.setViewName("redirect:./resConfirmed");
+        } else if(pageName.equals("재실")){
+            result = roomService.setRoomUpdate(reservedVO);
+            mv.setViewName("redirect:./houseRoom");
+        }
         return mv;
     }
 
+    // 위에랑 똑같이 청소요청이랑 재실이랑 구분해서 status 업데이트 시켜주는거 작업해주기
     @PostMapping("checkInSave")
     public ModelAndView setStatusHouse(BookingVO bookingVO) throws Exception{
         ModelAndView mv = new ModelAndView();

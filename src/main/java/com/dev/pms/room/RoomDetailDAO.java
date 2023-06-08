@@ -21,8 +21,11 @@ public interface RoomDetailDAO {
 
     public int setReservedUpdate(ReservedVO reservedVO) throws Exception;
 
+    public int setRoomUpdate(ReservedVO reservedVO) throws Exception;
+
     public int setStatusHouse(BookingVO bookingVO) throws Exception;
 
     public int setCleanAsk(BookingVO bookingVO) throws Exception;
+
 
 }

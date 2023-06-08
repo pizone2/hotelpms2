@@ -65,7 +65,7 @@
         UPDATE BOOKING SET CHECKOUTDATE =#{checkoutDate}, GUESTCOUNT=#{guestCount} WHERE RESERVATIONNUMBER =#{reservationNumber}
     </update>
 
-    <!--RESERVED 테이블 업데이트-->
+    <!--RESERVED 테이블 업데이트(예약확정 페이지)-->
     <update id="setReservedUpdate" parameterType="ReservedVO">
         UPDATE RESERVED
         SET ROOMSTATUS = '예약완료'
@@ -74,10 +74,21 @@
         AND RESERVATIONDATE > (SELECT MAX(RESERVATIONDATE) FROM RESERVED WHERE ROOMSTATUS = '예약완료');
     </update>
 
+    <!--RESERVED 테이블 업데이트(재실 페이지)-->
+    <update id="setRoomUpdate" parameterType="ReservedVO">
+        UPDATE RESERVED
+        SET ROOMSTATUS = '재실'
+        WHERE ROOMNUMBER = #{roomNumber}
+        AND RESERVATIONDATE <![CDATA[<=]]> #{reservationDate}
+        AND RESERVATIONDATE > (SELECT MAX(RESERVATIONDATE) FROM RESERVED WHERE ROOMSTATUS = '재실');
+    </update>
+
+    <!--예약확정->재실로 상태변환-->
     <update id="setStatusHouse" parameterType="BookingVO">
         UPDATE RESERVED SET ROOMSTATUS='재실' WHERE ROOMNUMBER =#{roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
     </update>
 
+    <!--재실->청소요청으로 상태변환-->
     <update id="setCleanAsk" parameterType="BookingVO">
         UPDATE RESERVED SET ROOMSTATUS='청소요청' WHERE ROOMNUMBER =#{roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
     </update>

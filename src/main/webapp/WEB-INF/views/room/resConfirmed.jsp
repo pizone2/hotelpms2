@@ -64,6 +64,7 @@
                             <input type="hidden" name="reservationNumber" value="${bookingVO.reservationNumber}">
                             <input type="hidden" name="reservationDate" id="updateReservationDate">
                             <input type="hidden" name="guestCount" id="updateGuestCount">
+                            <input type="hidden" name="pageName" value="${pageName}">
                             <button class="btn btn-dark" type="button" id="btn-save">저장</button>
                         </form>
                         <a href="#"><button class="btn btn-dark" type="button">문자발송</button></a>
