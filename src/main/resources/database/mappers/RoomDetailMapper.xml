@@ -5,10 +5,12 @@
 <mapper namespace="com.dev.pms.room.RoomDetailDAO">
     <!--예약정보 불러오기-->
     <select id="getResDetail" parameterType="Long" resultMap="getReservationDetail">
-        SELECT B.*, R.CAPACITY  FROM BOOKING B
-        INNER JOIN ROOMTYPE R
+        SELECT DISTINCT B.*, RT.CAPACITY  FROM BOOKING B
+        INNER JOIN ROOMTYPE RT
         USING(ROOMTYPE)
-        WHERE ROOMNUMBER = 105 AND CHECKINDATE = CURDATE(); ;
+        INNER JOIN RESERVED RS
+        USING(ROOMNUMBER)
+        WHERE ROOMNUMBER = #{roomNumber} AND CHECKINDATE = CURDATE() AND RS.ROOMSTATUS = '예약완료'
     </select>
 
     <resultMap type="BookingVO" id="getReservationDetail">

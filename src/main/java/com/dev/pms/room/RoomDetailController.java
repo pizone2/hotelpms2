@@ -67,7 +67,7 @@ public class RoomDetailController {
     public ModelAndView setStatusHouse(BookingVO bookingVO, ReservedVO reservedVO ) throws Exception{
         ModelAndView mv = new ModelAndView();
         int result = roomService.setStatusHouse(bookingVO);
-        mv.setViewName("redirect:/");
+        mv.setViewName("redirect:/room/roommanager");
         return mv;
     }
 }

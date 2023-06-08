@@ -212,7 +212,7 @@
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 1}">
                                                 <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; " id="pa${room.roomNumber}">
-                                                        ${room.roomNumber} <br> ${room.roomType} <br>
+                                                    ${room.roomNumber} <br> ${room.roomType} <br>
                                                     <c:forEach items="${status}" var="status">
                                                         <c:if test="${room.roomNumber == status.roomNumber}">
                                                             <div class="tdroom ${room.roomType} ${status.roomStatus}" id="ch${room.roomNumber}">

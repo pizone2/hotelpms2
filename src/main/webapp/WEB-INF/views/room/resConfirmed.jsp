@@ -113,7 +113,7 @@
                             <th>고객ID</th>
                             <th>전화번호</th>
                             <th>인 수</th>
-                            <th>박 수</th>
+                            <%--<th>박 수</th>--%>
                             <th>입실일</th>
                             <th>퇴실일</th>
                             <th>객실타입</th>
@@ -135,8 +135,8 @@
                                 </select>
 
                             </td>
-                            <c:set var="differenceInDays" value="${(checkoutDate.time - checkinDate.time / (1000 * 60 * 60 * 24)) + 1}" />
-                            <td><input type="text" value="${fn:substringBefore(differenceInDays, '.')}" disabled></td>
+                            <%--<c:set var="differenceInDays" value="${(checkoutDate.time - checkinDate.time / (1000 * 60 * 60 * 24)) + 1}" />
+                            <td><input type="text" value="${fn:substringBefore(differenceInDays, '.')}" disabled></td>--%>
                             <td style="white-space: nowrap;">
                                 <input type="date" value="${bookingVO.checkinDate}" style="width: 100px;" name="checkinDate" disabled> /
                                 15:00
