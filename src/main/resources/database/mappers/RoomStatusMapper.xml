@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.pms.roomStatus.RoomStatusDAO">
+    <select id="getRoomStatusList"  resultType="RoomStatusVO">
+        SELECT
+        a.ROOMTYPE,
+        a.ROOMNUMBER,
+        DATE(a.RESERVATIONDATE) AS reservationDate,
+        MAX(CASE
+        WHEN a.ROOMSTATUS = '예약완료' THEN 1
+        WHEN a.ROOMSTATUS = '재실' THEN 2
+        WHEN a.ROOMSTATUS = '퇴실예정' THEN 3
+        ELSE 0
+        END) AS roomStatus,
+        b.NAME,
+        b.RESERVATIONNUMBER,
+        b.PHONENUMBER,
+        b.CHECKINDATE,
+        b.CHECKOUTDATE
+        FROM
+        RESERVED a
+        LEFT JOIN
+        BOOKING b ON a.ROOMNUMBER = b.ROOMNUMBER
+        AND DATE(a.RESERVATIONDATE) >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)
+        AND DATE(a.RESERVATIONDATE) &lt; DATE_ADD(DATE_SUB(CURDATE(), INTERVAL 1 DAY), INTERVAL 2 WEEK)
+        WHERE
+        DATE(a.RESERVATIONDATE) BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND DATE_ADD(DATE_SUB(CURDATE(), INTERVAL 1 DAY), INTERVAL 2 WEEK)
+        GROUP BY
+        a.ROOMTYPE, a.ROOMNUMBER, DATE(a.RESERVATIONDATE)
+        ORDER BY
+        a.ROOMTYPE, a.ROOMNUMBER, DATE(a.RESERVATIONDATE);
+    </select>
+
+    <select id="getCheckinCount" resultType="RoomStatusVO">
+        SELECT RESERVATIONDATE, COUNT(*) AS CHECKINCOUNT
+        FROM RESERVED
+        WHERE ROOMSTATUS = '재실'
+        AND RESERVATIONDATE BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND DATE_SUB(DATE_ADD(CURDATE(), INTERVAL 1 MONTH), INTERVAL 1 DAY)
+        GROUP BY RESERVATIONDATE;
+    </select>
+
+    <select id="getReservationCount" resultType="RoomStatusVO">
+        SELECT RESERVATIONDATE, COUNT(*) AS RESERVATIONCOUNT
+        FROM RESERVED
+        WHERE ROOMSTATUS = '예약완료'
+        AND RESERVATIONDATE BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND DATE_SUB(DATE_ADD(CURDATE(), INTERVAL 1 MONTH), INTERVAL 1 DAY)
+        GROUP BY RESERVATIONDATE;
+    </select>
+
+    <select id="getRoomStock" resultType="RoomStatusVO">
+        SELECT RESERVATIONDATE, ( 30 - COUNT(*)) AS ROOMSTOCK
+        FROM RESERVED
+        WHERE ( ROOMSTATUS = '재실' OR ROOMSTATUS = '예약완료' )
+        AND RESERVATIONDATE BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND DATE_SUB(DATE_ADD(CURDATE(), INTERVAL 1 MONTH), INTERVAL 1 DAY)
+        GROUP BY RESERVATIONDATE;
+    </select>
+
+
+
+
+</mapper>
