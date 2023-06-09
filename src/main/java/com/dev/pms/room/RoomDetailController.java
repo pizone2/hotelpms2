@@ -46,7 +46,7 @@ public class RoomDetailController {
             log.error("========{}=======",vo.getCheckoutDate());
         }
         //num이 0이면 레이트 체크아웃 가능한 날짜+인수수정(현재날짜보다 큼), 1이면 당일 날짜+인수수정(현재날짜), 2이면 레이트 체크아웃 불가능한 날짜(현재날짜보다 작음)
-        //경우의 수 다시 생각해보기 설명이랑 코드랑 다름
+        //레이트체크아웃 가능한지 AJAX JSON형태로 확인
         Long num = 2l;
         if(list.isEmpty()){
             num = 0l;
@@ -57,6 +57,9 @@ public class RoomDetailController {
         return num;
     }
 
+    //Booking테이블 인수,레이트체크아웃 저장
+    //Reserved테이블 예약확정일때는 status 예약가능->예약확정 / 재실일때는 status 예약완료->재실
+    //(각각 레이트 체크아웃 시 해줘야되는 작업, 일부 업데이트)
     @PostMapping("save")
     public ModelAndView setSaveCheck(BookingVO bookingVO, ReservedVO reservedVO,String pageName) throws Exception{
         ModelAndView mv = new ModelAndView();
@@ -72,7 +75,9 @@ public class RoomDetailController {
         return mv;
     }
 
-    // 위에랑 똑같이 청소요청이랑 재실이랑 구분해서 status 업데이트 시켜주는거 작업해주기
+
+    //Reserved테이블 예약확정일때는 status 예약확정->재실
+    //상태변환 booking의 checkindate와 checkoutdate 사이 날짜에 맞게 모두 update
     @PostMapping("checkInSave")
     public ModelAndView setStatusHouse(BookingVO bookingVO) throws Exception{
         ModelAndView mv = new ModelAndView();
@@ -97,6 +102,8 @@ public class RoomDetailController {
         return mv;
     }
 
+    //Reserved테이블 재실일때는 status 재실->청소요청
+    //상태변환 booking의 checkindate와 checkoutdate 사이 날짜에 맞게 모두 update
     @PostMapping("cleanAskSave")
     public ModelAndView setStatusClean(BookingVO bookingVO) throws Exception{
         ModelAndView mv = new ModelAndView();

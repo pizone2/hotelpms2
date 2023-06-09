@@ -78,7 +78,7 @@
                         </form>
                         </c:if>
                         <c:if test="${pageName eq '재실'}">
-                        <form id="checkinForm" action="/roomDetail/checkInSave" method="post">
+                        <form id="cleanAskForm" action="/roomDetail/cleanAskSave" method="post">
                             <input type="hidden" name="checkinDate" value="${bookingVO.checkinDate}">
                             <input type="hidden" name="checkoutDate" id="updateRoomCheckout">
                             <input type="hidden" name="roomNumber" value="${bookingVO.roomNumber}">

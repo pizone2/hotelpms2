@@ -92,7 +92,7 @@ $("#btn-cleanask").click(function() {
     let confirmed = confirm("청소요청 하시겠습니까?");
     if(confirmed){
         $('#updateRoomCheckout').val( $('#checkoutDate').val())
-        $('#checkinForm').submit();
+        $('#cleanAskForm').submit();
         alert("청소요청 되었습니다.")
     }
 });
