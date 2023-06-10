@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import = "java.util.Calendar" %>
+<%
+    String Date = new java.text.SimpleDateFormat("yyyy. MM. dd").format(new java.util.Date());
+    String Today = new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date());
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +53,7 @@
                 </div>
             </header>
 
-            <!-- Large modal -->
+            <!-- 입력 modal -->
 
             <div class="modal fade" id="exampleModalLg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                  aria-hidden="true">
@@ -77,6 +82,45 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary" id="btn" type="submit">등록</button>
+                                    <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 수정 modal -->
+            <div class="modal fade" id="exampleModalLg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">청소 스케줄 등록 </h5>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="insertSchedule2" method="post" action="/insertSchedule">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1">시작날짜</label>
+                                    <input class="form-control form-control-solid" id="exampleFormControlInput1-1"
+                                           name="scheduleStartdate" type="date">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1">종료날짜</label>
+                                    <input class="form-control form-control-solid" id="exampleFormControlInput2-1"
+                                           name="scheduleEnddate" type="date">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1">팀 번호</label>
+                                    <input class="form-control form-control-solid" id="exampleFormControlInput3-1"
+                                           name="scheduleNumber" type="number" min="0">
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" id="btn2" type="submit">등록</button>
                                     <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
 
                                 </div>
@@ -155,27 +199,54 @@
                                 let calendarEl = document.getElementById('calendar');
                                 let calendar = new FullCalendar.Calendar(calendarEl, {
                                     eventClick: function(info) {
-                                        alert('Event: ' + info.event.title);
-                                        alert('이벤트를 삭제 합니다');
-                                        let scheduleNumber = info.event.title
-                                    $.ajax({
-                                        url : "/deleteSchedule",
-                                        type : "POST",
-                                        data : {
-                                            scheduleNumber : scheduleNumber
+                                        let scheduleNumber = info.event.id;
+
+
+                                        let action = prompt('Event: ' + scheduleNumber + '\n\n선택하세요: \n1. 수정\n2. 삭제');
+
+                                        if (action === '1') {
+
+                                            alert('1번 수정: ' + scheduleNumber);
+
+
+                                        } else if (action === '2') {
+
+                                            alert('2번 삭제: ' + scheduleNumber);
+
+                                            $.ajax({
+                                                url: "/deleteSchedule",
+                                                type: "POST",
+                                                data: {
+                                                    scheduleNumber: scheduleNumber
+                                                },
+                                                success: function(response) {
+                                                    if (response === 'success') {
+                                                        info.event.remove();
+                                                        alert('이벤트 삭제 완료');
+                                                    } else {
+                                                        alert('이벤트 삭제 실패.');
+                                                    }
+                                                },
+                                                error: function() {
+                                                    alert('스케줄 삭제 완료.');
+                                                    info.event.remove();
+                                                }
+                                            });
+                                        } else {
+                                            // Invalid action or cancel
+                                            return;
                                         }
-                                    })
-                                        info.event.remove();
                                     },
                                     initialView: 'dayGridMonth',
                                     events: [
 
                                         <c:forEach var="event" items="${events}">
                                         {
-                                            title: '${event.scheduleNumber}',
+                                            id : '${event.scheduleNumber}',
+                                            title: '청소${event.scheduleNumber}팀',
                                             start: '${event.scheduleStartdate}',
                                             end: '${event.scheduleEnddate}',
-                                            color: getRandomColor()
+                                            color: getRandomColor(),
                                         },
                                         </c:forEach>
                                     ]
@@ -196,14 +267,13 @@
                         <!-- Illustration dashboard card example-->
                         <div class="card mb-4">
                             <div class="card-body py-5">
+                                       <div class="justify-content-left">
+                                        <c:set value="<%=Date%>" var="today" />
+                                        <h5>${today}</h5>
+                                       </div>
                                 <div class="d-flex flex-column justify-content-center">
-                                    <img class="img-fluid mb-4" src="/assets/img/illustrations/data-report.svg" alt=""
-                                         style="height: 10rem"/>
                                     <div class="text-center px-0 px-lg-5">
-                                        <h5>New reports are here! Generate custom reports now!</h5>
-                                        <p class="mb-4">Our new report generation system is now online. You can start
-                                            creating custom reporting for any documents available on your account.</p>
-                                        <a class="btn btn-primary p-3" href="#!">Get Started</a>
+
                                     </div>
                                 </div>
                             </div>
