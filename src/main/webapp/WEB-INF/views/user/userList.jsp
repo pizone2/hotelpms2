@@ -53,10 +53,10 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
+                                            <th>이름</th>
                                             <th>아이디</th>
                                             <th>이메일</th>
                                             <th>권한</th>
-                                            <th>이름</th>
                                             <th>전화번호</th>
                                             <th>Joined Date</th>
                                         </tr>
@@ -72,16 +72,17 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    <c:forEach var="userVO" items="${userVO}">
                                         <!-- 유저 정보-->
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar me-2"><img class="avatar-img img-fluid" src="/assets/img/illustrations/profiles/profile-1.png" /></div>
-                                                    Tiger Nixon
+                                                    ${userVO.name}
                                                 </div>
                                             </td>
-                                            <td>tiger@email.com</td>
-                                            <td>Administrator</td>
+                                            <td>${userVO.id}</td>
+                                            <td>${userVO.email}</td>
                                             <td>
                                                 <span class="badge bg-green-soft text-green">Sales</span>
                                                 <span class="badge bg-blue-soft text-blue">Developers</span>
@@ -89,13 +90,13 @@
                                                 <span class="badge bg-purple-soft text-purple">Managers</span>
                                                 <span class="badge bg-yellow-soft text-yellow">Customer</span>
                                             </td>
-                                            <td>01080055113</td>
+                                            <td>${userVO.phoneNumber}</td>
                                             <td>
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="/user-management-edit-user.html"><i data-feather="edit"></i></a>
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i data-feather="trash-2"></i></a>
                                             </td>
                                         </tr>
-
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
