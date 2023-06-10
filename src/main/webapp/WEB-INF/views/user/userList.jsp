@@ -47,6 +47,12 @@
                         </div>
                     </header>
                     <!-- Main page content-->
+                    <div>
+                        <h1>Excel Download</h1>
+                        <form action="/user/download" method="get">
+                            <button type="submit">Excel</button>
+                        </form>
+                    </div>
                     <div class="container-fluid px-4">
                         <div class="card">
                             <div class="card-body">
