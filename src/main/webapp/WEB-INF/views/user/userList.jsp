@@ -105,20 +105,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="message-history" class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Messages</th>
-                                </tr>
-                                </thead>
-                                <tbody id="messages">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
                 </main>
                 <footer class="footer-admin mt-auto footer-light">
                     <div class="container-xl px-4">
