@@ -32,30 +32,20 @@
                                             Users List
                                         </h1>
                                     </div>
-                                    <div class="col-12 col-xl-auto mb-3">
-                                        <a class="btn btn-sm btn-light text-primary" href="user-management-groups-list.html">
-                                            <i class="me-1" data-feather="users"></i>
-                                            Manage Groups
-                                        </a>
-                                        <a class="btn btn-sm btn-light text-primary" href="/user-management-add-user.html">
-                                            <i class="me-1" data-feather="user-plus"></i>
-                                            Add New User
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </header>
                     <!-- Main page content-->
-                    <div>
-                        <h1>Excel Download</h1>
-                        <form action="/user/download" method="get">
-                            <button type="submit">Excel</button>
-                        </form>
-                    </div>
                     <div class="container-fluid px-4">
                         <div class="card">
                             <div class="card-body">
+                                    <div class="col-12 col-xl-1 mb-3">
+
+                                    <form action="/user/download" method="get">
+                                        <button class="btn btn-sm btn-light text-primary" type="submit">Excel 파일 출력</button>
+                                    </form>
+                                    </div>
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
@@ -105,6 +95,8 @@
                                     </c:forEach>
                                     </tbody>
                                 </table>
+
+
                             </div>
                         </div>
                     </div>
