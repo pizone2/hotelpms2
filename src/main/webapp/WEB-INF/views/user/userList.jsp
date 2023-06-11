@@ -15,6 +15,10 @@
         <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="/js/webSocket.js"></script>
     </head>
     <body class="nav-fixed">
     <c:import url="../temp/topheader.jsp"></c:import>
@@ -22,6 +26,7 @@
             <c:import url="../temp/leftheader.jsp"></c:import>
             <div id="layoutSidenav_content">
                 <main>
+
                     <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
                         <div class="container-fluid px-4">
                             <div class="page-header-content">
@@ -100,6 +105,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="message-history" class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Messages</th>
+                                </tr>
+                                </thead>
+                                <tbody id="messages">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </main>
                 <footer class="footer-admin mt-auto footer-light">
                     <div class="container-xl px-4">
