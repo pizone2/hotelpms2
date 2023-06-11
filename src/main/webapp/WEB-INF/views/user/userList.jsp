@@ -40,7 +40,7 @@
                     <div class="container-fluid px-4">
                         <div class="card">
                             <div class="card-body">
-                                    <div class="col-12 col-xl-1 mb-3">
+                                    <div class="col-12 col-xl-3 mb-3">
 
                                     <form action="/user/download" method="get">
                                         <button class="btn btn-sm btn-light text-primary" type="submit">Excel 파일 출력</button>
