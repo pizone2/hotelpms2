@@ -19,12 +19,12 @@ public class RoomDetailController {
     private RoomDetailService roomService;
 
     @GetMapping("resConfirmed")
-    public ModelAndView getBookingList() throws Exception {
+    public ModelAndView getBookingList(Long roomNumber) throws Exception {
         ModelAndView mv = new ModelAndView();
         //프론트 매니저 정보
         UserVO userVO = roomService.getManagerInfo();
         //예약한 유저의 예약정보들
-        BookingVO bookingVO = roomService.getResDetail(105l);
+        BookingVO bookingVO = roomService.getResDetail(roomNumber);
         //페이지 정보
         String pageName = "예약확정";
         mv.addObject("userVO", userVO);
@@ -67,10 +67,10 @@ public class RoomDetailController {
 
         if(pageName.equals("예약확정")){
             result = roomService.setReservedUpdate(reservedVO);
-            mv.setViewName("redirect:./resConfirmed");
+            mv.setViewName("redirect:./resConfirmed?roomNumber="+reservedVO.getRoomNumber());
         } else if(pageName.equals("재실")){
             result = roomService.setRoomUpdate(reservedVO);
-            mv.setViewName("redirect:./houseRoom");
+            mv.setViewName("redirect:./houseRoom?roomNumber="+reservedVO.getRoomNumber());
         }
         return mv;
     }
@@ -87,12 +87,12 @@ public class RoomDetailController {
     }
 
     @GetMapping("houseRoom")
-    public ModelAndView getRoomList() throws Exception {
+    public ModelAndView getRoomList(Long roomNumber) throws Exception {
         ModelAndView mv = new ModelAndView();
         //프론트 매니저 정보
         UserVO userVO = roomService.getManagerInfo();
         //예약한 유저의 예약정보들
-        BookingVO bookingVO = roomService.getRoomDetail(105l);
+        BookingVO bookingVO = roomService.getRoomDetail(roomNumber);
         //페이지 정보
         String pageName = "재실";
         mv.addObject("userVO", userVO);

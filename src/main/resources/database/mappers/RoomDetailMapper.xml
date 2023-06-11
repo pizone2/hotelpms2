@@ -4,6 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.pms.room.RoomDetailDAO">
     <!--예약정보 불러오기-->
+    <!--예약확정페이지-->
     <select id="getResDetail" parameterType="Long" resultMap="getReservationDetail">
         SELECT B.*, RT.CAPACITY,  RS.* FROM BOOKING B
         INNER JOIN ROOMTYPE RT
@@ -13,6 +14,8 @@
         WHERE ROOMNUMBER = #{roomNumber} AND B.CHECKINDATE = CURDATE() AND RS.RESERVATIONDATE= CURDATE() AND RS.ROOMSTATUS ='예약완료'
     </select>
 
+    <!--예약정보 불러오기-->
+    <!--재실페이지-->
     <select id="getRoomDetail" parameterType="Long" resultMap="getReservationDetail">
         SELECT B.*, RT.CAPACITY  FROM BOOKING B
         INNER JOIN ROOMTYPE RT
