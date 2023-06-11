@@ -1,5 +1,4 @@
 let stompClient = null;
-let notificationCount = 0;
 
 $(document).ready(function() {
     console.log("Index page is ready");
