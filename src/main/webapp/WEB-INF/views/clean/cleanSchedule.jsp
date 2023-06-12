@@ -28,6 +28,9 @@
             crossorigin="anonymous"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/webSocket.js"></script>
 
 </head>
 <body class="nav-fixed">
@@ -460,6 +463,17 @@
                         <!-- Illustration dashboard card example-->
 
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <input type="text" id="message" class="form-control" placeholder="Enter your message here...">
+                        </div>
+                        <button id="send" class="btn btn-default" type="button">Send</button>
+                    </form>
                 </div>
             </div>
         </main>
