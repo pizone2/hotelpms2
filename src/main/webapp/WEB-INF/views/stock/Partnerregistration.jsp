@@ -15,6 +15,7 @@
     <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="nav-fixed">
 <!-- Header Section Begin -->
@@ -60,11 +61,11 @@
                                         <!-- Form Group (first name)-->
                                         <div class="row">
                                         <div class="col-md-8">
-                                            <label class="small mb-1" for="inputFirstName">사업자 번호 </label>
-                                            <input class="form-control" id="inputFirstName2" type="text" placeholder="Enter your first name" value="Valerie" />
+                                            <label class="small mb-1" for="businessNumber">사업자 번호 </label>
+                                            <input class="form-control" id="businessNumber" type="text" placeholder="사업자번호를 -를 제외하고 입력해주세요" value="" />
                                         </div>
                                         <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
-                                        <button class="btn btn-outline-blue me-2 my-1" type="button">Blue</button>
+                                        <button class="btn btn-outline-blue me-2 my-1" type="button">확인</button>
                                         </div>
                                         </div>
                                         <!-- Form Group (last name)-->
@@ -74,24 +75,20 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="inputFirstName">대표자 명 </label>
-                                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
+                                                <input class="form-control" id="inputFirstName" type="text" placeholder="사업자 대표자 이름을 입력해주세요" value="" />
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="inputFirstName">개업일자</label>
                                                 <input class="form-control" id="inputFirstName" type="date" placeholder="Enter your first name" value="Valerie" />
                                             </div>
                                             <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
-                                                <button class="btn btn-outline-blue me-2 my-1" type="button">Blue</button>
+                                                <button class="btn btn-outline-blue me-2 my-1" type="button">확인</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-5">
                                             <label class="small mb-1" for="inputEmailAddress">상호 명</label>
-                                            <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label class="small mb-1" for="inputEmailAddress">사업자 주소</label>
                                             <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
                                         </div>
                                     </div>

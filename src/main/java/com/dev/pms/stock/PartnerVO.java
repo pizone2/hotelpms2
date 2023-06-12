@@ -1,5 +1,7 @@
 package com.dev.pms.stock;
 
+import java.sql.Date;
+
 public class PartnerVO {
     private  Long businessNumber;
     private  String contactName;
@@ -9,5 +11,7 @@ public class PartnerVO {
     private  String settlementAccount;
     private  String phoneNumber;
     private  String ceoName;
+    private Date registrationDate;
+    private  String approval;
 
 }
