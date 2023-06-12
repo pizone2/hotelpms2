@@ -24,7 +24,7 @@
                                     <div class="card-header justify-content-center"><h3 class="fw-light my-4">Login</h3></div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        <form>
+                                        <form action="/userLogin" method="get">
                                             <!-- Form Group (email address)-->
                                             <div class="mb-3">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>

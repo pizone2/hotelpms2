@@ -9,6 +9,7 @@ import org.apache.xmlbeans.impl.xb.xsdschema.Attribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -85,7 +86,7 @@ public class UserController {
     public ModelAndView userLogin() throws Exception{
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("user/userLogin");
+        mv.setViewName("redirect:/");
         return mv;
 
     }
