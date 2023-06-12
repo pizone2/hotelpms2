@@ -1,4 +1,5 @@
 let stompClient = null;
+let fullText = $("#test").html();
 
 $(document).ready(function() {
     console.log("Index page is ready");
@@ -22,7 +23,13 @@ function connect() {
 }
 
 function showMessage(message) {
-    $("#messages").append("<tr><td>" + message + "</td></tr>");
+    $("#messages").append(
+        "<a class=\"dropdown-item dropdown-notifications-item\" href=\"#!\">" +
+
+            "<div class=\"dropdown-notifications-item-content-text\">" + message + "</div>" +
+        "</a>"
+
+    );
 }
 
 function sendMessage() {
