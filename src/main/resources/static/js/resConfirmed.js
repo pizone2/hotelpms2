@@ -96,5 +96,14 @@ $("#btn-cleanask").click(function() {
         alert("청소요청 되었습니다.")
     }
 });
-cleanAskSave
+
+$("#btn-send").click(function() {
+    if($("#resTextarea").val().trim() !== ""){
+        $('#sendForm').submit();
+    }else{
+        console.log("폼 전송에 실패했습니다.");
+        return false; // 폼 전송 막기
+    }
+});
+
 

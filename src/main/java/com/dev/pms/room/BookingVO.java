@@ -20,7 +20,6 @@ public class BookingVO {
     private  String guestCount;
     private Date paymentDate;
     private Date checkinDate;
-    /*@DateTimeFormat(pattern = "yyyy-MM-dd")*/
     private Date checkoutDate;
     private String reservationStatus;
     private Long paymentAmount;

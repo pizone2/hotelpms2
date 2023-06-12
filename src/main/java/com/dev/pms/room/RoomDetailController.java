@@ -2,12 +2,14 @@ package com.dev.pms.room;
 
 import com.dev.pms.user.UserVO;
 import lombok.extern.slf4j.Slf4j;
+import net.nurigo.sdk.message.service.DefaultMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
@@ -26,10 +28,13 @@ public class RoomDetailController {
         //예약한 유저의 예약정보들
         BookingVO bookingVO = roomService.getResDetail(roomNumber);
         //페이지 정보
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = formatter.format(new java.util.Date());
         String pageName = "예약확정";
         mv.addObject("userVO", userVO);
         mv.addObject("bookingVO", bookingVO);
         mv.addObject("pageName", pageName);
+        mv.addObject("currentDate", formattedDate);
         mv.setViewName("room/resConfirmed");
         return mv;
     }
@@ -111,4 +116,5 @@ public class RoomDetailController {
         mv.setViewName("redirect:/room/roommanager");
         return mv;
     }
+
 }
