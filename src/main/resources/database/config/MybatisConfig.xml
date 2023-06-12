@@ -10,8 +10,8 @@
         <typeAlias type="com.dev.pms.room.ReservedVO" alias="ReservedVO" />
         <typeAlias type="com.dev.pms.room.RoomVO" alias="RoomVO" />
         <typeAlias type="com.dev.pms.roomStatus.RoomStatusVO" alias="RoomStatusVO" />
+        <typeAlias type="com.dev.pms.clean.CalenderVO" alias="CalenderVO"></typeAlias>
     </typeAliases>
-
 
 
 </configuration>
