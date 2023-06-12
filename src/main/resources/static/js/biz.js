@@ -1,41 +1,49 @@
-// HTML에서 b_no 값을 가져옴
-let b_noValue = document.getElementById('businessNumber').value;
+let data = {
+    "b_no": [] // 사업자 등록번호로 검색할 때 "xxxxxxx"를 대체하세요
+};
 
-// 가져온 값으로 data 객체 업데이트
-data.b_no = [b_noValue];
+// OK 버튼을 클릭할 때 실행되도록 설정
+document.querySelector('.btn-outline-blue').addEventListener('click', function() {
+    // HTML에서 b_no 값을 가져옴
+    let b_noValue = document.getElementById('businessNumber').value;
+    // 가져온 값으로 data 객체 업데이트
+    data.b_no = [b_noValue];
 
-// let data = {
-//     "b_no": [b_noValue] // 사업자번호 "xxxxxxx" 로 조회 시,
-// };
+    $.ajax({
+        url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=CUDiGGxX5sMlOkttxSlMucSgFGVUn09P2dC54WaXMNwYRvT1%2FCYYSXEqqMkFoQ%2Bkxjsb3XIGi0QEOAfX%2B9IJWw%3D%3D",
+        type: "POST",
+        data: JSON.stringify(data),
+        dataType: "JSON",
+        contentType: "application/json",
+        accept: "application/json",
+        success: function(result) {
+            let b_stt_cd = result.data[0].b_stt_cd;
+            let messageElement = document.createElement('div');
+            let businessNumberElement = document.getElementById('businessNumber');
 
-// $.ajax({
-//     url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=CUDiGGxX5sMlOkttxSlMucSgFGVUn09P2dC54WaXMNwYRvT1%2FCYYSXEqqMkFoQ%2Bkxjsb3XIGi0QEOAfX%2B9IJWw%3D%3D",  // serviceKey 값을 xxxxxx에 입력
-//     type: "POST",
-//     data: JSON.stringify(data), // json 을 string으로 변환하여 전송
-//     dataType: "JSON",
-//     contentType: "application/json",
-//     accept: "application/json",
-//     success: function(result) {
-//         console.log(result);
-//     },
-//     error: function(result) {
-//         console.log(result.responseText); //responseText의 에러메세지 확인
-//     }
-// });
-//
-$.ajax({
-    url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=CUDiGGxX5sMlOkttxSlMucSgFGVUn09P2dC54WaXMNwYRvT1%2FCYYSXEqqMkFoQ%2Bkxjsb3XIGi0QEOAfX%2B9IJWw%3D%3D",
-    type: "POST",
-    data: JSON.stringify(data),
-    dataType: "JSON",
-    contentType: "application/json",
-    accept: "application/json",
-    success: function(result) {
-        console.log(result);
-    },
-    error: function(result) {
-        console.log(result.responseText);
-    }
+            if (b_stt_cd === '01') {
+                messageElement.innerText = '사업자 등록번호 확인이 완료되었습니다.';
+                messageElement.style.color = 'green';
+            } else {
+                messageElement.innerText = '사업자 등록번호를 확인해주세요.';
+                messageElement.style.color = 'red';
+            }
+
+            // 이전 메시지가 있다면 제거하고 새로운 메시지로 대체
+            let existingMessageElement = businessNumberElement.parentNode.querySelector('.message');
+            if (existingMessageElement) {
+                existingMessageElement.parentNode.removeChild(existingMessageElement);
+            }
+
+            // 메시지를 필드 아래에 추가
+            messageElement.classList.add('message');
+            businessNumberElement.parentNode.appendChild(messageElement);
+            console.log(b_stt_cd);
+        },
+        error: function(result) {
+            console.log(result.responseText);
+        }
+    });
 });
 
 function sample4_execDaumPostcode() {

@@ -64,11 +64,10 @@
                                             <label class="small mb-1" for="businessNumber">사업자 번호 </label>
                                             <input class="form-control" id="businessNumber" type="text" placeholder="사업자번호를 -를 제외하고 입력해주세요" value="" />
                                         </div>
-                                        <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
+                                        <div class="col-md-4" style="margin-top: 23px;" >
                                         <button class="btn btn-outline-blue me-2 my-1" type="button">확인</button>
                                         </div>
                                         </div>
-                                        <!-- Form Group (last name)-->
                                     </div>
                                     <div class="row gx-3 mb-3">
                                         <!-- Form Group (first name)-->
@@ -79,7 +78,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="inputFirstName">개업일자</label>
-                                                <input class="form-control" id="inputFirstName" type="date" placeholder="Enter your first name" value="Valerie" />
+                                                <input class="form-control" id="inputFirstName" type="date" placeholder="Enter your first name" value="" />
                                             </div>
                                             <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
                                                 <button class="btn btn-outline-blue me-2 my-1" type="button">확인</button>

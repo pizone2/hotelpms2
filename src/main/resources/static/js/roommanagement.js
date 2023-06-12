@@ -1,5 +1,4 @@
 
-
 document.addEventListener("DOMContentLoaded", function() {
     let tdElements = document.querySelectorAll("td[id^='pa']");
     let divElements = document.querySelectorAll("div[id^='ch']");
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 tdElement.style.backgroundColor = "#00673f";
                 tdElement.style.color = "white";
             }
-
         }
     }
 });
@@ -155,7 +153,6 @@ $(document).ready(function() {
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         // 하나 이상의 객실 상태 체크박스가 선택된 경우 모든 방을 숨깁니다.
         if (filtersApplied || selectedRoomstatus.length > 0) {
             $('td.tdroom').hide();
@@ -188,7 +185,6 @@ $(document).ready(function() {
 
     //////////////////////////////////////////
     // 선택된 방의 개수 계산
-
     // class="tdroom"인 모든 요소의 개수를 구합니다.
     let tdroomCount = $('.tdroom').length / 2;
 
