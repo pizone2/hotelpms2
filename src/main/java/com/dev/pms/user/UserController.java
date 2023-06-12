@@ -81,5 +81,13 @@ public class UserController {
         wb.write(response.getOutputStream());
         wb.close();
     }
+    @GetMapping("/userLogin")
+    public ModelAndView userLogin() throws Exception{
+
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("user/userLogin");
+        return mv;
+
+    }
 }
 
