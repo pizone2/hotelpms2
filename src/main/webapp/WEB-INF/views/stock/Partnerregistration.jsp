@@ -14,6 +14,7 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body class="nav-fixed">
 <!-- Header Section Begin -->
@@ -59,7 +60,7 @@
                                         <!-- Form Group (first name)-->
                                         <div class="row">
                                         <div class="col-md-8">
-                                            <label class="small mb-1" for="inputFirstName">First name</label>
+                                            <label class="small mb-1" for="inputFirstName">사업자 번호 </label>
                                             <input class="form-control" id="inputFirstName2" type="text" placeholder="Enter your first name" value="Valerie" />
                                         </div>
                                         <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
@@ -71,62 +72,75 @@
                                     <div class="row gx-3 mb-3">
                                         <!-- Form Group (first name)-->
                                         <div class="row">
-                                            <div class="col-md-8">
-                                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="inputFirstName">대표자 명 </label>
                                                 <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="inputFirstName">개업일자</label>
+                                                <input class="form-control" id="inputFirstName" type="date" placeholder="Enter your first name" value="Valerie" />
                                             </div>
                                             <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
                                                 <button class="btn btn-outline-blue me-2 my-1" type="button">Blue</button>
                                             </div>
                                         </div>
-                                        <!-- Form Group (last name)-->
                                     </div>
-                                    <!-- Form Group (email address)-->
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="inputEmailAddress">상호명</label>
-                                        <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                    <div class="row gx-3 mb-3">
+                                        <div class="col-md-5">
+                                            <label class="small mb-1" for="inputEmailAddress">상호 명</label>
+                                            <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label class="small mb-1" for="inputEmailAddress">사업자 주소</label>
+                                            <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="inputEmailAddress">담당자명</label>
+                                    <div class="row gx-3">
+                                        <!-- Form Group (first name)-->
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="inputFirstName">사업자 주소 </label>
+                                                <input class="form-control" id="sample4_postcode" type="text" placeholder="우편번호" value="" />
+                                            </div>
+                                            <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
+                                                <button class="btn btn-outline-blue me-2 my-1"  onclick="sample4_execDaumPostcode()" type="button">우편번호 찾기</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row gx-3">
+                                    <div class="col-md-4">
+                                        <input class="form-control" id="sample4_roadAddress" type="text" placeholder="도로명 주소" value="" />
+                                    </div>
+                                    <div class="col-md-6">
+                                            <input class="form-control" id="sample4_jibunAddress" type="text" placeholder="지번주소" value="" />
+                                   </div>
+                                    </div>
+                                    <div class="row gx-3">
+                                        <div class="col-md-4">
+                                            <input class="form-control" id="sample4_detailAddress" type="text" placeholder="상세주소" value="" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" id="sample4_extraAddress" type="text" placeholder="참고주소" value="" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row gx-3 mb-3">
+                                    <div class="col-md-5">
+                                        <label class="small mb-1" for="inputEmailAddress">담당자 명</label>
                                         <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="inputEmailAddress">주소</label>
-                                        <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                        <div class="col-md-5">
+                                            <label class="small mb-1" for="inputEmailAddress">담당자 번호</label>
+                                            <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                        </div>
                                     </div>
-                                    <!-- Form Group (Group Selection Checkboxes)-->
-<%--                                    <div class="mb-3">--%>
-<%--                                        <label class="small mb-1">Group(s)</label>--%>
-<%--                                        <div class="form-check">--%>
-<%--                                            <input class="form-check-input" id="groupSales" type="checkbox" value="" checked />--%>
-<%--                                            <label class="form-check-label" for="groupSales">Sales</label>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="form-check">--%>
-<%--                                            <input class="form-check-input" id="groupDevs" type="checkbox" value="" checked />--%>
-<%--                                            <label class="form-check-label" for="groupDevs">Developers</label>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="form-check">--%>
-<%--                                            <input class="form-check-input" id="groupMarketing" type="checkbox" value="" />--%>
-<%--                                            <label class="form-check-label" for="groupMarketing">Marketing</label>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="form-check">--%>
-<%--                                            <input class="form-check-input" id="groupManagers" type="checkbox" value="" checked />--%>
-<%--                                            <label class="form-check-label" for="groupManagers">Managers</label>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="form-check">--%>
-<%--                                            <input class="form-check-input" id="groupCustomer" type="checkbox" value="" />--%>
-<%--                                            <label class="form-check-label" for="groupCustomer">Customer</label>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-                                    <!-- Form Group (Roles)-->
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Role</label>
+                                    <div class="mb-4">
+                                        <label class="small mb-1">타입</label>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected disabled>Select a role:</option>
-                                            <option value="administrator" selected>Administrator</option>
-                                            <option value="registered">Registered</option>
-                                            <option value="edtior">Editor</option>
-                                            <option value="guest">Guest</option>
+                                            <option selected disabled>사업자 업태를 선택해주세요</option>
+                                            <option value="administrator" selected>상품 판매</option>
+                                            <option value="registered">용역 서비스</option>
                                         </select>
                                     </div>
                                     <!-- Submit button-->
@@ -145,5 +159,6 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="../js/scripts.js"></script>
+<script src="../js/biz.js"></script>
 </body>
 </html>
