@@ -31,4 +31,43 @@ public class RoomStatusController {
         return mv;
     }
 
+    @GetMapping("/roomStatusMonthList")
+    public ModelAndView getRoomStatusMonthList(RoomStatusVO roomStatusVO)throws Exception{
+        ModelAndView mv = new ModelAndView();
+
+
+        List<RoomStatusVO> monthList = roomStatusService.getRoomStatusListMonth(roomStatusVO);
+        List<RoomStatusVO> checkinCount = roomStatusService.getCheckinCount(roomStatusVO);
+        List<RoomStatusVO> reservationCount = roomStatusService.getReservationCount(roomStatusVO);
+        List<RoomStatusVO> roomStock = roomStatusService.getRoomStock(roomStatusVO);
+
+
+        mv.addObject("roomStatusMonthListVO",monthList);
+        mv.addObject("checkinCount",checkinCount);
+        mv.addObject("reservationCount",reservationCount);
+        mv.addObject("roomStock",roomStock);
+        mv.setViewName("roomStatus/roomStatusMonthList");
+        return mv;
+
+    }    @GetMapping("/roomStatusThreeWeeksList")
+    public ModelAndView getRoomStatusListThreeWeeks(RoomStatusVO roomStatusVO)throws Exception{
+        ModelAndView mv = new ModelAndView();
+
+
+        List<RoomStatusVO> threeWeeks = roomStatusService.getRoomStatusListThreeWeeks(roomStatusVO);
+        List<RoomStatusVO> checkinCount = roomStatusService.getCheckinCount(roomStatusVO);
+        List<RoomStatusVO> reservationCount = roomStatusService.getReservationCount(roomStatusVO);
+        List<RoomStatusVO> roomStock = roomStatusService.getRoomStock(roomStatusVO);
+
+
+        mv.addObject("roomStatusThreeWeeksListVO",threeWeeks);
+        mv.addObject("checkinCount",checkinCount);
+        mv.addObject("reservationCount",reservationCount);
+        mv.addObject("roomStock",roomStock);
+        mv.setViewName("roomStatus/roomStatusThreeWeeksList");
+        return mv;
+    }
+
+
+
 }

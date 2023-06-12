@@ -12,7 +12,7 @@
     <meta name="author" content=""/>
     <title>Home</title>
     <link href="/css/styles.css" rel="stylesheet"/>
-    <link href="/css/roomStatus.css" rel="stylesheet"/>
+    <link href="/css/roomStatusMonth.css" rel="stylesheet"/>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha512-..." crossorigin="anonymous"/>
@@ -91,7 +91,7 @@
 
                                             java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("MM/dd (E)");
 
-                                            for (int i = 0; i < 14; i++) {
+                                            for (int i = 0; i < 30; i++) {
                                                 java.util.Date date = calendar.getTime();
                                                 String formattedDate = dateFormat.format(date);
                                         %>
@@ -106,7 +106,7 @@
                                     <tr>
                                         <td class="tg-0pky" colspan="2">체크인수</td>
                                         <c:forEach items="${checkinCount}" var="checkin" varStatus="loop">
-                                            <c:if test="${loop.index < 15}">
+                                            <c:if test="${loop.index < 31}">
                                                 <td class="tg-0lax">${checkin.checkinCount}</td>
                                             </c:if>
                                         </c:forEach>
@@ -116,7 +116,7 @@
                                         <td class="tg-0lax" colspan="2">예약수</td>
                                         <c:forEach items="${reservationCount}" var="reservation"
                                                    varStatus="loop">
-                                            <c:if test="${loop.index < 15}">
+                                            <c:if test="${loop.index < 32}">
                                                 <td class="tg-0lax">${reservation.reservationCount}</td>
                                             </c:if>
                                         </c:forEach>
@@ -125,7 +125,7 @@
                                     <tr>
                                         <td class="tg-0lax" colspan="2">객실재고</td>
                                         <c:forEach items="${roomStock}" var="stock" varStatus="loop">
-                                            <c:if test="${loop.index < 15}">
+                                            <c:if test="${loop.index < 31}">
                                                 <td class="tg-0lax">${stock.roomStock}</td>
                                             </c:if>
                                         </c:forEach>
@@ -135,17 +135,13 @@
                                     </thead>
 
                                     <tbody style="display: block;">
-                                    <c:forEach items="${roomStatusVO}" var="roomStatus" varStatus="status">
-                                        <c:if test="${status.index % 15 == 0}">
+                                    <c:forEach items="${roomStatusMonthListVO}" var="roomStatus" varStatus="status">
+                                        <c:if test="${status.index % 31 == 0}">
                                             <tr>
-                                            <td>&nbsp;&nbsp;&nbsp;${roomStatus.roomType}&nbsp;&nbsp;&nbsp;</td>
-                                            <td>&nbsp;&nbsp;&nbsp;${roomStatus.roomNumber}&nbsp;&nbsp;&nbsp;</td>
+                                            <td>&nbsp;${roomStatus.roomType}&nbsp;&nbsp;</td>
+                                            <td>&nbsp;${roomStatus.roomNumber}&nbsp;&nbsp;</td>
                                         </c:if>
-                                        <style>
-                                            .test {
-                                                background-color: orange;
-                                            }
-                                        </style>
+
                                         <td class="room-status"
                                             style="background-color: ${roomStatus.roomStatus == '예약완료' ? 'dodgerblue' : roomStatus.roomStatus == '재실' ? 'orange' : roomStatus.roomStatus == '퇴실' ? 'limegreen' : 'white'};"
                                             onmouseover="showTooltip(event, '${roomStatus.roomNumber}', '${roomStatus.reservationDate}', '${roomStatus.name}', '${roomStatus.roomStatus}', '${roomStatus.reservationNumber}', '${roomStatus.phoneNumber}', '${roomStatus.checkinDate}', '${roomStatus.checkoutDate}')"
@@ -160,7 +156,7 @@
                                             <span style="color: transparent; overflow: hidden; display: inline-block; width: 100%; white-space: nowrap; text-overflow: ellipsis;">checkoutDate: ${roomStatus.checkoutDate}</span>
 
                                         </td>
-                                        <c:if test="${status.index % 15 == 14 || status.last}">
+                                        <c:if test="${status.index % 31 == 30 || status.last}">
                                             </tr>
                                         </c:if>
                                     </c:forEach>
@@ -177,7 +173,7 @@
                                     java.util.List<String> dateList = new java.util.ArrayList<>();
 
                                     // Loop through the dates and add them to the list
-                                    for (int i = 0; i < 14; i++) {
+                                    for (int i = 0; i < 30; i++) {
                                         dateList.add(yesterday.minusDays(i).format(formatter));
                                     }
 

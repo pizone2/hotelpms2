@@ -12,7 +12,7 @@
     <meta name="author" content=""/>
     <title>Home</title>
     <link href="/css/styles.css" rel="stylesheet"/>
-    <link href="/css/roomStatus.css" rel="stylesheet"/>
+    <link href="/css/roomStatusThreeWeeks.css" rel="stylesheet"/>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha512-..." crossorigin="anonymous"/>
@@ -84,39 +84,28 @@
                                         <th class="tg-0pky">TYPE</th>
                                         <th class="tg-0pky">ROOM</th>
                                         <th class="tg-0lax">재실</th>
-                                        <%
+                                                <%
                                             java.util.Date currentDate = new java.util.Date();
                                             java.util.Calendar calendar = java.util.Calendar.getInstance();
                                             calendar.setTime(currentDate);
 
                                             java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("MM/dd (E)");
 
-                                            for (int i = 0; i < 14; i++) {
+                                            for (int i = 0; i < 21; i++) {
                                                 java.util.Date date = calendar.getTime();
                                                 String formattedDate = dateFormat.format(date);
                                         %>
-                                        <th class="tg-0lax"><%= formattedDate %>
-                                        </th>
-                                        <%
+                                            <th class="tg-0lax"><%= formattedDate %>
+                                            </th>
+                                                <%
                                                 calendar.add(java.util.Calendar.DATE, 1);
                                             }
                                         %>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="tg-0pky" colspan="2">체크인수</td>
-                                        <c:forEach items="${checkinCount}" var="checkin" varStatus="loop">
-                                            <c:if test="${loop.index < 15}">
-                                                <td class="tg-0lax">${checkin.checkinCount}</td>
-                                            </c:if>
-                                        </c:forEach>
-
-                                    </tr>
                                     <tr>
                                         <td class="tg-0lax" colspan="2">예약수</td>
                                         <c:forEach items="${reservationCount}" var="reservation"
                                                    varStatus="loop">
-                                            <c:if test="${loop.index < 15}">
+                                            <c:if test="${loop.index < 22}">
                                                 <td class="tg-0lax">${reservation.reservationCount}</td>
                                             </c:if>
                                         </c:forEach>
@@ -125,7 +114,7 @@
                                     <tr>
                                         <td class="tg-0lax" colspan="2">객실재고</td>
                                         <c:forEach items="${roomStock}" var="stock" varStatus="loop">
-                                            <c:if test="${loop.index < 15}">
+                                            <c:if test="${loop.index < 22}">
                                                 <td class="tg-0lax">${stock.roomStock}</td>
                                             </c:if>
                                         </c:forEach>
@@ -135,11 +124,11 @@
                                     </thead>
 
                                     <tbody style="display: block;">
-                                    <c:forEach items="${roomStatusVO}" var="roomStatus" varStatus="status">
-                                        <c:if test="${status.index % 15 == 0}">
+                                    <c:forEach items="${roomStatusThreeWeeksListVO}" var="roomStatus" varStatus="status">
+                                        <c:if test="${status.index % 22 == 0}">
                                             <tr>
-                                            <td>&nbsp;&nbsp;&nbsp;${roomStatus.roomType}&nbsp;&nbsp;&nbsp;</td>
-                                            <td>&nbsp;&nbsp;&nbsp;${roomStatus.roomNumber}&nbsp;&nbsp;&nbsp;</td>
+                                            <td>&nbsp;${roomStatus.roomType}&nbsp;&nbsp;</td>
+                                            <td>&nbsp;${roomStatus.roomNumber}&nbsp;&nbsp;</td>
                                         </c:if>
                                         <style>
                                             .test {
@@ -148,7 +137,7 @@
                                         </style>
                                         <td class="room-status"
                                             style="background-color: ${roomStatus.roomStatus == '예약완료' ? 'dodgerblue' : roomStatus.roomStatus == '재실' ? 'orange' : roomStatus.roomStatus == '퇴실' ? 'limegreen' : 'white'};"
-                                            onmouseover="showTooltip(event, '${roomStatus.roomNumber}', '${roomStatus.reservationDate}', '${roomStatus.name}', '${roomStatus.roomStatus}', '${roomStatus.reservationNumber}', '${roomStatus.phoneNumber}', '${roomStatus.checkinDate}', '${roomStatus.checkoutDate}')"
+                                            onmouseover="showTooltip(event, '${roomStatus.roomNumber}', '${roomStatus.reservationDate}', '${roomStatus.name}', '${roomStatus.roomStatus}', '${roomStatus.reservationNumber}', '${roomStatus.phoneNumber}', '${roomStatus.checkinDate}', '${roomStatus.checkoutDate}', this.style.backgroundColor)"
                                             onmouseout="hideTooltip()">
                                             <span style="color: transparent; overflow: hidden; display: inline-block; width: 100%; white-space: nowrap; text-overflow: ellipsis;">ROOMNUMBER: ${roomStatus.roomNumber}</span>
                                             <span style="color: transparent; overflow: hidden; display: inline-block; width: 100%; white-space: nowrap; text-overflow: ellipsis;">reservationDate: ${roomStatus.reservationDate}</span>
@@ -160,7 +149,7 @@
                                             <span style="color: transparent; overflow: hidden; display: inline-block; width: 100%; white-space: nowrap; text-overflow: ellipsis;">checkoutDate: ${roomStatus.checkoutDate}</span>
 
                                         </td>
-                                        <c:if test="${status.index % 15 == 14 || status.last}">
+                                        <c:if test="${status.index % 22 == 21 || status.last}">
                                             </tr>
                                         </c:if>
                                     </c:forEach>
@@ -177,7 +166,7 @@
                                     java.util.List<String> dateList = new java.util.ArrayList<>();
 
                                     // Loop through the dates and add them to the list
-                                    for (int i = 0; i < 14; i++) {
+                                    for (int i = 0; i < 21; i++) {
                                         dateList.add(yesterday.minusDays(i).format(formatter));
                                     }
 

@@ -12,6 +12,11 @@ public class RoomStatusService {
 
     public List<RoomStatusVO> getRoomStatusList(RoomStatusVO roomStatusVO)throws Exception{
         return  roomStatusDAO.getRoomStatusList(roomStatusVO);
+    } public List<RoomStatusVO> getRoomStatusListMonth(RoomStatusVO roomStatusVO)throws Exception{
+        return  roomStatusDAO.getRoomStatusListMonth(roomStatusVO);
+    }
+    public List<RoomStatusVO> getRoomStatusListThreeWeeks(RoomStatusVO roomStatusVO)throws Exception{
+        return  roomStatusDAO.getRoomStatusListThreeWeeks(roomStatusVO);
     }
     public List<RoomStatusVO> getCheckinCount(RoomStatusVO roomStatusVO)throws Exception{
         return  roomStatusDAO.getCheckinCount(roomStatusVO);
