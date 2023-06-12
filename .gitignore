@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ### My lgnore ###
-application-dev.properties
 
+application-dev.properties
