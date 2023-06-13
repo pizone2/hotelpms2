@@ -36,7 +36,6 @@
             </header>
             <!-- Main page content-->
             <sec:authorize access="isAuthenticated()"><h3>로그인중</h3></sec:authorize>
-            <sec:authorize access="!isAuthenticated()"><h3>로그인중 아님</h3></sec:authorize>
             <div class="container-xl px-4">
                 <h2 class="mt-5 mb-0">Dashboards</h2>
                 <p>Three dashboard examples to get you started!</p>
