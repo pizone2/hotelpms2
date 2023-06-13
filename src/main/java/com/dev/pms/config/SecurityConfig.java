@@ -45,10 +45,10 @@ public class SecurityConfig  {
                 .csrf()   // csrf 를
                 .disable() // 활성화 하지 않겠다.
                 .authorizeRequests()          // 권한 과 관련된 메서드
-                .antMatchers("/").permitAll() //루트 밑에 시작하는걸 모두 허용하겠다(permitAll) 이후 아래에서 제한을 시작
+//                .antMatchers("/").permitAll() //루트 밑에 시작하는걸 모두 허용하겠다(permitAll) 이후 아래에서 제한을 시작
 //                .antMatchers("/admin").hasRole("ADMIN") // /adimn 을 가진 주소는 role ADMIN 만 허용
 //                .antMatchers("/manager").hasAnyRole("ADMIN","MANAGER") //ADMIN 을 가지거나 MANAGER를 가진 사람만 허용 => 회원 한명당 하나의 ROLE를 가질때
-                .anyRequest().permitAll() //그외 나머지는 로그인 해야 볼수 있어요 (authenticated = 로그인 해야 )
+                .anyRequest().authenticated() //그외 나머지는 로그인 해야 볼수 있어요 (authenticated = 로그인 해야 )
                 .and()
                 .formLogin()
                     .loginPage("/user/userLogin")
