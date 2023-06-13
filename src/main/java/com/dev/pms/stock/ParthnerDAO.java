@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface ParthnerDAO {
 
-    public PartnerVO getBusinessNumber(PartnerVO partnerVO) throws Exception;
+    public PartnerVO getBusinessNumber(String businessNumber) throws Exception;
 
 }
 

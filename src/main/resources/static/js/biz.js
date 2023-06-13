@@ -3,8 +3,56 @@ let data = {
 };
 
 // OK 버튼을 클릭할 때 실행되도록 설정
+// document.querySelector('.btn-outline-blue').addEventListener('click', function () {
+//     // HTML에서 b_no 값을 가져옴
+//     let b_noValue = document.getElementById('businessNumber').value;
+//     // 가져온 값으로 data 객체 업데이트
+//     data.b_no = [b_noValue];
+//
+//     $.ajax({
+//         url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=CUDiGGxX5sMlOkttxSlMucSgFGVUn09P2dC54WaXMNwYRvT1%2FCYYSXEqqMkFoQ%2Bkxjsb3XIGi0QEOAfX%2B9IJWw%3D%3D",
+//         type: "POST",
+//         data: JSON.stringify(data),
+//         dataType: "JSON",
+//         contentType: "application/json",
+//         accept: "application/json",
+//         success: function (result) {
+//             let b_stt_cd = result.data[0].b_stt_cd;
+//             let messageElement = document.createElement('div');
+//             let businessNumberElement = document.getElementById('businessNumber');
+//
+//             if (b_stt_cd === '01') {
+//                 messageElement.innerText = '사업자 등록번호 확인이 완료되었습니다.';
+//                 messageElement.style.color = 'green';
+//             } else {
+//                 messageElement.innerText = '사업자 등록번호를 확인해주세요.';
+//                 messageElement.style.color = 'red';
+//             }
+//
+//             // 이전 메시지가 있다면 제거하고 새로운 메시지로 대체
+//             let existingMessageElement = businessNumberElement.parentNode.querySelector('.message');
+//             if (existingMessageElement) {
+//                 existingMessageElement.parentNode.removeChild(existingMessageElement);
+//             }
+//
+//             // 메시지를 필드 아래에 추가
+//             messageElement.classList.add('message');
+//             businessNumberElement.parentNode.appendChild(messageElement);
+//             console.log(b_stt_cd);
+//         },
+//         error: function (result) {
+//             console.log(result.responseText);
+//         }
+//     });
+//
+// });
+
+
+
+
+
 document.querySelector('.btn-outline-blue').addEventListener('click', function () {
-    // HTML에서 b_no 값을 가져옴
+    // HTML에서 b_no 값 가져오기
     let b_noValue = document.getElementById('businessNumber').value;
     // 가져온 값으로 data 객체 업데이트
     data.b_no = [b_noValue];
@@ -22,20 +70,46 @@ document.querySelector('.btn-outline-blue').addEventListener('click', function (
             let businessNumberElement = document.getElementById('businessNumber');
 
             if (b_stt_cd === '01') {
-                messageElement.innerText = '사업자 등록번호 확인이 완료되었습니다.';
-                messageElement.style.color = 'green';
+                // AJAX 요청 함수 정의
+                function getBusinessNumber() {
+                    // AJAX 요청을 생성합니다.
+                    let businessNumber = $("#businessNumber").val();
+
+                    $.ajax({
+                        url: "/partner/findBusinessNumber",
+                        method: "POST",
+                        data: { businessNumber: businessNumber },
+                        success: function(businessNumber) {
+                            // 결과 값에 따라 메시지를 출력합니다.
+                            if (businessNumber === 'nouse') {
+                                messageElement.innerText = '사업자 번호 인증이 완료되었습니다.';
+                                messageElement.style.color = 'green';
+                            } else {
+                                messageElement.innerText = '이미 등록된 사업자 번호입니다.';
+                                messageElement.style.color = 'red';
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // 에러 처리
+                            console.error('오류가 발생했습니다 관리자에게 문의해주세요:', status, error);
+                        }
+                    });
+                }
+
+                // getBusinessNumber 함수 호출
+                getBusinessNumber();
             } else {
-                messageElement.innerText = '사업자 등록번호를 확인해주세요.';
+                messageElement.innerText = '잘못된 사업자 번호입니다 사업자 등록 번호를 확인해주세요.';
                 messageElement.style.color = 'red';
             }
 
-            // 이전 메시지가 있다면 제거하고 새로운 메시지로 대체
+            // 이전 메시지를 제거하고 새로운 메시지로 대체합니다.
             let existingMessageElement = businessNumberElement.parentNode.querySelector('.message');
             if (existingMessageElement) {
                 existingMessageElement.parentNode.removeChild(existingMessageElement);
             }
 
-            // 메시지를 필드 아래에 추가
+            // 메시지를 필드 아래에 추가합니다.
             messageElement.classList.add('message');
             businessNumberElement.parentNode.appendChild(messageElement);
             console.log(b_stt_cd);
@@ -44,7 +118,85 @@ document.querySelector('.btn-outline-blue').addEventListener('click', function (
             console.log(result.responseText);
         }
     });
+
 });
+
+
+
+
+
+
+
+
+// document.querySelector('.btn-outline-blue').addEventListener('click', function () {
+//     // HTML에서 b_no 값 가져오기
+//     let b_noValue = document.getElementById('businessNumber').value;
+//     // 가져온 값으로 data 객체 업데이트
+//     data.b_no = [b_noValue];
+//
+//     $.ajax({
+//         url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=CUDiGGxX5sMlOkttxSlMucSgFGVUn09P2dC54WaXMNwYRvT1%2FCYYSXEqqMkFoQ%2Bkxjsb3XIGi0QEOAfX%2B9IJWw%3D%3D",
+//         type: "POST",
+//         data: JSON.stringify(data),
+//         dataType: "JSON",
+//         contentType: "application/json",
+//         accept: "application/json",
+//         success: function (result) {
+//             let b_stt_cd = result.data[0].b_stt_cd;
+//             let messageElement = document.createElement('div');
+//             let businessNumberElement = document.getElementById('businessNumber');
+//
+//             if (b_stt_cd === '01') {
+//                         function getBusinessNumber() {
+//                             // AJAX 요청을 생성합니다.
+//                             let businessNumber = $("#businessNumber").val();
+//                             $.ajax({
+//                                 url: "/partner/findBusinessNumber",
+//                                 method: "POST",
+//                                 data: { businessNumber: businessNumber },
+//                                 success: function(businessNumber) {
+//                                     // 결과 값에 따라 메시지를 출력합니다.
+//                                     messageElement = $("#messageElement");
+//                                     console.log(businessNumber)
+//                                     if (businessNumber === 'use') {
+//                                         messageElement.text('사업자 등록 번호 확인이 완료되었습니다람쥐.');
+//                                         messageElement.css('color', 'green');
+//                                     } else {
+//                                         messageElement.text('사업자 등록 번호를 확인해주세오오오옹요.');
+//                                         messageElement.css('color', 'red');
+//                                     }
+//                                 },
+//                                 error: function(xhr, status, error) {
+//                                     // 에러 처리
+//                                     console.error('오류가 발생했습니다:', status, error);
+//                                 }
+//                             });
+//                         }
+//             } else {
+//                 messageElement.innerText = '사업자 등록 번호를 확인해주세요.';
+//                 messageElement.style.color = 'red';
+//             }
+//
+//             // 이전 메시지를 제거하고 새로운 메시지로 대체합니다.
+//             let existingMessageElement = businessNumberElement.parentNode.querySelector('.message');
+//             if (existingMessageElement) {
+//                 existingMessageElement.parentNode.removeChild(existingMessageElement);
+//             }
+//
+//             // 메시지를 필드 아래에 추가합니다.
+//             messageElement.classList.add('message');
+//             businessNumberElement.parentNode.appendChild(messageElement);
+//             console.log(b_stt_cd);
+//         },
+//         error: function (result) {
+//             console.log(result.responseText);
+//         }
+//     });
+//
+// });
+//
+
+
 
 function sample4_execDaumPostcode() {
     new daum.Postcode({
@@ -123,55 +275,20 @@ $(document).ready(function() {
 // ...
 
 // AJAX 요청을 보내는 함수
-function getBusinessNumber() {
-    var businessNumber = $("#businessNumber").val();
-
-    // AJAX 요청 생성
-    $.ajax({
-        url: ".findBusinessNumber",
-        method: "POST",
-        data: { businessNumber: businessNumber },
-        success: function(result) {
-            // 결과 값에 따라 메시지 출력
-            var messageElement = $("#messageElement");
-            if (result > 0) {
-                messageElement.text('사업자 등록 번호 검증이 완료되었습니다.');
-                messageElement.css('color', 'green');
-            } else {
-                messageElement.text('사업자 등록 번호를 확인해주세요.');
-                messageElement.css('color', 'red');
-            }
-        },
-        error: function(xhr, status, error) {
-            // 오류 처리
-            console.error('오류 발생:', status, error);
-        }
-    });
-}
-
-// 버튼 클릭 이벤트에 함수 연결
-$("#businessNumButton").click(getBusinessNumber);
-
-
-// // JavaScript 코드
-// // ...
-//
-// // AJAX 요청을 보내는 함수
-// function sendBusinessNumber() {
+// function getBusinessNumber() {
 //     var businessNumber = $("#businessNumber").val();
 //
 //     // AJAX 요청 생성
 //     $.ajax({
-//         url: "/findBusinessNumber",
+//         url: "/partner/findBusinessNumber",
 //         method: "POST",
 //         data: { businessNumber: businessNumber },
-//         success: function(result) {
-//             result = parseInt(result);
-//
+//         success: function(businessNumber) {
 //             // 결과 값에 따라 메시지 출력
 //             var messageElement = $("#messageElement");
-//             if (result > 0) {
-//                 messageElement.text('사업자 등록 번호 검증이 완료되었습니다.');
+//             console.log(businessNumber)
+//             if (businessNumber === 'use') {
+//                 messageElement.text('사업자 등록 번호 검증이 완료뿌잉뿌잉.');
 //                 messageElement.css('color', 'green');
 //             } else {
 //                 messageElement.text('사업자 등록 번호를 확인해주세요.');
@@ -184,8 +301,8 @@ $("#businessNumButton").click(getBusinessNumber);
 //         }
 //     });
 // }
-//
-// // ...
-// // 버튼 클릭 이벤트에 함수 연결
-// $("#businessNumButton").click(sendBusinessNumber);
-//
+
+// 버튼 클릭 이벤트에 함수 연결
+// $("#businessNumButton").click(getBusinessNumber);
+
+
