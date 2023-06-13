@@ -99,10 +99,13 @@ public class RoomDetailController {
         //예약한 유저의 예약정보들
         BookingVO bookingVO = roomService.getRoomDetail(roomNumber);
         //페이지 정보
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = formatter.format(new java.util.Date());
         String pageName = "재실";
         mv.addObject("userVO", userVO);
         mv.addObject("bookingVO", bookingVO);
         mv.addObject("pageName", pageName);
+        mv.addObject("currentDate", formattedDate);
         mv.setViewName("room/resConfirmed");
         return mv;
     }

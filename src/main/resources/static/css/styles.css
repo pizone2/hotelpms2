@@ -15139,8 +15139,8 @@ body {
 }
 
 .bg-gradient-primary-to-secondary {
-  background-color: #0061f2 !important;
-  background-image: linear-gradient(135deg, #0061f2 0%, rgba(105, 0, 199, 0.8) 100%) !important;
+  background-color: #536976 !important;
+  background-image: linear-gradient(135deg, #536976 0%, rgba(41, 46, 73, 0.8) 100%) !important;
 }
 
 .bg-transparent-light {
@@ -17090,7 +17090,7 @@ body {
   font-weight: 500;
 }
 .card:not([class*=bg-]) .card-header {
-  color: #0061f2;
+  color: #536976;
 }
 
 .card.bg-dark .card-header,
