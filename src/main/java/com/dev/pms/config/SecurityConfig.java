@@ -1,6 +1,9 @@
 package com.dev.pms.config;
 
 import com.dev.pms.security.UserLoginFailHandler;
+import com.dev.pms.security.UserLogoutHandler;
+import com.dev.pms.security.UserLogoutSucessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +16,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration //설정과 관련된 어노테이션
 @EnableWebSecurity // 시큐리티 적용 어노테이션 추가
 public class SecurityConfig  {
+
+    @Autowired
+    private UserLogoutSucessHandler userLogoutSucessHandler;
 
     @Bean
         // @Component 와 비슷한 어노테이션 객체를 만들
@@ -47,14 +53,15 @@ public class SecurityConfig  {
                 .formLogin()
                     .loginPage("/user/userLogin")
                     .usernameParameter("id")
-                    .failureHandler(new UserLoginFailHandler())
                     .defaultSuccessUrl("/")
+                    .failureHandler(new UserLoginFailHandler())
                     .failureUrl("/user/userLogin")
                     .permitAll()    // 모두 허용
                     .and()
                 .logout()         // 로그아웃도
-                    .logoutUrl("user/userLogin")
+                    .logoutUrl("/user/userLogout")
                     .logoutSuccessUrl("/")
+                    .logoutSuccessHandler(userLogoutSucessHandler)
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID")
                     .permitAll();   // 모두 허용

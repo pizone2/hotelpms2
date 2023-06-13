@@ -24,24 +24,24 @@
                                     <div class="card-header justify-content-center"><h3 class="fw-light my-4">Login</h3></div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        <form action="userLogin" method="get">
+                                        <form action="userLogin" method="post">
                                             <!-- Form Group (email address)-->
                                             <div class="mb-3">
                                                 <label class="small mb-1" for="id">ID</label>
-                                                <input class="form-control" id="id" type="text" placeholder="Enter email address" />
+                                                <input class="form-control" id="id" name="id" type="text" placeholder="Enter email address" />
                                             </div>
                                             <!-- Form Group (password)-->
                                             <div class="mb-3">
                                                 <label class="small mb-1" for="password">Password</label>
-                                                <input class="form-control" id="password" type="password" placeholder="Enter password" />
+                                                <input class="form-control" id="password" name="password" type="password" placeholder="Enter password" />
                                             </div>
                                             <!-- Form Group (remember password checkbox)-->
-                                            <div class="mb-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" id="rememberPasswordCheck" type="checkbox" value="" />
-                                                    <label class="form-check-label" for="rememberPasswordCheck">Remember password</label>
-                                                </div>
-                                            </div>
+<%--                                            <div class="mb-3">--%>
+<%--                                                <div class="form-check">--%>
+<%--                                                    <input class="form-check-input" id="rememberPasswordCheck" type="checkbox" value="" />--%>
+<%--                                                    <label class="form-check-label" for="rememberPasswordCheck">Remember password</label>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
                                             <!-- Form Group (login box)-->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="auth-password-basic.html">Forgot Password?</a>
