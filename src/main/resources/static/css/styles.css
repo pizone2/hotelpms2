@@ -11051,20 +11051,20 @@ textarea.form-control-lg {
 
 .user-select-all {
   -webkit-user-select: all !important;
-  -moz-user-select: all !important;
-  user-select: all !important;
+     -moz-user-select: all !important;
+          user-select: all !important;
 }
 
 .user-select-auto {
   -webkit-user-select: auto !important;
-  -moz-user-select: auto !important;
-  user-select: auto !important;
+     -moz-user-select: auto !important;
+          user-select: auto !important;
 }
 
 .user-select-none {
   -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
 }
 
 .pe-none {
@@ -15139,8 +15139,8 @@ body {
 }
 
 .bg-gradient-primary-to-secondary {
-  background-color: #69707aa8 !important;
-  /* background-image: linear-gradient(135deg, #0061f2 0%, rgba(105, 0, 199, 0.8) 100%) !important; */
+  background-color: #0061f2 !important;
+  background-image: linear-gradient(135deg, #0061f2 0%, rgba(105, 0, 199, 0.8) 100%) !important;
 }
 
 .bg-transparent-light {
@@ -16188,8 +16188,8 @@ body {
 
 .no-highlight {
   -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
 }
 
 .lift {
@@ -16265,7 +16265,7 @@ body {
 .content-skewed-right .content-skewed-item {
   transform: rotateY(30deg) rotateX(15deg) !important;
   -webkit-backface-visibility: hidden !important;
-  backface-visibility: hidden !important;
+          backface-visibility: hidden !important;
 }
 
 .content-skewed-left {
@@ -16274,7 +16274,7 @@ body {
 .content-skewed-left .content-skewed-item {
   transform: rotateY(-30deg) rotateX(15deg) !important;
   -webkit-backface-visibility: hidden !important;
-  backface-visibility: hidden !important;
+          backface-visibility: hidden !important;
 }
 
 .text-gray-100 {
@@ -16797,7 +16797,7 @@ body {
 .avatar .avatar-img {
   border-radius: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   height: 2rem;
   width: auto;
 }
