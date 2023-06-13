@@ -8,7 +8,8 @@ import java.util.List;
 public interface CleanDAO {
 
     public List<CalenderVO>getCleanList(CalenderVO calenderVO)throws Exception;
-
+    public List<RoomCleanVO>getRoomCleanList(RoomCleanVO roomCleanVO)throws  Exception;
     public int insertSchedule(CalenderVO calenderVO)throws Exception;
     public int deleteSchedule(CalenderVO calenderVO)throws Exception;
+    public int insertFile(FileVO fileVO)throws Exception;
 }

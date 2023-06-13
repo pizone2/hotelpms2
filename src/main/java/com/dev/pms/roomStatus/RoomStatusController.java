@@ -55,7 +55,7 @@ public class RoomStatusController {
 
 
         List<RoomStatusVO> threeWeeks = roomStatusService.getRoomStatusListThreeWeeks(roomStatusVO);
-        List<RoomStatusVO> checkinCount = roomStatusService.getCheckinCount(roomStatusVO);
+        List<RoomStatusVO> checkinCount = roomStatusService.getCheckinCount(roomStatusVO)   ;
         List<RoomStatusVO> reservationCount = roomStatusService.getReservationCount(roomStatusVO);
         List<RoomStatusVO> roomStock = roomStatusService.getRoomStock(roomStatusVO);
 

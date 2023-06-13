@@ -9,16 +9,24 @@
         FROM CALENDER
     </select>
 
+    <select id="getRoomCleanList" resultType="RoomCleanVO">
+        SELECT * FROM ROOMCLEAN;
+    </select>
+
     <insert id="insertSchedule" parameterType="CalenderVO">
         INSERT INTO CALENDER(SCHEDULENUMBER,SCHEDULEENDDATE,SCHEDULESTARTDATE)
         VALUES (#{scheduleNumber},#{scheduleEnddate},#{scheduleStartdate})
+    </insert>
+
+    <insert id="insertFile" parameterType="FileVO">
+        INSERT INTO ROOMCLEANIMAGE (cleanNum, orgName, savedName, savedPath)
+        VALUES (#{cleanNum}, #{orgName}, #{savedName}, #{savedPath})
     </insert>
 
     <delete id="deleteSchedule" parameterType="CalenderVO">
         DELETE
         FROM CALENDER
         WHERE SCHEDULENUMBER = #{scheduleNumber}
-
     </delete>
 
 </mapper>
