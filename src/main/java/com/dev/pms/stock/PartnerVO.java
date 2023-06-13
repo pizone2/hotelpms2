@@ -1,11 +1,17 @@
 package com.dev.pms.stock;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Date;
 
+
+@Setter
+@Getter
 public class PartnerVO {
     private String businessNumber;
     private  String contactName;
-    private  String conpanyName;
+    private  String companyName;
     private  String email;
     private  String  address;
     private  String settlementAccount;

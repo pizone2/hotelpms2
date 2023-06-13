@@ -11,5 +11,7 @@ public interface ParthnerDAO {
 
     public PartnerVO getBusinessNumber(String businessNumber) throws Exception;
 
+    public int setPartner(PartnerVO partnerVO) throws Exception;
+
 }
 

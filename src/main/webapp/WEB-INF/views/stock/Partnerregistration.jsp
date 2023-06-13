@@ -55,7 +55,7 @@
                         <div class="card mb-4">
                             <div class="card-header">협력업체 사업자 등록 </div>
                             <div class="card-body">
-                                <form>
+                                <form action="/partner/join" method="post" >
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <!-- Form Group (first name)-->
@@ -85,7 +85,7 @@
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-5">
                                             <label class="small mb-1" for="conpanyName">상호명</label>
-                                            <input class="form-control" id="conpanyName" type="text" name="conpanyName" placeholder="상호명을 입력해주세요" value="" />
+                                            <input class="form-control" id="conpanyName" type="text" name="companyName" placeholder="상호명을 입력해주세요" value="" />
                                         </div>
                                         <div class="col-md-5">
                                             <label class="small mb-1" for="email">사업자 E-mail</label>
@@ -132,7 +132,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input  class="address" id="address" type="hidden" name="address">
+                                    <input  class="address" id="address" name="address">
+
+
                                    <%-- <input type="text" id="address" name="address">--%>
                                     <%--  ////////////////////////////////////////////////////////////////////////////////////--%>
 
@@ -160,9 +162,9 @@
                                         <input class="form-control" id="account" type="text" placeholder="정산계좌명을 입력해주세요" value="" />
                                     </div>
                                     </div>
-                                    <input id="settlementAccount" type="hidden" name="settlementAccount">
+                                    <input id="settlementAccount"  name="settlementAccount">
 
-                                    <button class="btn btn-primary" type="button">사업자 등록 요청</button>
+                                    <button class="btn btn-primary" id="btn3"  type="submit">사업자 등록 요청</button>
                                 </form>
                             </div>
                         </div>

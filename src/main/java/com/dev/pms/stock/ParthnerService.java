@@ -20,5 +20,8 @@ public class ParthnerService {
         return partner != null; // partner가 null이면 일치하는 값이 없는 것으로 판단합니다.
     }
 
+    public int setPartner(PartnerVO partnerVO) throws Exception {
+        return  parthnerDAO.setPartner(partnerVO);
+    }
 
 }

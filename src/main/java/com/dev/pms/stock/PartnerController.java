@@ -2,6 +2,7 @@ package com.dev.pms.stock;
 
 
 import com.dev.pms.room.BookingVO;
+import com.dev.pms.room.ReservedVO;
 import com.dev.pms.user.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class PartnerController {
     @Autowired
     private ParthnerService parthnerService;
 
+    // 사업자 등록 페이지
     @GetMapping("join")
     public ModelAndView setJoin(PartnerVO partnerVO) throws Exception{
         ModelAndView mv = new ModelAndView();
@@ -30,13 +32,20 @@ public class PartnerController {
         return mv;
     }
 
+    //사업자 정보를 DB에 인서트
+    @PostMapping("join")
+    public ModelAndView setPartner(PartnerVO partnerVO) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        int result = parthnerService.setPartner(partnerVO);;
+        //mv.setViewName("common/ajaxResult");
+        mv.addObject("message", "등록 요청이 완료되었습니다. 관리자가 확인 후 승인 프로세스가 완료되면 사용자 로그인이 가능함을 유의해주세요.");
+        mv.setViewName("redirect:/");
+        return mv;
+    }
 
+    //사업자등록번호가 DB에 존재하는지 확인
     @PostMapping ("/findBusinessNumber")
     public ResponseEntity<String> findBusinessNumber(String businessNumber) throws Exception {
-        // 일치하는 값이 있는지 확인하는 로직을 구현하세요
-        // 예를 들어, DB에서 해당 사업자 등록 번호를 검색하고 일치 여부를 확인하는 코드를 작성합니다.
-        // 일치하는 값이 있으면 "match" 문자열을 반환하고, 일치하는 값이 없으면 "no-match" 문자열을 반환합니다.
-        // 아래는 예시 코드입니다.
 
         boolean isMatch = parthnerService.getBusinessNumber(businessNumber);
         System.out.println(isMatch);
