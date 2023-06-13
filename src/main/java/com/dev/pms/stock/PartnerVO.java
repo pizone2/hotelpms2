@@ -13,5 +13,5 @@ public class PartnerVO {
     private  String ceoName;
     private Date registrationDate;
     private  String approval;
-
+    private  String sectors;
 }
