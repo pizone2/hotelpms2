@@ -73,12 +73,12 @@
                                         <!-- Form Group (first name)-->
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label class="small mb-1" for="inputFirstName">대표자 명 </label>
-                                                <input class="form-control" id="inputFirstName" type="text" placeholder="사업자 대표자 이름을 입력해주세요" value="" />
+                                                <label class="small mb-1" for="ceoName">대표자 명 </label>
+                                                <input class="form-control" id="ceoName" type="text" placeholder="대표자 이름을 입력해주세요" value="" />
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="small mb-1" for="inputFirstName">개업일자</label>
-                                                <input class="form-control" id="inputFirstName" type="date" placeholder="Enter your first name" value="" />
+                                                <label class="small mb-1" for="registrationDate">개업일자</label>
+                                                <input class="form-control" id="registrationDate" type="date" placeholder="" value="" />
                                             </div>
                                             <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
                                                 <button class="btn btn-outline-blue me-2 my-1" type="button">확인</button>
@@ -87,15 +87,15 @@
                                     </div>
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-5">
-                                            <label class="small mb-1" for="inputEmailAddress">상호 명</label>
-                                            <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                            <label class="small mb-1" for="conpanyName">상호 명</label>
+                                            <input class="form-control" id="conpanyName" type="email" placeholder="상호 명" value="" />
                                         </div>
                                     </div>
                                     <div class="row gx-3">
                                         <!-- Form Group (first name)-->
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label class="small mb-1" for="inputFirstName">사업자 주소 </label>
+                                                <label class="small mb-1" for="sample4_postcode">사업자 주소 </label>
                                                 <input class="form-control" id="sample4_postcode" type="text" placeholder="우편번호" value="" />
                                             </div>
                                             <div class="col-md-4 d-flex align-items-end" style="margin-top: 23px;" >
@@ -123,16 +123,16 @@
 
                                     <div class="row gx-3 mb-3">
                                     <div class="col-md-5">
-                                        <label class="small mb-1" for="inputEmailAddress">담당자 명</label>
-                                        <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                        <label class="small mb-1" for="contactName">담당자 명</label>
+                                        <input class="form-control" id="contactName" type="email" placeholder="담당자 명" value="" />
                                     </div>
                                         <div class="col-md-5">
-                                            <label class="small mb-1" for="inputEmailAddress">담당자 번호</label>
-                                            <input class="form-control" id="inputEmailAddress2" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                            <label class="small mb-1" for="phoneNumber">담당자 번호</label>
+                                            <input class="form-control" id="phoneNumber" type="email" placeholder="010-0000-0000" value="" />
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="small mb-1">타입</label>
+                                        <label class="small mb-1">업태 구분</label>
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected disabled>사업자 업태를 선택해주세요</option>
                                             <option value="administrator" selected>상품 판매</option>

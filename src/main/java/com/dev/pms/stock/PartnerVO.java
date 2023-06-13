@@ -3,7 +3,7 @@ package com.dev.pms.stock;
 import java.sql.Date;
 
 public class PartnerVO {
-    private  Long businessNumber;
+    private String businessNumber;
     private  String contactName;
     private  String conpanyName;
     private  String email;
