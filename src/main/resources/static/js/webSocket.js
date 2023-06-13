@@ -9,6 +9,10 @@ $(document).ready(function() {
         sendMessage();
     });
 
+    $("#btn-cleanask").click(function() {
+        cleanaskSendMessage();
+    });
+
 });
 
 function connect() {
@@ -30,6 +34,11 @@ function showMessage(message) {
         "</a>"
 
     );
+}
+
+function cleanaskSendMessage() {
+    console.log("cleanaskSendMessage")
+    stompClient.send("/ws/message", {}, JSON.stringify({'messageContent': "청소요청"}));
 }
 
 function sendMessage() {
