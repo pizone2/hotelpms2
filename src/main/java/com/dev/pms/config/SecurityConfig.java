@@ -1,5 +1,6 @@
 package com.dev.pms.config;
 
+import com.dev.pms.security.UserLoginFailHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -46,6 +47,7 @@ public class SecurityConfig  {
                 .formLogin()
                     .loginPage("/user/userLogin")
                     .usernameParameter("id")
+                    .failureHandler(new UserLoginFailHandler())
                     .defaultSuccessUrl("/")
                     .failureUrl("/user/userLogin")
                     .permitAll()    // 모두 허용

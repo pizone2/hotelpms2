@@ -8,4 +8,10 @@
        SELECT *
        FROM USER
    </select>
+
+    <select id="getLogin" parameterType="UserVO" resultType="UserVO" >
+        SELECT *
+        FROM USER
+        WHERE id=#{id}
+    </select>
 </mapper>

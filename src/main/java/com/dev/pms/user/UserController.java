@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 @Controller
@@ -82,13 +83,17 @@ public class UserController {
         wb.write(response.getOutputStream());
         wb.close();
     }
-    @GetMapping("/userLogin")
-    public ModelAndView userLogin() throws Exception{
-
+    @GetMapping("userLogin")
+    public ModelAndView getLogin(HttpSession session) throws Exception{
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("redirect:/");
+        Object obj = session.getAttribute("SPRING_SECURITY_CONTEXT");
+        //로그인 후 뒤로가기 했을때, 다시 로그인 화면 나타나는 것을 방지
+        if(obj==null) {
+            mv.setViewName("/user/userLogin");
+        }else {
+            mv.setViewName("/");
+        }
         return mv;
-
     }
 }
 
