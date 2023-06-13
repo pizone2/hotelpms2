@@ -14,7 +14,7 @@ public class RoomStatusController {
     @Autowired
     private RoomStatusService roomStatusService;
 
-    @GetMapping("/roomStatusList")
+        @GetMapping("/roomStatusList")
     public ModelAndView getRoomStatusList(RoomStatusVO roomStatusVO)throws Exception{
         ModelAndView mv = new ModelAndView();
 

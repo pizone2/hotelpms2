@@ -13,6 +13,7 @@
         <typeAlias type="com.dev.pms.clean.CalenderVO" alias="CalenderVO"></typeAlias>
 
         <typeAlias type="com.dev.pms.stock.PartnerStockVO" alias="PartnerStockVO"></typeAlias>
+        <typeAlias type="com.dev.pms.stock.PartnerVO" alias="PartnerVO"></typeAlias>
 
     </typeAliases>
 
