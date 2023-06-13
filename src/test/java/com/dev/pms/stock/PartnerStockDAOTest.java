@@ -14,16 +14,16 @@ class PartnerStockDAOTest {
 
     @Test
     void testInsertDummyData() throws Exception {
-        String businessNumber = "70101010321";
+        String businessNumber = "19930902000";
         String productName = "칫솔";
-        String[] itemCodes = generateItemCodes(80);
+        String[] itemCodes = generateItemCodes(100);
         Random random = new Random();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String remarks1 = "이치약은 고품질의 치약으로, 당신의 구강 건강을 돌보는 데 최적화된 제품입니다. 이 치약은 탁월한 청결감과 상쾌한 민트 향기로 구강을 산뜻하게 유지해줍니다.";
-        String remarks2 = "알칼리성 pH 조절 효과를 갖고 있어 구강 내 산도를 조절하여 산성 환경으로 인한 치아의 치석 형성을 억제합니다. 이로 인해 치아의 표면을 보호하고 구강 건강을 유지하는 데 도움이 됩니다.";
+        String remarks1 = " 지속 가능한 원료를 사용해 제작한 친환경 칫솔입니다. 편안한 그립감과 초미세 브러쉬를 사용하여 깊숙한 청결함을 제공하며, 또한 세심하게 디자인되어 모든 가족이 사용할 수 있습니다.";
+        String remarks2 = "내구성이 뛰어나고, 편안한 그립감을 제공합니다. 또한, 100% 생분해 가능하여 친환경적입니다.";
 
         int result = 0;
-        for (int i = 0; i < 50; i++) {
+        for (int i = 50; i < 100; i++) {
             PartnerStockVO partnerStock = new PartnerStockVO();
             partnerStock.setBusinessNumber(businessNumber);
             partnerStock.setProductName(productName);
@@ -42,7 +42,7 @@ class PartnerStockDAOTest {
     private String[] generateItemCodes(int count) {
         String[] itemCodes = new String[count];
         String prefix = "C";
-        for (int i = 0; i < count; i++) {
+        for (int i = 51; i < count; i++) {
             String suffix = String.format("%03d", i + 1);
             itemCodes[i] = prefix + suffix;
         }
