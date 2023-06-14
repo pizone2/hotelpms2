@@ -2,9 +2,6 @@ package com.dev.pms.clean;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 //@NoArgsConstructor
 //@Table(name = "ROOMCLEANIMAGE")
@@ -22,7 +19,7 @@ public class FileVO {
     private String savedPath;
 
     @Builder
-    public FileVO(Long imageId, Long cleanNum, String orgName, String savedName, String savedPath) {
+    public FileVO() {
         this.imageId = imageId;
         this.cleanNum = cleanNum;
         this.orgName = orgName;

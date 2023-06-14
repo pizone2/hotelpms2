@@ -71,23 +71,53 @@
                             <h2>파일 업로드</h2>
 
                             <form action="/clean/upload" method="post" enctype="multipart/form-data">
-
                                 <h4>단일 파일 업로드</h4>
                                 <input type="file" name="file">
-
-                                <h4>다중 파일 업로드</h4>
-                                <input type="file" multiple="multiple" name="files">
 
                                 <input type="submit"/>
                             </form>
 
-                            <h3>이미지 출력</h3>
-                            <div th:each="imageFile : ${all} ">
-                                <img  th:src="|/images/${imageFile.imageId}|" width="150" height="150">
-                                <p th:text="${imageFile.orgName}"></p>
+
+
+<%--                            <img src="${pageContext.request.contextPath}/resources/static/images/3fc8f4e1-1ae4-4ca4-a39a-8cd94772abbd_스크린샷 2023-05-21 오전 12.35.27.png" alt="이미지">--%>
+
+
+                            <!-- Button trigger modal -->
+                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch Demo Modal</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form action="/clean/upload" method="post" enctype="multipart/form-data">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Default Bootstrap Modal</h5>
+                                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-md-12">
+                                                    <label class="small mb-1" for="1">객실</label>
+                                                    <input class="form-control" id="1" type="text" placeholder="ex) 101호" value="">
+                                                </div>  <div class="col-md-12" style="margin-top: 10px">
+                                                    <label class="small mb-1" for="2">소속</label>
+                                                    <input class="form-control" id="2" type="text" placeholder="" value="">
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 15px">
+                                                    <input type="file" name="attachment">
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 10px">
+                                                    <label class="small mb-1" for="3">비고</label>
+                                                    <input class="form-control" id="3" type="text" placeholder="" value="">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+                                                <button class="btn btn-primary" type="button">Save changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-
-
 
 
 
