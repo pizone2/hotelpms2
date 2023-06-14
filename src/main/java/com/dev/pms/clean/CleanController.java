@@ -65,8 +65,9 @@ public class CleanController {
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile multipartFile,RoomCleanVO roomCleanVO) throws Exception {
-        cleanService.saveFile(multipartFile);
         cleanService.setRoomClean(roomCleanVO);
+        cleanService.saveFile(multipartFile);
+
 
         System.out.println(roomCleanVO.getNote());
         System.out.println(roomCleanVO.getRoomNumber());

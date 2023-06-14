@@ -12,4 +12,5 @@ public class RoomCleanVO {
     private Date dateOfRegistration;
     private String confirmationStatus;
     private String note;
+    private String savedName;
 }

@@ -10,7 +10,9 @@
     </select>
 
     <select id="getRoomCleanList" resultType="RoomCleanVO">
-        SELECT * FROM ROOMCLEAN;
+        SELECT rc.*, rci.savedname
+        FROM ROOMCLEAN rc
+        JOIN ROOMCLEANIMAGE rci ON rc.cleannum = rci.cleannum;
     </select>
 
     <insert id="insertSchedule" parameterType="CalenderVO">
@@ -27,6 +29,13 @@
         INSERT INTO ROOMCLEAN
         VALUES (NULL,#{roomNumber}, #{scheduleNumber}, SYSDATE(),'미확인', #{note})
     </insert>
+
+    <update id="updateCleanNum">
+        UPDATE ROOMCLEANIMAGE
+        SET cleannum = (SELECT cleannum FROM ROOMCLEAN ORDER BY cleannum DESC LIMIT 1)
+        ORDER BY IMAGEID DESC
+        LIMIT 1;
+    </update>
 
 
     <delete id="deleteSchedule" parameterType="CalenderVO">

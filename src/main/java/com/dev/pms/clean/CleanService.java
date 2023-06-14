@@ -61,6 +61,7 @@ public class CleanService {
         fileVO.setSavedName(realPath);
         fileVO.setOrgName(multipartFile.getOriginalFilename());
         result = cleanDAO.insertFile(fileVO);
+        cleanDAO.updateCleanNum();
             return result;
         }
     public int setRoomClean(RoomCleanVO roomCleanVO)throws Exception{

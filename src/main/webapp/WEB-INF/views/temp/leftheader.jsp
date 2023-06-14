@@ -36,7 +36,7 @@
                             실시간 객실 상태
                         </a>
                         <a class="nav-link" href="/roomStatus/roomStatusList">객실현황</a>
-                        <a class="nav-link" href="#">객실 청소상태</a>
+                        <a class="nav-link" href="/clean/roomClean">객실 청소상태</a>
                     </nav>
                 </div>
                 <!-- Sidenav Heading (Custom)-->

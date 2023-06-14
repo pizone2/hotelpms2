@@ -30,20 +30,34 @@
     <!-- Header Section Begin -->
     <c:import url="../temp/topheader.jsp"></c:import>
     <!-- Header End -->
-
     <div id="layoutSidenav">
         <!-- Header Section Begin -->
         <c:import url="../temp/leftheader.jsp"></c:import>
         <!-- Header End -->
         <div id="layoutSidenav_content">
-            <div class="datatable-container">
-                <div class="container-fluid px-4 py-4" >
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            객실청소상태
+
+            <main>
+
+                <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+                    <div class="container-fluid px-4">
+                        <div class="page-header-content">
+                            <div class="row align-items-center justify-content-between pt-3">
+                                <div class="col-auto mb-3">
+                                    <h1 class="page-header-title">
+                                        <div class="page-header-icon"><i data-feather="user"></i></div>
+                                        객실청소상태
+                                    </h1>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body" >
-                            <table class="datatable-table">
+                    </div>
+                </header>
+                <!-- Main page content-->
+                <div class="container-fluid px-4">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <table id="datatablesSimple">
                                 <thead>
                                 <tr>
                                     <th>번호</th>
@@ -51,80 +65,73 @@
                                     <th>소속</th>
                                     <th>등록일</th>
                                     <th>확인여부</th>
+                                    <th>비고</th>
                                 </tr>
                                 </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>객실</th>
+                                    <th>소속</th>
+                                    <th>등록일</th>
+                                    <th>확인여부</th>
+                                    <th>비고</th>
+                                </tr>
+                                </tfoot>
                                 <tbody>
                                 <c:forEach var="roomClean" items="${roomCleanVO}">
+                                    <!-- 유저 정보-->
                                     <tr>
-
                                         <td>${roomClean.cleanNum}</td>
-                                        <td>${roomClean.roomNumber}</td>
+                                        <td>
+                                            <span class="modal-trigger roomNumber" data-note="${roomClean.note}" data-savedName="${roomClean.savedName}">
+                                                    ${roomClean.roomNumber}
+                                            </span>
+                                        </td>
                                         <td>${roomClean.scheduleNumber}</td>
                                         <td>${roomClean.dateOfRegistration}</td>
                                         <td>${roomClean.confirmationStatus}</td>
-
+                                        <td>${roomClean.note}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
 
-                            <h2>파일 업로드</h2>
-
-                            <form action="/clean/upload" method="post" enctype="multipart/form-data">
-                                <h4>단일 파일 업로드</h4>
-                                <input type="file" name="file">
-
-                                <input type="submit"/>
-                            </form>
-
-
-
-<%--                            <img src="${pageContext.request.contextPath}/resources/static/images/3fc8f4e1-1ae4-4ca4-a39a-8cd94772abbd_스크린샷 2023-05-21 오전 12.35.27.png" alt="이미지">--%>
-
-
-                            <!-- Button trigger modal -->
-                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch Demo Modal</button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <form action="/clean/upload" method="post" enctype="multipart/form-data">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Default Bootstrap Modal</h5>
-                                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="col-md-12">
-                                                    <label class="small mb-1" for="1">객실</label>
-                                                    <input class="form-control" id="1" type="text" placeholder="ex) 101호" value="">
-                                                </div>  <div class="col-md-12" style="margin-top: 10px">
-                                                    <label class="small mb-1" for="2">소속</label>
-                                                    <input class="form-control" id="2" type="text" placeholder="" value="">
-                                                </div>
-                                                <div class="col-md-12" style="margin-top: 15px">
-                                                    <input type="file" name="attachment">
-                                                </div>
-                                                <div class="col-md-12" style="margin-top: 10px">
-                                                    <label class="small mb-1" for="3">비고</label>
-                                                    <input class="form-control" id="3" type="text" placeholder="" value="">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-                                                <button class="btn btn-primary" type="button">Save changes</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-
 
                         </div>
                     </div>
                 </div>
-            </div>
+                <%--insert 모달--%>
+                <div class="modal fade exampleModal" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">품목추가</h5>
+                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                        <div class="mb-3">
+                                            <label for="savedName">청소상태</label>
+                                            <img id="savedName" src="" alt="Preview Image" style="max-width: 100%; height: auto;">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="remarks">비고</label>
+                                            <textarea  class="form-control form-control-solid"  cols="30" rows="5"
+                                                       name="remarks" id="remarks"></textarea>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button class="btn btn-dark" type="button" data-bs-dismiss="modal">취소</button>
+                                            <input type="hidden" name="pageName" value="${pageName}">
+                                            <input type="hidden" name="roomNumber" value="${bookingVO.roomNumber}">
+                                            <button class="btn btn-dark" type="button" id="btn-send">저장</button>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
 
 
             <!-- Footer Section Begin -->
@@ -132,9 +139,15 @@
             <!-- Footer Section End -->
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            crossorigin="anonymous"></script>
-    <script src="../js/scripts.js"></script>
+<%--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"--%>
+<%--            crossorigin="anonymous"></script>--%>
+<%--    <script src="../js/scripts.js"></script>--%>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="/js/datatables/datatables-simple-demo.js"></script>
+    <script src="/js/roomClean.js"></script>
 
 </body>
 </html>
