@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dev.pms.stock.ParthnerDAO">
+<mapper namespace="com.dev.pms.stock.PartnerDAO">
 
     <!--파트너 테이블 인서트 -->
     <insert id="setPartner" parameterType="PartnerVO">

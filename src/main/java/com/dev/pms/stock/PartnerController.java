@@ -22,7 +22,7 @@ import java.security.PublicKey;
 public class PartnerController {
 
     @Autowired
-    private ParthnerService parthnerService;
+    private PartnerService partnerService;
 
     // 사업자 등록 페이지
     @GetMapping("join")
@@ -36,7 +36,7 @@ public class PartnerController {
     @PostMapping("join")
     public ModelAndView setPartner(PartnerVO partnerVO) throws Exception{
         ModelAndView mv = new ModelAndView();
-        int result = parthnerService.setPartner(partnerVO);;
+        int result = partnerService.setPartner(partnerVO);;
        // mv.setViewName("common/ajaxResult");
         //mv.addObject("modalMessage", "등록 요청이 완료되었습니다. 관리자가 확인 후 승인 프로세스가 완료되면 사용자 로그인이 가능함을 유의해주세요.");
         mv.setViewName("redirect:/") ;
@@ -47,7 +47,7 @@ public class PartnerController {
     @PostMapping ("/findBusinessNumber")
     public ResponseEntity<String> findBusinessNumber(String businessNumber) throws Exception {
 
-        boolean isMatch = parthnerService.getBusinessNumber(businessNumber);
+        boolean isMatch = partnerService.getBusinessNumber(businessNumber);
         System.out.println(isMatch);
         if (isMatch) {
             return ResponseEntity.ok("use");
