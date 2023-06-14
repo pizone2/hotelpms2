@@ -31,7 +31,7 @@ public class FileManager {
 
         // multifile객체의 transferTo 메서드 사용
         multipartFile.transferTo(file);
-
+        System.out.println(file);
         return name;
     }
 }
