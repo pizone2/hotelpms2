@@ -43,7 +43,7 @@ public class PartnerController {
         return mv;
     }
 
-    //사업자등록번호가 DB에 존재하는지 확인
+    //사업자등록번호가 DB에 존재하는지 확인하는 기능
     @PostMapping ("/findBusinessNumber")
     public ResponseEntity<String> findBusinessNumber(String businessNumber) throws Exception {
 
