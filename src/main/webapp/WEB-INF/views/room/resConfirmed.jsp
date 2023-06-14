@@ -115,10 +115,10 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">취소</button>
+                                        <button class="btn btn-dark" type="button" data-bs-dismiss="modal">취소</button>
                                         <input type="hidden" name="pageName" value="${pageName}">
                                         <input type="hidden" name="roomNumber" value="${bookingVO.roomNumber}">
-                                        <button class="btn btn-primary" type="button" id="btn-send">전송</button>
+                                        <button class="btn btn-dark" type="button" id="btn-send">전송</button>
                                     </div>
                                     </form>
                                 </div>
