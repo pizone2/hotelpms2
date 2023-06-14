@@ -63,4 +63,7 @@ public class CleanService {
         result = cleanDAO.insertFile(fileVO);
             return result;
         }
+    public int setRoomClean(RoomCleanVO roomCleanVO)throws Exception{
+        return cleanDAO.setRoomClean(roomCleanVO);
+    }
     }

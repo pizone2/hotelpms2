@@ -23,6 +23,12 @@
         VALUES (#{cleanNum}, #{orgName}, #{savedName}, #{savedPath})
     </insert>
 
+    <insert id="setRoomClean" parameterType="RoomCleanVO">
+        INSERT INTO ROOMCLEAN
+        VALUES (NULL,#{roomNumber}, #{scheduleNumber}, SYSDATE(),'미확인', #{note})
+    </insert>
+
+
     <delete id="deleteSchedule" parameterType="CalenderVO">
         DELETE
         FROM CALENDER

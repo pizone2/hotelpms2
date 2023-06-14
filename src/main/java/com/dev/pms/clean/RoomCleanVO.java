@@ -8,7 +8,8 @@ import java.sql.Date;
 public class RoomCleanVO {
     private Long cleanNum;
     private Long roomNumber;
-    private Long serialNum;
+    private Long scheduleNumber;
     private Date dateOfRegistration;
     private String confirmationStatus;
+    private String note;
 }

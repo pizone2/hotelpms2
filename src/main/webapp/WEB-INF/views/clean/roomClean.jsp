@@ -59,7 +59,7 @@
 
                                         <td>${roomClean.cleanNum}</td>
                                         <td>${roomClean.roomNumber}</td>
-                                        <td>${roomClean.serialNum}</td>
+                                        <td>${roomClean.scheduleNumber}</td>
                                         <td>${roomClean.dateOfRegistration}</td>
                                         <td>${roomClean.confirmationStatus}</td>
 

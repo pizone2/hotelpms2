@@ -12,4 +12,5 @@ public interface CleanDAO {
     public int insertSchedule(CalenderVO calenderVO)throws Exception;
     public int deleteSchedule(CalenderVO calenderVO)throws Exception;
     public int insertFile(FileVO fileVO)throws Exception;
+    public int setRoomClean(RoomCleanVO roomCleanVO)throws Exception;
 }

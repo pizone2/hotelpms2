@@ -64,12 +64,18 @@ public class CleanController {
     }
 
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, @RequestParam("files") List<MultipartFile> files) throws Exception {
+    public String uploadFile(@RequestParam("file") MultipartFile multipartFile,RoomCleanVO roomCleanVO) throws Exception {
         cleanService.saveFile(multipartFile);
+        cleanService.setRoomClean(roomCleanVO);
 
-        for (MultipartFile filesd : files) {
-            cleanService.saveFile(filesd);
-        }
+        System.out.println(roomCleanVO.getNote());
+        System.out.println(roomCleanVO.getRoomNumber());
+        System.out.println(roomCleanVO.getScheduleNumber());
+
+
+//        for (MultipartFile filesd : files) {
+//            cleanService.saveFile(filesd);
+//        }
 
         return "redirect:/";
     }
