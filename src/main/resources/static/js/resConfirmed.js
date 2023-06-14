@@ -88,3 +88,22 @@ $("#btn-checkin").click(function() {
     }
 });
 
+$("#btn-cleanask").click(function() {
+    let confirmed = confirm("청소요청 하시겠습니까?");
+    if(confirmed){
+        $('#updateRoomCheckout').val( $('#checkoutDate').val())
+        $('#cleanAskForm').submit();
+        alert("청소요청 되었습니다.")
+    }
+});
+
+$("#btn-send").click(function() {
+    if($("#resTextarea").val().trim() !== ""){
+        $('#sendForm').submit();
+    }else{
+        console.log("폼 전송에 실패했습니다.");
+        return false; // 폼 전송 막기
+    }
+});
+
+

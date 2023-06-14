@@ -9,6 +9,8 @@ import java.util.List;
 public interface RoomDetailDAO {
     public BookingVO getResDetail(Long aLong) throws Exception;
 
+    public BookingVO getRoomDetail(Long aLong) throws Exception;
+
     public UserVO getManagerInfo() throws  Exception;
 
     public List<BookingVO> getResDate(BookingVO bookingVO) throws Exception;
@@ -19,6 +21,11 @@ public interface RoomDetailDAO {
 
     public int setReservedUpdate(ReservedVO reservedVO) throws Exception;
 
+    public int setRoomUpdate(ReservedVO reservedVO) throws Exception;
+
     public int setStatusHouse(BookingVO bookingVO) throws Exception;
+
+    public int setCleanAsk(BookingVO bookingVO) throws Exception;
+
 
 }
