@@ -9,9 +9,13 @@ $(document).ready(function() {
         sendMessage();
     });
 
-    $("#btn-cleanask").click(function() {
-        cleanaskSendMessage();
+    $("#send-private").click(function() {
+        sendPrivateMessage();
     });
+
+    // $("#btn-cleanask").click(function() {
+    //     cleanaskSendMessage();
+    // });
 
 });
 
@@ -20,7 +24,11 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
+
         stompClient.subscribe('/topic/messages', function (message) {
+            showMessage(JSON.parse(message.body).content);
+        });
+        stompClient.subscribe('/user/topic/private-messages', function (message) {
             showMessage(JSON.parse(message.body).content);
         });
     });
@@ -38,7 +46,12 @@ function showMessage(message) {
 
 function cleanaskSendMessage() {
     console.log("cleanaskSendMessage")
-    stompClient.send("/ws/message", {}, JSON.stringify({'messageContent': "청소요청"}));
+    stompClient.send("/ws/private-message", {}, JSON.stringify({'messageContent': "청소요청"}));
+}
+
+function sendPrivateMessage() {      // 프라이빗 메시지를 서버로 보내는 함수, stompClient 객체를 사용하여 "/ws/private-message" 주소로 메시지를 전송
+    console.log("sending private message");
+    stompClient.send("/ws/private-message", {}, JSON.stringify({'messageContent': "청소요청"}));
 }
 
 function sendMessage() {

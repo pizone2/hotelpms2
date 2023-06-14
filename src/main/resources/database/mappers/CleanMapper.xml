@@ -18,7 +18,12 @@
         DELETE
         FROM CALENDER
         WHERE SCHEDULENUMBER = #{scheduleNumber}
-
     </delete>
 
+    <select id="getTodayClean" resultType="Long">
+        SELECT SCHEDULENUMBER
+        FROM CALENDER
+        WHERE  SCHEDULESTARTDATE <![CDATA[<=]]> CURRENT_DATE()
+        AND  SCHEDULEENDDATE  <![CDATA[>=]]> CURRENT_DATE();
+    </select>
 </mapper>

@@ -11,4 +11,6 @@ public interface CleanDAO {
 
     public int insertSchedule(CalenderVO calenderVO)throws Exception;
     public int deleteSchedule(CalenderVO calenderVO)throws Exception;
+
+    public Long getTodayClean(CalenderVO calenderVO)throws Exception;
 }
