@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
 
 import java.security.Principal;
+import java.util.List;
+
 @Slf4j
 @Controller
 public class MessageController {
@@ -32,9 +34,9 @@ public class MessageController {
     public ResponseMessage getPrivateMessage(final Message message,
                                              final Principal principal,CalenderVO calenderVO) throws Exception {
         Thread.sleep(1000);
-        Long today = cleanService.getTodayClean(calenderVO.getScheduleNumber());
-
-        return new ResponseMessage(HtmlUtils.htmlEscape("청소"+ today + "팀" + message.getMessageContent())
+        CalenderVO todayCalender = cleanService.getTodayClean(calenderVO);
+        Long today = todayCalender.getScheduleNumber();
+        return new ResponseMessage(HtmlUtils.htmlEscape("청소"+ today + "팀 : " + message.getMessageContent())
         );
     }
 

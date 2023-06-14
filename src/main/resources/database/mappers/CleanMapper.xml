@@ -20,10 +20,9 @@
         WHERE SCHEDULENUMBER = #{scheduleNumber}
     </delete>
 
-    <select id="getTodayClean" resultType="Long">
+    <select id="getTodayClean"  resultType="CalenderVO">
         SELECT SCHEDULENUMBER
         FROM CALENDER
-        WHERE  SCHEDULESTARTDATE <![CDATA[<=]]> CURRENT_DATE()
-        AND  SCHEDULEENDDATE  <![CDATA[>=]]> CURRENT_DATE();
+        WHERE CURRENT_DATE() BETWEEN SCHEDULESTARTDATE AND SCHEDULEENDDATE;
     </select>
 </mapper>

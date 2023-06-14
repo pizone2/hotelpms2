@@ -24,7 +24,7 @@ public class CleanService {
         return cleanDAO.deleteSchedule(calenderVO);
     }
 
-    public Long getTodayClean(CalenderVO calenderVO)throws Exception{
+    public CalenderVO getTodayClean(CalenderVO calenderVO)throws Exception{
         return cleanDAO.getTodayClean(calenderVO);
     }
 }
