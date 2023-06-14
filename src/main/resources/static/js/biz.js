@@ -1,3 +1,11 @@
+//input 태그 숨김처리
+let elements = document.getElementsByClassName("myDiv");
+for (let i = 0; i < elements.length; i++) {
+    elements[i].style.display = "none";
+}
+
+//사업자 인증이 완료되어야만 post 처리가 가능하도록 구현
+let isFalse = false;
 
 // 사업자  API 필수 데이터
 let data = {
@@ -36,6 +44,7 @@ document.querySelector('.btn-outline-blue').addEventListener('click', function (
                         success: function(businessNumber) {
                             // 결과 값에 따라 메시지를 출력 nouse 사용하지 않는 사업자 번호일 때 일치할때는 이미 등록된 사업자 번호 입니다로 출력
                             if (businessNumber === 'nouse') {
+                                isFalse = true;
                                 messageElement.innerText = '사업자 번호 인증이 완료되었습니다.';
                                 messageElement.style.color = 'green';
                             } else {
@@ -73,6 +82,13 @@ document.querySelector('.btn-outline-blue').addEventListener('click', function (
         }
     });
 
+});
+
+// 제출 버튼 클릭 이벤트 처리 ( 사업자 인증이 완료되어야지만 insert)
+document.getElementById("btn3").addEventListener("click", function() {
+    if (isFalse===true) {
+       document.getElementById("businessForm").submit();
+    }
 });
 
 //주소 api 데이터 호출 및 데이터 가공

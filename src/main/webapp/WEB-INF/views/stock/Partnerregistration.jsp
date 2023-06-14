@@ -55,7 +55,7 @@
                         <div class="card mb-4">
                             <div class="card-header">협력업체 사업자 등록 </div>
                             <div class="card-body">
-                                <form action="/partner/join" method="post" >
+                                <form action="/partner/join" method="post" id="businessForm" >
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <!-- Form Group (first name)-->
@@ -132,7 +132,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input  class="address" id="address" name="address">
+                                    <input  class="myDiv" id="address" name="address">
 
 
                                    <%-- <input type="text" id="address" name="address">--%>
@@ -162,9 +162,9 @@
                                         <input class="form-control" id="account" type="text" placeholder="정산계좌명을 입력해주세요" value="" />
                                     </div>
                                     </div>
-                                    <input id="settlementAccount"  name="settlementAccount">
+                                    <input class="myDiv"  id="settlementAccount"  name="settlementAccount">
 
-                                    <button class="btn btn-primary" id="btn3"  type="submit">사업자 등록 요청</button>
+                                    <button class="btn btn-primary" id="btn3"  type="button">사업자 등록 요청</button>
                                 </form>
                             </div>
                         </div>
