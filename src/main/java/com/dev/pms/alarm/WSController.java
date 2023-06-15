@@ -21,6 +21,6 @@ public class WSController {
     @PostMapping("/send-private-message/{roleName}")
     public void sendPrivateMessage(@PathVariable final String roleName,
                                    @RequestBody final Message message) {
-        service.notifyUser(roleName, message.getMessageContent());
+        service.notifyUser(message.getMessageContent());
     }
 }
