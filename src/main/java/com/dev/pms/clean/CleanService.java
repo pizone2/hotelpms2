@@ -1,5 +1,6 @@
 package com.dev.pms.clean;
 
+import com.dev.pms.room.ReservedVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,8 @@ public class CleanService {
 
     public CalenderVO getTodayClean(CalenderVO calenderVO)throws Exception{
         return cleanDAO.getTodayClean(calenderVO);
+    }
+    public List<ReservedVO> getRequestClean(CalenderVO calenderVO) throws Exception{
+        return cleanDAO.getRequestClean(calenderVO);
     }
 }

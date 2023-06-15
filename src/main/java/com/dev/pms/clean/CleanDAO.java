@@ -1,5 +1,6 @@
 package com.dev.pms.clean;
 
+import com.dev.pms.room.ReservedVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface CleanDAO {
     public int deleteSchedule(CalenderVO calenderVO)throws Exception;
 
     public CalenderVO getTodayClean(CalenderVO calenderVO)throws Exception;
+    public List<ReservedVO>getRequestClean(CalenderVO calenderVO) throws Exception;
 }

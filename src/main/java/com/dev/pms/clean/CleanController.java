@@ -1,5 +1,6 @@
 package com.dev.pms.clean;
 
+import com.dev.pms.room.ReservedVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class CleanController {
     public ModelAndView cleanSchedule(CalenderVO calenderVO) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<CalenderVO>calenderVOList=cleanService.getCleanList(calenderVO);
+        List<ReservedVO>RequestClean =cleanService.getRequestClean(calenderVO);
+        mv.addObject("request",RequestClean);
         mv.addObject("events",calenderVOList);
         mv.setViewName("clean/cleanSchedule");
 
@@ -44,6 +47,7 @@ public class CleanController {
         int result = cleanService.deleteSchedule(calenderVO);
         return mv;
     }
+
 
 
 }
