@@ -23,4 +23,25 @@ public class PartnerAdminController {
         mv.setViewName("stock/partnerAdminList");
         return mv;
     }
+
+
+    @PostMapping("partnerDelete")
+    @ResponseBody
+    public int stockDelete(@RequestBody List<String> businessNumbers) throws Exception{
+        int result=0;
+        //boolean check = false;
+        log.error(":::::{}:::::",businessNumbers.get(0));
+        for (String businessNumber : businessNumbers) {
+            result = stockService.setPartnerDelete(businessNumber);
+        }
+        return result;
+    }
+
+    @PostMapping("partnerUpdate")
+    @ResponseBody
+    public int stockUpdate(String businessNumber) throws Exception{
+        log.error(":::::{}:::::",businessNumber);
+        int result = stockService.setPartnerUpdate(businessNumber);
+        return result;
+    }
 }

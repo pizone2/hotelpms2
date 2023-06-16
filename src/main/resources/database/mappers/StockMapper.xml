@@ -47,4 +47,12 @@
     <select id="getPartnerList" resultType="PartnerVO">
         SELECT * FROM PARTNER
     </select>
+
+    <delete id="setPartnerDelete" parameterType="String">
+        DELETE FROM PARTNER WHERE BUSINESSNUMBER=#{businessNumber}
+    </delete>
+
+    <update id="setPartnerUpdate" parameterType="String">
+    UPDATE PARTNER SET APPROVAL =1 WHERE BUSINESSNUMBER=#{businessNumber}
+    </update>
 </mapper>

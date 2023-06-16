@@ -17,4 +17,9 @@ public interface StockDAO {
     public List<PartnerVO> getPartnerList() throws  Exception;
 
 
+    public int setPartnerDelete(String businessNumber) throws Exception;
+
+    public int setPartnerUpdate(String businessNumber) throws Exception;
+
+
 }

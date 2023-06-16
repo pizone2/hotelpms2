@@ -18,6 +18,6 @@ public class PartnerVO {
     private  String phoneNumber;
     private  String ceoName;
     private Date registrationDate;
-    private  String approval;
+    private  Boolean approval;
     private  String sectors;
 }

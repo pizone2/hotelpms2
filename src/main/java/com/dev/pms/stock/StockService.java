@@ -12,25 +12,34 @@ import java.util.List;
 public class StockService {
 
     @Autowired
-    private StockDAO partnerStockDAO;
+    private StockDAO stockDAO;
 
     public List<PartnerStockVO> getStockList(String businessNumber) throws Exception {
-        return partnerStockDAO.getStockList(businessNumber);
+        return stockDAO.getStockList(businessNumber);
     }
 
     public int setPartnerStock(PartnerStockVO partnerStockVO) throws Exception {
-        return partnerStockDAO.setPartnerStock(partnerStockVO);
+        return stockDAO.setPartnerStock(partnerStockVO);
     }
 
     public int setStockUpdate(PartnerStockVO partnerStockVO) throws Exception {
-        return partnerStockDAO.setStockUpdate(partnerStockVO);
+        return stockDAO.setStockUpdate(partnerStockVO);
     }
 
     public int setStockDelete(Long itemId) throws Exception {
-        return partnerStockDAO.setStockDelete(itemId);
+        return stockDAO.setStockDelete(itemId);
     }
 
     public List<PartnerVO> getPartnerList() throws Exception {
-        return partnerStockDAO.getPartnerList();
+        return stockDAO.getPartnerList();
     }
+
+    public int setPartnerDelete(String businessNumber) throws Exception{
+        return stockDAO.setPartnerDelete(businessNumber);
+    }
+
+    public int setPartnerUpdate(String businessNumber) throws Exception{
+        return stockDAO.setPartnerUpdate(businessNumber);
+    }
+
 }
