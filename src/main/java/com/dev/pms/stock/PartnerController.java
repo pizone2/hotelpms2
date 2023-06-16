@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PartnerController {
 
     @Autowired
-    private PartnerStockService parthnerService;
+    private StockService parthnerService;
 
     @GetMapping("join")
     public ModelAndView setJoin(@ModelAttribute PartnerVO partnerVO) throws Exception{

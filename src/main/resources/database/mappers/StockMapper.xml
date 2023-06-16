@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dev.pms.stock.PartnerStockDAO">
+<mapper namespace="com.dev.pms.stock.StockDAO">
     <insert id="setPartnerStock" parameterType="PartnerStockVO">
         INSERT INTO PARTNERSTOCK
-        VALUES (NULL,#{businessNumber},#{productName},#{itemCode},#{unit},#{unitPrice},CURDATE(),#{remarks},#{itemUsagestatus})
+        VALUES (NULL,#{businessNumber},#{productName},#{itemCode},#{unit},#{unitPrice},CURDATE(),#{remarks},0)
     </insert>
 
     <select id="getStockList" parameterType="String" resultMap="getPartnerStock">
@@ -17,8 +17,8 @@
     </select>
 
     <resultMap type="PartnerStockVO" id="getPartnerStock">
-    <!--Primary Key  -->
-    <id column="itemId" property="itemId" />
+        <!--Primary Key  -->
+        <id column="itemId" property="itemId" />
         <!-- 그외 나머지 -->
         <result column="businessNumber" property="businessNumber" />
         <result column="productName" property="productName" />
@@ -28,9 +28,23 @@
         <result column="registrationDate" property="registrationDate" />
         <result column="remarks" property="remarks" />
         <result column="itemUsagestatus" property="itemUsagestatus" />
-    <collection property="partnerVOS" javaType="List" ofType="PartnerVO" >
-        <id column="businessNumber"  property="businessNumber" />
-        <result column="companyName" property="companyName"/>
-    </collection>
+        <collection property="partnerVOS" javaType="List" ofType="PartnerVO" >
+            <id column="businessNumber"  property="businessNumber" />
+            <result column="companyName" property="companyName"/>
+        </collection>
     </resultMap>
+
+    <update id="setStockUpdate" parameterType="PartnerStockVO">
+        UPDATE PARTNERSTOCK
+        SET PRODUCTNAME=#{productName}, ITEMCODE=#{itemCode}, UNIT =#{unit}, UNITPRICE=#{unitPrice}, REMARKS=#{remarks},REGISTRATIONDATE =CURDATE()
+        WHERE ITEMID=#{itemId}
+    </update>
+
+    <delete id="setStockDelete" parameterType="Long">
+        DELETE FROM PARTNERSTOCK WHERE ITEMID=#{itemId}
+    </delete>
+
+    <select id="getPartnerList" resultType="PartnerVO">
+        SELECT * FROM PARTNER
+    </select>
 </mapper>

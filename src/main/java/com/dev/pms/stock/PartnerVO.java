@@ -18,5 +18,6 @@ public class PartnerVO {
     private  String ceoName;
     private  Date registrationDate;
     private  Boolean approval;
+    private String sectors;
 
 }

@@ -44,70 +44,73 @@
                             <div class="col-auto mb-3">
                                 <h1 class="page-header-title">
                                     <div class="page-header-icon"><i data-feather="user"></i></div>
-                                    ProductStock List
+                                    PartnerAdmin List
                                 </h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
-
             <!-- Main page content-->
             <div class="container-fluid px-4">
                 <div class="card">
                     <div class="card-body">
-                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" data-bs-toggle="modal" data-bs-target="#exampleModalLg1">품목추가</button>
-                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" data-bs-toggle="modal" data-bs-target="#exampleModalLg2">품목수정</button>
-                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" id="btn-delete">품목삭제</button>
+                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" data-bs-toggle="modal" data-bs-target="#exampleModalLg1">업체추가</button>
+                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" data-bs-toggle="modal" data-bs-target="#exampleModalLg2">업체수정</button>
+                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" id="btn-delete">업체삭제</button>
+                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" id="btn-register">상태변경</button>
+
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
                                 <th data-orderable="false"><input type="checkbox" id="checkAll" class="myCheckbox"></th>
-                                <th>품목번호</th>
                                 <th>상호명</th>
-                                <th>품목명</th>
-                                <th>품목코드</th>
-                                <th>단가</th>
-                                <th>단위</th>
-                                <th>비고</th>
+                                <th>담당자명</th>
+                                <th>전화번호</th>
+                                <th>이메일</th>
+                                <th>등록일</th>
+                                <th>등록상태</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th></th>
-                                <th>품목번호</th>
                                 <th>상호명</th>
-                                <th>품목명</th>
-                                <th>품목코드</th>
-                                <th>단가</th>
-                                <th>단위</th>
-                                <th>비고</th>
+                                <th>담당자명</th>
+                                <th>전화번호</th>
+                                <th>이메일</th>
+                                <th>등록일</th>
+                                <th>등록상태</th>
                             </tr>
                             </tfoot>
                             <tbody>
                             <c:forEach var="vo" items="${list}">
+                                <c:choose>
+                                    <c:when test="${vo.approval == false}">
+                                        <c:set var="status" value="등록신청" />
+                                    </c:when>
+                                    <c:when test="${vo.approval == true}">
+                                        <c:set var="status" value="등록완료" />
+                                    </c:when>
+                                </c:choose>
                                 <!-- 유저 정보-->
                                 <tr>
                                     <td><input type="checkbox" class="myCheckbox"></td>
-                                    <td>${vo.itemId}</td>
-                                    <td>${vo.partnerVOS[0].companyName}</td>
-                                    <td>${vo.productName}</td>
-                                    <td>${vo.itemCode}</td>
-                                    <td>${vo.unitPrice}</td>
-                                    <td>${vo.unit}</td>
-                                    <td>
-                                        <div class="truncate-text">${vo.remarks}</div>
-                                    </td>
+                                    <td>${vo.companyName}</td>
+                                    <td>${vo.contactName}</td>
+                                    <td>${vo.phoneNumber}</td>
+                                    <td>${vo.email}</td>
+                                    <td>${vo.registrationDate}</td>
+                                    <td>${status}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
-
-
                     </div>
                 </div>
             </div>
-            <%--insert 모달--%>
+
+        <%--insert 모달--%>
             <div class="modal fade" id="exampleModalLg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
@@ -216,6 +219,6 @@
 <script src="/js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables/datatables-simple-demo.js"></script>
-<script src="/js/partnerStock.js"></script>
+<script src="/js/partnerAdmin.js"></script>
 </body>
 </html>

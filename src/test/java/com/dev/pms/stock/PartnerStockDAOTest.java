@@ -10,20 +10,20 @@ import static org.junit.Assert.*;
 @SpringBootTest
 class PartnerStockDAOTest {
     @Autowired
-    private PartnerStockDAO partnerStockDAO;
+    private StockDAO partnerStockDAO;
 
     @Test
     void testInsertDummyData() throws Exception {
-        String businessNumber = "19930902000";
-        String productName = "칫솔";
+        String businessNumber = "3080913566";
+        String productName = "샴푸";
         String[] itemCodes = generateItemCodes(100);
         Random random = new Random();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String remarks1 = " 지속 가능한 원료를 사용해 제작한 친환경 칫솔입니다. 편안한 그립감과 초미세 브러쉬를 사용하여 깊숙한 청결함을 제공하며, 또한 세심하게 디자인되어 모든 가족이 사용할 수 있습니다.";
-        String remarks2 = "내구성이 뛰어나고, 편안한 그립감을 제공합니다. 또한, 100% 생분해 가능하여 친환경적입니다.";
+        String remarks1 = " 기름진 머리 등의 다양한 머리 문제를 해결하는데 탁월한 성능을 보여줍니다. 또한, 샴푸 사용 후 머릿결이 부드럽고 윤기 있으며, 향기로운 향이 오래 지속됩니다.";
+        String remarks2 = "우리의 샴푸는 환경에도 친숙합니다. 자연 친화적이고 지속 가능한 재료를 사용하여 생태계에 미치는 영향을 최소화합니다. 또한, 우리는 동물 실험을 하지 않으며, 동물에게 어떠한 피해도 주지 않는 것을 원칙으로 합니다.";
 
         int result = 0;
-        for (int i = 50; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             PartnerStockVO partnerStock = new PartnerStockVO();
             partnerStock.setBusinessNumber(businessNumber);
             partnerStock.setProductName(productName);
@@ -41,8 +41,8 @@ class PartnerStockDAOTest {
 
     private String[] generateItemCodes(int count) {
         String[] itemCodes = new String[count];
-        String prefix = "C";
-        for (int i = 51; i < count; i++) {
+        String prefix = "D";
+        for (int i = 1; i < count; i++) {
             String suffix = String.format("%03d", i + 1);
             itemCodes[i] = prefix + suffix;
         }
