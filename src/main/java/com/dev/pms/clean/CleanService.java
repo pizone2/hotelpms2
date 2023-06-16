@@ -31,4 +31,12 @@ public class CleanService {
     public List<ReservedVO> getRequestClean(CalenderVO calenderVO) throws Exception{
         return cleanDAO.getRequestClean(calenderVO);
     }
+
+    public int updateCleaningInProgress(ReservedVO reservedVO) throws Exception{
+        return cleanDAO.updateCleaningInProgress(reservedVO);
+    }
+
+    public int CleaningComplete(ReservedVO reservedVO) throws Exception{
+        return cleanDAO.CleaningComplete(reservedVO);
+    }
 }

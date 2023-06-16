@@ -1,21 +1,59 @@
-// JavaScript 코드
-// 서버로 AJAX 요청 보내기
-function updateCardContainer() {
+// $(document).ready(function() {
+//     updateCardContainer();
+//
+// function updateCardContainer() {
+//     $.ajax({
+//         url: 'cleanCheckList',
+//         method: 'GET',
+//         success: function (checkList) {
+//             // Update the container with the received HTML.
+//             $('#checkList').html(checkList);
+//         },
+//         error: function (error) {
+//             console.error('Error:', error);
+//         }
+//     });
+// }
+// });
+
+function CleaningInProgress(roomNumber) {
+    // Perform an AJAX request to update the data on the server
+    // Example using jQuery:
     $.ajax({
-        url: 'cleanCheckList',
-        method: 'GET',
-        success: function (checkList) {
-            // 받은 HTML로 컨테이너를 업데이트합니다.
-            $('#checkList').html(checkList);
+        url: '/updateCleaningInProgress',
+        method: 'POST',
+        data: {
+            roomNumber: roomNumber,
         },
-        error: function (error) {
-            console.error('에러:', error);
+        success: function(response) {
+            // Handle the success response
+            console.log('Cleaning request sent');
+        },
+        error: function(error) {
+            // Handle the error
+            console.error('An error occurred while sending the cleaning request');
         }
     });
 }
 
-// 초기에 컨테이너를 채우기 위해 updateCardContainer 함수를 호출합니다.
-// updateCardContainer();
 
-// 일정한 간격으로 컨테이너를 업데이트하기 위해 setInterval을 사용합니다.
-setInterval(updateCardContainer, 5000); // 5초마다 업데이트합니다 (필요에 따라 조정)
+
+function CleaningComplete(roomNumber) {
+    // Perform an AJAX request to update the data on the server
+    // Example using jQuery:
+    $.ajax({
+        url: '/cleaningComplete',
+        method: 'POST',
+        data: {
+            roomNumber: roomNumber,
+        },
+        success: function(response) {
+            // Handle the success response
+            console.log('변경완료(재실)');
+        },
+        error: function(error) {
+            // Handle the error
+            console.error('An error occurred while marking the cleaning as complete');
+        }
+    });
+}

@@ -27,9 +27,9 @@
     </select>
     
     <select id="getRequestClean" parameterType="ReservedVO" resultMap="getRequestCleanResult">
-        SELECT DISTINCT C.SCHEDULENUMBER, R.ROOMNUMBER
+        SELECT DISTINCT C.SCHEDULENUMBER, R.ROOMNUMBER, ROOMSTATUS
         FROM RESERVED R
-        JOIN CALENDER C ON R.ROOMSTATUS = '청소요청'
+        JOIN CALENDER C ON R.ROOMSTATUS = '청소요청' OR ROOMSTATUS = '청소중'
         AND CURRENT_DATE() BETWEEN C.SCHEDULESTARTDATE AND C.SCHEDULEENDDATE;
     </select>
 
@@ -38,6 +38,20 @@
         SET ROOMSTATUS = '청소중'
         WHERE ROOMNUMBER = #{roomNumber}
         AND ROOMSTATUS = '청소요청'
+    </update>
+
+    <update id="updateCleaningInProgress" parameterType="ReservedVO">
+        UPDATE RESERVED
+        SET ROOMSTATUS = '청소중'
+        WHERE ROOMNUMBER = #{roomNumber}
+        AND ROOMSTATUS = '청소요청'
+    </update>
+
+    <update id="CleaningComplete" parameterType="ReservedVO">
+        UPDATE RESERVED
+        SET ROOMSTATUS = '재실'
+        WHERE ROOMNUMBER = #{roomNumber}
+        AND ROOMSTATUS = '청소중'
     </update>
 
     <resultMap type="CalenderVO" id="getRequestCleanResult">
