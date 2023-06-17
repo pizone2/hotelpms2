@@ -21,4 +21,12 @@ public class RoomService {
         return roomDAO.getRoomStatus();
     }
 
+    public List<RoomTypeVO> getRoomSetting() throws Exception{
+        return roomDAO.getRoomSetting();
+    }
+
+    public int setRoomSetting(RoomTypeVO roomTypeVO)throws Exception{
+        return roomDAO.setRoomSetting(roomTypeVO);
+    }
+
 }

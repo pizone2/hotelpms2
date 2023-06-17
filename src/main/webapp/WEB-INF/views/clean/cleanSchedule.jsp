@@ -107,6 +107,7 @@
                             <h5 class="modal-title">청소 스케줄 등록 </h5>
                             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+
                         <div class="modal-body">
                             <form id="insertSchedule2" method="post" action="/insertSchedule">
                                 <div class="mb-3">
@@ -132,6 +133,39 @@
                             </form>
 
                         </div>
+                    </div>
+                </div>
+            </div>
+            <%--청소보고 모달--%>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form action="/clean/upload" method="post" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Default Bootstrap Modal</h5>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-md-12">
+                                    <label class="small mb-1" for="1">객실</label>
+                                    <input class="form-control" name="roomNumber" id="1" type="text" placeholder="ex) 101" value="">
+                                </div>  <div class="col-md-12" style="margin-top: 10px">
+                                <label class="small mb-1" for="2">소속</label>
+                                <input class="form-control" name="scheduleNumber" id="2" type="text" placeholder="ex 1" value="">
+                            </div>
+                                <div class="col-md-12" style="margin-top: 15px">
+                                    <input type="file" name="file">
+                                </div>
+                                <div class="col-md-12" style="margin-top: 10px">
+                                    <label class="small mb-1" for="3">비고</label>
+                                    <input class="form-control" name="note" id="3" type="text" placeholder="" value="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">취소</button>
+                                <button class="btn btn-primary" type="submit">보고</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -359,6 +393,10 @@
                                 <button class="btn btn-primary" type="button" data-bs-toggle="modal"
                                         data-bs-target="#exampleModalLg">스케줄 등록
                                 </button>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    청소보고
+                                </button>
+
 
                             </div>
                         </div>

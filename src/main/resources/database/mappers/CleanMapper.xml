@@ -9,10 +9,40 @@
         FROM CALENDER
     </select>
 
+    <select id="getRoomCleanList" resultType="RoomCleanVO">
+        SELECT rc.*, rci.savedname
+        FROM ROOMCLEAN rc
+        JOIN ROOMCLEANIMAGE rci ON rc.cleannum = rci.cleannum;
+    </select>
+
     <insert id="insertSchedule" parameterType="CalenderVO">
         INSERT INTO CALENDER(SCHEDULENUMBER,SCHEDULEENDDATE,SCHEDULESTARTDATE)
         VALUES (#{scheduleNumber},#{scheduleEnddate},#{scheduleStartdate})
     </insert>
+
+    <insert id="insertFile" parameterType="FileVO">
+        INSERT INTO ROOMCLEANIMAGE (cleanNum, orgName, savedName, savedPath)
+        VALUES (#{cleanNum}, #{orgName}, #{savedName}, #{savedPath})
+    </insert>
+
+    <insert id="setRoomClean" parameterType="RoomCleanVO">
+        INSERT INTO ROOMCLEAN
+        VALUES (NULL,#{roomNumber}, #{scheduleNumber}, SYSDATE(),'미확인', #{note})
+    </insert>
+
+    <update id="updateCleanNum">
+        UPDATE ROOMCLEANIMAGE
+        SET cleannum = (SELECT cleannum FROM ROOMCLEAN ORDER BY cleannum DESC LIMIT 1)
+        ORDER BY IMAGEID DESC
+        LIMIT 1;
+    </update>
+
+    <update id="setCleanStatus" parameterType="RoomCleanVO">
+       UPDATE ROOMCLEAN
+       SET CONFIRMATIONSTATUS = "확인"
+       WHERE CLEANNUM = #{cleanNum}
+    </update>
+
 
     <delete id="deleteSchedule" parameterType="CalenderVO">
         DELETE
