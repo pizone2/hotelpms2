@@ -21,7 +21,7 @@
                             실시간 객실 상태
                         </a>
                         <a class="nav-link" href="/roomStatus/roomStatusList">객실현황</a>
-                        <a class="nav-link" href="#">객실 청소상태</a>
+                        <a class="nav-link" href="/clean/roomClean">객실 청소상태</a>
                     </nav>
                 </div>
                 <!-- Sidenav Heading (Custom)-->
@@ -38,16 +38,13 @@
                         <a class="nav-link collapsed" href="/partnerAdmin/partnerList">
                             업체리스트
                         </a>
-
                         <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
-                        <a class="nav-link collapsed" href="#">
-                            재고리스트
-                        </a>
+                        <a class="nav-link collapsed" href="/stock/managerStockList">재고리스트</a>
                         <!-- Nested Sidenav Accordion (Pages -> Error)-->
                         <a class="nav-link collapsed" href="#">
                             전체품목리스트
                         </a>
-                        <a class="nav-link" href="#">정산관리</a>
+                        <a class="nav-link" href="pricing.html">정산관리</a>
                     </nav>
                 </div>
 
@@ -58,6 +55,8 @@
                     <div class="nav-link-icon"><i data-feather="globe"></i></div>
                     고객관리
                 </a>
+
+
                 <!-- Sidenav Heading (Custom)-->
                 <div class="sidenav-menu-heading">매출</div>
                 <!-- Sidenav Accordion (Flows)-->
@@ -76,9 +75,7 @@
                 <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
                     <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
                         <!-- Nested Sidenav Accordion (Layout -> Navigation)-->
-                        <a class="nav-link collapsed" href="#">
-                            객실설정
-                        </a>
+                        <a class="nav-link collapsed" href="/room/roomSettingList">객실설정</a>
                         <!-- Nested Sidenav Accordion (Layout -> Container Options)-->
                         <a class="nav-link collapsed" href="/partnerAdmin/stockSetting">
                             객실별 소모품 설정
