@@ -32,6 +32,8 @@
         JOIN CALENDER C ON R.ROOMSTATUS = '청소요청' OR ROOMSTATUS = '청소중'
         AND CURRENT_DATE() BETWEEN C.SCHEDULESTARTDATE AND C.SCHEDULEENDDATE;
     </select>
+    
+
 
     <update id="updateCleanStatus" parameterType="ReservedVO">
         UPDATE RESERVED

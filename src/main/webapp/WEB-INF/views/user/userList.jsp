@@ -59,7 +59,7 @@
                                             <th>이메일</th>
                                             <th>권한</th>
                                             <th>전화번호</th>
-                                            <th>Joined Date</th>
+                                            <th>유저정보 수정</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
