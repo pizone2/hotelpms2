@@ -1,5 +1,6 @@
 package com.dev.pms.clean;
 
+import com.dev.pms.room.ReservedVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,7 +45,21 @@ public class CleanService {
     public int deleteSchedule(CalenderVO calenderVO)throws Exception{
         System.out.println(calenderVO.getScheduleNumber());
         return cleanDAO.deleteSchedule(calenderVO);
+    }
 
+    public CalenderVO getTodayClean(CalenderVO calenderVO)throws Exception{
+        return cleanDAO.getTodayClean(calenderVO);
+    }
+    public List<ReservedVO> getRequestClean(CalenderVO calenderVO) throws Exception{
+        return cleanDAO.getRequestClean(calenderVO);
+    }
+
+    public int updateCleaningInProgress(ReservedVO reservedVO) throws Exception{
+        return cleanDAO.updateCleaningInProgress(reservedVO);
+    }
+
+    public int CleaningComplete(ReservedVO reservedVO) throws Exception{
+        return cleanDAO.CleaningComplete(reservedVO);
     }   public int setCleanStatus(RoomCleanVO roomCleanVO)throws Exception{
         return cleanDAO.setCleanStatus(roomCleanVO);
 
@@ -70,4 +85,4 @@ public class CleanService {
     public int setRoomClean(RoomCleanVO roomCleanVO)throws Exception{
         return cleanDAO.setRoomClean(roomCleanVO);
     }
-    }
+}

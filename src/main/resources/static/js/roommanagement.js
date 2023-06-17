@@ -1,5 +1,4 @@
 
-
 document.addEventListener("DOMContentLoaded", function() {
     let tdElements = document.querySelectorAll("td[id^='pa']");
     let divElements = document.querySelectorAll("div[id^='ch']");
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (tdElement.className.includes("예약완료")) {
                 tdElement.classList.add("bg-blue", "text-white");
                 tdElement.onclick = function() {
-                    window.location.href = "../roomDetail/resConfirmed?roomNumber="+roomNumber;
+                    window.location.href = "../roomDetail/resConfirmed?roomNumber="+roomNumber+"&roomStatus=예약완료";
                 };
             } else if (tdElement.className.includes("청소요청")) {
                 tdElement.classList.add("bg-info", "text-white");
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (tdElement.className.includes("재실")) {
                 tdElement.classList.add("bg-warning", "text-white");
                 tdElement.onclick = function() {
-                    window.location.href = "../roomDetail/houseRoom?roomNumber="+roomNumber;
+                    window.location.href = "../roomDetail/houseRoom?roomNumber="+roomNumber+"&roomStatus=재실";
                 };
             } else if (tdElement.className.includes("청소중")) {
                 tdElement.style.backgroundColor = "#ff662e";
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 tdElement.style.backgroundColor = "#00673f";
                 tdElement.style.color = "white";
             }
-
         }
     }
 });
@@ -158,7 +156,6 @@ $(document).ready(function() {
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         // 하나 이상의 객실 상태 체크박스가 선택된 경우 모든 방을 숨깁니다.
         if (filtersApplied || selectedRoomstatus.length > 0) {
             $('td.tdroom').hide();
@@ -191,7 +188,6 @@ $(document).ready(function() {
 
     //////////////////////////////////////////
     // 선택된 방의 개수 계산
-
     // class="tdroom"인 모든 요소의 개수를 구합니다.
     let tdroomCount = $('.tdroom').length / 2;
 
