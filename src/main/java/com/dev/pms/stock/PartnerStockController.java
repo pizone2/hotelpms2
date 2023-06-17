@@ -19,7 +19,7 @@ public class PartnerStockController {
     @GetMapping("stockList")
     public ModelAndView getStockList(String businessNumber) throws Exception {
         ModelAndView mv = new ModelAndView();
-        businessNumber = "3080913566";
+        businessNumber = "2618123567";
         List<PartnerStockVO> list = partnerStockService.getStockList(businessNumber);
         mv.addObject("list",list);
         mv.setViewName("stock/partnerStockList");

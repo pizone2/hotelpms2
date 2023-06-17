@@ -44,4 +44,11 @@ public class PartnerAdminController {
         int result = stockService.setPartnerUpdate(businessNumber);
         return result;
     }
+
+    @GetMapping("stockSetting")
+    public ModelAndView setStockSetting() throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("stock/stockSetting");
+        return mv;
+    }
 }
