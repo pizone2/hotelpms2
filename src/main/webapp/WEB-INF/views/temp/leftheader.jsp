@@ -53,11 +53,8 @@
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAccount" aria-expanded="false" aria-controls="pagesCollapseAccount">
                             업체리스트
                         </a>
-
                         <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                            재고리스트
-                        </a>
+                        <a class="nav-link" href="/stock/managerStockList">재고리스트</a>
                         <!-- Nested Sidenav Accordion (Pages -> Error)-->
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                             전체품목리스트
@@ -93,9 +90,7 @@
                 <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
                     <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
                         <!-- Nested Sidenav Accordion (Layout -> Navigation)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutSidenavVariations" aria-expanded="false" aria-controls="collapseLayoutSidenavVariations">
-                            객실설정
-                        </a>
+                        <a class="nav-link" href="/room/roomSettingList">객실설정</a>
                         <!-- Nested Sidenav Accordion (Layout -> Container Options)-->
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutContainers" aria-expanded="false" aria-controls="collapseLayoutContainers">
                             객실별 소모품 설정

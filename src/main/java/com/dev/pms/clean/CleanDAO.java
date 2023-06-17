@@ -14,4 +14,5 @@ public interface CleanDAO {
     public int insertFile(FileVO fileVO)throws Exception;
     public int setRoomClean(RoomCleanVO roomCleanVO)throws Exception;
     public int updateCleanNum()throws Exception;
+    public int setCleanStatus(RoomCleanVO roomCleanVO)throws Exception;
 }

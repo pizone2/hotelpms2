@@ -45,6 +45,9 @@ public class CleanService {
         System.out.println(calenderVO.getScheduleNumber());
         return cleanDAO.deleteSchedule(calenderVO);
 
+    }   public int setCleanStatus(RoomCleanVO roomCleanVO)throws Exception{
+        return cleanDAO.setCleanStatus(roomCleanVO);
+
     }
 
     public int saveFile(MultipartFile multipartFile) throws Exception {

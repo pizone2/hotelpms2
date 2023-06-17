@@ -84,13 +84,13 @@
                                     <tr>
                                         <td>${roomClean.cleanNum}</td>
                                         <td>
-                                            <span class="modal-trigger roomNumber" data-note="${roomClean.note}" data-savedName="${roomClean.savedName}">
+                                            <span class="modal-trigger roomNumber" data-note="${roomClean.note}" data-savedName="${roomClean.savedName}" data-cleanNum="${roomClean.cleanNum}">
                                                     ${roomClean.roomNumber}
                                             </span>
                                         </td>
                                         <td>${roomClean.scheduleNumber}</td>
                                         <td>${roomClean.dateOfRegistration}</td>
-                                        <td>${roomClean.confirmationStatus}</td>
+                                        <td style="color: ${roomClean.confirmationStatus == '확인' ? 'blue' : 'red'}">${roomClean.confirmationStatus}</td>
                                         <td>${roomClean.note}</td>
                                     </tr>
                                 </c:forEach>
@@ -125,7 +125,7 @@
                                             <button class="btn btn-dark" type="button" data-bs-dismiss="modal">취소</button>
                                             <input type="hidden" name="pageName" value="${pageName}">
                                             <input type="hidden" name="roomNumber" value="${bookingVO.roomNumber}">
-                                            <button class="btn btn-dark" type="button" id="btn-send">저장</button>
+
                                         </div>
                                 </div>
                         </div>

@@ -79,6 +79,11 @@ public class CleanController {
 //        }
 
         return "redirect:/";
+    }   @PostMapping("/cleanStatus")
+    public String insertSchedule(RoomCleanVO roomCleanVO) throws Exception {
+        cleanService.setCleanStatus(roomCleanVO);
+
+        return "redirect:/";
     }
 
 

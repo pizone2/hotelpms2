@@ -15,6 +15,7 @@
         <typeAlias type="com.dev.pms.stock.PartnerVO" alias="PartnerVO"></typeAlias>
         <typeAlias type="com.dev.pms.clean.RoomCleanVO" alias="RoomCleanVO"></typeAlias>
         <typeAlias type="com.dev.pms.clean.FileVO" alias="FileVO"></typeAlias>
+        <typeAlias type="com.dev.pms.stock.ManagerStockVO" alias="ManagerStockVO"></typeAlias>
     </typeAliases>
 
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.pms.stock.ManagerDAO">
+    <select id="getStockList" resultType="ManagerStockVO">
+        SELECT H.*, P.PRODUCTNAME, P.ITEMCODE, P.UNITPRICE
+        FROM HOTELSTOCK AS H
+        JOIN PARTNERSTOCK AS P ON H.ITEMID = P.ITEMID;
+    </select>
+
+    <update id="setQuantity" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        SET AUTOORDERQUANTITY = #{quantity}
+        WHERE ITEMID = #{itemId};
+    </update>
+</mapper>

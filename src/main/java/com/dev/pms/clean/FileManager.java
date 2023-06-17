@@ -23,8 +23,12 @@ public class FileManager {
         }
 
         // 확장자 추가
+
+
+
         String name = UUID.randomUUID().toString();
-        name = name + "_" + multipartFile.getOriginalFilename();
+        String originalFilename = multipartFile.getOriginalFilename();
+        name = name + "." + originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
 
         // 파일 저장 두가지 방법
         file = new File(file, name);

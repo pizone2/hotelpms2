@@ -37,6 +37,12 @@
         LIMIT 1;
     </update>
 
+    <update id="setCleanStatus" parameterType="RoomCleanVO">
+       UPDATE ROOMCLEAN
+       SET CONFIRMATIONSTATUS = "확인"
+       WHERE CLEANNUM = #{cleanNum}
+    </update>
+
 
     <delete id="deleteSchedule" parameterType="CalenderVO">
         DELETE
