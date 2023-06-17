@@ -34,7 +34,7 @@
                                     <div class="col-auto mb-3">
                                         <h1 class="page-header-title">
                                             <div class="page-header-icon"><i data-feather="user"></i></div>
-                                            Users List
+                                            고객관리
                                         </h1>
                                     </div>
                                 </div>
@@ -44,6 +44,7 @@
                     <!-- Main page content-->
                     <div class="container-fluid px-4">
                         <div class="card">
+                            <div class="card-header">유저 정보</div>
                             <div class="card-body">
                                     <div class="col-12 col-xl-3 mb-3">
 
@@ -94,15 +95,80 @@
                                                 <c:if test="${userVO.roleName eq 'ROLE_CLEAN'}">
                                                     <span class="badge bg-red-soft text-red">ROLE_CLEAN</span>
                                                 </c:if>
+                                                <c:if test="${userVO.roleName eq 'ROLE_STOCK'}">
+                                                    <span class="badge bg-purple-soft text-purple">ROLE_STOCK</span>
+                                                </c:if>
+                                                <c:if test="${userVO.roleName eq 'ROLE_ADMIN'}">
+                                                    <span class="badge bg-yellow-soft text-yellow">ROLE_ADMIN</span>
+                                                </c:if>
 
-<%--                                                <span class="badge bg-purple-soft text-purple">Managers</span>--%>
-<%--                                                <span class="badge bg-yellow-soft text-yellow">Customer</span>--%>
+
                                             </td>
                                             <td>${userVO.phoneNumber}</td>
                                             <td>
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="/user-management-edit-user.html"><i data-feather="edit"></i></a>
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i data-feather="trash-2"></i></a>
                                             </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid px-4 mt-5">
+                        <div class="card">
+                            <div class="card-header">유저 예약정보</div>
+                            <div class="card-body">
+                                <div class="col-12 col-xl-3 mb-3">
+
+                                    <form action="/user/download" method="get">
+                                        <button class="btn btn-sm btn-light text-primary" type="submit">Excel 파일 출력</button>
+                                    </form>
+                                </div>
+                                <table id="datatablesSimple2">
+                                    <thead>
+                                    <tr>
+                                        <th>이름</th>
+                                        <th>아이디</th>
+                                        <th>방번호</th>
+                                        <th>룸타입</th>
+                                        <th>CHECKINDATE</th>
+                                        <th>CHECKOUTDATE</th>
+                                        <th>예약인원</th>
+                                        <th>전화번호</th>
+                                        <th>이메일</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Groups</th>
+                                        <th>Joined Date</th>
+                                        <th>Actions</th>
+                                        <th>예약인원</th>
+                                        <th>전화번호</th>
+                                        <th>이메일</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <c:forEach var="userBookingList" items="${userBookingList}">
+                                        <!-- 유저 정보-->
+                                        <tr>
+                                            <td>${userBookingList.name}</td>
+                                            <td>${userBookingList.id}</td>
+                                            <td>${userBookingList.roomNumber}호</td>
+                                            <td>${userBookingList.roomType}</td>
+                                            <td>${userBookingList.checkinDate}</td>
+                                            <td>${userBookingList.checkoutDate}</td>
+                                            <td>${userBookingList.guestCount}명</td>
+                                            <td>${userBookingList.phoneNumber}</td>
+                                            <td>${userBookingList.reservationEmail}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

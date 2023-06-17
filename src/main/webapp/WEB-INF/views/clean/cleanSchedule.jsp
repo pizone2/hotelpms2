@@ -49,7 +49,7 @@
                             <div class="col-auto mt-4">
                                 <h1 class="page-header-title">
                                     <div class="page-header-icon"><i data-feather="activity"></i></div>
-                                    CleanSchedule
+                                    청소 스케줄
                                 </h1>
                                 <div class="page-header-subtitle">Example dashboard overview and content summary</div>
                             </div>
@@ -196,9 +196,25 @@
                 <div class="row">
                     <div class="col-xxl-8">
                         <!-- Tabbed dashboard card example-->
+                        <div class="card mb-4">
+                                    <div class="card-header">청소부 스케줄 관리</div>
+                            <div class="card-body py-5">
+                                <div class="justify-content-left">
+                                    <c:set value="<%=Date%>" var="today" />
+                                    <h5>Today : ${today}</h5>
 
+                                </div>
+                                <div class="d-flex flex-column justify-content-center">
+                                    <div class="text-center px-0 px-lg-5">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 풀 캘린더 사용 -->
-                        <div id='calendar' class="mb-4"></div>
+                        <div id='calendar' class="mb-4">
+
+                        </div>
                         <script>
                             document.addEventListener('DOMContentLoaded', function() {
                                 let calendarEl = document.getElementById('calendar');
@@ -269,20 +285,8 @@
                             });
                         </script>
 
-                        <!-- Illustration dashboard card example-->
-                        <div class="card mb-4">
-                            <div class="card-body py-5">
-                                       <div class="justify-content-left">
-                                        <c:set value="<%=Date%>" var="today" />
-                                        <h5>${today}</h5>
-                                       </div>
-                                <div class="d-flex flex-column justify-content-center">
-                                    <div class="text-center px-0 px-lg-5">
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
                     </div>
                     <div class="col-xxl-4">
@@ -330,7 +334,7 @@
                                                                         src="/assets/img/illustrations/profiles/profile-1.png" alt=""/>
                                                                 </div>
                                                                 <div class="d-flex flex-column fw-bold">
-                                                                    <div class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</div>
+                                                                   <span class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</span><div class="cleaning">청소중</div>
                                                                     <div class="small text-muted line-height-normal">${request2.roomNumber}</div>
                                                                 </div>
                                                             </div>

@@ -1,5 +1,6 @@
 package com.dev.pms.clean;
 
+import com.dev.pms.room.BookingVO;
 import com.dev.pms.room.ReservedVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,4 +40,6 @@ public class CleanService {
     public int CleaningComplete(ReservedVO reservedVO) throws Exception{
         return cleanDAO.CleaningComplete(reservedVO);
     }
+
+
 }
