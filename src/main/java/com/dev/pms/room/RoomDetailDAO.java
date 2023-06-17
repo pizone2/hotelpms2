@@ -21,4 +21,6 @@ public interface RoomDetailDAO {
 
     public int setStatusHouse(BookingVO bookingVO) throws Exception;
 
+
+
 }

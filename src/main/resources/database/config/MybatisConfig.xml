@@ -10,6 +10,8 @@
         <typeAlias type="com.dev.pms.room.ReservedVO" alias="ReservedVO" />
         <typeAlias type="com.dev.pms.room.RoomVO" alias="RoomVO" />
         <typeAlias type="com.dev.pms.stock.PartnerVO" alias="PartnerVO" />
+        <typeAlias type="com.dev.pms.stock.PartnerStockVO" alias="PartnerStockVO"></typeAlias>
+        <typeAlias type="com.dev.pms.stock.HotelStockVO" alias="HotelStockVO"></typeAlias>
     </typeAliases>
 
 </configuration>
