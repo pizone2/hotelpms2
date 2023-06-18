@@ -16,6 +16,7 @@
           AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}-->
 
     <!--기업별 세부 정산리스트 불러오기-->
+<!--
     <select id="getByReceipt" parameterType="LocalDate" resultType="PartnerCalculateVO">
     SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
     DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,
@@ -27,6 +28,7 @@
     AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}
     AND P.BUSINESSNUMBER = #{businessNumber};
     </select>
+-->
 
     <!--연월 기준으로 전체 품목 리스트 불러오기-->
     <select id="getByYearMonth" parameterType="java.lang.String" resultType="PartnerCalculateVO">

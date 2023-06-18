@@ -3,10 +3,7 @@ package com.dev.pms.stock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -21,9 +18,10 @@ public class PartnerCalculateController {
     private PartnerCalculateService PartnerCalculateService;
 
     @GetMapping("list")
-    public ModelAndView getCalculateList() throws Exception {
+    public ModelAndView getCalculateList(@RequestParam("date") String date) throws Exception {
         ModelAndView mv = new ModelAndView();
-        String yearMonths = PartnerCalculateService.getYearMonth();
+        //String yearMonths = PartnerCalculateService.getYearMonth();
+        String yearMonths = PartnerCalculateService.getYearMonth(date);
         System.out.println("컨트롤러 스트링값"+ yearMonths);
         List<PartnerCalculateVO> stockList = PartnerCalculateService.getByYearMonth(yearMonths);
         System.out.println("컨트롤러 리스트"+ stockList);

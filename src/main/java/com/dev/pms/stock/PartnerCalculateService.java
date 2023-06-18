@@ -17,13 +17,18 @@ public class PartnerCalculateService {
     @Autowired
     private PartnerCalculateDAO partnerCalculateDAO;
 
-
-    public String getYearMonth() {
+  /*   public String getYearMonth(String date) {
         YearMonth currentYearMonth = YearMonth.now();
         System.out.println("서비스 스트링이어먼스"+ currentYearMonth);
         return currentYearMonth.format(DateTimeFormatter.ofPattern("yyyy-MM"));
 
-    }
+    }*/
+ public String getYearMonth(String date) {
+     LocalDate localDate = LocalDate.parse(date); // 받은 날짜 값을 파싱하여 LocalDate 객체로 변환
+     YearMonth yearMonth = YearMonth.from(localDate); // YearMonth 객체 생성
+     System.out.println("Service String Month: " + yearMonth);
+     return yearMonth.format(DateTimeFormatter.ofPattern("yyyy-MM")); // 원하는 형식으로 포맷팅하여 반환
+ }
 
 
     /*ublic String getYearMonth() {
