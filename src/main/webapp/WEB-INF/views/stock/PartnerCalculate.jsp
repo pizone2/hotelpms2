@@ -108,7 +108,7 @@
                             <div class="card-header">상세 품목 리스트</div>
                             <div class="card-body">
                                 <form>
-                                    <div id="tableDiv"></div>
+                                    <div id="tableDiv" style="overflow-x: auto;"></div>
                                 </form>
                             </div>
                         </div>
