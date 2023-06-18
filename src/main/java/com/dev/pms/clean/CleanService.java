@@ -87,5 +87,9 @@ public class CleanService {
         return cleanDAO.setRoomClean(roomCleanVO);
     }
 
+    public Long cleanScheduleCheck(CalenderVO calenderVO) throws Exception{
+        return cleanDAO.cleanScheduleCheck(calenderVO);
+    }
+
 
 }

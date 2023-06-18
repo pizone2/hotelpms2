@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.pms.stock.PartnerManagerStockDAO">
+    <select id="getPartnerManagerList" resultType="ManagerStockVO">
+        SELECT H.*, P.PRODUCTNAME, P.ITEMCODE, P.UNITPRICE
+        FROM HOTELSTOCK AS H
+        JOIN PARTNERSTOCK AS P ON H.ITEMID = P.ITEMID;
+    </select>
+
+
+    <update id="updateInProgress" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        SET ORDERSTATUS  = '발주중'
+        WHERE INVENTORYID = #{inventoryId}
+    </update>
+
+</mapper>
