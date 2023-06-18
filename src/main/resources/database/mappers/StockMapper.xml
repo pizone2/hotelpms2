@@ -61,7 +61,7 @@
     </select>
 
     <select id="getHotelStockList" resultMap="getHotelStock">
-        SELECT p.PRODUCTNAME , p.ITEMCODE, h.CURRENTSTOCK
+        SELECT p.PRODUCTNAME , p.ITEMCODE, h.CURRENTSTOCK, h.INVENTORYID
         FROM HOTELSTOCK h
         INNER JOIN PARTNERSTOCK p
         USING (ITEMID)
@@ -82,4 +82,25 @@
             <result column="unitPrice" property="unitPrice"/>
         </association>
     </resultMap>
+
+    <insert id="setRoomStockAdd" parameterType="RoomStockVO">
+        INSERT INTO ROOMSTOCK
+        VALUES (#{roomType},#{inventoryId},#{count})
+    </insert>
+
+    <select id="getRoomTypeCount" parameterType="String" resultType="Long">
+        SELECT COUNT(*) FROM ROOMSTOCK
+        WHERE ROOMTYPE =#{roomType}
+    </select>
+
+    <delete id="setRoomStockDelete" parameterType="String">
+        DELETE FROM ROOMSTOCK WHERE ROOMTYPE =#{roomType}
+    </delete>
+
+    <select id="getRoomTypeStock" parameterType="String" resultType="RoomStockVO">
+        SELECT * FROM ROOMSTOCK
+        WHERE ROOMTYPE =#{roomType}
+    </select>
+
+
 </mapper>

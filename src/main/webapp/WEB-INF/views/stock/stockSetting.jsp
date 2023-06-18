@@ -74,19 +74,18 @@
                                                     <tr class="row" data-max-stock="${hotelStockList.currentStock}" id="row${status.index}">
                                                         <td class="col-6">
                                                             <label class="custom-checkbox">
-                                                                <input type="checkbox" class="myCheckbox">
+                                                                <input type="checkbox" class="myCheckbox" value="${hotelStockList.inventoryId}">
                                                                     ${hotelStockList.partnerStockVO.productName}(${hotelStockList.partnerStockVO.itemCode})
                                                             </label>
                                                         </td>
                                                         <td class="col-6">
-                                                            <button type="button" class="btn btn-dark plusbtn"
-                                                                    style="border: none">+</button>
-                                                            <button type="button" class="btn btn-dark minusbtn"
-                                                                    style="border: none">-</button>
-                                                            <input type="text" id="stockLabel${status.index}" name="stockLabel${status.index}" value="0" readonly>
+                                                            <button type="button" class="btn btn-dark plusbtn" style="border: none">+</button>
+                                                            <button type="button" class="btn btn-dark minusbtn" style="border: none">-</button>
+                                                            <label id="stock${status.index}" name="stock${status.index}" value="0" min="0" max="${hotelStockList.currentStock}" >0</label>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -98,7 +97,7 @@
                             <div class="col-9">
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-outline-black" type="button" id="btn-checkin" > 등록 </button>
+                                <button class="btn btn-outline-black" type="button" id="btn-register" > 등록 </button>
                             </div>
                         </div>
 
@@ -116,34 +115,6 @@
 <script src="/js/scripts.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/stockSetting.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.plusbtn').click(function() {
-            let currentRow = $(this).closest('tr');
-            let rowId = currentRow.attr('id');
-            let stockLabel = $('#' + 'stockLabel' + rowId.replace('row', ''));
-            let currentStock = parseInt(stockLabel.text());
-            let maxStock = parseInt(currentRow.attr('data-max-stock'));
-
-            if(currentStock < maxStock) {
-                currentStock++;
-                stockLabel.text(currentStock);
-            }
-        });
-
-        $('.minusbtn').click(function() {
-            let currentRow = $(this).closest('tr');
-            let rowId = currentRow.attr('id');
-            let stockLabel = $('#' + 'stockLabel' + rowId.replace('row', ''));
-            let currentStock = parseInt(stockLabel.text());
-
-            if(currentStock > 0) {
-                currentStock--;
-                stockLabel.text(currentStock);
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
