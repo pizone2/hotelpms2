@@ -89,9 +89,9 @@
                                         <c:forEach var="vo" items="${list}">
                                         <tr>
                                             <td class="tg-mkvm">${vo.companyName}</td>
-                                            <td class="tg-mkvm">${vo.companyName}</td>
-                                            <td class="tg-mkvm">${vo.companyName}</td>
-                                            <td class="tg-mkvm">${vo.companyName}</td>
+                                            <td class="tg-mkvm">${vo.businessNumber}</td>
+                                            <td class="tg-mkvm">${vo.email}</td>
+                                            <td class="tg-mkvm">${vo.amount}</td>
                                         </tr>
                                         </c:forEach>
                                         </tbody>
@@ -101,39 +101,6 @@
                         </div>
                     </div>
 
-                <%--    <div class="col-xl-4">
-                        <!-- Profile picture card-->
-                        <div class="card mb-4 mb-xl-0">
-                            <div class="card-header">고객사 리스트 </div>
-                            <div class="card-body text-center">
-                                <!-- 테이블 들어가는  부분 -->
-                                <table class="tg" style="undefined;table-layout: fixed; width: 630px">
-                                    <colgroup>
-                                        <col style="width: 118.333333px">
-                                        <col style="width: 137.333333px">
-                                        <col style="width: 206.333333px">
-                                        <col style="width: 168.333333px">
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <th class="tg-n40f">상호명</th>
-                                        <th class="tg-7t7i">사업자 번호</th>
-                                        <th class="tg-9qze">담당자 이메일</th>
-                                        <th class="tg-9qze">금액</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="tg-5bf1"></td>
-                                        <td class="tg-mkvm"></td>
-                                        <td class="tg-5bf1"></td>
-                                        <td class="tg-mkvm"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>--%>
                     <div class="col-xl-8">
                         <!-- Account details card-->
                         <div class="card mb-4">

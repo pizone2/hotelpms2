@@ -27,6 +27,15 @@ public class PartnerCalculateController {
         System.out.println("컨트롤러 스트링값"+ yearMonths);
         List<PartnerCalculateVO> stockList = PartnerCalculateService.getByYearMonth(yearMonths);
         System.out.println("컨트롤러 리스트"+ stockList);
+        for (PartnerCalculateVO vo : stockList) {
+            System.out.println(vo.getCompanyName());
+           // System.out.println(vo.getPartnerVO().getBusinessNumber());
+            //System.out.println(vo.getPartnerVO().getEmail());
+            //System.out.println(vo.getPartnerVO());
+            System.out.println(vo);
+            System.out.println(vo.getAmount());
+            // 나머지 필요한 값들도 출력
+        }
         mv.addObject("list", stockList);
         mv.setViewName("stock/PartnerCalculate");
         return mv;
