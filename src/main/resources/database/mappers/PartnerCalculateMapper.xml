@@ -18,40 +18,25 @@
     </select>
 -->
 
-<!--
-    <select id="getByYearMonth" parameterType="java.time.YearMonth" resultType="PartnerCalculateVO">
-        SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
-        DATE_FORMAT(SM.USERDATE, '%Y-%m') AS YEARMONTH,
-        MONTH(SM.USERDATE) AS MONTH
-        FROM PARTNER AS P
-        LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
-        LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
-        WHERE SM.ITEMID IS NOT NULL
-        AND DATE_FORMAT(SM.USERDATE, '%Y-%m') = #{yearMonth}
-    </select>
--->
-
-
-<!--    <select id="getByYearMonth" parameterType="java.lang.String" resultType="PartnerCalculateVO">-->
-<!--        SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,-->
-<!--       DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,-->
-<!--       MONTH(SM.USERDATE) AS MONTH-->
-<!--        FROM PARTNER AS P-->
-<!--        LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER-->
-<!--    LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID-->
-<!--    WHERE SM.ITEMID IS NOT NULL-->
-<!--    AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}-->
-<!--    </select>-->
 
     <select id="getByYearMonth" parameterType="java.lang.String" resultType="PartnerCalculateVO">
-        SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
+     <!--   SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
         DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,
         MONTH(SM.USERDATE) AS MONTH
         FROM PARTNER AS P
         LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
         LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
         WHERE SM.ITEMID IS NOT NULL
+        AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}-->
+        SELECT P.BUSINESSNUMBER, P.CONTACTNAME, P.COMPANYNAME, P.EMAIL,
+        SUM(PS.UNITPRICE * PS.UNIT) AS AMOUNT
+        FROM PARTNER AS P
+        LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+        LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+        WHERE SM.ITEMID IS NOT NULL
         AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}
+        GROUP BY P.BUSINESSNUMBER, P.CONTACTNAME, P.COMPANYNAME, P.EMAIL;
+
     </select>
 
 </mapper>

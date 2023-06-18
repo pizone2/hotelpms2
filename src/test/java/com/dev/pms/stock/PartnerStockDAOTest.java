@@ -15,16 +15,16 @@ class PartnerStockDAOTest {
 
     @Test
     void testInsertDummyData() throws Exception {
-        String businessNumber = "2618123567";
-        String productName = "칫솔";
-        String[] itemCodes = generateItemCodes(50);
+        String businessNumber = "2118700620";
+        String productName = "텐텐";
+        String[] itemCodes = generateItemCodes(300);
         Random random = new Random();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String remarks1 = " 지속 가능한 원료를 사용해 ";
+        String remarks1 = "텐텐텐 ";
         String remarks2 = "내구성이 뛰어나고, 편안가능하여 친환경적입니다.";
 
         int result = 0;
-        for (int i = 1; i < 50; i++) {
+        for (int i = 200; i < 300; i++) {
             PartnerStockVO partnerStock = new PartnerStockVO();
             partnerStock.setBusinessNumber(businessNumber);
             partnerStock.setProductName(productName);
@@ -37,7 +37,7 @@ class PartnerStockDAOTest {
         }
 
         // Assertion
-        assertEquals(50, result);
+        assertEquals(300, result);
     }
 
 

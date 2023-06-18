@@ -23,11 +23,11 @@
             font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
         .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
             font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-        .tg .tg-mkvm{background-color:#f9f9f9;font-family:"Arial Black", Gadget, sans-serif !important;text-align:center;vertical-align:top}
-        .tg .tg-ws9p{background-color:#ffffff;font-family:"Arial Black", Gadget, sans-serif !important;font-weight:bold;text-align:center;
-            vertical-align:top}
-        .tg .tg-fcno{background-color:#ffffff;border-color:inherit;font-family:"Arial Black", Gadget, sans-serif !important;
+        .tg .tg-3kff{background-color:#ffffff;border-color:inherit;font-family:Verdana, Geneva, sans-serif !important;font-size:small;
             font-weight:bold;text-align:center;vertical-align:top}
+        .tg .tg-950s{background-color:#ffffff;font-family:Verdana, Geneva, sans-serif !important;font-size:small;font-weight:bold;
+            text-align:center;vertical-align:top}
+        .tg .tg-kxtx{background-color:#f9f9f9;font-family:inherit;font-size:small;text-align:center;vertical-align:top}
     </style>
 </head>
 <body class="nav-fixed">
@@ -64,7 +64,7 @@
                 </nav>
                 <hr class="mt-0 mb-4" />
                 <div class="row">
-                    <div class="col-xl-4">
+                    <div class="col-xl-5">
                         <!-- Profile picture card-->
                         <div class="card mb-4 mb-xl-0">
                             <div class="card-header">고객사 리스트</div>
@@ -72,9 +72,9 @@
                                 <div class="table-responsive">
                                     <table class="tg">
                                         <colgroup>
-                                            <col style="width: 118.333333px">
-                                            <col style="width: 137.333333px">
-                                            <col style="width: 206.333333px">
+                                            <col style="width: 155.333333px">
+                                            <col style="width: 177.333333px">
+                                            <col style="width: 144.333333px">
                                             <col style="width: 168.333333px">
                                         </colgroup>
                                         <thead>
@@ -101,7 +101,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-8">
+                    <div class="col-xl-7">
                         <!-- Account details card-->
                         <div class="card mb-4">
                             <div class="card-header">상세 품목 리스트</div>

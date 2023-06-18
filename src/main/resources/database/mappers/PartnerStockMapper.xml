@@ -35,7 +35,7 @@
 
 
     <insert id="setInsertStockMonth" parameterType="int">
-        INSERT INTO STOCKMONTH (USERNUM, INVENTORYID, USERDATE)
+        INSERT INTO STOCKMONTH (USERNUM, ITEMID, USERDATE)
         VALUES (NULL, #{itemId}, CURDATE())
     </insert>
 
