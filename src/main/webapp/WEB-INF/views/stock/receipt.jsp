@@ -36,9 +36,9 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="vo" items="${list}">
+    <c:forEach var="vo" items="${list}" varStatus="status">
         <tr>
-            <td class="tg-kxtx">1</td>
+            <td class="tg-kxtx">${status.index + 1}</td>
             <td class="tg-kxtx">${vo.itemCode}</td>
             <td class="tg-kxtx">${vo.productName}</td>
             <td class="tg-kxtx">${vo.unitPrice} 원</td>

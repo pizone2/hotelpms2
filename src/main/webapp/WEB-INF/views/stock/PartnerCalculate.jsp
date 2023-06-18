@@ -27,7 +27,8 @@
             font-weight:bold;text-align:center;vertical-align:top}
         .tg .tg-950s{background-color:#ffffff;font-family:Verdana, Geneva, sans-serif !important;font-size:small;font-weight:bold;
             text-align:center;vertical-align:top}
-        .tg .tg-kxtx{background-color:#f9f9f9;font-family:inherit;font-size:small;text-align:center;vertical-align:top}
+        .tg .tg-kxtx{background-color:#f9f9f9;font-family:inherit;font-size:small;text-align:center;vertical-align:top;}
+        .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
     </style>
 </head>
 <body class="nav-fixed">
@@ -58,10 +59,10 @@
                 <!-- Account page navigation-->
                 <nav class="nav nav-borders justify-content-between">
                     <div class="d-flex">
-                        <a class="nav-link me-2 font-weight-bold" href="account-profile.html" id="before"><c:out value="${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}"/> 월 정산</a>
+                        <a class="nav-link me-2 font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-0${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}-01" id="before"><c:out value="${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}"/> 월 정산</a>
                     </div>
                         <a class="nav-link me-2 active ms-0 font-weight-bold" href="account-billing.html"><c:out value="${yearMonth < 10 ? '0' + yearMonth : yearMonth}"/> 월 정산</a>
-                    <a class="nav-link font-weight-bold" href="account-security.html" id="after"><c:out value="${yearMonth + 1 < 10 ? '0' + (yearMonth + 1) : yearMonth + 1}"/> 월 정산</a>
+                    <a class="nav-link font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-0${yearMonth + 1 < 10 ? '0' + (yearMonth + 1) : yearMonth + 1}-01" id="after"><c:out value="${yearMonth + 1 < 10 ? '0' + (yearMonth + 1) : yearMonth + 1}"/> 월 정산</a>
                 </nav>
                 <hr class="mt-0 mb-4" />
                 <div class="row">
@@ -80,19 +81,19 @@
                                         </colgroup>
                                         <thead>
                                         <tr>
-                                            <th class="tg-fcno">상호명</th>
-                                            <th class="tg-ws9p">사업자 번호</th>
-                                            <th class="tg-ws9p">담당자 이메일</th>
-                                            <th class="tg-ws9p">금액</th>
+                                            <th class="tg-950s">상호명</th>
+                                            <th class="tg-950s">사업자 번호</th>
+                                            <th class="tg-950s">담당자 이메일</th>
+                                            <th class="tg-950s">금액</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <c:forEach var="vo" items="${list}">
                                         <tr>
-                                            <td class="tg-mkvm">${vo.companyName}</td>
-                                            <td class="tg-mkvm">${vo.businessNumber}</td>
-                                            <td class="tg-mkvm">${vo.email}</td>
-                                            <td class="tg-mkvm">${vo.amount}</td>
+                                            <td class="tg-kxtx" style="text-decoration: underline;">${vo.companyName}</td>
+                                            <td class="tg-kxtx" style="text-decoration: underline;">${vo.businessNumber}</td>
+                                            <td class="tg-kxtx" style="text-decoration: underline;">${vo.email}</td>
+                                            <td class="tg-kxtx" style="text-decoration: underline;">${vo.amount}</td>
                                         </tr>
                                         </c:forEach>
                                         </tbody>
