@@ -16,11 +16,12 @@ import java.util.List;
 
 @Controller
 @Slf4j
+@RequestMapping("/clean/*")
 public class CleanController {
 
     @Autowired
     private CleanService cleanService;
-    @RequestMapping("clean/*")
+
 
     @GetMapping("/cleanSchedule")
     public ModelAndView cleanSchedule(CalenderVO calenderVO) throws Exception {

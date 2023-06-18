@@ -60,7 +60,7 @@
                                 <th>발주상태</th>
                                 <th>상호명</th>
                                 <th>품목코드</th>
-                                <th>단위</th>
+                                <th>단가</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -72,7 +72,7 @@
                                 <th>발주상태</th>
                                 <th>상호명</th>
                                 <th>품목코드</th>
-                                <th>단위</th>
+                                <th>단가</th>
                             </tr>
                             </tfoot>
                             <tbody>
