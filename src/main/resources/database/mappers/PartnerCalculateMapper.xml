@@ -5,29 +5,32 @@
 <mapper namespace="com.dev.pms.stock.PartnerCalculateDAO">
 
 
-<!--
-    <select id="getByYearMonth" parameterType="LocalDate" resultType="PartnerCalculateVO">
-    SELECT SM.*,P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
-    DATE_FORMAT(SM.USERDATE, '%Y-%m') AS YEARMONTH,
-    MONTH(SM.USERDATE) AS MONTH
+    <!--월별 리스트를 불러오는데 그룹화는 안된 상태-->
+    <!--   SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
+          DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,
+          MONTH(SM.USERDATE) AS MONTH
+          FROM PARTNER AS P
+          LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+          LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+          WHERE SM.ITEMID IS NOT NULL
+          AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}-->
 
+    <!--기업별 세부 정산리스트 불러오기-->
+    <select id="getByReceipt" parameterType="LocalDate" resultType="PartnerCalculateVO">
+    SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
+    DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,
+    MONTH(SM.USERDATE) AS MONTH
     FROM PARTNER AS P
     LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
     LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
-    WHERE SM.ITEMID IS NOT NULL;
+    WHERE SM.ITEMID IS NOT NULL
+    AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}
+    AND P.BUSINESSNUMBER = #{businessNumber};
     </select>
--->
 
-
+    <!--연월 기준으로 전체 품목 리스트 불러오기-->
     <select id="getByYearMonth" parameterType="java.lang.String" resultType="PartnerCalculateVO">
-     <!--   SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
-        DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,
-        MONTH(SM.USERDATE) AS MONTH
-        FROM PARTNER AS P
-        LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
-        LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
-        WHERE SM.ITEMID IS NOT NULL
-        AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}-->
+
         SELECT P.BUSINESSNUMBER, P.CONTACTNAME, P.COMPANYNAME, P.EMAIL,
         SUM(PS.UNITPRICE * PS.UNIT) AS AMOUNT
         FROM PARTNER AS P
