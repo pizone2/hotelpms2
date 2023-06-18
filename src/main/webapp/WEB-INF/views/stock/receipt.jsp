@@ -43,7 +43,9 @@
             <td class="tg-kxtx">${vo.productName}</td>
             <td class="tg-kxtx">${vo.unitPrice} 원</td>
             <td class="tg-kxtx">${vo.unit} EA</td>
-            <td class="tg-kxtx">${vo.itemIdSum} 원</td>
+            <td class="tg-kxtx" id="itemIdSum">
+                <c:out value="${String.format('%,d', vo.itemIdSum)}" />원
+            </td>
         </tr>
     </c:forEach>
     <c:forEach var="vo" items="${list}" varStatus="loop">
@@ -53,7 +55,7 @@
                 <td class="tg-amwm"></td>
                 <td class="tg-amwm"></td>
                 <td class="tg-amwm"></td>
-                <td class="tg-amwm">${vo.total} 원</td>
+                <td class="tg-amwm" id="total">원</td>
             </tr>
         </c:if>
     </c:forEach>
@@ -69,3 +71,4 @@
 
 
 
+<script src="/js/receipt.js"></script>

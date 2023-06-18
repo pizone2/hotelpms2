@@ -61,7 +61,7 @@
                     <div class="d-flex">
                         <a class="nav-link me-2 font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-0${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}-01" id="before"><c:out value="${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}"/> 월 정산</a>
                     </div>
-                        <a class="nav-link me-2 active ms-0 font-weight-bold" href="account-billing.html"><c:out value="${yearMonth < 10 ? '0' + yearMonth : yearMonth}"/> 월 정산</a>
+                        <a class="nav-link me-2 active ms-0 font-weight-bold" href="/"><c:out value="${yearMonth < 10 ? '0' + yearMonth : yearMonth}"/> 월 정산</a>
                     <a class="nav-link font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-0${yearMonth + 1 < 10 ? '0' + (yearMonth + 1) : yearMonth + 1}-01" id="after"><c:out value="${yearMonth + 1 < 10 ? '0' + (yearMonth + 1) : yearMonth + 1}"/> 월 정산</a>
                 </nav>
                 <hr class="mt-0 mb-4" />
@@ -84,7 +84,7 @@
                                             <th class="tg-950s">상호명</th>
                                             <th class="tg-950s">사업자 번호</th>
                                             <th class="tg-950s">담당자 이메일</th>
-                                            <th class="tg-950s">금액</th>
+                                          <th class="tg-950s">금액</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -93,7 +93,9 @@
                                             <td class="tg-kxtx" style="text-decoration: underline;">${vo.companyName}</td>
                                             <td class="tg-kxtx" style="text-decoration: underline;">${vo.businessNumber}</td>
                                             <td class="tg-kxtx" style="text-decoration: underline;">${vo.email}</td>
-                                            <td class="tg-kxtx" style="text-decoration: underline;">${vo.amount}</td>
+                                            <td class="tg-kxtx" style="text-decoration: underline;">
+                                                <c:out value="${String.format('%,d', vo.amount)}"  /> 원
+                                            </td>
                                         </tr>
                                         </c:forEach>
                                         </tbody>
