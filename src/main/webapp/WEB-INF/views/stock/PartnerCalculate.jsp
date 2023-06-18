@@ -56,11 +56,12 @@
             <!-- Main page content-->
             <div class="container-xl px-4 mt-4">
                 <!-- Account page navigation-->
-                <nav class="nav nav-borders">
-                    <a class="nav-link active ms-0" href="account-profile.html">전월</a>
-                    <a class="nav-link" href="account-billing.html">당월</a>
-                    <a class="nav-link" href="account-security.html">현월</a>
-
+                <nav class="nav nav-borders justify-content-between">
+                    <div class="d-flex">
+                        <a class="nav-link me-2 font-weight-bold" href="account-profile.html" id="before"><c:out value="${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}"/> 월 정산</a>
+                    </div>
+                        <a class="nav-link me-2 active ms-0 font-weight-bold" href="account-billing.html"><c:out value="${yearMonth < 10 ? '0' + yearMonth : yearMonth}"/> 월 정산</a>
+                    <a class="nav-link font-weight-bold" href="account-security.html" id="after"><c:out value="${yearMonth + 1 < 10 ? '0' + (yearMonth + 1) : yearMonth + 1}"/> 월 정산</a>
                 </nav>
                 <hr class="mt-0 mb-4" />
                 <div class="row">
@@ -107,57 +108,7 @@
                             <div class="card-header">상세 품목 리스트</div>
                             <div class="card-body">
                                 <form>
-                                    <!-- Form Group (username)-->
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                        <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username" />
-                                    </div>
-                                    <!-- Form Row-->
-                                    <div class="row gx-3 mb-3">
-                                        <!-- Form Group (first name)-->
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="inputFirstName">First name</label>
-                                            <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
-                                        </div>
-                                        <!-- Form Group (last name)-->
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="inputLastName">Last name</label>
-                                            <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" />
-                                        </div>
-                                    </div>
-                                    <!-- Form Row        -->
-                                    <div class="row gx-3 mb-3">
-                                        <!-- Form Group (organization name)-->
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                            <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap" />
-                                        </div>
-                                        <!-- Form Group (location)-->
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="inputLocation">Location</label>
-                                            <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA" />
-                                        </div>
-                                    </div>
-                                    <!-- Form Group (email address)-->
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                        <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com" />
-                                    </div>
-                                    <!-- Form Row-->
-                                    <div class="row gx-3 mb-3">
-                                        <!-- Form Group (phone number)-->
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="inputPhone">Phone number</label>
-                                            <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567" />
-                                        </div>
-                                        <!-- Form Group (birthday)-->
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                            <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988" />
-                                        </div>
-                                    </div>
-                                    <!-- Save changes button-->
-                                    <button class="btn btn-primary" type="button">Save changes</button>
+                                    <div id="tableDiv"></div>
                                 </form>
                             </div>
                         </div>
@@ -169,7 +120,8 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
+<script src="/js/scripts.js"></script>
+<script src="/js/PartnerCalculate.js"></script>
 </body>
 </html>
 

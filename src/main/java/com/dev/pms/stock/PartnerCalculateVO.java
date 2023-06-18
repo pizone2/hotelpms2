@@ -41,6 +41,6 @@ public class PartnerCalculateVO {
     private Long unit;
     private String remarks;
     private Boolean itemUsagestatus;
-
+    private Long itemIdSum;
 
 }

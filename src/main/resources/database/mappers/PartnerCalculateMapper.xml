@@ -29,6 +29,18 @@
     AND P.BUSINESSNUMBER = #{businessNumber};
     </select>
 -->
+    <!--기업별 세부 정산리스트 불러오기-->
+    <select id="getByReceipt" parameterType="map" resultType="PartnerCalculateVO">
+    SELECT SM.*, PS.*,SUM(PS.UNITPRICE * PS.UNIT) AS ITEMIDSUM
+    FROM PARTNER AS P
+    LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+    LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+    WHERE SM.ITEMID IS NOT NULL
+    AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}
+    AND P.BUSINESSNUMBER = #{businessNumber}
+    GROUP BY SM.ITEMID;
+    </select>
+
 
     <!--연월 기준으로 전체 품목 리스트 불러오기-->
     <select id="getByYearMonth" parameterType="java.lang.String" resultType="PartnerCalculateVO">
