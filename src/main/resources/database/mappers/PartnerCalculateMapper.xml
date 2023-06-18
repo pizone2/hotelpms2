@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.pms.stock.PartnerCalculateDAO">
+
+
+<!--
+    <select id="getByYearMonth" parameterType="LocalDate" resultType="PartnerCalculateVO">
+    SELECT SM.*,P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
+    DATE_FORMAT(SM.USERDATE, '%Y-%m') AS YEARMONTH,
+    MONTH(SM.USERDATE) AS MONTH
+
+    FROM PARTNER AS P
+    LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+    LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+    WHERE SM.ITEMID IS NOT NULL;
+    </select>
+-->
+
+<!--
+    <select id="getByYearMonth" parameterType="java.time.YearMonth" resultType="PartnerCalculateVO">
+        SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
+        DATE_FORMAT(SM.USERDATE, '%Y-%m') AS YEARMONTH,
+        MONTH(SM.USERDATE) AS MONTH
+        FROM PARTNER AS P
+        LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+        LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+        WHERE SM.ITEMID IS NOT NULL
+        AND DATE_FORMAT(SM.USERDATE, '%Y-%m') = #{yearMonth}
+    </select>
+-->
+
+
+<!--    <select id="getByYearMonth" parameterType="java.lang.String" resultType="PartnerCalculateVO">-->
+<!--        SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,-->
+<!--       DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,-->
+<!--       MONTH(SM.USERDATE) AS MONTH-->
+<!--        FROM PARTNER AS P-->
+<!--        LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER-->
+<!--    LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID-->
+<!--    WHERE SM.ITEMID IS NOT NULL-->
+<!--    AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}-->
+<!--    </select>-->
+
+    <select id="getByYearMonth" parameterType="java.lang.String" resultType="PartnerCalculateVO">
+        SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
+        DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,
+        MONTH(SM.USERDATE) AS MONTH
+        FROM PARTNER AS P
+        LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+        LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+        WHERE SM.ITEMID IS NOT NULL
+        AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}
+    </select>
+
+</mapper>

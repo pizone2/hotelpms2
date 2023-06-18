@@ -12,6 +12,7 @@
         <typeAlias type="com.dev.pms.stock.PartnerVO" alias="PartnerVO" />
         <typeAlias type="com.dev.pms.stock.PartnerStockVO" alias="PartnerStockVO"></typeAlias>
         <typeAlias type="com.dev.pms.stock.HotelStockVO" alias="HotelStockVO"></typeAlias>
+        <typeAlias type="com.dev.pms.stock.PartnerCalculateVO" alias="PartnerCalculateVO"></typeAlias>
     </typeAliases>
 
 </configuration>
