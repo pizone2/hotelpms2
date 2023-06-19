@@ -109,10 +109,10 @@
                                        <td><div class="green"><a href="#!">${pm.orderStatus}</a></div></td>
                                    </c:if>
                                     <c:if test="${pm.orderStatus eq '발주요청'}">
-                                        <td class="badge bg-secondary text-white rounded-pill"><div class="red"><a href="#!" onclick="updateInProgress('${pm.itemId}'), reloadPageInProgress();">${pm.orderStatus}</a></div></td>
+                                        <td class="badge bg-secondary text-white rounded-pill"><div class="red"><a href="#!" onclick="updateInProgress('${pm.inventoryId}'), reloadPageInProgress();">${pm.orderStatus}</a></div></td>
                                     </c:if>
                                     <c:if test="${pm.orderStatus eq '발주완료'}">
-                                        <td class="badge bg-secondary text-white rounded-pill"><div class="yellow"><a href="#!" onclick="updateGoodStock('${pm.itemId}'), reloadPageGoodStock();">${pm.orderStatus}</a></div></td>
+                                        <td class="badge bg-secondary text-white rounded-pill"><div class="yellow"><a href="#!" onclick="updateGoodStock('${pm.inventoryId}'), reloadPageGoodStock();">${pm.orderStatus}</a></div></td>
                                     </c:if>
                                     <c:if test="${pm.orderStatus eq '발주중'}">
                                         <td class="badge bg-secondary text-white rounded-pill"><div class="purple"><a href="#!">${pm.orderStatus}</a></div></td>
