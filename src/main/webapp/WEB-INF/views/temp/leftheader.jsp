@@ -38,6 +38,9 @@
                         <a class="nav-link collapsed" href="/partnerAdmin/partnerList">
                             업체리스트
                         </a>
+                        <a class="nav-link collapsed" href="/partnerManager/partnerManagerStockList">
+                            업체별 재고 관리 리스트
+                        </a>
                         <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
                         <a class="nav-link collapsed" href="/stock/managerStockList">재고리스트</a>
                         <!-- Nested Sidenav Accordion (Pages -> Error)-->

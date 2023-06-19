@@ -5,16 +5,16 @@ $(document).ready(function() {
 });
 //얼럿창 버그로...
 function reloadPageInProgress() {
-    location.reload();
-    location.reload();
     alert("발주중 상태로 변경합니다.")
+    location.reload();
+    location.reload();
 
 }
 
 function reloadPageGoodStock() {
-    location.reload();
-    location.reload();
     alert("양호 상태로 변경합니다.")
+    location.reload();
+    location.reload();
 
 }
 
