@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.pms.stock.StockDAO">
+    <insert id="setPartnerStock" parameterType="PartnerStockVO">
+        INSERT INTO PARTNERSTOCK
+        VALUES (NULL,#{businessNumber},#{productName},#{itemCode},#{unit},#{unitPrice},CURDATE(),#{remarks},0)
+    </insert>
+
+    <select id="getStockList" parameterType="String" resultMap="getPartnerStock">
+        SELECT P.COMPANYNAME ,PS.*
+        FROM PARTNERSTOCK PS
+        INNER JOIN PARTNER P
+        USING (BUSINESSNUMBER)
+        WHERE PS.BUSINESSNUMBER = #{businessNumber}
+    </select>
+
+    <resultMap type="PartnerStockVO" id="getPartnerStock">
+        <!--Primary Key  -->
+        <id column="itemId" property="itemId" />
+        <!-- 그외 나머지 -->
+        <result column="businessNumber" property="businessNumber" />
+        <result column="productName" property="productName" />
+        <result column="itemCode" property="itemCode" />
+        <result column="unit" property="unit" />
+        <result column="unitPrice" property="unitPrice" />
+        <result column="registrationDate" property="registrationDate" />
+        <result column="remarks" property="remarks" />
+        <result column="itemUsagestatus" property="itemUsagestatus" />
+        <collection property="partnerVOS" javaType="List" ofType="PartnerVO" >
+            <id column="businessNumber"  property="businessNumber" />
+            <result column="companyName" property="companyName"/>
+        </collection>
+    </resultMap>
+
+    <update id="setStockUpdate" parameterType="PartnerStockVO">
+        UPDATE PARTNERSTOCK
+        SET PRODUCTNAME=#{productName}, ITEMCODE=#{itemCode}, UNIT =#{unit}, UNITPRICE=#{unitPrice}, REMARKS=#{remarks},REGISTRATIONDATE =CURDATE()
+        WHERE ITEMID=#{itemId}
+    </update>
+
+    <delete id="setStockDelete" parameterType="Long">
+        DELETE FROM PARTNERSTOCK WHERE ITEMID=#{itemId}
+    </delete>
+
+    <select id="getPartnerList" resultType="PartnerVO">
+        SELECT * FROM PARTNER
+    </select>
+
+    <delete id="setPartnerDelete" parameterType="String">
+        DELETE FROM PARTNER WHERE BUSINESSNUMBER=#{businessNumber}
+    </delete>
+
+    <update id="setPartnerUpdate" parameterType="String">
+        UPDATE PARTNER SET APPROVAL =1 WHERE BUSINESSNUMBER=#{businessNumber}
+    </update>
+
+    <select id="getRoomType" resultType="String">
+        SELECT ROOMTYPE FROM ROOMTYPE
+    </select>
+
+    <select id="getHotelStockList" resultMap="getHotelStock">
+        SELECT p.PRODUCTNAME , p.ITEMCODE, h.CURRENTSTOCK, h.INVENTORYID
+        FROM HOTELSTOCK h
+        INNER JOIN PARTNERSTOCK p
+        USING (ITEMID)
+    </select>
+
+    <resultMap type="HotelStockVO" id="getHotelStock">
+        <id column="inventoryId" property="inventoryId"/>
+        <result column="itemId" property="itemId"/>
+        <result column="currentStock" property="currentStock"/>
+        <result column="autoOrderQuantity" property="autoOrderQuantity"/>
+        <result column="orderStatus" property="orderStatus"/>
+        <result column="roomUsageStatus" property="roomUsageStatus"/>
+        <association property="partnerStockVO" javaType="PartnerStockVO" >
+            <id column="businessNumber" property="businessNumber"/>
+            <result column="productName" property="productName"/>
+            <result column="itemCode" property="itemCode"/>
+            <result column="unit" property="unit"/>
+            <result column="unitPrice" property="unitPrice"/>
+        </association>
+    </resultMap>
+
+    <insert id="setRoomStockAdd" parameterType="RoomStockVO">
+        INSERT INTO ROOMSTOCK
+        VALUES (#{roomType},#{inventoryId},#{count})
+    </insert>
+
+    <select id="getRoomTypeCount" parameterType="String" resultType="Long">
+        SELECT COUNT(*) FROM ROOMSTOCK
+        WHERE ROOMTYPE =#{roomType}
+    </select>
+
+    <delete id="setRoomStockDelete" parameterType="String">
+        DELETE FROM ROOMSTOCK WHERE ROOMTYPE =#{roomType}
+    </delete>
+
+    <select id="getRoomTypeStock" parameterType="String" resultType="RoomStockVO">
+        SELECT * FROM ROOMSTOCK
+        WHERE ROOMTYPE =#{roomType}
+    </select>
+
+
+</mapper>

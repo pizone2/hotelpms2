@@ -10,5 +10,8 @@ public interface RoomDAO {
 
     public List<ReservedVO> getRoomStatus() throws Exception;
 
+    public List<RoomTypeVO> getRoomSetting() throws Exception;
+
+    public int setRoomSetting(RoomTypeVO roomTypeVO) throws Exception;
 }
 

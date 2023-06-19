@@ -7,14 +7,26 @@
     <select id="getRoomList" resultType="RoomVO" >
         SELECT SUBSTR(ROOMNUMBER, 1, 1) AS 'FLOOR', ROOMNUMBER, ROOMTYPE,ROOMNAME FROM ROOM
     </select>
-
-
+    
     <select id="getRoomStatus" resultType="ReservedVO" >
     SELECT ROOM.ROOMNUMBER, RESERVED.RESERVATIONDATE, RESERVED.ROOMSTATUS
     FROM ROOM
     INNER JOIN RESERVED ON ROOM.ROOMNUMBER = RESERVED.ROOMNUMBER
     WHERE RESERVED.RESERVATIONDATE = CURDATE();
     </select>
+    
+    <select id="getRoomSetting" resultType="RoomTypeVO">
+        SELECT * FROM ROOMTYPE;
+    </select>
+
+    <update id="setRoomSetting" parameterType="RoomTypeVO">
+        UPDATE ROOMTYPE
+        SET CAPACITY = #{capacity} , ROOMPRICE = #{roomPrice}
+        WHERE ROOMTYPE = #{roomType}
+    </update>
+    
+
+
 
 </mapper>
 

@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 tdElement.style.color = "white";
             } else if (tdElement.className.includes("재실")) {
                 tdElement.classList.add("bg-warning", "text-white");
+                tdElement.onclick = function() {
+                    window.location.href = "../roomDetail/houseRoom?roomNumber="+roomNumber+"&roomStatus=재실";
+                };
             } else if (tdElement.className.includes("청소중")) {
                 tdElement.style.backgroundColor = "#ff662e";
                 tdElement.style.color = "white";

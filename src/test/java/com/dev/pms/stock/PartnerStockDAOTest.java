@@ -10,20 +10,20 @@ import static org.junit.Assert.*;
 @SpringBootTest
 class PartnerStockDAOTest {
     @Autowired
-    private PartnerStockDAO partnerStockDAO;
+    private StockDAO partnerStockDAO;
 
     @Test
     void testInsertDummyData() throws Exception {
-        String businessNumber = "19930902000";
+        String businessNumber = "3080913566";
         String productName = "칫솔";
         String[] itemCodes = generateItemCodes(100);
         Random random = new Random();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String remarks1 = " 지속 가능한 원료를 사용해 제작한 친환경 칫솔입니다. 편안한 그립감과 초미세 브러쉬를 사용하여 깊숙한 청결함을 제공하며, 또한 세심하게 디자인되어 모든 가족이 사용할 수 있습니다.";
-        String remarks2 = "내구성이 뛰어나고, 편안한 그립감을 제공합니다. 또한, 100% 생분해 가능하여 친환경적입니다.";
+        String remarks1 = "초음파 소닉 기술: C칫솔은 초음파 소닉 기술을 사용하여 매우 고속으로 진동합니다. 이 기술은 칫솔 모험부터 세밀한 이물질 제거까지 모든 구강 영역을 효과적으로 청소합니다. 진동은 칫솔의 모든 섬유로 전달되어 치아와 잇몸 사이의 치아 치료를 완벽하게 지원합니다";
+        String remarks2 = "고품질의 첨단 소재로 만들어져 있습니다. 칫솔 솔은 부드럽고 유연한 섬유로 구성되어 치아 표면을 부드럽게 마사지하면서 치석과 이물질을 효과적으로 제거합니다. 또한, 칫솔의 손잡이는 특수한 소재로 제작되어 편안한 그립감과 휴대성을 제공합니다..";
 
         int result = 0;
-        for (int i = 50; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             PartnerStockVO partnerStock = new PartnerStockVO();
             partnerStock.setBusinessNumber(businessNumber);
             partnerStock.setProductName(productName);
@@ -41,8 +41,8 @@ class PartnerStockDAOTest {
 
     private String[] generateItemCodes(int count) {
         String[] itemCodes = new String[count];
-        String prefix = "C";
-        for (int i = 51; i < count; i++) {
+        String prefix = "B";
+        for (int i = 1; i < count; i++) {
             String suffix = String.format("%03d", i + 1);
             itemCodes[i] = prefix + suffix;
         }
