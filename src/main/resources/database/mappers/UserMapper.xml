@@ -15,5 +15,9 @@
         WHERE id=#{id}
     </select>
 
+    <select id="getUserBookingList" parameterType="BookingVO" resultType="BookingVO">
+        SELECT *
+        FROM BOOKING
+    </select>
 
 </mapper>

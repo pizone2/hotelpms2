@@ -1,5 +1,6 @@
 package com.dev.pms.clean;
 
+import com.dev.pms.room.BookingVO;
 import com.dev.pms.room.ReservedVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,4 +86,10 @@ public class CleanService {
     public int setRoomClean(RoomCleanVO roomCleanVO)throws Exception{
         return cleanDAO.setRoomClean(roomCleanVO);
     }
+
+    public Long cleanScheduleCheck(CalenderVO calenderVO) throws Exception{
+        return cleanDAO.cleanScheduleCheck(calenderVO);
+    }
+
+
 }

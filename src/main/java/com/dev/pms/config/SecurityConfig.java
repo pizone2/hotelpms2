@@ -50,6 +50,7 @@ public class SecurityConfig  {
 //                .antMatchers("/manager").hasAnyRole("ADMIN","MANAGER") //ADMIN 을 가지거나 MANAGER를 가진 사람만 허용 => 회원 한명당 하나의 ROLE를 가질때
                 .anyRequest().authenticated() //그외 나머지는 로그인 해야 볼수 있어요 (authenticated = 로그인 해야 )
                 .and()
+                .httpBasic().and()
                 .formLogin()
                     .loginPage("/user/userLogin")
                     .usernameParameter("id")

@@ -86,6 +86,14 @@
         AND ROOMSTATUS = '청소중'
     </update>
 
+    <select id="cleanScheduleCheck" parameterType="CalenderVO" resultType="Long">
+        SELECT COUNT(*) FROM calender c
+        WHERE SCHEDULESTARTDATE <![CDATA[<=]]> #{scheduleEnddate}
+        AND SCHEDULEENDDATE >= #{scheduleStartdate}
+    </select>
+
+
+
     <resultMap type="CalenderVO" id="getRequestCleanResult">
         <id column="scheduleNumber" property="scheduleNumber"/>
         <result column="scheduleEnddate" property="scheduleEnddate"/>

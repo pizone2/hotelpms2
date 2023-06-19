@@ -19623,3 +19623,14 @@ pre[class*=language-] {
 #calendar {
   background-color: white;
 }
+
+.cleaning {
+  color : black;
+  background-color: red;
+  border-bottom-width: medium;
+}
+
+#green {
+
+  background-color: green;
+}
