@@ -1,5 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,11 @@
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/login/login.css">
+    <link href="https://cdn.jsdelivr.net/npm/naver-nanumfont/font.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </head>
 <body>
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
@@ -35,9 +41,14 @@
                   </div>
                   <button class="btn btn-block login-btn mb-4" type="submit" value="Login">Login</button>
                 </form>
-                <a href="#!" class="forgot-password-link">Forgot password?</a>
-                <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
-<%--                <nav class="login-card-footer-nav">--%>
+            <%--    <a href="#" class="forgot-password-link" style="font-family: 'Nanum Gothic', sans-serif;">MOHOTEL: Don't have an account?  </a>
+                <p class="login-card-footer-text"> <a href="#" class="text-reset">Business Registration Here!</a></p>--%>
+                <a href="#" onclick="openPopup()" class="forgot-password-link" style="font-family: 'Nanum Gothic', sans-serif;" data-bs-toggle="modal" data-bs-target="#exampleModalLg1">MOHOTEL: Don't have an account?</a>
+                <p class="login-card-footer-text">
+                    <a href="#" class="text-reset" data-bs-toggle="modal" data-bs-target="#exampleModalLg1">Business Registration Here!</a>
+                </p>
+
+            <%--                <nav class="login-card-footer-nav">--%>
 <%--                  <a href="#!">Terms of use.</a>--%>
 <%--                  <a href="#!">Privacy policy</a>--%>
 <%--                </nav>--%>
@@ -72,9 +83,19 @@
         </div>
       </div> -->
     </div>
+      <%--insert 모달--%>
+
+
   </main>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script>
+      function openPopup() {
+          var url = "/partner/join";
+          var popup = window.open(url, "_blank", "width=500,height=500");
+          popup.focus();
+      }
+  </script>
 </body>
 </html>
