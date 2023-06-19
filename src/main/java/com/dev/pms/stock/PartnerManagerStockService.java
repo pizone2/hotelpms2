@@ -17,4 +17,12 @@ public class PartnerManagerStockService {
     public int updateInProgress(ManagerStockVO managerStockVO) throws Exception {
         return partnerManagerStockDAO.updateInProgress(managerStockVO);
     }
+
+    public int updateOrderCompleted(ManagerStockVO managerStockVO) throws Exception {
+        return partnerManagerStockDAO.updateOrderCompleted(managerStockVO);
+    }
+
+    public int updateGoodStock(ManagerStockVO managerStockVO) throws Exception {
+        return partnerManagerStockDAO.updateGoodStock(managerStockVO);
+    }
 }

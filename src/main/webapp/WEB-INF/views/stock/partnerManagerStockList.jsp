@@ -106,16 +106,16 @@
                                     <td >${pm.currentStock}</td>
                                     <td >${pm.autoOrderQuantity}</td>
                                    <c:if test="${pm.orderStatus eq '양호'}">
-                                       <td><div class="green"><a href="">${pm.orderStatus}</a></div></td>
+                                       <td><div class="green"><a href="#!">${pm.orderStatus}</a></div></td>
                                    </c:if>
                                     <c:if test="${pm.orderStatus eq '발주요청'}">
-                                        <td class="badge bg-secondary text-white rounded-pill"><div class="red"><a href="#!" onclick="updateInProgress('${pm.itemId}'), reloadPage();">${pm.orderStatus}</a></div></td>
+                                        <td class="badge bg-secondary text-white rounded-pill"><div class="red"><a href="#!" onclick="updateInProgress('${pm.itemId}'), reloadPageInProgress();">${pm.orderStatus}</a></div></td>
                                     </c:if>
                                     <c:if test="${pm.orderStatus eq '발주완료'}">
-                                        <td class="badge bg-secondary text-white rounded-pill"><div class="yellow"><a href="partnerManagerStockList.jsp">${pm.orderStatus}</a></div></td>
+                                        <td class="badge bg-secondary text-white rounded-pill"><div class="yellow"><a href="#!" onclick="updateGoodStock('${pm.itemId}'), reloadPageGoodStock();">${pm.orderStatus}</a></div></td>
                                     </c:if>
                                     <c:if test="${pm.orderStatus eq '발주중'}">
-                                        <td class="badge bg-secondary text-white rounded-pill"><div class="purple"><a href="partnerManagerStockList.jsp">${pm.orderStatus}</a></div></td>
+                                        <td class="badge bg-secondary text-white rounded-pill"><div class="purple"><a href="#!">${pm.orderStatus}</a></div></td>
                                     </c:if>
                                     <td >${pm.productName}</td>
                                     <td>${pm.itemCode}</td>

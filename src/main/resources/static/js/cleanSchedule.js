@@ -2,40 +2,40 @@ $(document).ready(function() {
     // #insertSchedule 폼의 버튼 눌렀을 때 이벤트
     updateCardContainer();
 
-    $('#insertSchedule').submit(function(event) {
-        event.preventDefault();
-
-        let startDate = $('#exampleFormControlInput1').val();
-        let endDate = $('#exampleFormControlInput2').val();
-
-       //데이터 저장
-       let requestData = {
-            scheduleStartdate: startDate,
-            scheduleEnddate: endDate
-        };
-
-        //날짜 검증 ajax
-        $.ajax({
-            type: 'POST',
-            url: '/clean/cleanScheduleCheck',
-            data: JSON.stringify(requestData),
-            contentType: 'application/json',
-            success: function(response) {
-                if (response.result > 0) {
-                    //결과 값이 0보다 크면 경고창
-                    alert('해당 날짜에 이미 청소팀이 존재합니다.');
-                } else {
-                    // 없을경우 통과
-                    $('#insertSchedule').off('submit').submit();
-                }
-            },
-            error: function(xhr, status, error) {
-                console.log('등록실패' + error);
-                alert('등록실패.');
-                console.log(requestData)
-            }
-        });
-    });
+    // $('#insertSchedule').submit(function(event) {
+    //     event.preventDefault();
+    //
+    //     let startDate = $('#exampleFormControlInput1').val();
+    //     let endDate = $('#exampleFormControlInput2').val();
+    //
+    //    //데이터 저장
+    //    let requestData = {
+    //         scheduleStartdate: startDate,
+    //         scheduleEnddate: endDate
+    //     };
+    //
+    //     //날짜 검증 ajax
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/clean/cleanScheduleCheck',
+    //         data: JSON.stringify(requestData),
+    //         contentType: 'application/json',
+    //         success: function(response) {
+    //             if (response.result > 0) {
+    //                 //결과 값이 0보다 크면 경고창
+    //                 alert('해당 날짜에 이미 청소팀이 존재합니다.');
+    //             } else {
+    //                 // 없을경우 통과
+    //                 $('#insertSchedule').off('submit').submit();
+    //             }
+    //         },
+    //         error: function(xhr, status, error) {
+    //             console.log('등록실패' + error);
+    //             alert('등록실패.');
+    //             console.log(requestData)
+    //         }
+    //     });
+    // });
 });
 
 
@@ -55,7 +55,7 @@ function updateCardContainer() {
 }
 
 
-// setInterval(updateCardContainer, 3000);
+setInterval(updateCardContainer, 3000);
 
 
 

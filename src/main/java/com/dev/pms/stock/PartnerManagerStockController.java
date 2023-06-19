@@ -37,6 +37,13 @@ public class PartnerManagerStockController {
         return mv;
     }
 
+    @PostMapping("/updateGoodStock")
+    public ModelAndView updateGoodStock(ManagerStockVO managerStockVO) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        int result = partnerManagerStockService.updateGoodStock(managerStockVO);
+        return mv;
+    }
+
     @ResponseBody
     @GetMapping("/updateTable")
     public ModelAndView updateTable (ManagerStockVO managerStockVO) throws Exception {

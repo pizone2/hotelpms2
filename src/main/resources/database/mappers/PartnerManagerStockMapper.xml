@@ -16,4 +16,16 @@
         WHERE INVENTORYID = #{inventoryId}
     </update>
 
+    <update id="updateOrderCompleted" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        SET ORDERSTATUS  ='발주완료'
+        WHERE ORDERSTATUS ='발주중'
+    </update>
+
+    <update id="updateGoodStock" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        SET ORDERSTATUS  = '양호'
+        WHERE INVENTORYID = #{inventoryId}
+    </update>
+
 </mapper>

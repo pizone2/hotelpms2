@@ -11,4 +11,8 @@ public interface PartnerManagerStockDAO {
 
     public int updateInProgress(ManagerStockVO managerStockVO) throws Exception;
 
+    public int updateOrderCompleted(ManagerStockVO managerStockVO) throws Exception;
+
+    public int updateGoodStock(ManagerStockVO managerStockVO) throws Exception;
+
 }

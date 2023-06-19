@@ -257,16 +257,16 @@
                                         let scheduleNumber = info.event.id;
 
 
-                                        let action = prompt('Event: ' + scheduleNumber + '\n\n선택하세요: \n1. 수정\n2. 삭제');
+                                        let action = prompt('Event: ' + scheduleNumber + '\n\n삭제 하시겠습니까?: \n1. No\n2. Yes');
 
                                         if (action === '1') {
 
-                                            alert('1번 수정: ' + scheduleNumber);
+                                            alert("청소" + scheduleNumber + '팀 스케줄 삭제 취소');
 
 
                                         } else if (action === '2') {
 
-                                            alert('2번 삭제: ' + scheduleNumber);
+                                            alert("청소" + scheduleNumber + '팀 스케줄 삭제 ');
 
                                             $.ajax({
                                                 url: "/clean/deleteSchedule",

@@ -105,15 +105,15 @@ public class CleanController {
         return "redirect:/";
     }
 
-    @PostMapping("cleanScheduleCheck")
-    @ResponseBody
-    public ModelAndView cleanScheduleCheck(CalenderVO calenderVO) throws Exception {
-        ModelAndView mv = new ModelAndView();
-        Long result = cleanService.cleanScheduleCheck(calenderVO);
-        mv.addObject("result", result);
-        System.out.println(result);
-        return mv;
-    }
+//    @PostMapping("cleanScheduleCheck")
+//    @ResponseBody
+//    public ModelAndView cleanScheduleCheck(CalenderVO calenderVO) throws Exception {
+//        ModelAndView mv = new ModelAndView();
+//        Long result = cleanService.cleanScheduleCheck(calenderVO);
+//        mv.addObject("result", result);
+//        System.out.println(result);
+//        return mv;
+//    }
 
 
 //    @PostMapping("/cleanScheduleCheck")
