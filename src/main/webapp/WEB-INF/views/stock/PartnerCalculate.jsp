@@ -62,7 +62,42 @@
                         <a class="nav-link me-2 font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-0${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}-01" id="before"><c:out value="${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}"/> 월 정산</a>
                     </div>
                         <a class="nav-link me-2 active ms-0 font-weight-bold" href="/"><c:out value="${yearMonth < 10 ? '0' + yearMonth : yearMonth}"/> 월 정산</a>
-                    <a class="nav-link font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-0${yearMonth + 1 < 10 ? '0' + (yearMonth + 1) : yearMonth + 1}-01" id="after"><c:out value="${yearMonth + 1 < 10 ? '0' + (yearMonth + 1) : yearMonth + 1}"/> 월 정산</a>
+                    <%
+                        java.util.Date date = new java.util.Date();
+                        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-01");
+                        String formattedDate = sdf.format(date);
+
+                        // yearMonth 변수를 설정합니다.
+                        int yearMonth = 6; // 사용자로부터 값을 입력받거나 다른 로직을 사용하여 값을 설정합니다.
+                    %>
+
+                    <%-- 링크를 비활성화하는 조건을 검사합니다 --%>
+                    <%
+                        boolean disableLink = false;
+                        if (yearMonth + 1 < 10) {
+                            String nextMonth = "0" + (yearMonth + 1);
+                            String nextMonthDate = "2023-" + nextMonth + "-01";
+                            disableLink = formattedDate.compareTo(nextMonthDate) >= 0;
+                        } else {
+                            String nextMonth = String.valueOf(yearMonth + 1);
+                            String nextMonthDate = "2023-" + nextMonth + "-01";
+                            disableLink = formattedDate.compareTo(nextMonthDate) > 0; // '>'로 수정
+                        }
+                    %>
+
+                    <%-- yearMonth 변수의 값을 가져옵니다 --%>
+                    <%
+                        String yearMonthValue = String.valueOf(yearMonth + 1 < 10 ? "0" + (yearMonth + 1) : yearMonth + 1);
+                    %>
+
+                    <%-- 링크를 출력합니다 --%>
+                    <a class="nav-link font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-<%= yearMonthValue %>-01"
+                       id="after" <%= disableLink ? "disabled" : "" %> onclick="<%= disableLink ? "return false;" : "" %>">
+                        <%= yearMonthValue %> 월 정산
+                    </a>
+
+
+
                 </nav>
                 <hr class="mt-0 mb-4" />
                 <div class="row">

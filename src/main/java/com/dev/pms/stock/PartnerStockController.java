@@ -15,7 +15,10 @@ import java.util.Map;
 public class PartnerStockController {
 
     @Autowired
-    private StockService partnerStockService;
+    private StockService stockService;
+
+    @Autowired
+    private PartnerStockService partnerStockService;
 
 
     @GetMapping("stockList")
@@ -32,7 +35,7 @@ public class PartnerStockController {
     @PostMapping("stockInsert")
     public ModelAndView setPartnerStock(PartnerStockVO partnerStockVO) throws Exception{
         ModelAndView mv = new ModelAndView();
-        int result = partnerStockService.setPartnerStock(partnerStockVO);
+        int result = stockService.setPartnerStock(partnerStockVO);
         mv.setViewName("redirect:/partnerStock/stockList");
         return mv;
     }
@@ -40,7 +43,7 @@ public class PartnerStockController {
     @PostMapping("stockUpdate")
     public ModelAndView setStockUpdate(PartnerStockVO partnerStockVO) throws Exception{
         ModelAndView mv = new ModelAndView();
-        int result = partnerStockService.setStockUpdate(partnerStockVO);
+        int result = stockService.setStockUpdate(partnerStockVO);
         mv.setViewName("redirect:/partnerStock/stockList");
         return mv;
     }
@@ -52,7 +55,7 @@ public class PartnerStockController {
         //boolean check = false;
         log.error(":::::{}:::::",itemIds.length);
         for (Long itemId : itemIds) {
-            result = partnerStockService.setStockDelete(itemId);
+            result = stockService.setStockDelete(itemId);
         }
         return result;
     }
