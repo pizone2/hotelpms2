@@ -45,7 +45,7 @@ public class SecurityConfig  {
                 .csrf()   // csrf 를
                 .disable() // 활성화 하지 않겠다.
                 .authorizeRequests()          // 권한 과 관련된 메서드
-                .antMatchers("/", "/partner/join", "/user/userLogin").permitAll()
+                //.antMatchers("/", "/partner/join", "/user/userLogin").permitAll()
                // .antMatchers("/", "/partner/join").permitAll() // root 및 "/partner/join" 경로는 모두 허용
 //                .antMatchers("/").permitAll() //루트 밑에 시작하는걸 모두 허용하겠다(permitAll) 이후 아래에서 제한을 시작
 //                .antMatchers("/admin").hasRole("ADMIN") // /adimn 을 가진 주소는 role ADMIN 만 허용
