@@ -60,7 +60,7 @@
                                             <th>이메일</th>
                                             <th>권한</th>
                                             <th>전화번호</th>
-                                            <th>유저정보 수정</th>
+<%--                                            <th>유저정보 수정</th>--%>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -70,7 +70,7 @@
                                             <th>Role</th>
                                             <th>Groups</th>
                                             <th>Joined Date</th>
-                                            <th>Actions</th>
+<%--                                            <th>Actions</th>--%>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -105,10 +105,10 @@
 
                                             </td>
                                             <td>${userVO.phoneNumber}</td>
-                                            <td>
-                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="/user-management-edit-user.html"><i data-feather="edit"></i></a>
-                                                <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i data-feather="trash-2"></i></a>
-                                            </td>
+<%--                                            <td>--%>
+<%--                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="/user-management-edit-user.html"><i data-feather="edit"></i></a>--%>
+<%--                                                <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i data-feather="trash-2"></i></a>--%>
+<%--                                            </td>--%>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -125,9 +125,9 @@
                             <div class="card-body">
                                 <div class="col-12 col-xl-3 mb-3">
 
-                                    <form action="/user/download" method="get">
-                                        <button class="btn btn-sm btn-light text-primary" type="submit">Excel 파일 출력</button>
-                                    </form>
+<%--                                    <form action="/user/download" method="get">--%>
+<%--                                        <button class="btn btn-sm btn-light text-primary" type="submit">Excel 파일 출력</button>--%>
+<%--                                    </form>--%>
                                 </div>
                                 <table id="datatablesSimple2">
                                     <thead>
