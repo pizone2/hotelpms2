@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @Slf4j
@@ -15,6 +16,7 @@ public class PartnerStockController {
 
     @Autowired
     private StockService partnerStockService;
+
 
     @GetMapping("stockList")
     public ModelAndView getStockList(String businessNumber) throws Exception {
@@ -26,6 +28,7 @@ public class PartnerStockController {
         System.out.printf("asdf");
         return mv;
     }
+
     @PostMapping("stockInsert")
     public ModelAndView setPartnerStock(PartnerStockVO partnerStockVO) throws Exception{
         ModelAndView mv = new ModelAndView();
@@ -52,5 +55,42 @@ public class PartnerStockController {
             result = partnerStockService.setStockDelete(itemId);
         }
         return result;
+    }
+
+    @GetMapping("allItemsList")
+    public ModelAndView getAllItemsList() throws Exception {
+        ModelAndView mv = new ModelAndView();
+        List<PartnerStockVO> list = partnerStockService.getAllItemsList();
+        mv.addObject("list", list);
+        mv.setViewName("stock/AllItemsList");
+
+        return mv;
+    }
+    //다중 선택시 실행되는 컨트롤러
+    @PostMapping("/ItemNumberList")
+    public void update(@RequestBody Map<String, Object> requestData) throws Exception {
+        List<String> itemList = (List<String>) requestData.get("itemList");
+        System.out.println(itemList);
+        for (String value : itemList) {
+            System.out.println(value);
+            // value를 서비스에 전달
+            partnerStockService.setUpdateitemList(value);
+            partnerStockService.setMultipleHotelInventory(value);
+        }
+    }
+
+    @PostMapping("/itemOrderQuantity")
+    public void updateOrderQuantity(@RequestBody Map<String, Object> requestData) throws Exception {
+        //Remove square brackets from item numbers in the array
+        String itemList = requestData.get("itemList").toString();
+        itemList = itemList.replace("[", "").replace("]", "");
+        int itemValue = Integer.parseInt(itemList);
+
+        String orderQuantityValue = requestData.get("orderQuantity").toString();
+        System.out.println("컨트롤러의 아이템 리스트의 값" + itemList);
+        System.out.println("컨트롤러의 최소수량의 값" + orderQuantityValue);
+        partnerStockService.setUpdateitemList(itemList);
+        partnerStockService.setInsertOrderQuantity(itemList, orderQuantityValue);
+
     }
 }
