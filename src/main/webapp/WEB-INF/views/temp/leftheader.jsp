@@ -41,10 +41,15 @@
                         <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
                         <a class="nav-link collapsed" href="/stock/managerStockList">재고리스트</a>
                         <!-- Nested Sidenav Accordion (Pages -> Error)-->
-                        <a class="nav-link collapsed" href="#">
+                        <a class="nav-link collapsed" href="/partnerStock/allItemsList">
                             전체품목리스트
                         </a>
-                        <a class="nav-link" href="pricing.html">정산관리</a>
+                        <%
+                            java.util.Date date = new java.util.Date();
+                            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-01");
+                            String formattedDate = sdf.format(date);
+                        %>
+                        <a class="nav-link" href="/partnerCalculate/list?date=<%= formattedDate %>">정산관리</a>
                     </nav>
                 </div>
 
@@ -55,6 +60,7 @@
                     <div class="nav-link-icon"><i data-feather="globe"></i></div>
                     고객관리
                 </a>
+
 
 
                 <!-- Sidenav Heading (Custom)-->

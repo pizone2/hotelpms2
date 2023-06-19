@@ -15,15 +15,15 @@ class PartnerStockDAOTest {
     @Test
     void testInsertDummyData() throws Exception {
         String businessNumber = "3080913566";
-        String productName = "린스";
-        String[] itemCodes = generateItemCodes(80);
+        String productName = "칫솔";
+        String[] itemCodes = generateItemCodes(100);
         Random random = new Random();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String remarks1 = "머리카락 표면에 부드럽게 부착하여 머리카락을 부드럽고 윤기나게 만드는 데 도움을 줍니다. 베헤닐트리모늄클로라이드, 세테아릴알코올 등이 이에 해당합니다.";
-        String remarks2 = "린스에는 머리카락에 수분을 공급하여 건조함을 방지하고 윤기를 부여하는 보습제가 포함됩니다. 이에는 글리세린, 알로에베라즙 등이 포함될 수 있습니다.";
+        String remarks1 = "초음파 소닉 기술: C칫솔은 초음파 소닉 기술을 사용하여 매우 고속으로 진동합니다. 이 기술은 칫솔 모험부터 세밀한 이물질 제거까지 모든 구강 영역을 효과적으로 청소합니다. 진동은 칫솔의 모든 섬유로 전달되어 치아와 잇몸 사이의 치아 치료를 완벽하게 지원합니다";
+        String remarks2 = "고품질의 첨단 소재로 만들어져 있습니다. 칫솔 솔은 부드럽고 유연한 섬유로 구성되어 치아 표면을 부드럽게 마사지하면서 치석과 이물질을 효과적으로 제거합니다. 또한, 칫솔의 손잡이는 특수한 소재로 제작되어 편안한 그립감과 휴대성을 제공합니다..";
 
         int result = 0;
-        for (int i = 51; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             PartnerStockVO partnerStock = new PartnerStockVO();
             partnerStock.setBusinessNumber(businessNumber);
             partnerStock.setProductName(productName);
@@ -42,7 +42,7 @@ class PartnerStockDAOTest {
     private String[] generateItemCodes(int count) {
         String[] itemCodes = new String[count];
         String prefix = "B";
-        for (int i = 51; i < count; i++) {
+        for (int i = 1; i < count; i++) {
             String suffix = String.format("%03d", i + 1);
             itemCodes[i] = prefix + suffix;
         }
@@ -56,6 +56,6 @@ class PartnerStockDAOTest {
     }
 
     private Long getUnitPriceByUnit(int unit) {
-        return unit * 10L;
+        return unit * 1000L;
     }
 }
