@@ -1,5 +1,6 @@
 package com.dev.pms.user;
 
+import com.dev.pms.room.BookingVO;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -26,14 +27,16 @@ public class UserController {
     @Autowired
     private UserService userService;
     @GetMapping("userList")
-    public ModelAndView getUserList(UserVO userVO) throws Exception{
+    public ModelAndView getUserList(UserVO userVO,BookingVO bookingVO) throws Exception{
         ModelAndView mv = new ModelAndView();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String id = authentication.getName();
         List<UserVO> userVOS = userService.getUserList(userVO);
         UserDetails userInfo = userService.loadUserByUsername("id");
+        List<BookingVO> userBookingVO = userService.getUserBookingList(bookingVO);
         mv.addObject("userInfo",userInfo);
         mv.addObject("userVO",userVOS);
+        mv.addObject("userBookingList",userBookingVO);
         mv.setViewName("user/userList");
         return mv;
     }

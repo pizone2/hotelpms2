@@ -27,5 +27,5 @@ public interface RoomDetailDAO {
 
     public int setCleanAsk(BookingVO bookingVO) throws Exception;
 
-
+    public int setStockOut(BookingVO bookingVO) throws Exception;
 }

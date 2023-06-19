@@ -24,4 +24,6 @@ public interface CleanDAO {
     public int updateCleaningInProgress(ReservedVO reservedVO) throws Exception;
 
     public int CleaningComplete(ReservedVO reservedVO) throws Exception;
+
+    public Long cleanScheduleCheck(CalenderVO calenderVO) throws Exception;
 }
