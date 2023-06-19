@@ -86,6 +86,14 @@
         AND ROOMSTATUS = '청소중'
     </update>
 
+    <update id="updateCheckout" parameterType="ReservedVO">
+        UPDATE RESERVED R
+        INNER JOIN BOOKING B
+        USING(ROOMNUMBER)
+        SET R.ROOMSTATUS='퇴실'
+        WHERE B.CHECKOUTDATE=CURDATE()
+        AND R.RESERVATIONDATE BETWEEN B.CHECKINDATE AND B.CHECKOUTDATE
+    </update>
     <select id="cleanScheduleCheck" parameterType="CalenderVO" resultType="Long">
         SELECT COUNT(*) FROM calender c
         WHERE SCHEDULESTARTDATE <![CDATA[<=]]> #{scheduleEnddate}
