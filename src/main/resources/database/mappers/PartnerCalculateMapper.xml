@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.pms.stock.PartnerCalculateDAO">
+
+
+    <!--월별 리스트를 불러오는데 그룹화는 안된 상태-->
+    <!--   SELECT SM.*, P.*, PS.UNITPRICE * PS.UNIT AS AMOUNT,
+          DATE_FORMAT(SM.USERDATE, '%Y-%m-01') AS YEARMONTHS,
+          MONTH(SM.USERDATE) AS MONTH
+          FROM PARTNER AS P
+          LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+          LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+          WHERE SM.ITEMID IS NOT NULL
+          AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}-->
+
+
+    <!--기업별 세부 정산리스트 불러오기 버전 1 토탈 금액 출력 전 -->
+ <!--   <select id="getByReceipt" parameterType="map" resultType="PartnerCalculateVO">
+    SELECT SM.*, PS.*,SUM(PS.UNITPRICE * PS.UNIT) AS ITEMIDSUM
+    FROM PARTNER AS P
+    LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+    LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+    WHERE SM.ITEMID IS NOT NULL
+    AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}
+    AND P.BUSINESSNUMBER = #{businessNumber}
+    GROUP BY SM.ITEMID;
+    </select>-->
+
+    <!--기업별 세부 정산리스트 불러오기 버전 2 토탈 금액 출력 버전 -->
+    <select id="getByReceipt" parameterType="map" resultType="PartnerCalculateVO">
+    SELECT SM.*, PS.*, SUM(PS.UNITPRICE * PS.UNIT) AS ITEMIDSUM,
+    (SELECT SUM(PS2.UNITPRICE * PS2.UNIT)
+    FROM PARTNERSTOCK AS PS2
+    LEFT JOIN STOCKMONTH AS SM2 ON PS2.ITEMID = SM2.ITEMID
+    WHERE SM2.ITEMID IS NOT NULL
+    AND DATE_FORMAT(SM2.USERDATE, '%Y-%m-01') = #{yearMonth}
+    AND P.BUSINESSNUMBER = #{businessNumber}) AS TOTAL
+    FROM PARTNER AS P
+    LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+    LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+    WHERE SM.ITEMID IS NOT NULL
+    AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}
+    AND P.BUSINESSNUMBER = #{businessNumber}
+    GROUP BY SM.ITEMID;
+    </select>
+    <!--연월 기준으로 전체 품목 리스트 불러오기-->
+    <select id="getByYearMonth" parameterType="java.lang.String" resultType="PartnerCalculateVO">
+
+        SELECT P.BUSINESSNUMBER, P.CONTACTNAME, P.COMPANYNAME, P.EMAIL,
+        SUM(PS.UNITPRICE * PS.UNIT) AS AMOUNT
+        FROM PARTNER AS P
+        LEFT JOIN PARTNERSTOCK AS PS ON P.BUSINESSNUMBER = PS.BUSINESSNUMBER
+        LEFT JOIN STOCKMONTH AS SM ON PS.ITEMID = SM.ITEMID
+        WHERE SM.ITEMID IS NOT NULL
+        AND DATE_FORMAT(SM.USERDATE, '%Y-%m-01') = #{yearMonth}
+        GROUP BY P.BUSINESSNUMBER, P.CONTACTNAME, P.COMPANYNAME, P.EMAIL;
+
+    </select>
+
+</mapper>
