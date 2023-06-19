@@ -42,9 +42,6 @@ public class ManagerController {
 
             managerService.setQuantity(managerStockVO);
 
-//            System.out.println(managerStockVO.getQuantity());
-//            System.out.println( managerStockVO.getItemId());
-
 
         }
         // 처리 로직 수행

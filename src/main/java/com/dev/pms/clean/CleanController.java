@@ -23,14 +23,14 @@ public class CleanController {
     private CleanService cleanService;
 
 
-    @GetMapping("/cleanSchedule")
+    @GetMapping("/Test")
     public ModelAndView cleanSchedule(CalenderVO calenderVO) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<CalenderVO>calenderVOList=cleanService.getCleanList(calenderVO);
         List<ReservedVO>RequestClean =cleanService.getRequestClean(calenderVO);
         mv.addObject("events",calenderVOList);
         mv.addObject("request",RequestClean);
-        mv.setViewName("clean/cleanSchedule");
+        mv.setViewName("clean/Test");
 
         return mv;
     }

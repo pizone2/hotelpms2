@@ -14,4 +14,10 @@
         SET AUTOORDERQUANTITY = #{quantity}
         WHERE ITEMID = #{itemId};
     </update>
+
+    <update id="setOrderStatus" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        SET ORDERSTATUS = "발주요청"
+        WHERE INVENTORYID = #{inventoryId}
+    </update>
 </mapper>
