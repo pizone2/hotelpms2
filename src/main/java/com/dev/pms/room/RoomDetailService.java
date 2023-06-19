@@ -44,7 +44,11 @@ public class RoomDetailService {
     }
 
     public int setStatusHouse(BookingVO bookingVO) throws Exception{
-        return roomDAO.setStatusHouse(bookingVO);
+        int result = roomDAO.setStatusHouse(bookingVO);
+        if(result>=1){
+            result = roomDAO.setStockOut(bookingVO);
+        }
+        return result;
     }
 
     public int setCleanAsk(BookingVO bookingVO) throws Exception {

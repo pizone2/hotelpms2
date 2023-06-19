@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RoomStockVO {
-    private String roomType;
+public class Item {
     private Long inventoryId;
-    private Long count;
+    private Long quantity;
 }
+

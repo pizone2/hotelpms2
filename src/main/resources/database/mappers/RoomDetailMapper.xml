@@ -103,4 +103,15 @@
     <update id="setCleanAsk" parameterType="BookingVO">
         UPDATE RESERVED SET ROOMSTATUS='청소요청' WHERE ROOMNUMBER =#{roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
     </update>
+
+    <!--예약확정->재실 할때 재고 빠짐-->
+    <update id="setStockOut" parameterType="BookingVO">
+        UPDATE HOTELSTOCK HS
+        INNER JOIN ROOMSTOCK ST ON HS.INVENTORYID = ST.INVENTORYID
+        INNER JOIN BOOKING B ON ST.ROOMTYPE = B.ROOMTYPE
+        INNER JOIN RESERVED RS ON RS.ROOMNUMBER = B.ROOMNUMBER
+        SET HS.CURRENTSTOCK = HS.CURRENTSTOCK - ST.COUNT
+        WHERE CURDATE() BETWEEN B.CHECKINDATE AND B.CHECKOUTDATE
+        AND B.ROOMNUMBER =#{roomNumber} AND RS.RESERVATIONDATE = CURDATE() AND RS.ROOMSTATUS = '재실';
+    </update>
 </mapper>

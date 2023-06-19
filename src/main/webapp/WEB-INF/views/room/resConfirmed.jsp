@@ -131,7 +131,7 @@
 
 
 
-                        <a href="#"><button class="btn btn-dark" type="button">알림톡발송</button></a>
+                        <%--<a href="#"><button class="btn btn-dark" type="button">알림톡발송</button></a>--%>
                         <c:if test="${pageName eq '예약확정'}">
                         <form id="checkinForm" action="/roomDetail/checkInSave" method="post">
                            <input type="hidden" name="checkinDate" value="${bookingVO.checkinDate}">
