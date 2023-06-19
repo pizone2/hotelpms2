@@ -31,8 +31,9 @@ public interface StockDAO {
 
     public Long getRoomTypeCount(String roomType) throws  Exception;
 
-    public List<RoomStockVO> getRoomTypeStock(String roomType) throws  Exception;
-
     public int setRoomStockDelete(String roomType) throws Exception;
+
+
+    public List<RoomStockVO> getRoomTypeStock(String roomType) throws  Exception;
 
 }
