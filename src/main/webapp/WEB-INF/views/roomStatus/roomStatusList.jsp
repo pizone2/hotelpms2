@@ -56,7 +56,7 @@
                                 </li>
                                 <li>
                                     <span class="fas fa-circle text-success fa-xs"></span>
-                                    <span class="cr_box05">퇴실예정</span>
+                                    <span class="cr_box05">퇴실</span>
                                 </li>
                                 <li>
                                     <h1 id="todayDate" style="display: inline; margin-left: 20px;"></h1>
