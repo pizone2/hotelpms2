@@ -49,7 +49,7 @@
             <div class="container-fluid px-4">
                 <div class="card">
                     <div class="card-body">
-                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" data-bs-toggle="modal" data-bs-target="#exampleModalLg">품목추가</button>
+                        <button class="btn btn-outline-dark" type="button" style="margin-bottom: 15px;" data-bs-toggle="modal" data-bs-target="#exampleModalLg">자동발주수량 수정</button>
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
