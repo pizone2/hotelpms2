@@ -14,4 +14,6 @@
         SET AUTOORDERQUANTITY = #{quantity}
         WHERE ITEMID = #{itemId};
     </update>
+
+
 </mapper>
