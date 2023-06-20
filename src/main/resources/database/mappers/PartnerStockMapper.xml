@@ -13,7 +13,8 @@
 
     <insert id="setMultipleHotelInventory" parameterType="int">
         INSERT INTO HOTELSTOCK (INVENTORYID, ITEMID, AUTOORDERQUANTITY, ORDERSTATUS)
-        SELECT NULL, ITEMID, 0,'양호'
+        SELECT NULL, ITEMID, 0,'양호!Dlghdnjs0328
+        '
         FROM PARTNERSTOCK
         WHERE ITEMUSAGESTATUS = 1
         AND ITEMID NOT IN (SELECT ITEMID FROM HOTELSTOCK)

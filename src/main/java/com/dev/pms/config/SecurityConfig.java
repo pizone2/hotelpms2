@@ -27,6 +27,9 @@ public class SecurityConfig  {
         //Security에서 무시해야하는 URL 패턴 등록 (이미지 css 등 시큐리티가 필요없는 부분)
         return web -> web //-> :람다함수
                 .ignoring() //"."으로 연결: 메서드 체이닝 //ignoring():무시하겠다
+                .antMatchers("/partner/join")
+                .antMatchers("/partner/findBusinessNumber")
+                .antMatchers("https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=CUDiGGxX5sMlOkttxSlMucSgFGVUn09P2dC54WaXMNwYRvT1%2FCYYSXEqqMkFoQ%2Bkxjsb3XIGi0QEOAfX%2B9IJWw%3D%3D")
                 .antMatchers("/images/**")
                 .antMatchers("/css/**")
                 .antMatchers("/js/**")
@@ -50,7 +53,9 @@ public class SecurityConfig  {
 //                .antMatchers("/").permitAll() //루트 밑에 시작하는걸 모두 허용하겠다(permitAll) 이후 아래에서 제한을 시작
 //                .antMatchers("/admin").hasRole("ADMIN") // /adimn 을 가진 주소는 role ADMIN 만 허용
 //                .antMatchers("/manager").hasAnyRole("ADMIN","MANAGER") //ADMIN 을 가지거나 MANAGER를 가진 사람만 허용 => 회원 한명당 하나의 ROLE를 가질때
+                //.antMatchers("/partner/join").permitAll()
                 .anyRequest().authenticated() //그외 나머지는 로그인 해야 볼수 있어요 (authenticated = 로그인 해야 )
+
                 .and()
                 .httpBasic().and()
                 .formLogin()
