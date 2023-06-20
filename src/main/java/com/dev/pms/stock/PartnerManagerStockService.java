@@ -21,6 +21,9 @@ public class PartnerManagerStockService {
     public int updateOrderCompleted(ManagerStockVO managerStockVO) throws Exception {
         return partnerManagerStockDAO.updateOrderCompleted(managerStockVO);
     }
+    public int updateOrderCompleted2(ManagerStockVO managerStockVO) throws Exception {
+        return partnerManagerStockDAO.updateOrderCompleted2(managerStockVO);
+    }
 
     public int updateGoodStock(ManagerStockVO managerStockVO) throws Exception {
         return partnerManagerStockDAO.updateGoodStock(managerStockVO);

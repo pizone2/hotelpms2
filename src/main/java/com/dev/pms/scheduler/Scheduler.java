@@ -23,7 +23,9 @@ public class Scheduler {
         ModelAndView mv = new ModelAndView();
         ManagerStockVO managerStockVO = new ManagerStockVO();
         int result = partnerManagerStockService.updateOrderCompleted(managerStockVO);
+        int result2 = partnerManagerStockService.updateOrderCompleted2(managerStockVO);
 
+        //발주중이 발주 완료로 변경되면 값도 변경되겠금 구현
         System.out.println("테스트 테스트");
 
     }

@@ -16,11 +16,22 @@
         WHERE INVENTORYID = #{inventoryId}
     </update>
 
-    <update id="updateOrderCompleted" parameterType="ManagerStockVO">
-        UPDATE HOTELSTOCK
-        SET ORDERSTATUS  ='발주완료'
-        WHERE ORDERSTATUS ='발주중'
-    </update>
+
+
+        <update id="updateOrderCompleted2" parameterType="ManagerStockVO">
+            UPDATE HOTELSTOCK
+            INNER JOIN PARTNERSTOCK ON HOTELSTOCK.ITEMID = PARTNERSTOCK.ITEMID
+            SET HOTELSTOCK.ORDERSTATUS = '발주완료',
+            HOTELSTOCK.CURRENTSTOCK = HOTELSTOCK.CURRENTSTOCK + PARTNERSTOCK.UNIT
+            WHERE HOTELSTOCK.ORDERSTATUS = '발주중'
+        </update>
+
+    <insert id="updateOrderCompleted" parameterType="ManagerStockVO">
+        INSERT INTO STOCKMONTH (USERNUM, ITEMID, USERDATE)
+        SELECT NULL, ITEMID, NOW()
+        FROM HOTELSTOCK
+        WHERE ORDERSTATUS = '발주중';
+    </insert>
 
     <update id="updateGoodStock" parameterType="ManagerStockVO">
         UPDATE HOTELSTOCK
