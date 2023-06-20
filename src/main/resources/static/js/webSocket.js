@@ -78,5 +78,5 @@ function sendMessage() {
     stompClient.send("/ws/message", {}, JSON.stringify({'messageContent': $("#message").val()}));
 }function requestMessage(secondData) {
     console.log("sending message");
-    stompClient.send("/ws/message", {}, JSON.stringify({'messageContent': "번 상품의 발주요청이 왔습니다."}));
+    stompClient.send("/ws/message", {}, JSON.stringify({'messageContent': secondData+"번 상품의 발주요청이 왔습니다."}));
 }

@@ -37,6 +37,8 @@ public class ManagerService {
     }
     public int setOrderStatus(ManagerStockVO managerStockVO)throws Exception{
         return managerDAO.setOrderStatus(managerStockVO);
+    } public List<StatisticsVO> getTodaySales(StatisticsVO statisticsVO)throws Exception{
+        return managerDAO.getTodaySales(statisticsVO);
     }
 
 

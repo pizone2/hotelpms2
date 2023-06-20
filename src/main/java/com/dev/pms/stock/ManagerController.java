@@ -53,6 +53,19 @@ public class ManagerController {
         return "success";
     }
 
+    @GetMapping("todaySales")
+    public ModelAndView getTodaySales(StatisticsVO statisticsVO) throws Exception{
+        ModelAndView mv = new ModelAndView();
+
+        List<StatisticsVO> statisticsVOs = managerService.getTodaySales(statisticsVO);
+
+
+        mv.addObject("statisticsVO",statisticsVOs);
+        mv.setViewName("stock/todaySales");
+        return mv;
+    }
+
+
 
 
 
