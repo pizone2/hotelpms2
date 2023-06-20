@@ -1,7 +1,9 @@
 package com.dev.pms.room;
 
+import com.dev.pms.alarm.ResponseMessage;
 import com.dev.pms.user.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +12,9 @@ import java.util.List;
 public class RoomDetailService {
     @Autowired
     private RoomDetailDAO roomDAO;
+
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
 
 
     public BookingVO getResDetail(Long aLong) throws  Exception{
@@ -58,11 +63,11 @@ public class RoomDetailService {
             String orderStatus = stock.getOrderStatus();
             if ((currentStock == null || currentStock < autoOrderQuantity) && "양호".equals(orderStatus)) {
                 roomDAO.setOrderStatus(stock);
+                roomDAO.setAlarm(stock);
             }
 
         }
 
-        System.out.println("StatusTest");
 
 
         return result;

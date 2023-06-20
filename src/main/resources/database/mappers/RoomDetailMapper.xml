@@ -66,7 +66,7 @@
 
     <!--객실번호에 따른 오늘날짜-->
     <select id="getResNowDate" parameterType="BookingVO" resultType="BookingVO">
-        SELECT CHECKINDATE ,<CHECKOUTDATE></CHECKOUTDATE>
+        SELECT CHECKINDATE ,CHECKOUTDATE
         FROM BOOKING
         WHERE ROOMNUMBER = #{roomNumber} AND CHECKOUTDATE = #{checkoutDate}
     </select>
@@ -127,4 +127,9 @@
         SET ORDERSTATUS = "재고부족"
         WHERE INVENTORYID = #{inventoryId}
     </update>
+    <!--재고부족 알림-->
+    <insert id="setAlarm">
+        INSERT INTO ALARM
+        VALUES (NULL,"pizone","1", CONCAT(#{inventoryId}, '번 상품의 재고가 부족합니다.'),sysdate(),"/stock/managerStockList");
+    </insert>
 </mapper>

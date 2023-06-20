@@ -30,4 +30,6 @@ public interface RoomDetailDAO {
 
     public int setStockOut(BookingVO bookingVO) throws Exception;
     public int setOrderStatus(ChangeStockVO changeStockVO) throws Exception;
+
+    public int setAlarm(ChangeStockVO stock)throws Exception;
 }

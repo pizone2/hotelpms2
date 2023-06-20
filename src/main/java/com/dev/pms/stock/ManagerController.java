@@ -41,10 +41,14 @@ public class ManagerController {
             managerStockVO.setItemId(Long.valueOf(itemId));
 
             managerService.setQuantity(managerStockVO);
-
-
         }
-        // 처리 로직 수행
+        return "success";
+    }
+
+    @PostMapping("orderStatus")
+    public String setOrderStatus(ManagerStockVO managerStockVO) throws Exception {
+        // 전송된 데이터 처리
+       managerService.setOrderStatus(managerStockVO);
 
         return "success";
     }

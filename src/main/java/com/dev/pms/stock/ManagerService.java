@@ -35,6 +35,9 @@ public class ManagerService {
     public int setQuantity(ManagerStockVO managerStockVO)throws Exception{
         return managerDAO.setQuantity(managerStockVO);
     }
+    public int setOrderStatus(ManagerStockVO managerStockVO)throws Exception{
+        return managerDAO.setOrderStatus(managerStockVO);
+    }
 
 
 }

@@ -18,6 +18,6 @@
     <update id="setOrderStatus" parameterType="ManagerStockVO">
         UPDATE HOTELSTOCK
         SET ORDERSTATUS = "발주요청"
-        WHERE INVENTORYID = #{inventoryId}
+        WHERE ITEMID = #{itemId}
     </update>
 </mapper>
