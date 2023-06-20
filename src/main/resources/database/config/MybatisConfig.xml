@@ -22,6 +22,9 @@
         <typeAlias type="com.dev.pms.stock.ManagerStockVO" alias="ManagerStockVO"></typeAlias>
         <typeAlias type="com.dev.pms.stock.RoomStockVO" alias="RoomStockVO"></typeAlias>
         <typeAlias type="com.dev.pms.stock.PartnerCalculateVO" alias="PartnerCalculateVO"></typeAlias>
+        <typeAlias type="com.dev.pms.alarm.AlarmVO" alias="AlarmVO"></typeAlias>
+
     </typeAliases>
+
 
 </configuration>

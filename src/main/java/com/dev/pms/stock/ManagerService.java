@@ -14,8 +14,23 @@ public class ManagerService {
     private  ManagerDAO managerDAO;
 
     public List<ManagerStockVO> getStockList(ManagerStockVO managerStockVO) throws Exception{
-        return managerDAO.getStockList(managerStockVO);
+        List<ManagerStockVO> stockList = managerDAO.getStockList(managerStockVO);
+
+        for (ManagerStockVO stock : stockList) {
+            Long inventoryId = stock.getInventoryId();
+            Long currentStock = stock.getCurrentStock();
+            Long autoOrderQuantity = stock.getAutoOrderQuantity();
+            String orderStatus = stock.getOrderStatus();
+            if ((currentStock == null || currentStock < autoOrderQuantity) && "양호".equals(orderStatus)) {
+                managerDAO.setOrderStatus(stock);
+            }
+
+        }
+        stockList = managerDAO.getStockList(managerStockVO);
+
+        return stockList;
     }
+
 
     public int setQuantity(ManagerStockVO managerStockVO)throws Exception{
         return managerDAO.setQuantity(managerStockVO);
