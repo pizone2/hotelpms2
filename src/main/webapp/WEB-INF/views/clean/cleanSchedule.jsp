@@ -49,7 +49,7 @@
                             <div class="col-auto mt-4">
                                 <h1 class="page-header-title">
                                     <div class="page-header-icon"><i data-feather="activity"></i></div>
-                                    CleanSchedule
+                                    청소 스케줄
                                 </h1>
                                 <div class="page-header-subtitle">Example dashboard overview and content summary</div>
                             </div>
@@ -69,7 +69,7 @@
                             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="insertSchedule" method="post" action="/insertSchedule">
+                            <form id="insertSchedule" method="post" action="/clean/insertSchedule">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1">시작날짜</label>
                                     <input class="form-control form-control-solid" id="exampleFormControlInput1"
@@ -230,9 +230,25 @@
                 <div class="row">
                     <div class="col-xxl-8">
                         <!-- Tabbed dashboard card example-->
+                        <div class="card mb-4">
+                                    <div class="card-header">청소부 스케줄 관리</div>
+                            <div class="card-body py-5">
+                                <div class="justify-content-left">
+                                    <c:set value="<%=Date%>" var="today" />
+                                    <h5>Today : ${today}</h5>
 
+                                </div>
+                                <div class="d-flex flex-column justify-content-center">
+                                    <div class="text-center px-0 px-lg-5">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 풀 캘린더 사용 -->
-                        <div id='calendar' class="mb-4"></div>
+                        <div id='calendar' class="mb-4">
+
+                        </div>
                         <script>
                             document.addEventListener('DOMContentLoaded', function() {
                                 let calendarEl = document.getElementById('calendar');
@@ -241,19 +257,19 @@
                                         let scheduleNumber = info.event.id;
 
 
-                                        let action = prompt('Event: ' + scheduleNumber + '\n\n선택하세요: \n1. 수정\n2. 삭제');
+                                        let action = prompt('Event: ' + scheduleNumber + '\n\n삭제 하시겠습니까?: \n1. No\n2. Yes');
 
                                         if (action === '1') {
 
-                                            alert('1번 수정: ' + scheduleNumber);
+                                            alert("청소" + scheduleNumber + '팀 스케줄 삭제 취소');
 
 
                                         } else if (action === '2') {
 
-                                            alert('2번 삭제: ' + scheduleNumber);
+                                            alert("청소" + scheduleNumber + '팀 스케줄 삭제 ');
 
                                             $.ajax({
-                                                url: "/deleteSchedule",
+                                                url: "/clean/deleteSchedule",
                                                 type: "POST",
                                                 data: {
                                                     scheduleNumber: scheduleNumber
@@ -303,20 +319,8 @@
                             });
                         </script>
 
-                        <!-- Illustration dashboard card example-->
-                        <div class="card mb-4">
-                            <div class="card-body py-5">
-                                       <div class="justify-content-left">
-                                        <c:set value="<%=Date%>" var="today" />
-                                        <h5>${today}</h5>
-                                       </div>
-                                <div class="d-flex flex-column justify-content-center">
-                                    <div class="text-center px-0 px-lg-5">
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
                     </div>
                     <div class="col-xxl-4">
@@ -324,65 +328,67 @@
                             <div class="col-xl-6 col-xxl-12">
                                 <!-- Team members / people dashboard card example-->
                                 <div class="card mb-4">
-                                    <div class="card-header">체크 리스트
+                                    <div class="card-header" >체크 리스트
+                                        <div id="checkList">
 
-
-                                        <div class="card-body">
-                                            <c:forEach var="request" items="${request}">
-                                                <c:forEach var="request2" items="${request.reservedVOS}">
-                                                    <c:if test="${request2.roomStatus eq '청소요청'}">
-                                                        <div class="d-flex align-items-center justify-content-between mb-4">
-                                                            <div class="d-flex align-items-center flex-shrink-0 me-3">
-                                                                <div class="avatar avatar-xl me-3 bg-gray-200"><img
-                                                                        class="avatar-img img-fluid"
-                                                                        src="/assets/img/illustrations/profiles/profile-1.png" alt=""/>
-                                                                </div>
-                                                                <div class="d-flex flex-column fw-bold">
-                                                                    <div class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</div>
-                                                                    <div class="small text-muted line-height-normal">${request2.roomNumber}</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="dropdown no-caret">
-                                                                <button class="btn btn-transparent-dark btn-icon dropdown-toggle"
-                                                                        id="dropdownPeople1" type="button" data-bs-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false"><i
-                                                                        data-feather="more-vertical"></i></button>
-                                                                <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"
-                                                                     aria-labelledby="dropdownPeople1">
-                                                                    <a class="dropdown-item" href="#!" onclick="CleaningInProgress('${request2.roomNumber}')">청소시작</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                     </c:if>
-                                                </c:forEach>
-                                                <c:forEach var="request2" items="${request.reservedVOS}">
-                                                    <c:if test="${request2.roomStatus eq '청소중'}">
-                                                        <div class="d-flex align-items-center justify-content-between mb-4">
-                                                            <div class="d-flex align-items-center flex-shrink-0 me-3">
-                                                                <div class="avatar avatar-xl me-3 bg-gray-200"><img
-                                                                        class="avatar-img img-fluid"
-                                                                        src="/assets/img/illustrations/profiles/profile-1.png" alt=""/>
-                                                                </div>
-                                                                <div class="d-flex flex-column fw-bold">
-                                                                    <div class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</div>
-                                                                    <div class="small text-muted line-height-normal">${request2.roomNumber}</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="dropdown no-caret">
-                                                                <button class="btn btn-transparent-dark btn-icon dropdown-toggle"
-                                                                        id="dropdownPeople1-2" type="button" data-bs-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false"><i
-                                                                        data-feather="more-vertical"></i></button>
-                                                                <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"
-                                                                     aria-labelledby="dropdownPeople1">
-                                                                    <a class="dropdown-item" href="#!" onclick="CleaningComplete('${request2.roomNumber}')">청소완료</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                     </c:if>
-                                                </c:forEach>
-                                            </c:forEach>
                                         </div>
+
+<%--                                        <div class="card-body" id="checkList">--%>
+<%--                                            <c:forEach var="request" items="${request}">--%>
+<%--                                                <c:forEach var="request2" items="${request.reservedVOS}">--%>
+<%--                                                    <c:if test="${request2.roomStatus eq '청소요청'}">--%>
+<%--                                                        <div class="d-flex align-items-center justify-content-between mb-4">--%>
+<%--                                                            <div class="d-flex align-items-center flex-shrink-0 me-3">--%>
+<%--                                                                <div class="avatar avatar-xl me-3 bg-gray-200"><img--%>
+<%--                                                                        class="avatar-img img-fluid"--%>
+<%--                                                                        src="/assets/img/illustrations/profiles/profile-1.png" alt=""/>--%>
+<%--                                                                </div>--%>
+<%--                                                                <div class="d-flex flex-column fw-bold">--%>
+<%--                                                                    <div class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</div>--%>
+<%--                                                                    <div class="small text-muted line-height-normal">${request2.roomNumber}</div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                            <div class="dropdown no-caret">--%>
+<%--                                                                <button class="btn btn-transparent-dark btn-icon dropdown-toggle"--%>
+<%--                                                                        id="dropdownPeople1" type="button" data-bs-toggle="dropdown"--%>
+<%--                                                                        aria-haspopup="true" aria-expanded="false"><i--%>
+<%--                                                                        data-feather="more-vertical"></i></button>--%>
+<%--                                                                <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"--%>
+<%--                                                                     aria-labelledby="dropdownPeople1">--%>
+<%--                                                                    <a class="dropdown-item" href="#!" onclick="CleaningInProgress('${request2.roomNumber}')">청소시작</a>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                     </c:if>--%>
+<%--                                                </c:forEach>--%>
+<%--                                                <c:forEach var="request2" items="${request.reservedVOS}">--%>
+<%--                                                    <c:if test="${request2.roomStatus eq '청소중'}">--%>
+<%--                                                        <div class="d-flex align-items-center justify-content-between mb-4">--%>
+<%--                                                            <div class="d-flex align-items-center flex-shrink-0 me-3">--%>
+<%--                                                                <div class="avatar avatar-xl me-3 bg-gray-200"><img--%>
+<%--                                                                        class="avatar-img img-fluid"--%>
+<%--                                                                        src="/assets/img/illustrations/profiles/profile-1.png" alt=""/>--%>
+<%--                                                                </div>--%>
+<%--                                                                <div class="d-flex flex-column fw-bold">--%>
+<%--                                                                   <span class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</span><div class="cleaning">청소중</div>--%>
+<%--                                                                    <div class="small text-muted line-height-normal">${request2.roomNumber}</div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                            <div class="dropdown no-caret">--%>
+<%--                                                                <button class="btn btn-transparent-dark btn-icon dropdown-toggle"--%>
+<%--                                                                        id="dropdownPeople1-2" type="button" data-bs-toggle="dropdown"--%>
+<%--                                                                        aria-haspopup="true" aria-expanded="false"><i--%>
+<%--                                                                        data-feather="more-vertical"></i></button>--%>
+<%--                                                                <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"--%>
+<%--                                                                     aria-labelledby="dropdownPeople1">--%>
+<%--                                                                    <a class="dropdown-item" href="#!" onclick="CleaningComplete('${request2.roomNumber}')">청소완료</a>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                     </c:if>--%>
+<%--                                                </c:forEach>--%>
+<%--                                            </c:forEach>--%>
+<%--                                        </div>--%>
 
 
                                     </div>
@@ -428,8 +434,7 @@
                 </div>
             </div>
 
-            <div id="checkList">
-            </div>
+
         </main>
         <c:import url="../temp/footer.jsp"></c:import>
     </div>

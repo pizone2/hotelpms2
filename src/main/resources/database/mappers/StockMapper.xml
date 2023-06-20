@@ -97,6 +97,7 @@
         DELETE FROM ROOMSTOCK WHERE ROOMTYPE =#{roomType}
     </delete>
 
+
     <select id="getRoomTypeStock" parameterType="String" resultType="RoomStockVO">
         SELECT * FROM ROOMSTOCK
         WHERE ROOMTYPE =#{roomType}

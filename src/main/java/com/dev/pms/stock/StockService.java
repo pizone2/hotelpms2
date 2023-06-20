@@ -62,12 +62,14 @@ public class StockService {
         RoomStockVO roomStockVO = new RoomStockVO();
         roomStockVO.setRoomType(roomType);
 
+        //기존에 ROOMSTOCK에 있던 객실타입별 재고들 삭제
         int result = 0;
         if(stockDAO.getRoomTypeCount(roomType)>=1L){
             result = stockDAO.setRoomStockDelete(roomType);
         }
 
-        for(Map<String, Object> itemMap : items){
+        //ROOMSTOCK에 재고 INSERT
+        for(Map<String, Object> itemMap : items) {
             String inventoryIdString = (String) itemMap.get("inventoryId");
             String quantityString = (String) itemMap.get("quantity");
 

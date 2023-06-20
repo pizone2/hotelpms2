@@ -1,5 +1,6 @@
 package com.dev.pms.user;
 
+import com.dev.pms.room.BookingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -36,4 +37,7 @@ public class UserService implements UserDetailsService {
         return userVO;
     }
 
+    public List<BookingVO>getUserBookingList(BookingVO bookingVO) throws Exception {
+        return userDAO.getUserBookingList(bookingVO);
+    }
 }
