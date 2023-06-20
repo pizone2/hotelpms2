@@ -31,4 +31,8 @@ public interface CleanDAO {
     public int updateCheckout(BookingVO bookingVO) throws Exception;
 
     public int updateCheckoutCleaning(ReservedVO reservedVO) throws Exception;
+
+    public List<BookingVO> todayCheckIn(BookingVO bookingVO) throws Exception;
+
+    public List<BookingVO> todayCheckOut(BookingVO bookingVO) throws Exception;
 }

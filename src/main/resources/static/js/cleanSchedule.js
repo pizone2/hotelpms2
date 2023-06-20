@@ -63,8 +63,7 @@ setInterval(updateCardContainer, 3000);
 
 
 function CleaningInProgress(roomNumber) {
-    // Perform an AJAX request to update the data on the server
-    // Example using jQuery:
+
     $.ajax({
         url:'/clean/updateCleaningInProgress',
         method: 'POST',
@@ -77,7 +76,8 @@ function CleaningInProgress(roomNumber) {
         },
         error: function(error) {
             // Handle the error
-            console.error('An error occurred while sending the cleaning request');
+            console.error('');
+            alert("청소를 시작합니다.")
         }
     });
 }
@@ -85,8 +85,6 @@ function CleaningInProgress(roomNumber) {
 
 
 function CleaningComplete(roomNumber) {
-    // Perform an AJAX request to update the data on the server
-    // Example using jQuery:
     $.ajax({
         url: '/clean/cleaningComplete',
         method: 'POST',
@@ -96,10 +94,12 @@ function CleaningComplete(roomNumber) {
         success: function(response) {
             // Handle the success response
             console.log('변경완료(재실)');
+            alert("청소를 완료합니다.")
         },
         error: function(error) {
             // Handle the error
             console.error('An error occurred while marking the cleaning as complete');
+            alert("청소를 완료합니다.")
         }
     });
 }

@@ -122,6 +122,19 @@
         WHERE SCHEDULESTARTDATE <![CDATA[<=]]> #{scheduleEnddate}
         AND SCHEDULEENDDATE >= #{scheduleStartdate}
     </select>
+    
+    
+    <select id="todayCheckIn" parameterType="BookingVO" resultType="BookingVO">
+        SELECT CHECKINDATE, ROOMNUMBER
+        FROM booking b
+        WHERE DATE(CHECKINDATE) = CURDATE()
+    </select>
+
+    <select id="todayCheckOut" parameterType="BookingVO" resultType="BookingVO">
+        SELECT CHECKOUTDATE , ROOMNUMBER
+        FROM booking b
+        WHERE DATE(CHECKOUTDATE) = CURDATE();
+    </select>
 
 
 
