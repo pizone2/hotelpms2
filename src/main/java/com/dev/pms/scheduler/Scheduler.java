@@ -23,7 +23,7 @@ public class Scheduler {
     }
 
     //매일 오전9시 발주완료 변경
-    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "0 0 9 * * *")
     public void updateOrderCompleted() throws Exception {
         ManagerStockVO managerStockVO = new ManagerStockVO();
         int result = partnerManagerStockService.updateOrderCompleted(managerStockVO);

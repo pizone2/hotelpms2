@@ -40,7 +40,7 @@
                                 src="/assets/img/illustrations/profiles/profile-1.png" alt=""/>
                         </div>
                         <div class="d-flex flex-column fw-bold">
-                            <span class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</span><div class="cleaning">청소중</div>
+                            <span class="text-dark line-height-normal mb-1" href="#!">청소${today.scheduleNumber}팀</span><div class="cleaning">청소중</div>
                             <div class="small text-muted line-height-normal">${request2.roomNumber}</div>
                         </div>
                     </div>
