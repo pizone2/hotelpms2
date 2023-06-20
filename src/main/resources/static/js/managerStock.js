@@ -64,11 +64,18 @@ $(document).ready(function () {
             success: function (response) {
                 // Handle the response from the server
                 console.log('Data sent successfully');
+                location.reload();
             },
             error: function (xhr, status, error) {
                 // Handle the error case
                 console.log('Error:', error);
             }
         });
+       alert("자동발주수량이 수정되었습니다.")
+        location.reload();
+
+
     });
+
 });
+

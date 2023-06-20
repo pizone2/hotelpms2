@@ -66,9 +66,15 @@
 
     <!--객실번호에 따른 오늘날짜-->
     <select id="getResNowDate" parameterType="BookingVO" resultType="BookingVO">
-        SELECT CHECKINDATE ,CHECKOUTDATE
+        SELECT CHECKINDATE ,<CHECKOUTDATE></CHECKOUTDATE>
         FROM BOOKING
         WHERE ROOMNUMBER = #{roomNumber} AND CHECKOUTDATE = #{checkoutDate}
+    </select>
+    <!--재고리스트 -->
+    <select id="getStockList" resultType="ChangeStockVO">
+        SELECT H.*, P.PRODUCTNAME, P.ITEMCODE, P.UNITPRICE
+        FROM HOTELSTOCK AS H
+        JOIN PARTNERSTOCK AS P ON H.ITEMID = P.ITEMID;
     </select>
 
     <!--BOOKING테이블 업데이트-->
@@ -113,5 +119,12 @@
         SET HS.CURRENTSTOCK = HS.CURRENTSTOCK - ST.COUNT
         WHERE CURDATE() BETWEEN B.CHECKINDATE AND B.CHECKOUTDATE
         AND B.ROOMNUMBER =#{roomNumber} AND RS.RESERVATIONDATE = CURDATE() AND RS.ROOMSTATUS = '재실';
+    </update>
+
+    <!--최소발주수량 이하 시 작동 상태변환-->
+    <update id="setOrderStatus" parameterType="ChangeStockVO">
+        UPDATE HOTELSTOCK
+        SET ORDERSTATUS = "재고부족"
+        WHERE INVENTORYID = #{inventoryId}
     </update>
 </mapper>

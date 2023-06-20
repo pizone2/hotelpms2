@@ -14,6 +14,7 @@ public interface RoomDetailDAO {
     public UserVO getManagerInfo() throws  Exception;
 
     public List<BookingVO> getResDate(BookingVO bookingVO) throws Exception;
+    public List<ChangeStockVO> getStockList() throws Exception;
 
     public BookingVO getResNowDate(BookingVO bookingVO) throws Exception;
 
@@ -28,4 +29,5 @@ public interface RoomDetailDAO {
     public int setCleanAsk(BookingVO bookingVO) throws Exception;
 
     public int setStockOut(BookingVO bookingVO) throws Exception;
+    public int setOrderStatus(ChangeStockVO changeStockVO) throws Exception;
 }

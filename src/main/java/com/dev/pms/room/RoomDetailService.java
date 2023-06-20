@@ -11,6 +11,7 @@ public class RoomDetailService {
     @Autowired
     private RoomDetailDAO roomDAO;
 
+
     public BookingVO getResDetail(Long aLong) throws  Exception{
         return roomDAO.getResDetail(aLong);
     }
@@ -48,6 +49,22 @@ public class RoomDetailService {
         if(result>=1){
             result = roomDAO.setStockOut(bookingVO);
         }
+        List<ChangeStockVO> stockList = roomDAO.getStockList();
+
+        for (ChangeStockVO stock : stockList) {
+            Long inventoryId = stock.getInventoryId();
+            Long currentStock = stock.getCurrentStock();
+            Long autoOrderQuantity = stock.getAutoOrderQuantity();
+            String orderStatus = stock.getOrderStatus();
+            if ((currentStock == null || currentStock < autoOrderQuantity) && "양호".equals(orderStatus)) {
+                roomDAO.setOrderStatus(stock);
+            }
+
+        }
+
+        System.out.println("StatusTest");
+
+
         return result;
     }
 
