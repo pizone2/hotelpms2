@@ -43,9 +43,9 @@
                 </form>
             <%--    <a href="#" class="forgot-password-link" style="font-family: 'Nanum Gothic', sans-serif;">MOHOTEL: Don't have an account?  </a>
                 <p class="login-card-footer-text"> <a href="#" class="text-reset">Business Registration Here!</a></p>--%>
-                <a href="#" onclick="openPopup()" class="forgot-password-link" style="font-family: 'Nanum Gothic', sans-serif;" data-bs-toggle="modal" data-bs-target="#exampleModalLg1">MOHOTEL: Don't have an account?</a>
+                <a href="/partner/join" class="forgot-password-link" style="font-family: 'Nanum Gothic', sans-serif;" >MOHOTEL: Don't have an account?</a>
                 <p class="login-card-footer-text">
-                    <a href="#" class="text-reset" data-bs-toggle="modal" data-bs-target="#exampleModalLg1">Business Registration Here!</a>
+                    <a href="/partner/join" class="text-reset" data-bs-toggle="modal" data-bs-target="#exampleModalLg1">Business Registration Here!</a>
                 </p>
 
             <%--                <nav class="login-card-footer-nav">--%>
@@ -90,12 +90,12 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script>
+<%--  <script>
       function openPopup() {
           var url = "/partner/join";
           var popup = window.open(url, "_blank", "width=500,height=500");
           popup.focus();
       }
-  </script>
+  </script>--%>
 </body>
 </html>
