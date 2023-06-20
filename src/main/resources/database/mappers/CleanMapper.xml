@@ -79,14 +79,35 @@
         AND ROOMSTATUS = '청소요청'
     </update>
 
+<!--    <update id="CleaningComplete" parameterType="ReservedVO">-->
+<!--        UPDATE RESERVED-->
+<!--        SET ROOMSTATUS = '재실'-->
+<!--        WHERE ROOMNUMBER = #{roomNumber}-->
+<!--        AND ROOMSTATUS = '청소중'-->
+<!--    </update>-->
+
     <update id="CleaningComplete" parameterType="ReservedVO">
-        UPDATE RESERVED
-        SET ROOMSTATUS = '재실'
-        WHERE ROOMNUMBER = #{roomNumber}
-        AND ROOMSTATUS = '청소중'
+        UPDATE RESERVED R
+        INNER JOIN BOOKING B
+        USING(ROOMNUMBER)
+        SET R.ROOMSTATUS =
+        CASE
+        WHEN CURDATE() = B.CHECKOUTDATE THEN '예약가능'
+        ELSE '재실'
+        END
+        WHERE R.ROOMNUMBER = #{roomNumber}
+        AND R.ROOMSTATUS = '청소중'
     </update>
 
-    <update id="updateCheckout" parameterType="ReservedVO">
+    <update id="updateCheckoutCleaning" parameterType="ReservedVO">
+        UPDATE RESERVED
+        SET ROOMSTATUS = '청소요청'
+        WHERE ROOMSTATUS = '퇴실'
+    </update>
+
+
+
+    <update id="updateCheckout" parameterType="BookingVO">
         UPDATE RESERVED R
         INNER JOIN BOOKING B
         USING(ROOMNUMBER)
@@ -94,6 +115,7 @@
         WHERE B.CHECKOUTDATE=CURDATE()
         AND R.RESERVATIONDATE BETWEEN B.CHECKINDATE AND B.CHECKOUTDATE
     </update>
+
     <select id="cleanScheduleCheck" parameterType="CalenderVO" resultType="Long">
         SELECT COUNT(*) FROM calender c
         WHERE SCHEDULESTARTDATE <![CDATA[<=]]> #{scheduleEnddate}

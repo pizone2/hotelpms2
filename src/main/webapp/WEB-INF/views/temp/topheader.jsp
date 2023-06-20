@@ -1,4 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%-- Define the format for displaying the date and time --%>
+<% SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+    String currentDate = sdfDate.format(new Date());
+    String currentTime = sdfTime.format(new Date());
+    pageContext.setAttribute("currentDate", currentDate);
+    pageContext.setAttribute("currentTime", currentTime);
+%>
 <%--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
 <%--<script src="/webjars/sockjs-client/sockjs.min.js"></script>--%>
 <%--<script src="/webjars/stomp-websocket/stomp.min.js"></script>--%>
@@ -19,6 +31,8 @@
             <div class="input-group-text"><i data-feather="search"></i></div>
         </div>
     </form>
+                        <p>현재날짜: ${currentDate}&nbsp;</p>
+                        <p>현재시간: ${currentTime}</p>
     <!-- Navbar Items-->
     <ul class="navbar-nav align-items-center ms-auto">
         <!-- Documentation Dropdown-->
