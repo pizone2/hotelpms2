@@ -80,11 +80,11 @@ $('#btn-day').click(function() {
     });
 });*/
 
-
+let selectedDate = 0;
 $('#endDate').on('change', function() {
     // 변경된 날짜 값을 가져옴
-    let selectedDate = $(this).val();
-
+    selectedDate = $(this).val();
+});
     $('#btn-month').click(function() {
         $.ajax({
             url: "/monthSales",
@@ -99,4 +99,3 @@ $('#endDate').on('change', function() {
             }
         });
     });
-});
