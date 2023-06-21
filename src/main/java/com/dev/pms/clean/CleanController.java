@@ -116,12 +116,12 @@ public class CleanController {
 //            cleanService.saveFile(filesd);
 //        }
 
-        return "redirect:/";
+        return "redirect:/clean/cleanSchedule";
     }   @PostMapping("/cleanStatus")
     public String insertSchedule(RoomCleanVO roomCleanVO) throws Exception {
         cleanService.setCleanStatus(roomCleanVO);
 
-        return "redirect:/";
+        return "redirect:/clean/cleanSchedule";
     }
 
 

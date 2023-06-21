@@ -3,6 +3,7 @@ package com.dev.pms.config;
 import com.dev.pms.security.UserLoginFailHandler;
 import com.dev.pms.security.UserLogoutHandler;
 import com.dev.pms.security.UserLogoutSucessHandler;
+import com.dev.pms.security.UserSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -61,7 +62,7 @@ public class SecurityConfig  {
                 .formLogin()
                     .loginPage("/user/userLogin")
                     .usernameParameter("id")
-                    .defaultSuccessUrl("/")
+                    .successHandler(new UserSuccessHandler())
                     .failureHandler(new UserLoginFailHandler())
                     .failureUrl("/user/userLogin")
                     .permitAll()    // 모두 허용
