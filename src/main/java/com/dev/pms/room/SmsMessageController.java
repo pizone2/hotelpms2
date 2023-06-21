@@ -19,7 +19,7 @@ public class SmsMessageController {
 
     public SmsMessageController() {
         // 반드시 계정 내 등록된 유효한 API 키, API Secret Key를 입력해주셔야 합니다!
-        this.messageService = NurigoApp.INSTANCE.initialize("NCSU8MPWGWLNETTO", "WJIC3TC8LZAQWYUIGBHWGEEKXRQIYJ6D", "https://api.coolsms.co.kr");
+        this.messageService = NurigoApp.INSTANCE.initialize("NCSEQT8C7HYAPX6S", "SMGZMGFHD9ZBBKBHSRS3W3F5JXNYH8TC", "https://api.coolsms.co.kr");
     }
 
 
@@ -28,7 +28,7 @@ public class SmsMessageController {
         ModelAndView mv = new ModelAndView();
         Message message = new Message();
         // 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
-        message.setFrom("01079328558");
+        message.setFrom("01052113438");
         message.setTo(bookingVO.getPhoneNumber());
         message.setText(resTextarea);
         log.error(":::::::pageName:{}::::::::",pageName);
