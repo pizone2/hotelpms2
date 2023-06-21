@@ -57,4 +57,37 @@
         SELECT COUNT(*) FROM BOOKING
         WHERE PAYMENTDATE=#{paymentDate}
     </select>
+
+<!--    <select id="getMonthSalesPie" resultType="HomeVO">
+        SELECT ROOMTYPE,
+        COUNT(*) AS COUNT
+        FROM BOOKING b
+        WHERE
+        MONTH(CHECKINDATE) = MONTH(DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH))
+        AND YEAR(CHECKINDATE) = YEAR(DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH))
+        GROUP BY ROOMTYPE;
+    </select>-->
+
+    <select id="getMonthSelectedSalesPieHome" resultType="HomeVO" parameterType="Date">
+        SELECT ROOMTYPE,
+        COUNT(*) AS COUNT
+        FROM BOOKING b
+        WHERE
+        CHECKINDATE >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
+        AND CHECKINDATE <![CDATA[<=]]> CURDATE()
+        GROUP BY ROOMTYPE;
+    </select>
+
+    <select id="getMonthSelectedSalesPie" resultType="HomeVO" parameterType="Date">
+        SELECT ROOMTYPE,
+        COUNT(*) AS COUNT
+        FROM BOOKING b
+        WHERE
+        CHECKINDATE >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
+        AND CHECKINDATE <![CDATA[<=]]> #{endDate}
+        GROUP BY ROOMTYPE;
+    </select>
+
+
+
 </mapper>

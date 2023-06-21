@@ -4,6 +4,7 @@ import com.dev.pms.room.BookingVO;
 import com.dev.pms.room.RoomService;
 import com.dev.pms.stock.StatisticsVO;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -29,11 +30,13 @@ public class HomeController {
 
 
     @GetMapping("/")
-    public ModelAndView home() throws  Exception{
+    public ModelAndView home(Date endDate) throws  Exception{
         ModelAndView mv = new ModelAndView();
         List<HomeVO> monthVOs = homeService.getMonthSales();
+        List<HomeVO> monthSalesPie = homeService.getMonthSelectedSalesPieHome(endDate);
         log.error(":::::{}:::::", monthVOs.get(0).getTotal());
         mv.addObject("monthVO",monthVOs);
+        mv.addObject("monthSalesPie",monthSalesPie);
         mv.setViewName("index");
         return mv;
     }
@@ -56,9 +59,10 @@ public class HomeController {
         ModelAndView mv = new ModelAndView();
 
         List<HomeVO> selectedSales = homeService.getMonthSelectedSales(endDate);
-
+        List<HomeVO> selectedSalesPie = homeService.getMonthSelectedSalesPie(endDate);
         log.error(":::::{}:::::", selectedSales.get(0).getTotal());
         mv.addObject("selectedSales",selectedSales);
+        mv.addObject("selectedSalesPie",selectedSalesPie);
         mv.setViewName("/statistics/monthSales");
         return mv;
     }
