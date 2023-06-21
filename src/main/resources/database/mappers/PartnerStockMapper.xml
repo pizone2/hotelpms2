@@ -23,8 +23,8 @@
 
  <!--   1개 입력했을때 최소수량도 함께 넘어가도록 구현 -->
     <insert id="setInsertOrderQuantity" parameterType="map">
-        INSERT INTO HOTELSTOCK (INVENTORYID, ITEMID, AUTOORDERQUANTITY, ORDERSTATUS, CURRENTSTOCK)
-        SELECT NULL, #{itemId}, #{autoOrderQuantity}, '발주중' ,#{autoOrderQuantity}
+        INSERT INTO HOTELSTOCK (INVENTORYID, ITEMID, AUTOORDERQUANTITY, ORDERSTATUS)
+        SELECT NULL, #{itemId}, #{autoOrderQuantity}, '발주중'
         FROM PARTNERSTOCK
         WHERE ITEMUSAGESTATUS = 1
         AND ITEMID NOT IN (SELECT ITEMID FROM HOTELSTOCK)

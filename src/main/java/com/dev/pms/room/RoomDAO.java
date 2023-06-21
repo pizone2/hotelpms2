@@ -12,6 +12,8 @@ public interface RoomDAO {
 
     public List<RoomTypeVO> getRoomSetting() throws Exception;
 
+    public List<BookingVO> getDayCircualyr() throws Exception;
+
     public int setRoomSetting(RoomTypeVO roomTypeVO) throws Exception;
 }
 
