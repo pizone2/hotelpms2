@@ -38,9 +38,6 @@
                         <a class="nav-link collapsed" href="/partnerAdmin/partnerList">
                             업체리스트
                         </a>
-                        <a class="nav-link collapsed" href="/partnerManager/partnerManagerStockList">
-                            업체별 재고 관리 리스트
-                        </a>
                         <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
                         <a class="nav-link collapsed" href="/stock/managerStockList">재고리스트</a>
                         <!-- Nested Sidenav Accordion (Pages -> Error)-->
@@ -103,7 +100,7 @@
                     <div class="collapse" id="collapseComponents" data-bs-parent="#accordionSidenav">
                         <nav class="sidenav-menu-nested nav">
                             <a class="nav-link" href="/partnerStock/stockList">업체별 품목 리스트</a>
-                            <a class="nav-link" href="#">업체별 재고 관리 리스트</a>
+                            <a class="nav-link" href="/partnerManager/partnerManagerStockList">업체별 재고 관리 리스트</a>
                         </nav>
                     </div>
                 </c:if>

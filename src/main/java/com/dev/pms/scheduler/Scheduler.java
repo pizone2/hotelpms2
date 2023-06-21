@@ -18,7 +18,7 @@ public class Scheduler {
         this.partnerManagerStockService = partnerManagerStockService;
     }
 
-    @Scheduled(cron = "*/10 * * * * *")
+    //@Scheduled(cron = "*/10 * * * * *")
     public void updateOrderCompleted() throws Exception {
         ModelAndView mv = new ModelAndView();
         ManagerStockVO managerStockVO = new ManagerStockVO();
