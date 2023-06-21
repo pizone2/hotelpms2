@@ -1,6 +1,6 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
 (Chart.defaults.global.defaultFontFamily = "Metropolis"),
-'-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = "#858796";
 
 function number_format(number, decimals, dec_point, thousands_sep) {
@@ -28,25 +28,29 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
+function createLabels() {
+    let startInput = document.getElementById('startDate');
+    let endInput = document.getElementById('endDate');
+
+    let start = new Date(startInput.value);
+    let end = new Date(endInput.value);
+    let labels = [];
+
+    for(let d = start; d <= end; d.setDate(d.getDate() + 1)) {
+        labels.push(d.toISOString().split('T')[0]);
+    }
+
+    return labels;
+}
+
+var labels = createLabels();
+
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
     type: "line",
     data: {
-        labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec"
-        ],
+        labels: labels,
         datasets: [{
             label: "Earnings",
             lineTension: 0.3,
@@ -101,11 +105,12 @@ var myLineChart = new Chart(ctx, {
             }],
             yAxes: [{
                 ticks: {
-                    maxTicksLimit: 5,
-                    padding: 10,
+                    min: 0, // Minimum value is 0
+                    max: 30, // Maximum value is 30
+                    stepSize: 10, // Interval is 10
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
-                        return "$" + number_format(value);
+                        return value;
                     }
                 },
                 gridLines: {

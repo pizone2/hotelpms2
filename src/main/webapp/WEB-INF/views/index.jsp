@@ -66,7 +66,8 @@
             <div class="card mb-4">
                 <div class="card-body">
                     지점: <input type="text" value="Mohotel" disabled>
-                    조회기간:<input type="date" value="<%= firstDayOfMonth %>" readonly> ~ <input type="date">
+                    조회기간:조회기간:<input id="startDate" type="date" value="<%= firstDayOfMonth %>" readonly> ~
+                    <input id="endDate" type="date">
                     <div class="btn-group" role="group" aria-label="Button group">
                     <button class="btn btn-dark btn-sm" type="button" id="btn-day">일</button>
                     <button class="btn btn-dark btn-sm" type="button" id="btn-month">월</button>
