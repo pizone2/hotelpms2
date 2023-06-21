@@ -40,20 +40,21 @@ function connect() {
 function showMessage(message) {
     let hrefValue = "";
 
-    if (message.includes("발주요청")) {
-        hrefValue = "../partnerManager/partnerManagerStockList";
-    }else if(message.includes("부족")){
-        hrefValue = "../stock/managerStockList";
-    }
-    else {
-        hrefValue = "#!";
-    }
+    if (message.includes("부족")) {
+        if (message.includes("발주요청")) {
+            hrefValue = "../partnerManager/partnerManagerStockList";
+        } else if (message.includes("부족")) {
+            hrefValue = "../stock/managerStockList";
+        } else {
+            hrefValue = "#!";
+        }
 
-    $("#messages").append(
-        "<a class=\"dropdown-item dropdown-notifications-item\" href=\"" + hrefValue + "\">" +
-        "<div class=\"dropdown-notifications-item-content-text\">" + message + "</div>" +
-        "</a>"
-    );
+        $("#messages").append(
+            "<a class=\"dropdown-item dropdown-notifications-item\" href=\"" + hrefValue + "\">" +
+            "<div class=\"dropdown-notifications-item-content-text\">" + message + "</div>" +
+            "</a>"
+        );
+    }
 }
 
 function fetchNotifications() {
