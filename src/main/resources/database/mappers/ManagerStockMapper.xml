@@ -26,10 +26,16 @@
         WHERE ITEMID = #{itemId};
     </update>
 
-    <update id="setOrderStatus" parameterType="ManagerStockVO">
+    <update id="setStatus" parameterType="ManagerStockVO">
         UPDATE HOTELSTOCK
         SET ORDERSTATUS = "재고부족"
         WHERE INVENTORYID = #{inventoryId}
+    </update>
+
+    <update id="setOrderStatus" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        SET ORDERSTATUS = "발주요청"
+        WHERE ITEMID = #{itemId}
     </update>
     <!--재고부족 알림-->
     <insert id="setAlarm">
