@@ -76,14 +76,16 @@
             </div>
             <div class="card mb-4">
                 <div class="card-body">
+                    < div class="todaySales">
                     <div class="row">
 
-                        <div id="todaySales"class="col-6">
+                        <div class="col-6">
 
                         </div>
 
                         <div class="col-6">
-                            <table id="datatablesSimple">
+
+                            <table id="datatablesSimple"  class="datatable-table">
                                 <thead>
                                 <tr>
                                    <%-- <th data-orderable="false"></th>--%>
@@ -135,6 +137,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>

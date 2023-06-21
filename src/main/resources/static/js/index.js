@@ -5,7 +5,7 @@ $('#btn-day').click(function() {
         url: "/todaySales",
         method: "GET",
         success: function(response) {
-            $('#todaySales').html(response);
+            $('.todaySales').html(response);
             console.log("성공");
         },
         error: function(xhr, status, error) {
