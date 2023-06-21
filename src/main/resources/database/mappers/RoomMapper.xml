@@ -24,7 +24,7 @@
         SET CAPACITY = #{capacity} , ROOMPRICE = #{roomPrice}
         WHERE ROOMTYPE = #{roomType}
     </update>
-    
+
 
 
 

@@ -10,6 +10,7 @@
         <typeAlias type="com.dev.pms.room.ReservedVO" alias="ReservedVO" />
         <typeAlias type="com.dev.pms.room.RoomVO" alias="RoomVO" />
         <typeAlias type="com.dev.pms.roomStatus.RoomStatusVO" alias="RoomStatusVO" />
+        <typeAlias type="com.dev.pms.room.ChangeStockVO" alias="ChangeStockVO" />
 
         <typeAlias type="com.dev.pms.clean.CalenderVO" alias="CalenderVO"></typeAlias>
         <typeAlias type="com.dev.pms.clean.RoomCleanVO" alias="RoomCleanVO"></typeAlias>
@@ -21,6 +22,12 @@
         <typeAlias type="com.dev.pms.stock.ManagerStockVO" alias="ManagerStockVO"></typeAlias>
         <typeAlias type="com.dev.pms.stock.RoomStockVO" alias="RoomStockVO"></typeAlias>
         <typeAlias type="com.dev.pms.stock.PartnerCalculateVO" alias="PartnerCalculateVO"></typeAlias>
+        <typeAlias type="com.dev.pms.stock.StatisticsVO" alias="StatisticsVO"></typeAlias>
+        <typeAlias type="com.dev.pms.alarm.AlarmVO" alias="AlarmVO"></typeAlias>
+
+        <typeAlias type="com.dev.pms.home.HomeVO" alias="HomeVO"></typeAlias>
+
     </typeAliases>
+
 
 </configuration>

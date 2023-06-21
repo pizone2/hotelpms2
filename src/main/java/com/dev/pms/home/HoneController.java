@@ -10,10 +10,6 @@ public class HoneController {
         return "index";
     }
 
-    @GetMapping("chart")
-    public String chart() throws Exception{
-        return "chart";
-    }
 
 
 }

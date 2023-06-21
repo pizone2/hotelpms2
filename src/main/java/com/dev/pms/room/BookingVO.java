@@ -26,4 +26,7 @@ public class BookingVO {
     private String phoneNumber;
 
     private RoomTypeVO roomTypeVOs;
+
+    //통계를 위한 컬럼 변수 추가
+    private Long count;
 }

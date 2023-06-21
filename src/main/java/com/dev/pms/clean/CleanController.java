@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-
 @Controller
 @Slf4j
-@RequestMapping("clean/*")
+@RequestMapping("/clean/*")
 public class CleanController {
 
     @Autowired
     private CleanService cleanService;
+
 
     @GetMapping("/cleanSchedule")
     public ModelAndView cleanSchedule(CalenderVO calenderVO,BookingVO bookingVO) throws Exception {
@@ -40,6 +39,18 @@ public class CleanController {
         mv.addObject("todayCheckOut",todayCheckOut);
 
         mv.setViewName("clean/cleanSchedule");
+
+        return mv;
+    }
+
+    @GetMapping("/Test")
+    public ModelAndView AlarmTest(CalenderVO calenderVO) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        List<CalenderVO>calenderVOList=cleanService.getCleanList(calenderVO);
+        List<ReservedVO>RequestClean =cleanService.getRequestClean(calenderVO);
+        mv.addObject("events",calenderVOList);
+        mv.addObject("request",RequestClean);
+        mv.setViewName("clean/Test");
 
         return mv;
     }
@@ -113,26 +124,8 @@ public class CleanController {
         return "redirect:/";
     }
 
-//    @PostMapping("cleanScheduleCheck")
-//    @ResponseBody
-//    public ModelAndView cleanScheduleCheck(CalenderVO calenderVO) throws Exception {
-//        ModelAndView mv = new ModelAndView();
-//        Long result = cleanService.cleanScheduleCheck(calenderVO);
-//        mv.addObject("result", result);
-//        System.out.println(result);
-//        return mv;
-//    }
 
 
-//    @PostMapping("/cleanScheduleCheck")
-//    @ResponseBody
-//    public Long cleanScheduleCheck(Date scheduleStartdate,Date scheduleEnddate) throws Exception{
-//        ModelAndView mv = new ModelAndView();
-//        CalenderVO calenderVO = new CalenderVO();
-//        calenderVO.setScheduleStartdate(scheduleStartdate);
-//        calenderVO.setScheduleEnddate(scheduleEnddate);
-//        return cleanService.cleanScheduleCheck(calenderVO);
-//    }
 
 
         @GetMapping("cleanCheckList")

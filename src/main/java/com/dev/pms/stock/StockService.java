@@ -1,8 +1,10 @@
 package com.dev.pms.stock;
 
 
+import com.dev.pms.user.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,9 @@ public class StockService {
 
     @Autowired
     private StockDAO stockDAO;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     //----------- 사업자 - 품목
     public List<PartnerStockVO> getStockList(String businessNumber) throws Exception {
@@ -38,11 +43,21 @@ public class StockService {
     }
 
     public int setPartnerDelete(String businessNumber) throws Exception{
-        return stockDAO.setPartnerDelete(businessNumber);
+        stockDAO.setPartnerDelete(businessNumber);
+        return stockDAO.setPartnerUserDelete(businessNumber);
     }
 
     public int setPartnerUpdate(String businessNumber) throws Exception{
-        return stockDAO.setPartnerUpdate(businessNumber);
+        stockDAO.setPartnerUpdate(businessNumber);
+        PartnerVO partnerVO = stockDAO.getUpdatedPartnerSelect(businessNumber);
+        UserVO userVO = new UserVO();
+        userVO.setId(partnerVO.getBusinessNumber());
+        userVO.setPassword(passwordEncoder.encode(partnerVO.getBusinessNumber()));
+        userVO.setName(partnerVO.getContactName());
+        userVO.setEmail(partnerVO.getEmail());
+        userVO.setPhoneNumber(partnerVO.getPhoneNumber());
+        userVO.setRoleName(partnerVO.getSectors());
+        return stockDAO.setPartnerUserAdd(userVO);
     }
 
     //----------- 객실별 설정

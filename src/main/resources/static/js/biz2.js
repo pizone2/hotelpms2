@@ -259,10 +259,12 @@ $(document).ready(function() {
                 if(confirmed){
                     alert('업체 정보 수정에 성공하였습니다.');
                     location.href = '/partnerAdmin/partnerList';
+                } else {
+                    alert('업체 정보 수정에 실패하였습니다. ');
                 }
             },
             error: function(error) {
-                alert('업체 정보 수정에 실패하였습니다. 다시 시도해주세요.');
+                alert('업체 정보 수정하는데 에러가 발생했습니다.');
                 // 실패 시 처리할 내용
             }
         });

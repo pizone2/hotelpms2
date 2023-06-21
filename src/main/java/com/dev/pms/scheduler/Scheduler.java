@@ -24,10 +24,14 @@ public class Scheduler {
 
     //매일 오전9시 발주완료 변경
     @Scheduled(cron = "0 0 9 * * *")
+    //@Scheduled(cron = "*/10 * * * * *")
     public void updateOrderCompleted() throws Exception {
         ManagerStockVO managerStockVO = new ManagerStockVO();
         int result = partnerManagerStockService.updateOrderCompleted(managerStockVO);
+        int result2 = partnerManagerStockService.updateOrderCompleted2(managerStockVO);
+        int result3 = partnerManagerStockService.updateOrderCompleted3(managerStockVO);
 
+        //발주중이 발주 완료로 변경되면 값도 변경되겠금 구현
         System.out.println("테스트 테스트");
 
     }

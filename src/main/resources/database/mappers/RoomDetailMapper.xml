@@ -70,6 +70,12 @@
         FROM BOOKING
         WHERE ROOMNUMBER = #{roomNumber} AND CHECKOUTDATE = #{checkoutDate}
     </select>
+    <!--재고리스트 -->
+    <select id="getStockList" resultType="ChangeStockVO">
+        SELECT H.*, P.PRODUCTNAME, P.ITEMCODE, P.UNITPRICE
+        FROM HOTELSTOCK AS H
+        JOIN PARTNERSTOCK AS P ON H.ITEMID = P.ITEMID;
+    </select>
 
     <!--BOOKING테이블 업데이트-->
     <update id="setBookingUpdate" parameterType="BookingVO">
@@ -114,4 +120,16 @@
         WHERE CURDATE() BETWEEN B.CHECKINDATE AND B.CHECKOUTDATE
         AND B.ROOMNUMBER =#{roomNumber} AND RS.RESERVATIONDATE = CURDATE() AND RS.ROOMSTATUS = '재실';
     </update>
+
+    <!--최소발주수량 이하 시 작동 상태변환-->
+    <update id="setOrderStatus" parameterType="ChangeStockVO">
+        UPDATE HOTELSTOCK
+        SET ORDERSTATUS = "재고부족"
+        WHERE INVENTORYID = #{inventoryId}
+    </update>
+    <!--재고부족 알림-->
+    <insert id="setAlarm">
+        INSERT INTO ALARM
+        VALUES (NULL,"pizone","1", CONCAT(#{inventoryId}, '번 상품의 재고가 부족합니다.'),sysdate(),"/stock/managerStockList");
+    </insert>
 </mapper>

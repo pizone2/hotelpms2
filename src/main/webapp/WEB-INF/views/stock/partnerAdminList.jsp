@@ -71,6 +71,7 @@
                                 <th>전화번호</th>
                                 <th>이메일</th>
                                 <th>등록일</th>
+                                <th>구분</th>
                                 <th>등록상태</th>
                             </tr>
                             </thead>
@@ -83,6 +84,7 @@
                                 <th>전화번호</th>
                                 <th>이메일</th>
                                 <th>등록일</th>
+                                <th>구분</th>
                                 <th>등록상태</th>
                             </tr>
                             </tfoot>
@@ -97,6 +99,15 @@
                                     </c:when>
                                 </c:choose>
 
+                                <c:choose>
+                                    <c:when test="${vo.sectors == 'ROLE_STOCK'}">
+                                        <c:set var="role" value="상품 판매" />
+                                    </c:when>
+                                    <c:when test="${vo.sectors == 'ROLE_CLEAN'}">
+                                        <c:set var="role" value="용역 서비스" />
+                                    </c:when>
+                                </c:choose>
+
                                 <!-- 유저 정보-->
                                 <tr>
                                     <%--<div class="businessNum" data-num="${vo.businessNumber}"></div>--%>
@@ -107,6 +118,7 @@
                                     <td>${vo.phoneNumber}</td>
                                     <td>${vo.email}</td>
                                     <td>${vo.registrationDate}</td>
+                                    <td>${role}</td>
                                     <td>${status}</td>
                                 </tr>
                             </c:forEach>
@@ -253,5 +265,8 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables/datatables-simple-demo.js"></script>
 <script src="../js/biz2.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="/js/webSocket.js"></script>
 </body>
 </html>

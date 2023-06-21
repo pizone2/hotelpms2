@@ -41,16 +41,30 @@ public class ManagerController {
             managerStockVO.setItemId(Long.valueOf(itemId));
 
             managerService.setQuantity(managerStockVO);
-
-//            System.out.println(managerStockVO.getQuantity());
-//            System.out.println( managerStockVO.getItemId());
-
-
         }
-        // 처리 로직 수행
+        return "success";
+    }
+
+    @PostMapping("orderStatus")
+    public String setOrderStatus(ManagerStockVO managerStockVO) throws Exception {
+        // 전송된 데이터 처리
+       managerService.setOrderStatus(managerStockVO);
 
         return "success";
     }
+
+    @GetMapping("todaySales")
+    public ModelAndView getTodaySales(StatisticsVO statisticsVO) throws Exception{
+        ModelAndView mv = new ModelAndView();
+
+        List<StatisticsVO> statisticsVOs = managerService.getTodaySales(statisticsVO);
+
+
+        mv.addObject("statisticsVO",statisticsVOs);
+        mv.setViewName("stock/todaySales");
+        return mv;
+    }
+
 
 
 

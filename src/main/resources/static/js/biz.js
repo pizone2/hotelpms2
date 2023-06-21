@@ -14,7 +14,10 @@ let data = {
 
 //확인 버튼이 클릭되었을 때 사업자 API 검증 및 사업자 등록 번호 DB 조회가 되도록 실행
 document.querySelector('.btn-outline-blue').addEventListener('click', function () {
+    var user = "${user}"; // JSP 변수를 JavaScript 변수에 할당
+    console.log(user);
     // HTML에서 b_no 값 가져오기
+
     let b_noValue = document.getElementById('businessNumber').value;
     // 가져온 값으로 data 객체 업데이트
     data.b_no = [b_noValue];
@@ -34,7 +37,7 @@ document.querySelector('.btn-outline-blue').addEventListener('click', function (
             if (b_stt_cd === '01') {
                 // AJAX 요청 함수 정의
                 function getBusinessNumber() {
-                   // jsp에서 입력된 사업자 번호를 가져오기
+                    // jsp에서 입력된 사업자 번호를 가져오기
                     let businessNumber = $("#businessNumber").val();
                     // ajax를 통해서 db에 있는 사업자 번호 검증 (findBusinessNumber 컨트롤러 )
                     $.ajax({
@@ -42,6 +45,7 @@ document.querySelector('.btn-outline-blue').addEventListener('click', function (
                         method: "POST",
                         data: { businessNumber: businessNumber },
                         success: function(businessNumber) {
+                            console.log(businessNumber)
                             // 결과 값에 따라 메시지를 출력 nouse 사용하지 않는 사업자 번호일 때 일치할때는 이미 등록된 사업자 번호 입니다로 출력
                             if (businessNumber === 'nouse') {
                                 isFalse = true;
@@ -60,7 +64,7 @@ document.querySelector('.btn-outline-blue').addEventListener('click', function (
                 }
                 // getBusinessNumber 함수 호출해서 실행될 수 있도록 함
                 getBusinessNumber();
-            // 사업자 api 오류일시 에러메시지 text 출력
+                // 사업자 api 오류일시 에러메시지 text 출력
             } else {
                 messageElement.innerText = '잘못된 사업자 번호입니다 사업자 등록 번호를 확인해주세요.';
                 messageElement.style.color = 'red';
@@ -87,7 +91,7 @@ document.querySelector('.btn-outline-blue').addEventListener('click', function (
 // 제출 버튼 클릭 이벤트 처리 ( 사업자 인증이 완료되어야지만 insert)
 document.getElementById("btn3").addEventListener("click", function() {
     if (isFalse===true) {
-       document.getElementById("businessForm").submit();
+        document.getElementById("businessForm").submit();
     }
 });
 
@@ -167,5 +171,4 @@ $(document).ready(function() {
 
 
 });
-
 

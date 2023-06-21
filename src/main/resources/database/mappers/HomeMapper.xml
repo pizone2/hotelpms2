@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.dev.pms.home.HomeDAO">
+    <select id="getTodaySales" resultType="HomeVO">
+        SELECT
+        COALESCE(RT.ROOMTYPE, '전체') AS ROOMTYPE,
+        IFNULL(SUM(IF(B.ROOMNUMBER  IS NULL, 0, RT.ROOMPRICE)), 0) AS TODAYSALES
+        FROM
+        ROOMTYPE RT
+        LEFT JOIN BOOKING B ON B.ROOMTYPE = RT.ROOMTYPE AND CURDATE() BETWEEN B.CHECKINDATE AND B.CHECKOUTDATE
+        GROUP BY
+        RT.ROOMTYPE WITH ROLLUP;
+    </select>
+
+    <select id="getDayCircualyr" resultType="HomeVO">
+        SELECT ROOMTYPE, COUNT(*) AS COUNT
+        FROM BOOKING
+        WHERE DATE(CHECKINDATE) = CURDATE()
+        GROUP BY ROOMTYPE;
+    </select>
+
+    <select id="getMonthSales" resultType="HomeVO">
+        SELECT
+        CASE
+        WHEN R.ROOMTYPE IS NULL THEN '전체'
+        ELSE R.ROOMTYPE
+        END AS ROOMTYPE,
+        COALESCE(SUM((B.CHECKOUTDATE - B.CHECKINDATE)*R.ROOMPRICE), 0) AS TOTAL
+        FROM ROOMTYPE R
+        LEFT JOIN BOOKING B
+        ON B.ROOMTYPE = R.ROOMTYPE
+        AND B.CHECKINDATE BETWEEN CONCAT(DATE_FORMAT(CURDATE() ,'%Y-%m'), '-01') AND CURDATE()
+        AND B.CHECKOUTDATE BETWEEN CONCAT(DATE_FORMAT(CURDATE() ,'%Y-%m'), '-01') AND CURDATE()
+        GROUP BY R.ROOMTYPE WITH ROLLUP;
+    </select>
+
+    <select id="getMonthSelectedSales" resultType="HomeVO" parameterType="Date">
+        SELECT
+        CASE
+        WHEN R.ROOMTYPE IS NULL THEN '전체'
+        ELSE R.ROOMTYPE
+        END AS ROOMTYPE,
+        COALESCE(SUM((B.CHECKOUTDATE - B.CHECKINDATE)*R.ROOMPRICE), 0) AS TOTAL
+        FROM ROOMTYPE R
+        LEFT JOIN BOOKING B
+        ON B.ROOMTYPE = R.ROOMTYPE
+        AND B.CHECKINDATE BETWEEN CONCAT(DATE_FORMAT(#{endDate} ,'%Y-%m'), '-01') AND #{endDate}
+        AND B.CHECKOUTDATE BETWEEN CONCAT(DATE_FORMAT(#{endDate} ,'%Y-%m'), '-01') AND #{endDate}
+        GROUP BY R.ROOMTYPE WITH ROLLUP;
+    </select>
+</mapper>
