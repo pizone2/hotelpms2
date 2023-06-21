@@ -7,6 +7,8 @@
     // 오늘 날짜 가져오기
     Calendar cal = Calendar.getInstance();
     cal.setTime(new Date());
+    SimpleDateFormat month = new SimpleDateFormat("yyyy-MM-dd");
+    String monthDayOfMonth = month.format(cal.getTime());
 
     // 달의 첫 번째 날짜로 설정
     cal.set(Calendar.DAY_OF_MONTH, 1);
@@ -14,6 +16,7 @@
     // 날짜 형식 변환
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     String firstDayOfMonth = sdf.format(cal.getTime());
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +69,8 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             지점: <input type="text" value="Mohotel" disabled>
-                            조회기간:<input type="date" value="<%= firstDayOfMonth %>" readonly> ~ <input type="date">
+                            조회기간:<input id="startDate" type="date" value="<%= firstDayOfMonth %>" readonly> ~
+                            <input id="endDate" type="date" value="<%= monthDayOfMonth %>">
                             <div class="btn-group" role="group" aria-label="Button group">
                                 <button class="btn btn-dark btn-sm" type="button" id="btn-day">일</button>
                                 <button class="btn btn-dark btn-sm" type="button" id="btn-month">월</button>
@@ -77,77 +81,73 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="todaySales">
-                            <div class="row">
+                                <div class="row">
 
+                                    <div class="col-6">
 
+                                    </div>
 
-                                <div class="col-6">
-                                    <div class="todaySales">
-                                        <table id="datatablesSimple"  class="datatable-table">
+                                    <div class="col-6">
+                                        <table id="datatablesSimple" class="datatable-table">
                                             <thead>
                                             <tr>
                                                 <%-- <th data-orderable="false"></th>--%>
-                                                <th></th>
+                                                <th>객실</th>
                                                 <th>분류</th>
                                                 <th>매출</th>
                                             </tr>
                                             </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <%--<th></th>--%>
-                                                <th></th>
-                                                <th>분류</th>
-                                                <th>매출</th>
-                                            </tr>
-                                            </tfoot>
                                             <tbody>
                                             <tr>
                                                 <td>더블</td>
                                                 <td>ROOM</td>
-                                                <td></td>
+                                                <td>${monthVO[0].total}</td>
                                             </tr>
                                             <tr>
                                                 <td>디럭스</td>
                                                 <td>ROOM</td>
-                                                <td></td>
+                                                <td>${monthVO[1].total}</td>
                                             </tr>
                                             <tr>
                                                 <td>스위트</td>
                                                 <td>ROOM</td>
-                                                <td></td>
+                                                <td>${monthVO[2].total}</td>
                                             </tr>
                                             <tr>
                                                 <td>스탠다드</td>
                                                 <td>ROOM</td>
-                                                <td></td>
+                                                <td>${monthVO[3].total}</td>
                                             </tr>
                                             <tr>
                                                 <td>트윈</td>
                                                 <td>ROOM</td>
-                                                <td></td>
+                                                <td>${monthVO[4].total}</td>
                                             </tr>
                                             <tr>
                                                 <td>합계</td>
-                                                <td></td>
-                                                <td>원</td>
-
-
+                                                <td>ROOM</td>
+                                                <td>${monthVO[5].total}</td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+
                             </div>
                         </div>
                     </div>
-
+                    <%--<div class="card mb-4">
+                        <div class="card-body">
+                            <div class="chart-area">
+                            </div>
+                        </div>
+                    </div>--%>
                 </div>
             </form>
         </main>
         <!-- Footer Section Begin -->
         <c:import url="./temp/footer.jsp"></c:import>
-        <!— Footer Section End —>
+        <!-- Footer Section End -->
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -155,5 +155,6 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables-simple-demo-sub.js"></script>
 <script src="js/index.js"></script>
+<%--<script src="/assets/demo/chart-area-demo.js"></script>--%>
 </body>
 </html>

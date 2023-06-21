@@ -1,4 +1,18 @@
-// 버튼 3 클릭 함수
+
+$('#btn-day').click(function() {
+    console.log("click")
+    $.ajax({
+        url: "/todaySales",
+        method: "GET",
+        success: function(response) {
+            $('.todaySales').html(response);
+            console.log("성공");
+        },
+        error: function(xhr, status, error) {
+            console.error('오류가 발생했습니다. 관리자에게 문의해주세요.');
+        }
+    });
+});// 버튼 3 클릭 함수
 function clickButton3() {
     var button3 = document.getElementById('btn-day');
     button3.click();
@@ -29,40 +43,23 @@ $('#btn-day').click(function() {
 
 
 });
-/*$('#btn-day').click(function() {
-    // 애니메이션 시작
-    $('.loader').show();
 
-    $.ajax({
-        url: "/todaySales",
-        method: "GET",
-        success: function(response) {
-            $('.todaySales').html(response);
-            console.log("Success");
-        },
-        error: function(xhr, status, error) {
-            console.error('An error occurred. Please contact the administrator.');
-        },
-        complete: function() {
-            // 애니메이션 종료
-            $('.loader').hide();
-        }
+let selectedDate = 0;
+$('#endDate').on('change', function() {
+    // 변경된 날짜 값을 가져옴
+    selectedDate = $(this).val();
+});
+    $('#btn-month').click(function() {
+        $.ajax({
+            url: "/monthSales",
+            method: "GET",
+            data: { endDate: selectedDate }, // 선택된 날짜 값을 Controller에 전달
+            success: function(response) {
+                $('.todaySales').html(response);
+                console.log("성공");
+            },
+            error: function(xhr, status, error) {
+                console.error('오류가 발생했습니다. 관리자에게 문의해주세요.');
+            }
+        });
     });
-});*/
-
-
-/*$('#btn-day').click(function() {
-    console.log("click")
-    $.ajax({
-        url: "/daycirculayr",
-        method: "GET",
-        success: function(response) {
-            $('#todayCirculayr').html(response);
-            console.log("성공");
-        },
-        error: function(xhr, status, error) {
-            console.error('오류가 발생했습니다. 관리자에게 문의해주세요.');
-        }
-    });
-});*/
-

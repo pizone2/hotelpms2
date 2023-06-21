@@ -55,12 +55,13 @@
         FROM CALENDER
         WHERE CURRENT_DATE() BETWEEN SCHEDULESTARTDATE AND SCHEDULEENDDATE;
     </select>
-    
+
+<!--    오늘 청소부 번호 -->
     <select id="getRequestClean" parameterType="ReservedVO" resultMap="getRequestCleanResult">
         SELECT DISTINCT C.SCHEDULENUMBER, R.ROOMNUMBER, ROOMSTATUS
         FROM RESERVED R
         JOIN CALENDER C ON R.ROOMSTATUS = '청소요청' OR ROOMSTATUS = '청소중'
-        AND CURRENT_DATE() BETWEEN C.SCHEDULESTARTDATE AND C.SCHEDULEENDDATE;
+        WHERE CURRENT_DATE() BETWEEN C.SCHEDULESTARTDATE AND C.SCHEDULEENDDATE
     </select>
     
 
@@ -79,17 +80,60 @@
         AND ROOMSTATUS = '청소요청'
     </update>
 
+<!--    <update id="CleaningComplete" parameterType="ReservedVO">-->
+<!--        UPDATE RESERVED-->
+<!--        SET ROOMSTATUS = '재실'-->
+<!--        WHERE ROOMNUMBER = #{roomNumber}-->
+<!--        AND ROOMSTATUS = '청소중'-->
+<!--    </update>-->
+
     <update id="CleaningComplete" parameterType="ReservedVO">
+        UPDATE RESERVED R
+        INNER JOIN BOOKING B
+        USING(ROOMNUMBER)
+        SET R.ROOMSTATUS =
+        CASE
+        WHEN CURDATE() = B.CHECKOUTDATE THEN '예약가능'
+        ELSE '재실'
+        END
+        WHERE R.ROOMNUMBER = #{roomNumber}
+        AND R.ROOMSTATUS = '청소중'
+    </update>
+
+    <update id="updateCheckoutCleaning" parameterType="ReservedVO">
         UPDATE RESERVED
-        SET ROOMSTATUS = '재실'
-        WHERE ROOMNUMBER = #{roomNumber}
-        AND ROOMSTATUS = '청소중'
+        SET ROOMSTATUS = '청소요청'
+        WHERE ROOMSTATUS = '퇴실'
+    </update>
+
+
+
+    <update id="updateCheckout" parameterType="BookingVO">
+        UPDATE RESERVED R
+        INNER JOIN BOOKING B
+        USING(ROOMNUMBER)
+        SET R.ROOMSTATUS='퇴실'
+        WHERE B.CHECKOUTDATE=CURDATE()
+        AND R.RESERVATIONDATE BETWEEN B.CHECKINDATE AND B.CHECKOUTDATE
     </update>
 
     <select id="cleanScheduleCheck" parameterType="CalenderVO" resultType="Long">
         SELECT COUNT(*) FROM calender c
         WHERE SCHEDULESTARTDATE <![CDATA[<=]]> #{scheduleEnddate}
         AND SCHEDULEENDDATE >= #{scheduleStartdate}
+    </select>
+    
+    
+    <select id="todayCheckIn" parameterType="BookingVO" resultType="BookingVO">
+        SELECT CHECKINDATE, ROOMNUMBER
+        FROM booking b
+        WHERE DATE(CHECKINDATE) = CURDATE()
+    </select>
+
+    <select id="todayCheckOut" parameterType="BookingVO" resultType="BookingVO">
+        SELECT CHECKOUTDATE , ROOMNUMBER
+        FROM booking b
+        WHERE DATE(CHECKOUTDATE) = CURDATE();
     </select>
 
 

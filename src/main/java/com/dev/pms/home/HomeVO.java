@@ -2,15 +2,13 @@ package com.dev.pms.home;
 
 import com.dev.pms.room.RoomTypeVO;
 import lombok.Data;
-
 import java.sql.Date;
 
 @Data
 public class HomeVO {
     private String roomType;
     private  Long todaySales;
-
-
+    private Long total;
 
 
     //HEEJIN
