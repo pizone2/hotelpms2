@@ -17,14 +17,19 @@
     </update>
 
 
+    <update id="updateOrderCompleted2" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        INNER JOIN PARTNERSTOCK ON HOTELSTOCK.ITEMID = PARTNERSTOCK.ITEMID
+        SET HOTELSTOCK.CURRENTSTOCK = HOTELSTOCK.CURRENTSTOCK + PARTNERSTOCK.UNIT
+        WHERE HOTELSTOCK.ORDERSTATUS = '발주중'
+    </update>
 
-        <update id="updateOrderCompleted2" parameterType="ManagerStockVO">
-            UPDATE HOTELSTOCK
-            INNER JOIN PARTNERSTOCK ON HOTELSTOCK.ITEMID = PARTNERSTOCK.ITEMID
-            SET HOTELSTOCK.ORDERSTATUS = '발주완료',
-            HOTELSTOCK.CURRENTSTOCK = HOTELSTOCK.CURRENTSTOCK + PARTNERSTOCK.UNIT
-            WHERE HOTELSTOCK.ORDERSTATUS = '발주중'
-        </update>
+    <update id="updateOrderCompleted3" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        INNER JOIN PARTNERSTOCK ON HOTELSTOCK.ITEMID = PARTNERSTOCK.ITEMID
+        SET  HOTELSTOCK.ORDERSTATUS = '발주완료'
+        WHERE HOTELSTOCK.ORDERSTATUS = '발주중'
+    </update>
 
     <insert id="updateOrderCompleted" parameterType="ManagerStockVO">
         INSERT INTO STOCKMONTH (USERNUM, ITEMID, USERDATE)
