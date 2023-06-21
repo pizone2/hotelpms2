@@ -59,9 +59,9 @@
                 <!-- Account page navigation-->
                 <nav class="nav nav-borders justify-content-between">
                     <div class="d-flex">
-                        <a class="nav-link me-2 font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-0${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}-01" id="before"><c:out value="${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}"/> 월 정산</a>
+                        <a class="bg-white p-3 shadow-sm mb-4 rounded fw-bolder" href="http://localhost/partnerCalculate/list?date=2023-0${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}-01" id="before"><c:out value="${yearMonth - 1 < 10 ? '0' + (yearMonth - 1) : yearMonth - 1}"/> 월 정산</a>
                     </div>
-                        <a class="nav-link me-2 active ms-0 font-weight-bold" href="/"><c:out value="${yearMonth < 10 ? '0' + yearMonth : yearMonth}"/> 월 정산</a>
+                        <a class="bg-white p-3 shadow-sm mb-4 rounded fw-bolder" href=""><c:out value="${yearMonth < 10 ? '0' + yearMonth : yearMonth}"/> 월 정산</a>
                     <%
                         java.util.Date date = new java.util.Date();
                         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-01");
@@ -91,7 +91,7 @@
                     %>
 
                     <%-- 링크를 출력합니다 --%>
-                    <a class="nav-link font-weight-bold" href="http://localhost/partnerCalculate/list?date=2023-<%= yearMonthValue %>-01"
+                    <a class="bg-white p-3 shadow-sm mb-4 rounded fw-bolder" href="http://localhost/partnerCalculate/list?date=2023-<%= yearMonthValue %>-01"
                        id="after" <%= disableLink ? "disabled" : "" %> onclick="<%= disableLink ? "return false;" : "" %>">
                         <%= yearMonthValue %> 월 정산
                     </a>
@@ -104,10 +104,10 @@
                     <div class="col-xl-5">
                         <!-- Profile picture card-->
                         <div class="card mb-4 mb-xl-0">
-                            <div class="card-header">고객사 리스트</div>
+                            <div class="card-header ">고객사 리스트</div>
                             <div class="card-body text-center">
                                 <div class="table-responsive">
-                                    <table class="tg">
+                                    <table class="tg table-hover">
                                         <colgroup>
                                             <col style="width: 155.333333px">
                                             <col style="width: 177.333333px">
@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="col-xl-7">
-                        <!-- Account details card-->
+                        <!-- Account detadils card-->
                         <div class="card mb-4">
                             <div class="card-header">상세 품목 리스트</div>
                             <div class="card-body">
