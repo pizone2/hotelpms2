@@ -24,7 +24,14 @@
         SET CAPACITY = #{capacity} , ROOMPRICE = #{roomPrice}
         WHERE ROOMTYPE = #{roomType}
     </update>
-    
+
+
+    <select id="getDayCircualyr" resultType="BookingVO">
+        SELECT ROOMTYPE, COUNT(*) AS COUNT
+        FROM BOOKING
+        WHERE DATE(CHECKINDATE) = CURDATE()
+        GROUP BY ROOMTYPE;
+    </select>
 
 
 

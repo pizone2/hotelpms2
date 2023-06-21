@@ -25,6 +25,7 @@
     <sec:authentication property="principal" var="user" />
     <!-- Header Section Begin -->
     <c:import url="../temp/leftheader.jsp"></c:import>
+
     <!-- Header End -->
     <div id="layoutSidenav_content">
         <main>
