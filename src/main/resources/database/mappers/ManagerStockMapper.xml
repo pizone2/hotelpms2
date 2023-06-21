@@ -26,14 +26,20 @@
         WHERE ITEMID = #{itemId};
     </update>
 
-    <update id="setOrderStatus" parameterType="ManagerStockVO">
+    <update id="setStatus" parameterType="ManagerStockVO">
         UPDATE HOTELSTOCK
         SET ORDERSTATUS = "재고부족"
         WHERE INVENTORYID = #{inventoryId}
     </update>
+
+    <update id="setOrderStatus" parameterType="ManagerStockVO">
+        UPDATE HOTELSTOCK
+        SET ORDERSTATUS = "발주요청"
+        WHERE ITEMID = #{itemId}
+    </update>
     <!--재고부족 알림-->
     <insert id="setAlarm">
         INSERT INTO ALARM
-        VALUES (NULL,"pizone","1", CONCAT(#{inventoryId}, '번 상품의 재고가 부족합니다.'),sysdate(),"/stock/managerStockList");
+        VALUES (NULL,"pizone","1", CONCAT(#{itemId}, '번 상품의 재고가 부족합니다.'),sysdate(),"/stock/managerStockList");
     </insert>
 </mapper>

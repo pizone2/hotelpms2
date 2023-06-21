@@ -1,4 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%-- Define the format for displaying the date and time --%>
+<% SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+    String currentDate = sdfDate.format(new Date());
+    String currentTime = sdfTime.format(new Date());
+    pageContext.setAttribute("currentDate", currentDate);
+    pageContext.setAttribute("currentTime", currentTime);
+%>
 <%--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
 <%--<script src="/webjars/sockjs-client/sockjs.min.js"></script>--%>
 <%--<script src="/webjars/stomp-websocket/stomp.min.js"></script>--%>
@@ -10,7 +22,7 @@
     <!-- * * Tip * * You can use text or an image for your navbar brand.-->
     <!-- * * * * * * When using an image, we recommend the SVG format.-->
     <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
-    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="/">SB Admin Pro</a>
+    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="/">HOMOTEL PMS</a>
     <!-- Navbar Search Input-->
     <!-- * * Note: * * Visible only on and above the lg breakpoint-->
     <form class="form-inline me-auto d-none d-lg-block me-3">
@@ -19,10 +31,12 @@
             <div class="input-group-text"><i data-feather="search"></i></div>
         </div>
     </form>
+                        <p>현재날짜: ${currentDate}&nbsp;</p>
+                        <p>현재시간: ${currentTime}</p>
     <!-- Navbar Items-->
     <ul class="navbar-nav align-items-center ms-auto">
         <!-- Documentation Dropdown-->
-        <li class="nav-item dropdown no-caret d-none d-md-block me-3">
+     <%--   <li class="nav-item dropdown no-caret d-none d-md-block me-3">
             <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="fw-500">Documentation</div>
                 <i class="fas fa-chevron-right dropdown-arrow"></i>
@@ -52,7 +66,7 @@
                     </div>
                 </a>
             </div>
-        </li>
+        </li>--%>
         <!-- Navbar Search Dropdown-->
         <!-- * * Note: * * Visible only below the lg breakpoint-->
         <li class="nav-item dropdown no-caret me-3 d-lg-none">
@@ -158,10 +172,10 @@
         </li>
         <!-- User Dropdown-->
         <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="assets/img/illustrations/profiles/profile-1.png" /></a>
+            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="/assets/img/illustrations/profiles/profile-1.png" /></a>
             <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                 <h6 class="dropdown-header d-flex align-items-center">
-                    <img class="dropdown-user-img" src="assets/img/illustrations/profiles/profile-1.png" />
+                    <img class="dropdown-user-img" src="/assets/img/illustrations/profiles/profile-1.png" />
                     <div class="dropdown-user-details">
                         <div class="dropdown-user-details-name"><sec:authentication property="principal.name"/></div>
                         <div class="dropdown-user-details-email"><sec:authentication property="principal.email"/></div>

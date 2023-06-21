@@ -40,7 +40,7 @@ function connect() {
 function showMessage(message) {
     let hrefValue = "";
 
-    if (message.includes("부족")) {
+    if (message.includes("발주요청")) {
         if (message.includes("발주요청")) {
             hrefValue = "../partnerManager/partnerManagerStockList";
         } else if (message.includes("부족")) {

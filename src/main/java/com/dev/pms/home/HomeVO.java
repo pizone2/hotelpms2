@@ -2,7 +2,6 @@ package com.dev.pms.home;
 
 import com.dev.pms.room.RoomTypeVO;
 import lombok.Data;
-
 import java.sql.Date;
 
 @Data
@@ -33,4 +32,3 @@ public class HomeVO {
     //통계를 위한 컬럼 변수 추가
     private Long count;
 }
-
