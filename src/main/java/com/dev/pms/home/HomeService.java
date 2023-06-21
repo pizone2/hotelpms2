@@ -31,5 +31,7 @@ public class HomeService {
     public List<HomeVO>  getMonthSelectedSales(Date endDate)throws Exception{
         return homeDAO.getMonthSelectedSales(endDate);
     }
-
+    public Long getCountDate(Date paymentDate) throws Exception{
+        return homeDAO.getCountDate(paymentDate);
+    }
 }

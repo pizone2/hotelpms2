@@ -136,12 +136,23 @@
                             </div>
                         </div>
                     </div>
-                    <%--<div class="card mb-4">
+                    <div class="card mb-4">
                         <div class="card-body">
                             <div class="chart-area">
+                                <div class="chartjs-size-monitor">
+                                    <div class="chartjs-size-monitor-expand">
+                                        <div class=""></div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink">
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                                <canvas id="myAreaChart" width="1347" height="240"
+                                        style="display: block; height: 240px; width: 1347px;"
+                                        class="chartjs-render-monitor"></canvas>
                             </div>
                         </div>
-                    </div>--%>
+                    </div>
                 </div>
             </form>
         </main>
@@ -155,6 +166,7 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables-simple-demo-sub.js"></script>
 <script src="js/index.js"></script>
-<%--<script src="/assets/demo/chart-area-demo.js"></script>--%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
+<script src="/js/chart-area-demo.js"></script>
 </body>
 </html>
