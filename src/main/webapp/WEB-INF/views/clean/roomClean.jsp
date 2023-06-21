@@ -59,7 +59,7 @@
 
                             <table id="datatablesSimple">
                                 <thead>
-                                <tr>
+                                <tr class="p-3 border mb-3 fw-700">
                                     <th>번호</th>
                                     <th>객실</th>
                                     <th>소속</th>
@@ -81,7 +81,7 @@
                                 <tbody>
                                 <c:forEach var="roomClean" items="${roomCleanVO}">
                                     <!-- 유저 정보-->
-                                    <tr>
+                                    <tr >
                                         <td>${roomClean.cleanNum}</td>
                                         <td>
                                             <span class="modal-trigger roomNumber" data-note="${roomClean.note}" data-savedName="${roomClean.savedName}" data-cleanNum="${roomClean.cleanNum}">
@@ -90,7 +90,7 @@
                                         </td>
                                         <td>${roomClean.scheduleNumber}</td>
                                         <td>${roomClean.dateOfRegistration}</td>
-                                        <td style="color: ${roomClean.confirmationStatus == '확인' ? 'blue' : 'red'}">${roomClean.confirmationStatus}</td>
+                                        <td style="color: ${roomClean.confirmationStatus == '확인' ? 'blue' : 'red'}"  >${roomClean.confirmationStatus}</td>
                                         <td>${roomClean.note}</td>
                                     </tr>
                                 </c:forEach>
@@ -146,7 +146,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="/js/datatables/datatables-simple-demo.js"></script>
+   <%-- <script src="/js/datatables/datatables-simple-demo.js"></script>--%>
     <script src="/js/roomClean.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
