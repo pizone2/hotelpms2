@@ -17,4 +17,10 @@ public interface HomeDAO {
     public List<HomeVO>  getMonthSelectedSales(Date endDate)throws Exception;
 
     public List<HomeVO> getDayCircualyr() throws Exception;
+
+    public List<HomeVO>  getMonthSalesPie() throws Exception;
+
+    public List<HomeVO> getMonthSelectedSalesPie(Date endDate) throws Exception;
+
+    public List<HomeVO> getMonthSelectedSalesPieHome(Date endDate) throws Exception;
 }

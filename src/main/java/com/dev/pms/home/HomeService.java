@@ -32,4 +32,16 @@ public class HomeService {
         return homeDAO.getMonthSelectedSales(endDate);
     }
 
+    public List<HomeVO> getMonthSalesPie() throws Exception{
+        return homeDAO.getMonthSalesPie();
+    }
+
+    public List<HomeVO> getMonthSelectedSalesPie(Date endDate) throws Exception {
+        return homeDAO.getMonthSelectedSalesPie(endDate);
+    }
+
+    public List<HomeVO> getMonthSelectedSalesPieHome(Date endDate) throws Exception {
+        return homeDAO.getMonthSelectedSalesPieHome(endDate);
+    }
+
 }

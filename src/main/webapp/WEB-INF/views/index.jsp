@@ -32,6 +32,7 @@
     <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
         .datatable-info {
             display: none;
@@ -81,13 +82,43 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="todaySales">
-                                <div class="row">
+                                <div class="row" style="position: relative;">
+                                    <div class="col-6" style="overflow: hidden;">
+                                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                                        <script>
+                                            var chartData = [
+                                                <c:forEach var="monthSalesPie" items="${monthSalesPie}" varStatus="status">
+                                                ['${monthSalesPie.roomType} (${monthSalesPie.count})', ${monthSalesPie.count}]${!status.last ? ',' : ''}
+                                                </c:forEach>
+                                            ];
 
-                                    <div class="col-6">
+                                            // 차트 그리기 함수
+                                            function drawChart() {
+                                                var data = google.visualization.arrayToDataTable([
+                                                    ['Room Type', 'Count'],
+                                                    ...chartData
+                                                ]);
 
+                                                var options = {
+                                                    title: 'Month 예약 현황',
+                                                    // 툴팁에 백분율 표시
+                                                    tooltip: {
+                                                        showPercentage: true
+                                                    }
+                                                };
+
+                                                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                                                chart.draw(data, options);
+                                            }
+
+                                            // Google Charts 로드 후 차트 그리기 함수 호출
+                                            google.charts.load('current', {'packages':['corechart']});
+                                            google.charts.setOnLoadCallback(drawChart);
+                                        </script>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-6" style="display: flex; align-items: center;">
                                         <table id="datatablesSimple" class="datatable-table">
                                             <thead>
                                             <tr>
@@ -150,6 +181,11 @@
         <!-- Footer Section End -->
     </div>
 </div>
+<script>
+    // 페이지 로드 시 차트 그리기 함수 호출
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
