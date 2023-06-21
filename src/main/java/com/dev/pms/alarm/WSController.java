@@ -15,12 +15,15 @@ public class WSController {
 
     @PostMapping("/send-message")
     public void sendMessage(@RequestBody final Message message) {
+        System.out.println("asgm");
         service.notifyFrontend(message.getMessageContent());
     }
 
     @PostMapping("/send-private-message/{roleName}")
     public void sendPrivateMessage(@PathVariable final String roleName,
                                    @RequestBody final Message message) {
+        System.out.println("asgm");
         service.notifyUser(message.getMessageContent());
     }
+
 }

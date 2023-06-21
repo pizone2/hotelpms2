@@ -115,6 +115,10 @@
 <script src="/js/scripts.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/stockSetting.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="/js/webSocket.js"></script>
+
 
 </body>
 </html>
