@@ -72,15 +72,6 @@ public class RoomController {
 
 
 
-    // 원형 통계를 위한 컨트롤러
 
-    @GetMapping("daycirculayr")
-    public ModelAndView getDayCircualyr(BookingVO bookingVO) throws Exception {
-    ModelAndView mv = new ModelAndView();
-    List<BookingVO> bookingVOList = roomService.getDayCircualyr();
-    mv.addObject("data",bookingVOList);
-    mv.setViewName("statistics/circular");
-    return mv;
-    }
 
 }

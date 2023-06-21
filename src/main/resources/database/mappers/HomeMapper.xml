@@ -16,6 +16,13 @@
         RT.ROOMTYPE WITH ROLLUP;
     </select>
 
+    <select id="getDayCircualyr" resultType="HomeVO">
+        SELECT ROOMTYPE, COUNT(*) AS COUNT
+        FROM BOOKING
+        WHERE DATE(CHECKINDATE) = CURDATE()
+        GROUP BY ROOMTYPE;
+    </select>
+
     <select id="getMonthSales" resultType="HomeVO">
         SELECT
         CASE

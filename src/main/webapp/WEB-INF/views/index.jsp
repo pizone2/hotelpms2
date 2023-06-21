@@ -16,6 +16,7 @@
     // 날짜 형식 변환
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     String firstDayOfMonth = sdf.format(cal.getTime());
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,57 +81,57 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="todaySales">
-                            <div class="row">
+                                <div class="row">
 
-                                <div class="col-6">
+                                    <div class="col-6">
 
+                                    </div>
+
+                                    <div class="col-6">
+                                        <table id="datatablesSimple" class="datatable-table">
+                                            <thead>
+                                            <tr>
+                                                <%-- <th data-orderable="false"></th>--%>
+                                                <th>객실</th>
+                                                <th>분류</th>
+                                                <th>매출</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>더블</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[0].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>디럭스</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[1].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>스위트</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[2].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>스탠다드</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[3].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>트윈</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[4].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>합계</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[5].total}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-
-                                <div class="col-6">
-                                    <table id="datatablesSimple" class="datatable-table">
-                                        <thead>
-                                        <tr>
-                                            <%-- <th data-orderable="false"></th>--%>
-                                            <th>객실</th>
-                                            <th>분류</th>
-                                            <th>매출</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>더블</td>
-                                            <td>ROOM</td>
-                                            <td>${monthVO[0].total}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>디럭스</td>
-                                            <td>ROOM</td>
-                                            <td>${monthVO[1].total}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>스위트</td>
-                                            <td>ROOM</td>
-                                            <td>${monthVO[2].total}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>스탠다드</td>
-                                            <td>ROOM</td>
-                                            <td>${monthVO[3].total}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>트윈</td>
-                                            <td>ROOM</td>
-                                            <td>${monthVO[4].total}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>합계</td>
-                                            <td>ROOM</td>
-                                            <td>${monthVO[5].total}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
 
                             </div>
                         </div>

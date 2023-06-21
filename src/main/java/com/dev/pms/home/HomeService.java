@@ -19,10 +19,14 @@ public class HomeService {
  public List<HomeVO> getTodaySales(HomeVO homeVO)throws Exception{
     return homeDAO.getTodaySales(homeVO);
 }
+    public List<HomeVO> getDayCircualyr() throws Exception{
+        return homeDAO.getDayCircualyr();
+    }
 
-public List<HomeVO>  getMonthSales()throws Exception{
-    return homeDAO.getMonthSales();
-}
+
+    public List<HomeVO>  getMonthSales()throws Exception{
+        return homeDAO.getMonthSales();
+    }
 
     public List<HomeVO>  getMonthSelectedSales(Date endDate)throws Exception{
         return homeDAO.getMonthSelectedSales(endDate);
