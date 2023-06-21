@@ -5,12 +5,18 @@ import com.dev.pms.room.RoomService;
 import com.dev.pms.stock.StatisticsVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -55,6 +61,18 @@ public class HomeController {
         mv.addObject("selectedSales",selectedSales);
         mv.setViewName("/statistics/monthSales");
         return mv;
+    }
+
+    @GetMapping("countDate")
+    public ResponseEntity<Long> getCountDate(@RequestParam("paymentDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate paymentDate) {
+        Long count = null;
+        try {
+            count = homeService.getCountDate(Date.valueOf(paymentDate));
+        } catch (Exception e){
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(count, HttpStatus.OK);
     }
 
 

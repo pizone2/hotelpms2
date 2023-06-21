@@ -139,14 +139,14 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="chart-area">
-                                <div class="chartjs-size-monitor">
+                                <%--<div class="chartjs-size-monitor">
                                     <div class="chartjs-size-monitor-expand">
                                         <div class=""></div>
                                     </div>
                                     <div class="chartjs-size-monitor-shrink">
                                         <div class=""></div>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <canvas id="myAreaChart" width="1347" height="240"
                                         style="display: block; height: 240px; width: 1347px;"
                                         class="chartjs-render-monitor"></canvas>
