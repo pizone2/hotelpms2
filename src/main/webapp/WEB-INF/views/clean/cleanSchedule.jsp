@@ -181,10 +181,14 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="me-3">
                                         <i class="feather-xl text-primary mb-3" data-feather="package"></i>
-                                        <h5>Powerful Components</h5>
-                                        <div class="text-muted small">To create informative visual elements on your
-                                            pages
-                                        </div>
+                                        <h5>금일 체크아웃 객실</h5>
+                                        <c:forEach var = "todayCheckOut" items="${todayCheckOut}">
+
+                                            <div class="text-muted small"> 체크인 : ${todayCheckOut.checkinDate} 객실번호 : ${todayCheckOut.roomNumber}
+                                            </div>
+
+                                            
+                                        </c:forEach>
                                     </div>
                                     <img src="/assets/img/illustrations/browser-stats.svg" alt="..."
                                          style="width: 8rem"/>
@@ -199,10 +203,12 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="me-3">
                                         <i class="feather-xl text-secondary mb-3" data-feather="book"></i>
-                                        <h5>Documentation</h5>
-                                        <div class="text-muted small">To keep you on track when working with our
-                                            toolkit
+                                        <h5>금일 체크인 객실</h5>
+                                        <c:forEach var = "todayCheckIn" items="${todayCheckIn}">
+
+                                        <div class="text-muted small"> 체크인 : ${todayCheckIn.checkinDate} 객실번호 : ${todayCheckIn.roomNumber}
                                         </div>
+                                        </c:forEach>
                                     </div>
                                     <img src="/assets/img/illustrations/processing.svg" alt="..." style="width: 8rem"/>
                                 </div>
@@ -216,10 +222,8 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="me-3">
                                         <i class="feather-xl text-green mb-3" data-feather="layout"></i>
-                                        <h5>Pages &amp; Layouts</h5>
-                                        <div class="text-muted small">To help get you started when building your new
-                                            UI
-                                        </div>
+                                        <h5>금일 청소팀</h5>
+                                        <div class="text-muted small">청소 ${today.scheduleNumber}팀</div>
                                     </div>
                                     <img src="/assets/img/illustrations/windows.svg" alt="..." style="width: 8rem"/>
                                 </div>
@@ -230,12 +234,15 @@
                 <div class="row">
                     <div class="col-xxl-8">
                         <!-- Tabbed dashboard card example-->
-                        <div class="card mb-4">
+                        <div class="card mb-3">
                                     <div class="card-header">청소부 스케줄 관리</div>
                             <div class="card-body py-5">
                                 <div class="justify-content-left">
                                     <c:set value="<%=Date%>" var="today" />
-                                    <h5>Today : ${today}</h5>
+                                    <h5>* Today : ${today}</h5><br>
+                                    <div>* 캘린더의 청소팀을 클릭하여 스케줄을 삭제합니다.</div><br>
+                                    <div>* 스케줄 등록 버튼을 이용하여 청소팀의 스케줄을 입력합니다.</div><br>
+                                    <div>* 청소를 완료한 뒤 청소보고 버튼을 이용하여 객실 상태를 보고합니다.</div>
 
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
@@ -328,7 +335,8 @@
                             <div class="col-xl-6 col-xxl-12">
                                 <!-- Team members / people dashboard card example-->
                                 <div class="card mb-4">
-                                    <div class="card-header" >체크 리스트
+                                    <div class="card-header">체크 리스트</div>
+                                    <div class="card-header" >
                                         <div id="checkList">
 
                                         </div>
@@ -396,10 +404,10 @@
                             </div>
                             <div class="col-xl-6 col-xxl-12">
                                 <!-- Project tracker card example-->
-                                <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                <button class="btn btn-dark" type="button" data-bs-toggle="modal"
                                         data-bs-target="#exampleModalLg">스케줄 등록
                                 </button>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     청소보고
                                 </button>
 
