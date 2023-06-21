@@ -1,5 +1,6 @@
 package com.dev.pms.clean;
 
+import com.dev.pms.room.BookingVO;
 import com.dev.pms.room.ReservedVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -26,4 +27,12 @@ public interface CleanDAO {
     public int CleaningComplete(ReservedVO reservedVO) throws Exception;
 
     public Long cleanScheduleCheck(CalenderVO calenderVO) throws Exception;
+
+    public int updateCheckout(BookingVO bookingVO) throws Exception;
+
+    public int updateCheckoutCleaning(ReservedVO reservedVO) throws Exception;
+
+    public List<BookingVO> todayCheckIn(BookingVO bookingVO) throws Exception;
+
+    public List<BookingVO> todayCheckOut(BookingVO bookingVO) throws Exception;
 }

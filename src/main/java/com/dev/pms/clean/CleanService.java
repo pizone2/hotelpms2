@@ -91,5 +91,20 @@ public class CleanService {
         return cleanDAO.cleanScheduleCheck(calenderVO);
     }
 
+    public int updateCheckout(BookingVO bookingVO) throws Exception {
+        return cleanDAO.updateCheckout(bookingVO);
+    }
 
+    public int updateCheckoutCleaning(ReservedVO reservedVO) throws Exception{
+        return cleanDAO.updateCheckoutCleaning(reservedVO);
+    }
+
+    public List<BookingVO> todayCheckIn(BookingVO bookingVO) throws Exception {
+
+        return cleanDAO.todayCheckIn(bookingVO);
+    }
+
+    public List<BookingVO> todayCheckOut(BookingVO bookingVO) throws Exception {
+        return cleanDAO.todayCheckOut(bookingVO);
+    }
 }

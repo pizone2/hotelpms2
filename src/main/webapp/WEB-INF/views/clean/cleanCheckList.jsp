@@ -14,20 +14,21 @@
                                 src="/assets/img/illustrations/profiles/profile-1.png" alt=""/>
                         </div>
                         <div class="d-flex flex-column fw-bold">
-                            <div class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</div>
-                            <div class="small text-muted line-height-normal">${request2.roomNumber}</div>
+                            <div class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀 : 청소요청</div>
+                            <div class="small text-muted line-height-normal">방번호 : ${request2.roomNumber} 호</div>
                         </div>
                     </div>
-                    <div class="dropdown no-caret">
-                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle"
-                                id="dropdownPeople1" type="button" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><i
-                                data-feather="more-vertical"></i></button>
-                        <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"
-                             aria-labelledby="dropdownPeople1">
-                            <a class="dropdown-item" href="#!" onclick="CleaningInProgress('${request2.roomNumber}')">청소시작</a>
-                        </div>
-                    </div>
+                    <button class="btn btn-dark" onclick="CleaningInProgress('${request2.roomNumber}')">청소시작</button>
+<%--                    <div class="dropdown no-caret">--%>
+<%--                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle"--%>
+<%--                                id="dropdownPeople1" type="button" data-bs-toggle="dropdown"--%>
+<%--                                aria-haspopup="true" aria-expanded="false"><i--%>
+<%--                                data-feather="more-vertical"></i></button>--%>
+<%--                        <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"--%>
+<%--                             aria-labelledby="dropdownPeople1">--%>
+<%--                            <a class="dropdown-item" href="#!" onclick="CleaningInProgress('${request2.roomNumber}')">청소시작</a>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </c:if>
         </c:forEach>
@@ -40,20 +41,21 @@
                                 src="/assets/img/illustrations/profiles/profile-1.png" alt=""/>
                         </div>
                         <div class="d-flex flex-column fw-bold">
-                            <span class="text-dark line-height-normal mb-1" href="#!">청소${request.scheduleNumber}팀</span><div class="cleaning">청소중</div>
-                            <div class="small text-muted line-height-normal">${request2.roomNumber}</div>
+                            <span class="text-dark line-height-normal mb-1" href="#!">청소${today.scheduleNumber}팀 : 청소요청</span><div class="cleaning">청소중</div>
+                            <div class="small text-muted line-height-normal">방번호 : ${request2.roomNumber} 호</div>
                         </div>
                     </div>
-                    <div class="dropdown no-caret">
-                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle"
-                                id="dropdownPeople1-2" type="button" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><i
-                                data-feather="more-vertical"></i></button>
-                        <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"
-                             aria-labelledby="dropdownPeople1">
-                            <a class="dropdown-item" href="#!" onclick="CleaningComplete('${request2.roomNumber}')">청소완료</a>
-                        </div>
-                    </div>
+                    <button class="btn btn-dark" onclick="CleaningComplete('${request2.roomNumber}')">청소완료</button>
+<%--                    <div class="dropdown no-caret">--%>
+<%--                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle"--%>
+<%--                                id="dropdownPeople1-2" type="button" data-bs-toggle="dropdown"--%>
+<%--                                aria-haspopup="true" aria-expanded="false"><i--%>
+<%--                                data-feather="more-vertical"></i></button>--%>
+<%--                        <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"--%>
+<%--                             aria-labelledby="dropdownPeople1">--%>
+<%--                            <a class="dropdown-item" href="#!" onclick="CleaningComplete('${request2.roomNumber}')">청소완료</a>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </c:if>
         </c:forEach>

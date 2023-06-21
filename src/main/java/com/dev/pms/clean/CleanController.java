@@ -1,5 +1,6 @@
 package com.dev.pms.clean;
 
+import com.dev.pms.room.BookingVO;
 import com.dev.pms.room.ReservedVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,19 @@ public class CleanController {
 
 
     @GetMapping("/cleanSchedule")
-    public ModelAndView cleanSchedule(CalenderVO calenderVO) throws Exception {
+    public ModelAndView cleanSchedule(CalenderVO calenderVO,BookingVO bookingVO) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<CalenderVO>calenderVOList=cleanService.getCleanList(calenderVO);
         List<ReservedVO>RequestClean =cleanService.getRequestClean(calenderVO);
+        CalenderVO today = cleanService.getTodayClean(calenderVO);
+        List<BookingVO> todayCheckIn = cleanService.todayCheckIn(bookingVO);
+        List<BookingVO> todayCheckOut = cleanService.todayCheckOut(bookingVO);
         mv.addObject("events",calenderVOList);
         mv.addObject("request",RequestClean);
+        mv.addObject("today",today);
+        mv.addObject("todayCheckIn",todayCheckIn);
+        mv.addObject("todayCheckOut",todayCheckOut);
+
         mv.setViewName("clean/cleanSchedule");
 
         return mv;
@@ -73,14 +81,14 @@ public class CleanController {
         int result = cleanService.deleteSchedule(calenderVO);
         return mv;
     }
-
+    @ResponseBody
     @PostMapping ("/updateCleaningInProgress")
     public ModelAndView updateCleaningInProgress(ReservedVO reservedVO) throws Exception{
         ModelAndView mv = new ModelAndView();
         int result = cleanService.updateCleaningInProgress(reservedVO);
         return mv;
     }
-
+    @ResponseBody
     @PostMapping("/cleaningComplete")
     public ModelAndView CleaningComplete(ReservedVO reservedVO) throws Exception{
         ModelAndView mv = new ModelAndView();
