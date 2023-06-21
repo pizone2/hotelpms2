@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="col-xl-7">
-                        <!-- Account details card-->
+                        <!-- Account detadils card-->
                         <div class="card mb-4">
                             <div class="card-header">상세 품목 리스트</div>
                             <div class="card-body">
