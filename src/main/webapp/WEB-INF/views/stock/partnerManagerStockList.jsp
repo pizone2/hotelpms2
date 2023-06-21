@@ -143,6 +143,6 @@
 <script src="/js/managerStock.js"></script>
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-<script src="/js/webSocket.js"></script>
+<script src="/js/partnerWebSocket.js"></script>
 </body>
 </html>

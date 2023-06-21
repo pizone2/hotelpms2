@@ -126,13 +126,13 @@
     
     <select id="todayCheckIn" parameterType="BookingVO" resultType="BookingVO">
         SELECT CHECKINDATE, ROOMNUMBER
-        FROM booking b
+        FROM BOOKING B
         WHERE DATE(CHECKINDATE) = CURDATE()
     </select>
 
     <select id="todayCheckOut" parameterType="BookingVO" resultType="BookingVO">
         SELECT CHECKOUTDATE , ROOMNUMBER
-        FROM booking b
+        FROM BOOKING B
         WHERE DATE(CHECKOUTDATE) = CURDATE();
     </select>
 
