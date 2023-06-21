@@ -23,9 +23,12 @@ public class ManagerService {
             String orderStatus = stock.getOrderStatus();
             if ((currentStock == null || currentStock < autoOrderQuantity) && "양호".equals(orderStatus)) {
                 managerDAO.setOrderStatus(stock);
+                managerDAO.setAlarm(stock);
             }
 
         }
+
+
         stockList = managerDAO.getStockList(managerStockVO);
 
         return stockList;

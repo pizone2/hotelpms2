@@ -11,5 +11,6 @@ public interface ManagerDAO {
 
     public int setQuantity(ManagerStockVO managerStockVO)throws Exception;
     public int setOrderStatus(ManagerStockVO managerStockVO)throws Exception;
+    public int setAlarm(ManagerStockVO managerStockVO)throws Exception;
 
 }
