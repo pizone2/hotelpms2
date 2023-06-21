@@ -29,4 +29,8 @@ public class RoomService {
         return roomDAO.setRoomSetting(roomTypeVO);
     }
 
+    public List<BookingVO> getDayCircualyr() throws Exception{
+        return roomDAO.getDayCircualyr();
+    }
+
 }
