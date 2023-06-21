@@ -1,28 +1,3 @@
-/*
-
-
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['더블',     11],
-        ['디럭스',      2],
-        ['트윈',  2],
-        ['스탠다드', 2],
-        ['트윈',    7]
-    ]);
-
-    var options = {
-        title: 'My Daily Activities'
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-}*/
 
     // JSTL을 사용하여 Java 객체 'data'를 JavaScript 배열 'chartData'로 변환
     var chartData = [

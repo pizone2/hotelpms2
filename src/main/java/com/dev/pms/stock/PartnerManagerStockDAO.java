@@ -15,7 +15,7 @@ public interface PartnerManagerStockDAO {
 
     public int updateOrderCompleted2(ManagerStockVO managerStockVO) throws Exception;
 
-
+    public int updateOrderCompleted3(ManagerStockVO managerStockVO) throws Exception;
     public int updateGoodStock(ManagerStockVO managerStockVO) throws Exception;
 
 }
