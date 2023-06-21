@@ -78,7 +78,7 @@
                             <tbody>
                             <c:forEach var="vo" items="${stockList}">
                                 <!-- 유저 정보-->
-                                <tr>
+                                <tr class="order-status" data-order-id="${vo.itemId}">
                                     <td ><input type="checkbox" class="myCheckbox"></td>
                                     <td >${vo.itemId}</td>
                                     <td >${vo.currentStock}</td>
@@ -129,5 +129,8 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables/datatables-simple-demo.js"></script>
 <script src="/js/managerStock.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="/js/webSocket.js"></script>
 </body>
 </html>

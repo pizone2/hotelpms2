@@ -14,6 +14,8 @@ let data = {
 
 //확인 버튼이 클릭되었을 때 사업자 API 검증 및 사업자 등록 번호 DB 조회가 되도록 실행
 document.querySelector('.btn-outline-blue').addEventListener('click', function () {
+    var user = "${user}"; // JSP 변수를 JavaScript 변수에 할당
+    console.log(user);
     // HTML에서 b_no 값 가져오기
 
     let b_noValue = document.getElementById('businessNumber').value;

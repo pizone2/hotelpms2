@@ -210,5 +210,8 @@
             crossorigin="anonymous"></script>
     <script src="../js/scripts.js"></script>
     <script src="/js/roomStatus.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/webSocket.js"></script>
 </body>
 </html>
