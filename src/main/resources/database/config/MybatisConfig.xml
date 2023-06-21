@@ -25,6 +25,8 @@
         <typeAlias type="com.dev.pms.stock.StatisticsVO" alias="StatisticsVO"></typeAlias>
         <typeAlias type="com.dev.pms.alarm.AlarmVO" alias="AlarmVO"></typeAlias>
 
+        <typeAlias type="com.dev.pms.home.HomeVO" alias="HomeVO"></typeAlias>
+
     </typeAliases>
 
 

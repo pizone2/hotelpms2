@@ -77,9 +77,11 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-6">
+
+                        <div id="todaySales"class="col-6">
 
                         </div>
+
                         <div class="col-6">
                             <table id="datatablesSimple">
                                 <thead>
@@ -128,6 +130,8 @@
                                         <td>합계</td>
                                         <td></td>
                                         <td>원</td>
+
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -135,6 +139,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         </form>
     </main>
@@ -147,5 +152,6 @@
 <script src="js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables-simple-demo-sub.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>

@@ -28,7 +28,6 @@ public class ManagerService {
 
         }
 
-
         stockList = managerDAO.getStockList(managerStockVO);
 
         return stockList;
