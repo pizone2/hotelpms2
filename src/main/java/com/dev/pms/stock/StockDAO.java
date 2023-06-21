@@ -1,5 +1,6 @@
 package com.dev.pms.stock;
 
+import com.dev.pms.user.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -20,7 +21,14 @@ public interface StockDAO {
 
     public int setPartnerDelete(String businessNumber) throws Exception;
 
+    public int setPartnerUserDelete(String id) throws Exception;
+
     public int setPartnerUpdate(String businessNumber) throws Exception;
+
+    public PartnerVO getUpdatedPartnerSelect(String businessNumber) throws Exception;
+
+    //사업자 user 생성
+    public int setPartnerUserAdd(UserVO userVO) throws Exception;
 
     //----------- 객실별 설정
     public List<String> getRoomType() throws  Exception;
@@ -33,7 +41,7 @@ public interface StockDAO {
 
     public int setRoomStockDelete(String roomType) throws Exception;
 
-
     public List<RoomStockVO> getRoomTypeStock(String roomType) throws  Exception;
+
 
 }

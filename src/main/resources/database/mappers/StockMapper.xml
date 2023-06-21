@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.pms.stock.StockDAO">
+    <!--사업자 - 품목-->
     <insert id="setPartnerStock" parameterType="PartnerStockVO">
         INSERT INTO PARTNERSTOCK
         VALUES (NULL,#{businessNumber},#{productName},#{itemCode},#{unit},#{unitPrice},CURDATE(),#{remarks},0)
@@ -44,6 +45,8 @@
         DELETE FROM PARTNERSTOCK WHERE ITEMID=#{itemId}
     </delete>
 
+    <!--관리자 - 업체관리-->
+
     <select id="getPartnerList" resultType="PartnerVO">
         SELECT * FROM PARTNER
     </select>
@@ -52,9 +55,24 @@
         DELETE FROM PARTNER WHERE BUSINESSNUMBER=#{businessNumber}
     </delete>
 
+    <delete id="setPartnerUserDelete" parameterType="String">
+        DELETE FROM USER WHERE ID=#{id}
+    </delete>
+
     <update id="setPartnerUpdate" parameterType="String">
         UPDATE PARTNER SET APPROVAL =1 WHERE BUSINESSNUMBER=#{businessNumber}
     </update>
+
+    <select id="getUpdatedPartnerSelect" parameterType="String" resultType="PartnerVO">
+        SELECT * FROM PARTNER WHERE BUSINESSNUMBER=#{businessNumber}
+    </select>
+
+    <insert id="setPartnerUserAdd" parameterType="UserVO">
+        INSERT INTO USER(ID,PASSWORD,NAME,PHONENUMBER,EMAIL,ROLENAME)
+        VALUES (#{id},#{password},#{name},#{phoneNumber},#{email},#{roleName})
+    </insert>
+
+    <!--객실별 재고-->
 
     <select id="getRoomType" resultType="String">
         SELECT ROOMTYPE FROM ROOMTYPE
