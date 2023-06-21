@@ -7,6 +7,8 @@
     // 오늘 날짜 가져오기
     Calendar cal = Calendar.getInstance();
     cal.setTime(new Date());
+    SimpleDateFormat month = new SimpleDateFormat("yyyy-MM-dd");
+    String monthDayOfMonth = month.format(cal.getTime());
 
     // 달의 첫 번째 날짜로 설정
     cal.set(Calendar.DAY_OF_MONTH, 1);
@@ -14,6 +16,7 @@
     // 날짜 형식 변환
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     String firstDayOfMonth = sdf.format(cal.getTime());
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,107 +48,103 @@
     <c:import url="./temp/leftheader.jsp"></c:import>
     <!-- Header End -->
     <div id="layoutSidenav_content">
-    <main>
-        <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
-            <div class="container-fluid px-4">
-                <div class="page-header-content">
-                    <div class="row align-items-center justify-content-between pt-3">
-                        <div class="col-auto mb-3">
-                            <h1 class="page-header-title">
-                                <div class="page-header-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
-                                DASH BOARD
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <form>
-        <!-- Main page content-->
-        <div class="container-fluid px-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    지점: <input type="text" value="Mohotel" disabled>
-                    조회기간:<input type="date" value="<%= firstDayOfMonth %>" readonly> ~ <input type="date">
-                    <div class="btn-group" role="group" aria-label="Button group">
-                    <button class="btn btn-dark btn-sm" type="button" id="btn-day">일</button>
-                    <button class="btn btn-dark btn-sm" type="button" id="btn-month">월</button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="card mb-4">
-                <div class="card-body">
-                    < div class="todaySales">
-                    <div class="row">
-
-                        <div class="col-6">
-
-                        </div>
-
-                        <div class="col-6">
-
-                            <table id="datatablesSimple"  class="datatable-table">
-                                <thead>
-                                <tr>
-                                   <%-- <th data-orderable="false"></th>--%>
-                                    <th></th>
-                                    <th>분류</th>
-                                    <th>매출</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <%--<th></th>--%>
-                                    <th></th>
-                                    <th>분류</th>
-                                    <th>매출</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                    <tr>
-                                        <td>더블</td>
-                                        <td>ROOM</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>디럭스</td>
-                                        <td>ROOM</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>스위트</td>
-                                        <td>ROOM</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>스탠다드</td>
-                                        <td>ROOM</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>트윈</td>
-                                        <td>ROOM</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>합계</td>
-                                        <td></td>
-                                        <td>원</td>
-
-
-                                    </tr>
-                                </tbody>
-                            </table>
+        <main>
+            <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+                <div class="container-fluid px-4">
+                    <div class="page-header-content">
+                        <div class="row align-items-center justify-content-between pt-3">
+                            <div class="col-auto mb-3">
+                                <h1 class="page-header-title">
+                                    <div class="page-header-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                                    DASH BOARD
+                                </h1>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
+            <form>
+                <!-- Main page content-->
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            지점: <input type="text" value="Mohotel" disabled>
+                            조회기간:<input id="startDate" type="date" value="<%= firstDayOfMonth %>" readonly> ~
+                            <input id="endDate" type="date" value="<%= monthDayOfMonth %>">
+                            <div class="btn-group" role="group" aria-label="Button group">
+                                <button class="btn btn-dark btn-sm" type="button" id="btn-day">일</button>
+                                <button class="btn btn-dark btn-sm" type="button" id="btn-month">월</button>
+                            </div>
+                        </div>
 
-        </div>
-        </form>
-    </main>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="todaySales">
+                                <div class="row">
+
+                                    <div class="col-6">
+
+                                    </div>
+
+                                    <div class="col-6">
+                                        <table id="datatablesSimple" class="datatable-table">
+                                            <thead>
+                                            <tr>
+                                                <%-- <th data-orderable="false"></th>--%>
+                                                <th>객실</th>
+                                                <th>분류</th>
+                                                <th>매출</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>더블</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[0].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>디럭스</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[1].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>스위트</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[2].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>스탠다드</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[3].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>트윈</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[4].total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>합계</td>
+                                                <td>ROOM</td>
+                                                <td>${monthVO[5].total}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <%--<div class="card mb-4">
+                        <div class="card-body">
+                            <div class="chart-area">
+                            </div>
+                        </div>
+                    </div>--%>
+                </div>
+            </form>
+        </main>
         <!-- Footer Section Begin -->
         <c:import url="./temp/footer.jsp"></c:import>
         <!-- Footer Section End -->
@@ -156,5 +155,6 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables-simple-demo-sub.js"></script>
 <script src="js/index.js"></script>
+<%--<script src="/assets/demo/chart-area-demo.js"></script>--%>
 </body>
 </html>
