@@ -136,6 +136,12 @@
                     </div>
                 </div>
             </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="chart-area">
+                    </div>
+                </div>
+            </div>
         </div>
         </form>
     </main>
@@ -148,5 +154,6 @@
 <script src="js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables-simple-demo-sub.js"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
 </body>
 </html>
