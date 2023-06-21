@@ -5,7 +5,7 @@ $('#btn-day').click(function() {
         url: "/todaySales",
         method: "GET",
         success: function(response) {
-            $('#todaySales').html(response);
+            $('.todaySales').html(response);
             console.log("성공");
         },
         error: function(xhr, status, error) {
@@ -43,42 +43,6 @@ $('#btn-day').click(function() {
 
 
 });
-/*$('#btn-day').click(function() {
-    // 애니메이션 시작
-    $('.loader').show();
-
-    $.ajax({
-        url: "/todaySales",
-        method: "GET",
-        success: function(response) {
-            $('.todaySales').html(response);
-            console.log("Success");
-        },
-        error: function(xhr, status, error) {
-            console.error('An error occurred. Please contact the administrator.');
-        },
-        complete: function() {
-            // 애니메이션 종료
-            $('.loader').hide();
-        }
-    });
-});*/
-
-
-/*$('#btn-day').click(function() {
-    console.log("click")
-    $.ajax({
-        url: "/daycirculayr",
-        method: "GET",
-        success: function(response) {
-            $('#todayCirculayr').html(response);
-            console.log("성공");
-        },
-        error: function(xhr, status, error) {
-            console.error('오류가 발생했습니다. 관리자에게 문의해주세요.');
-        }
-    });
-});*/
 
 let selectedDate = 0;
 $('#endDate').on('change', function() {

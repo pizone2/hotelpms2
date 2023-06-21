@@ -18,11 +18,12 @@ public class ManagerService {
 
         for (ManagerStockVO stock : stockList) {
             Long inventoryId = stock.getInventoryId();
+            Long itemId = stock.getItemId();
             Long currentStock = stock.getCurrentStock();
             Long autoOrderQuantity = stock.getAutoOrderQuantity();
             String orderStatus = stock.getOrderStatus();
             if ((currentStock == null || currentStock < autoOrderQuantity) && "양호".equals(orderStatus)) {
-                managerDAO.setOrderStatus(stock);
+                managerDAO.setStatus(stock);
                 managerDAO.setAlarm(stock);
             }
 
