@@ -54,7 +54,7 @@ public class PartnerController {
     public ModelAndView setPartner(PartnerVO partnerVO, HttpSession session) throws Exception {
         ModelAndView mv = new ModelAndView();
         int result = partnerService.setPartner(partnerVO);
-        mv.setViewName("/partnerAdmin/partnerList");
+        mv.setViewName("redirect:/partnerAdmin/partnerList");
         return mv;
     }
 

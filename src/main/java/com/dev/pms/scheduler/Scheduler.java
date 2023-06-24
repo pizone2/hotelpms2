@@ -43,7 +43,7 @@ public class Scheduler {
         System.out.println("퇴실퇴실");
     }
     // 2시 10분에 퇴실 방 청소 요청으로 변경(퇴실후 10분뒤)
-//    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "*/10 * * * * *")
     public void updateCheckoutCleaning() throws Exception {
         ReservedVO reservedVO = new ReservedVO();
         int result = cleanService.updateCheckoutCleaning(reservedVO);
