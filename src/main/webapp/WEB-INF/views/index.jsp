@@ -128,37 +128,14 @@
                                                 <th>매출</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="myTable">
+                                            <c:forEach var="monthVO" items="${monthVO}">
                                             <tr>
-                                                <td>더블</td>
+                                                <td>${monthVO.roomType}</td>
                                                 <td>ROOM</td>
-                                                <td>${monthVO[0].total}</td>
+                                                <td align="right"><span class="total">${monthVO.total}</span>원</td>
                                             </tr>
-                                            <tr>
-                                                <td>디럭스</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[1].total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>스위트</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[2].total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>스탠다드</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[3].total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>트윈</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[4].total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>합계</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[5].total}</td>
-                                            </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -196,6 +173,18 @@
     // 페이지 로드 시 차트 그리기 함수 호출
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
+
+    //금액은 ,로 3자리마다 구분
+    window.onload = function() {
+        let cells = document.querySelectorAll('#myTable .total');
+
+        for (let i = 0; i < cells.length; i++) {
+            let cell = cells[i];
+            let value = Number(cell.innerText);
+            cell.innerText = value.toLocaleString();
+        }
+    }
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>

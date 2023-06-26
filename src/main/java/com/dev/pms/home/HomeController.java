@@ -61,7 +61,7 @@ public class HomeController {
         List<HomeVO> selectedSales = homeService.getMonthSelectedSales(endDate);
         List<HomeVO> selectedSalesPie = homeService.getMonthSelectedSalesPie(endDate);
         log.error(":::::{}:::::", selectedSales.get(0).getTotal());
-        mv.addObject("selectedSales",selectedSales);
+        mv.addObject("monthVO",selectedSales);
         mv.addObject("selectedSalesPie",selectedSalesPie);
         mv.setViewName("/statistics/monthSales");
         return mv;

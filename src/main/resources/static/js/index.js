@@ -47,7 +47,7 @@ $('#btn-day').click(function() {
 
 $('#btn-month').click(function() {
     // 버튼이 클릭될 때마다 endDate 값을 갱신
-    selectedDate = $('#endDate').val();
+    var selectedDate = $('#endDate').val();
 
     $.ajax({
         url: "/monthSales",
@@ -55,6 +55,14 @@ $('#btn-month').click(function() {
         data: { endDate: selectedDate }, // 선택된 날짜 값을 Controller에 전달
         success: function(response) {
             $('.todaySales').html(response);
+
+            let cells = document.querySelectorAll('#datatablesSimple .total');
+            for (let i = 0; i < cells.length; i++) {
+                let cell = cells[i];
+                let value = Number(cell.innerText);
+                cell.innerText = value.toLocaleString();
+            }
+
             console.log("성공");
         },
         error: function(xhr, status, error) {
@@ -62,3 +70,4 @@ $('#btn-month').click(function() {
         }
     });
 });
+

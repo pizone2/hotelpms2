@@ -54,44 +54,32 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>더블</td>
-                <td>ROOM</td>
-                <td>${selectedSales[0].total}</td>
-            </tr>
-            <tr>
-                <td>디럭스</td>
-                <td>ROOM</td>
-                <td>${selectedSales[1].total}</td>
-            </tr>
-            <tr>
-                <td>스위트</td>
-                <td>ROOM</td>
-                <td>${selectedSales[2].total}</td>
-            </tr>
-            <tr>
-                <td>스탠다드</td>
-                <td>ROOM</td>
-                <td>${selectedSales[3].total}</td>
-            </tr>
-            <tr>
-                <td>트윈</td>
-                <td>ROOM</td>
-                <td>${selectedSales[4].total}</td>
-            </tr>
-            <tr>
-                <td>합계</td>
-                <td>ROOM</td>
-                <td>${selectedSales[5].total}</td>
-            </tr>
+            <c:forEach var="monthVO" items="${monthVO}">
+                <tr>
+                    <td>${monthVO.roomType}</td>
+                    <td>ROOM</td>
+                    <td align="right"><span class="total">${monthVO.total}</span>원</td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
 </div>
 </body>
-<script>
+<%--<script>
     // 페이지 로드 시 차트 그리기 함수 호출
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-</script>
+
+    //금액은 ,로 3자리마다 구분
+    window.onload = function() {
+        let cells = document.querySelectorAll('#myTable .total');
+
+        for (let i = 0; i < cells.length; i++) {
+            let cell = cells[i];
+            let value = Number(cell.innerText);
+            cell.innerText = value.toLocaleString();
+        }
+    }
+</script>--%>
 </html>
