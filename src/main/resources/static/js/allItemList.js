@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('#checkAll').click(function() {
         var isChecked = $(this).is(':checked');
 
-        // "tbody"의 모든 체크박스 선택 또는 선택 해제
+        // "tbody"의 모든 체크박스 선택. 또는 선택 해제
         $('tbody .myCheckbox').prop('checked', isChecked);
     });
 });
@@ -38,7 +38,8 @@ window.addEventListener('DOMContentLoaded', event => {
                 if (checkbox !== document.getElementById('checkAll') && checkbox.checked) {
                     const row = checkbox.parentNode.parentNode;
                     console.log(row);
-                    const nextColumn = checkbox.parentNode.nextElementSibling;
+                    const td = checkbox.closest('td');
+                    const nextColumn = td.nextElementSibling;
                     const nextColumnValue = nextColumn.textContent.trim();
 
                     if (!selectedValues.includes(nextColumnValue)) {

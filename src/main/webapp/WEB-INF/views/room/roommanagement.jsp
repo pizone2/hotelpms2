@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
+
 <body class="nav-fixed">
 <!-- Header Section Begin -->
 <c:import url="../temp/topheader.jsp"></c:import>
@@ -201,8 +202,9 @@
                             </div>
                         </div>
                             <div class="datatable-container">
+    `                           <%--부트스트랩 테이블 td 넓이 고정 시키는 스타일 style="table-layout: fixed"--%>
+                                <table id="datatablesSimple" class="datatable-table" style="table-layout: fixed">
 
-                                <table id="datatablesSimple" class="datatable-table">
                                     <thead><tr></tr></thead>
                                  <%--   <thead><tr><th data-sortable="true" style="width: 16.023738872403563%;"><a href="#" class="datatable-sorter">Name</a></th><th data-sortable="true" style="width: 23.664688427299705%;"><a href="#" class="datatable-sorter">Position</a></th><th data-sortable="true" style="width: 12.314540059347182%;"><a href="#" class="datatable-sorter">Office</a></th><th data-sortable="true" style="width: 7.195845697329377%;"><a href="#" class="datatable-sorter">Age</a></th><th data-sortable="true" style="width: 11.498516320474778%;"><a href="#" class="datatable-sorter">Start date</a></th><th data-sortable="true" style="width: 10.682492581602373%;"><a href="#" class="datatable-sorter">Salary</a></th><th data-sortable="true" style="width: 8.902077151335313%;"><a href="#" class="datatable-sorter">Status</a></th><th data-sortable="true" style="width: 9.718100890207715%;"><a href="#" class="datatable-sorter">Actions</a></th></tr></thead>--%>
                                     <tbody>
@@ -210,7 +212,7 @@
                                     <tr data-index="1" class="floor">
                                         <c:forEach items="${room}" var="room">
                                             <c:if test="${room.floor == 1}">
-                                                <td class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; " id="pa${room.roomNumber}">
+                                                <td  class="tdroom ${room.roomType}" style="width: calc(100% / 5); height: 180px; text-align: center; " id="pa${room.roomNumber}">
                                                     ${room.roomNumber} <br> ${room.roomType} <br>
                                                     <c:forEach items="${status}" var="status">
                                                         <c:if test="${room.roomNumber == status.roomNumber}">

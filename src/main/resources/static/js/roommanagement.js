@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     let tdElements = document.querySelectorAll("td[id^='pa']");
     let divElements = document.querySelectorAll("div[id^='ch']");
@@ -97,13 +96,17 @@ $(document).ready(function() {
             selectedRoomTypes.push($(this).val());
         });
 
+
+
         // 필터 상태를 확인하기 위해 콘솔에 출력합니다.
         console.log('객실 상태 필터:', selectedRoomstatus);
         console.log('객실 층별 필터:', selectedFloors);
         console.log('객실 타입 필터:', selectedRoomTypes);
 
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 하나 이상의 층이 선택된 경우 모든 층을 숨깁니다.
+
         if (filtersApplied || selectedFloors.length > 0) {
             $('tr.floor').hide();
         } else if (filtersApplied || selectedFloors.length === 0) {
@@ -131,24 +134,50 @@ $(document).ready(function() {
             });
 
             // 모든 td.tdroom 요소를 숨깁니다.
-            $('td.tdroom').hide();
+            $('td.tdroom').css('visibility', 'hidden');
 
             // 선택된 객실 유형에 해당하는 td.tdroom 요소만 보여줍니다.
             if (selectedRoomTypes.length > 0) {
                 let selector = selectedRoomTypes.map(function(roomType) {
                     return 'td.tdroom.' + roomType;
                 }).join(',');
-                $(selector).show();
+                $(selector).css('visibility', 'visible');
             } else {
                 // 선택된 객실 유형이 없는 경우 모든 td.tdroom 요소를 보여줍니다.
-                $('td.tdroom').show();
+                $('td.tdroom').css('visibility', 'visible');
             }
+
+            let tableId = "datatablesSimple";
+            let table = document.getElementById(tableId);
+            let rows = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cells = row.getElementsByTagName("td");
+
+                for (let j = 0; j < cells.length; j++) {
+                    let cell = cells[j];
+                    let visibility = window.getComputedStyle(cell).getPropertyValue("visibility");
+
+                    if (visibility === "visible") {
+                        let currentIndex = Array.prototype.indexOf.call(cells, cell);
+                        row.removeChild(cell);
+                        row.insertBefore(cell, cells[0]);
+                        cells = row.getElementsByTagName("td");
+                        let cellsArray = Array.from(cells);
+                        Array.prototype.splice.call(cellsArray, 0, 0, Array.prototype.splice.call(cellsArray, currentIndex, 1)[0]);
+
+                    }
+                }
+            }
+
         }
 
         // 체크박스 값이 변경될 때마다 필터를 적용합니다.
         $('input[name="roomTypes"]').change(function() {
             applyFilters();
         });
+
 
         // 페이지가 로드될 때 초기 필터를 적용합니다.
         applyFilters();
@@ -158,32 +187,58 @@ $(document).ready(function() {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 하나 이상의 객실 상태 체크박스가 선택된 경우 모든 방을 숨깁니다.
         if (filtersApplied || selectedRoomstatus.length > 0) {
-            $('td.tdroom').hide();
+            $('td.tdroom').css('visibility', 'hidden');
         } else if (filtersApplied || selectedRoomstatus.length == 0) {
-            $('td.tdroom').show();
+            $('td.tdroom').css('visibility', 'visible');
         }
 
         // 선택된 객실 상태에 해당하는 td.tdroom 요소만 보여줍니다.
         if (selectedRoomstatus.length === 0) {
-            $('td.tdroom').show();
+            $('td.tdroom').css('visibility', 'visible');
         } else {
-            $('td.tdroom').hide(); // 모든 td.tdroom 요소를 숨깁니다.
+            $('td.tdroom').css('visibility', 'hidden'); // 모든 td.tdroom 요소를 숨깁니다.
             selectedRoomstatus.forEach(function(roomstatus) {
                 $('td.tdroom').filter(function() {
                     return $(this).hasClass(roomstatus);
-
-                }).show(); // 선택된 객실 상태에 해당하는 td.tdroom 요소만 보여줍니다.
+                }).css('visibility', 'visible');// 선택된 객실 상태에 해당하는 td.tdroom 요소만 보여줍니다.
             });
         }
 
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 필터가 적용되었음을 표시하는 플래그를 true로 설정합니다.
-        filtersApplied = true;
+
 
         // 다시 시작할 때 선택된 방의 수만 계산합니다.
         let visibleTdroomElements = $('.tdroom:visible');
         console.log('<td class="tdroom">의 개수:', visibleTdroomElements.length);
         divElement.text(visibleTdroomElements.length / 2 + "개");
+
+        //////////////////////////////////////테이블 재정렬 처리 /////////////////////////////////////////
+        let tableId = "datatablesSimple";
+        let table = document.getElementById(tableId);
+        let rows = table.getElementsByTagName("tr");
+
+        for (let i = 0; i < rows.length; i++) {
+            let row = rows[i];
+            let cells = row.getElementsByTagName("td");
+
+            for (let j = 0; j < cells.length; j++) {
+                let cell = cells[j];
+                let visibility = window.getComputedStyle(cell).getPropertyValue("visibility");
+
+                if (visibility === "visible") {
+                    let currentIndex = Array.prototype.indexOf.call(cells, cell);
+                    row.removeChild(cell);
+                    row.insertBefore(cell, cells[0]);
+                    cells = row.getElementsByTagName("td");
+                    let cellsArray = Array.from(cells);
+                    Array.prototype.splice.call(cellsArray, 0, 0, Array.prototype.splice.call(cellsArray, currentIndex, 1)[0]);
+
+                }
+            }
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 필터가 적용되었음을 표시하는 플래그를 true로 설정합니다.
+        filtersApplied = true;
+
     }
 
     //////////////////////////////////////////
@@ -199,4 +254,8 @@ $(document).ready(function() {
 
     // divElement 변수에 방의 개수를 넣습니다.
     divElement.text(tdroomCount + "개");
-});
+
+
+
+
+})
