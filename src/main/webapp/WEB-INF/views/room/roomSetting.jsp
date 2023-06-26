@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +54,11 @@
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
-                                <th data-orderable="false"><input type="checkbox" id="checkAll" class="myCheckbox"></th>
+                                <th data-orderable="false">
+                                    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                    <input type="checkbox" id="checkAll" class="myCheckbox">
+                                    </div>
+                                </th>
                                 <th>객실타입</th>
                                 <th>인원</th>
                                 <th>가격</th>
@@ -73,10 +78,14 @@
                             <c:forEach var="vo" items="${roomSetting}">
                                 <!-- 유저 정보-->
                                 <tr>
-                                    <td ><input type="checkbox" class="myCheckbox"></td>
+                                    <td >
+                                        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                        <input type="checkbox" class="myCheckbox">
+                                        </div>
+                                    </td>
                                     <td >${vo.roomType}</td>
                                     <td >${vo.capacity}명</td>
-                                    <td >${vo.roomPrice}원</td>
+                                    <td><fmt:formatNumber value="${vo.roomPrice}" pattern="#,###"/>원</td>
 
                                 </tr>
                             </c:forEach>
