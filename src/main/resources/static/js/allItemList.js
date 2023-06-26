@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('#checkAll').click(function() {
         var isChecked = $(this).is(':checked');
 
-        // "tbody"의 모든 체크박스 선택 또는 선택 해제
+        // "tbody"의 모든 체크박스 선택. 또는 선택 해제
         $('tbody .myCheckbox').prop('checked', isChecked);
     });
 });
