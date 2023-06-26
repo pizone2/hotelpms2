@@ -23,7 +23,8 @@ window.addEventListener('DOMContentLoaded', event => {
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
-            const nextColumn = checkbox.parentNode.nextElementSibling;
+            const td = checkbox.closest('td');
+            const nextColumn = td.nextElementSibling;
             const nextColumnValue = nextColumn.textContent.trim();
 
             if (checkbox.checked && !selectedValues.includes(nextColumnValue)) {
@@ -37,6 +38,7 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 });
+
 
 $(document).ready(function () {
     $('#btn-send').click(function () {
