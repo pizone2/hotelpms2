@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +56,7 @@
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
-                                <th data-orderable="false"><input type="checkbox" id="checkAll" class="myCheckbox"></th>
+                                <th data-orderable="false"><div style="display: flex; justify-content: center; align-items: center; height: 100%;"><input type="checkbox" id="checkAll" class="myCheckbox"></div></th>
                                 <th>품목번호</th>
                                 <th>상호명</th>
                                 <th>품목명</th>
@@ -79,17 +80,19 @@
                             <c:forEach var="vo" items="${list}">
                                 <!-- 유저 정보-->
                                 <tr>
-                                    <td><input type="checkbox" class="myCheckbox"></td>
-                                    <div  id="vo.itemId">
+                                    <td><div style="display: flex; justify-content: center; align-items: center; height: 100%;"><input type="checkbox" class="myCheckbox"></div></td>
+                                    <div id="vo.itemId">
                                         <td class="d" data-cell-type="${vo.itemId}">${vo.itemId}</td>
                                     </div>
                                     <td>${vo.companyName}</td>
                                     <td>${vo.productName}</td>
                                     <td>${vo.itemCode}</td>
-                                    <td>${vo.unitPrice}</td>
-                                    <td>${vo.unit}</td>
+                                    <td><fmt:formatNumber value="${Double.valueOf(vo.unitPrice)}" pattern="#,###" />원</td>
+
+                                    <td><c:out value="${vo.unit}" /></td>
                                 </tr>
                             </c:forEach>
+
                             </tbody>
                         </table>
                     </div>

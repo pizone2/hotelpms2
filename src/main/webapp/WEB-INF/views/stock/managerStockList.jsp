@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,12 +54,16 @@
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
-                                <th data-orderable="false"><input type="checkbox" id="checkAll" class="myCheckbox"></th>
+                                <th data-orderable="false">
+                                    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                        <input type="checkbox" id="checkAll" class="myCheckbox">
+                                    </div>
+                                </th>
                                 <th>품목번호</th>
+                                <th>품목명</th>
                                 <th>현재재고</th>
-                                <th>자동발주수량</th>
                                 <th>발주상태</th>
-                                <th>상호명</th>
+                                <th>자동발주수량</th>
                                 <th>품목코드</th>
                                 <th>단가</th>
                             </tr>
@@ -67,10 +72,10 @@
                             <tr>
                                 <th></th>
                                 <th>품목번호</th>
+                                <th>품목명</th>
                                 <th>현재재고</th>
-                                <th>자동발주수량</th>
                                 <th>발주상태</th>
-                                <th>상호명</th>
+                                <th>자동발주수량</th>
                                 <th>품목코드</th>
                                 <th>단가</th>
                             </tr>
@@ -79,14 +84,18 @@
                             <c:forEach var="vo" items="${stockList}">
                                 <!-- 유저 정보-->
                                 <tr class="order-status" data-order-id="${vo.itemId}">
-                                    <td ><input type="checkbox" class="myCheckbox"></td>
+                                    <td >
+                                        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                           <input type="checkbox" class="myCheckbox">
+                                        </div>
+                                    </td>
                                     <td >${vo.itemId}</td>
-                                    <td >${vo.currentStock}</td>
-                                    <td >${vo.autoOrderQuantity}</td>
-                                    <td >${vo.orderStatus}</td>
                                     <td >${vo.productName}</td>
+                                    <td >${vo.currentStock}</td>
+                                    <td >${vo.orderStatus}</td>
+                                    <td >${vo.autoOrderQuantity}</td>
                                     <td>${vo.itemCode}</td>
-                                    <td>${vo.unitPrice}</td>
+                                    <td><fmt:formatNumber value="${vo.unitPrice}" pattern="#,###"/>원</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -96,7 +105,7 @@
             </div>
             <%--insert 모달--%>
             <div class="modal fade" id="exampleModalLg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">자동발주수량</h5>
