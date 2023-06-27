@@ -24,10 +24,11 @@ public class PartnerService {
     }
 
     public int setPartner(PartnerVO partnerVO) throws Exception {
-
-        String uniqueCharacter = generateUniqueCharacter();
-        partnerVO.setUniqueCharacter(uniqueCharacter);
-        log.error(":::::::{}::::::::",partnerVO.getUniqueCharacter());
+        if(partnerVO.getSectors().equals("ROLE_STOCK")){
+            String uniqueCharacter = generateUniqueCharacter();
+            partnerVO.setUniqueCharacter(uniqueCharacter);
+            log.error(":::::::{}::::::::",partnerVO.getUniqueCharacter());
+        }
         return  partnerDAO.setPartner(partnerVO);
     }
 

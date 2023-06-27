@@ -64,7 +64,8 @@
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
-                                <th data-orderable="false"><input type="checkbox" id="checkAll" class="myCheckbox"></th>
+                                <th data-orderable="false"><div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                    <input type="checkbox" id="checkAll" class="myCheckbox"></div></th>
                                 <th>상호번호</th>
                                 <th>상호명</th>
                                 <th>담당자명</th>
@@ -111,7 +112,9 @@
                                 <!-- 유저 정보-->
                                 <tr>
                                     <%--<div class="businessNum" data-num="${vo.businessNumber}"></div>--%>
-                                    <td><input type="checkbox" class="myCheckbox"></td>
+                                    <td><div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                        <input type="checkbox" class="myCheckbox">
+                                    </div></td>
                                     <td>${vo.businessNumber}</td>
                                      <td>${vo.companyName}</td>
                                     <td>${vo.contactName}</td>

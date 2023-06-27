@@ -100,7 +100,7 @@
                                     <td>${vo.partnerVOS[0].companyName}</td>
                                     <td>${vo.productName}</td>
                                     <td>${vo.itemCode}</td>
-                                    <td>${vo.unitPrice}</td>
+                                    <td>${vo.unitPrice}원</td>
                                     <td>${vo.unit}</td>
                                     <td>
                                         <div class="truncate-text">${vo.remarks}</div>

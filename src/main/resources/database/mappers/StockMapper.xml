@@ -127,7 +127,7 @@
     </select>
 
     <select id="countPartners" resultType="Integer">
-        SELECT COUNT(*) FROM PARTNER
+        SELECT COUNT(*) FROM PARTNER WHERE SECTORS='ROLE_STOCK'
     </select>
 
     <select id="countPartnerStocks" resultType="Integer">

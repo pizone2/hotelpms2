@@ -90,11 +90,14 @@ $(document).ready(function() {
         const itemId = selectedRow.find('td:nth-child(2)').text();
         const productName = selectedRow.find('td:nth-child(4)').text();
         const itemCode = selectedRow.find('td:nth-child(5)').text();
-        const unitPrice = selectedRow.find('td:nth-child(6)').text();
+        const unitPriceText = selectedRow.find('td:nth-child(6)').text();
         const unit = selectedRow.find('td:nth-child(7)').text();
         const remarks = selectedRow.find('td:nth-child(8) .truncate-text').text();
 
-        // 모달 input태그에 value넣어줌
+        // "원" 텍스트 제거
+        const unitPrice = unitPriceText.replace('원', '');
+
+        // 모달 input태그에 value 넣어주기
         $('#productName0').val(productName);
         $('#itemCode0').text(itemCode);
         $('#itemCodeBtn').text(itemCode);
