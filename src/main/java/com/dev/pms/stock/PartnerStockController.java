@@ -24,11 +24,13 @@ public class PartnerStockController {
 
 
     @GetMapping("stockList")
-    public ModelAndView getStockList(String businessNumber) throws Exception {
+    public ModelAndView getStockList() throws Exception {
         ModelAndView mv = new ModelAndView();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
         List<PartnerStockVO> list = partnerStockService.getStockList(name);
+        String itemCode = stockService.getNextItemCode(name);
+        mv.addObject("itemCode", itemCode);
         mv.addObject("list",list);
         mv.setViewName("stock/partnerStockList");
         System.out.printf("asdf");

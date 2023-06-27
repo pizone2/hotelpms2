@@ -20,4 +20,5 @@ public class PartnerVO {
     private Date registrationDate;
     private  Boolean approval;
     private  String sectors;
+    private String uniqueCharacter;
 }
