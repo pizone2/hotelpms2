@@ -115,23 +115,10 @@
         DELETE FROM ROOMSTOCK WHERE ROOMTYPE =#{roomType}
     </delete>
 
+
     <select id="getRoomTypeStock" parameterType="String" resultType="RoomStockVO">
         SELECT * FROM ROOMSTOCK
         WHERE ROOMTYPE =#{roomType}
-    </select>
-
-
-
-    <select id="findPartner" resultType="PartnerVO">
-        SELECT * FROM PARTNER WHERE BUSINESSNUMBER = #{businessNumber}
-    </select>
-
-    <select id="countPartners" resultType="Integer">
-        SELECT COUNT(*) FROM PARTNER
-    </select>
-
-    <select id="countPartnerStocks" resultType="Integer">
-        SELECT MAX(SUBSTRING(ITEMCODE, 2)) FROM PARTNERSTOCK WHERE BUSINESSNUMBER = #{businessNumber}
     </select>
 
 

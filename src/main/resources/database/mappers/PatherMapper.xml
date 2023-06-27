@@ -6,8 +6,8 @@
 
     <!--파트너 테이블 인서트 -->
     <insert id="setPartner" parameterType="PartnerVO">
-        INSERT INTO PARTNER (BUSINESSNUMBER, CONTACTNAME, COMPANYNAME, EMAIL, ADDRESS, SETTLEMENTACCOUNT, PHONENUMBER, CEONAME, APPROVAL, REGISTRATIONDATE, SECTORS,UNIQUECHARACTER)
-        VALUES (#{businessNumber}, #{contactName}, #{companyName}, #{email}, #{address}, #{settlementAccount}, #{phoneNumber}, #{ceoName},0, #{registrationDate},#{sectors},#{uniqueCharacter})
+        INSERT INTO PARTNER (BUSINESSNUMBER, CONTACTNAME, COMPANYNAME, EMAIL, ADDRESS, SETTLEMENTACCOUNT, PHONENUMBER, CEONAME, APPROVAL, REGISTRATIONDATE, SECTORS)
+        VALUES (#{businessNumber}, #{contactName}, #{companyName}, #{email}, #{address}, #{settlementAccount}, #{phoneNumber}, #{ceoName},0, #{registrationDate},#{sectors})
     </insert>
 
 

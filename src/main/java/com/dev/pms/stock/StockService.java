@@ -105,16 +105,4 @@ public class StockService {
     public List<RoomStockVO> getRoomTypeStock(String roomType) throws  Exception{
         return stockDAO.getRoomTypeStock(roomType);
     }
-
-    public String getNextItemCode(String businessNumber) throws Exception {
-        PartnerVO partner = stockDAO.findPartner(businessNumber);
-        String uniqueCharacter = partner.getUniqueCharacter();
-        Integer count = stockDAO.countPartnerStocks(businessNumber);
-        if (count == null) {
-            count = 000;
-        }
-        String itemCode = uniqueCharacter + String.format("%03d", count+1);
-        return itemCode;
-    }
-
 }
