@@ -41,7 +41,7 @@ $('#btn-insert').on('click', function(event) {
         }
     }
 
-    // 입력된 분류코드가 "C001" 형식인지 확인
+/*    // 입력된 분류코드가 "C001" 형식인지 확인
     const itemCode = $('#itemCode').val().trim();
     const regex = /^[A-Z][0-9]{3}$/;
 
@@ -49,7 +49,7 @@ $('#btn-insert').on('click', function(event) {
         const label = $('#itemCode').siblings('.code-message');
         label.text('잘못된 형식 입니다. 영대문자+세자리 숫자 형태로 작성하시오.').css('color', 'red');
         return; // 함수 종료
-    }
+    }*/
 
     // 단위와 단가가 숫자인지 확인
     const unit = $('#unit').val().trim();
@@ -96,7 +96,9 @@ $(document).ready(function() {
 
         // 모달 input태그에 value넣어줌
         $('#productName0').val(productName);
-        $('#itemCode0').val(itemCode);
+        $('#itemCode0').text(itemCode);
+        $('#itemCodeBtn').text(itemCode);
+        $('#itemCodeUpdate').val(itemCode);
         $('#unitPrice0').val(unitPrice);
         $('#unit0').val(unit);
         $('#remarks0').val(remarks);
@@ -116,7 +118,7 @@ $(document).ready(function() {
                 return;
             }
         }
-
+/*
         // 입력된 분류코드가 "C001" 형식인지 확인
         const itemCode = $('#itemCode0').val().trim();
         const regex = /^[A-Z][0-9]{3}$/;
@@ -125,7 +127,7 @@ $(document).ready(function() {
             const label = $('#itemCode0').siblings('.code-message');
             label.text('잘못된 형식 입니다. 영대문자+세자리 숫자 형태로 작성하시오.').css('color', 'red');
             return;
-        }
+        }*/
 
         // 단위와 단가가 숫자인지 확인
         const unit = $('#unit0').val().trim();
