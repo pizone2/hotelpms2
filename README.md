@@ -39,9 +39,11 @@
 
 
 ## :page_facing_up: 개요
+<p align="center">
   <br>
-  <img src="src/main/resources/static/images/login/logo.png">
+  <img src="src/main/resources/static/images/login/logo.png" width="200" height="200">
   <br>
+</p>
 
 > **프로젝트:** 예약 사이트 & 호텔 PMS
 >
