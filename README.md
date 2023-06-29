@@ -60,21 +60,18 @@
 > **문의:** kimmin7932@gmail.com
 
 ## :hammer: 기술 및 도구
-<p align="center">
-    <img src = "ForREADME/use.png", width="100%">
-</p>
 
 |Category|Detail|
 |:--:|:--:|
 |FrontEnd|HTML5, JS, CSS3, JQuery|
-|BackEnd|Java(JDK 1.8), Servlet, Spring(4.2.4), Mybatis|
-|OS|Windows 10, MacOS|
-|Libray&API|Spring Security, Validation, Hiberate, MailSender, Apache Commons FileUpload, Imgscalr, Jquery lightbox, WebSocket, WebSocketConfigurer, Lombok, Chart.js, jsQR Scanner, Fullcalendar, Kakaomap, FontAwesome|
-|IDE|STS(3.9.12.RELEASE), VisualStudio|
+|BackEnd|Java(JDK 1.8), Servlet, Spring, Mybatis|
+|OS|Windows 10|
+|Libray&API|Spring Security, Validation, MailSender, Apache Commons FileUpload, WebSocket, Lombok, Fullcalendar, Kakaomap, KakaoLogin, Apache Poi
+|IDE|IntelliJ, VisualStudio, DBeaver|
 |Server|Tomcat(v8.5)|
-|Document|Google Drive, KakaoOven, ERDCloud, diagrams.net|
+|Document|Google Drive, KakaoOven, ERDCloud, EdrawMind|
 |CI|Github|
-|DateBase|AWS RDS, Oracle(11g)|
+|DateBase|AWS RDS, Oracle, Docker|
 ## :computer: 기능구현
 ### 1.예약 사이트
 ### 2.호텔 PMS
