@@ -1,4 +1,4 @@
-# 프로젝트 이름
+# 호텔 PMS 
 
 <p align="center">
   <br>
