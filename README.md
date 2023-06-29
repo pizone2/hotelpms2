@@ -17,7 +17,8 @@
 - :golf: [배포](#배포)
 - :rotating_light: [Troubleshooting](#troubleshooting)
 
-
+## :woman: 팀원소개
+## :page_facing_up: 개요
 <p align="center">
   <br>
   <img src="src/main/resources/static/images/login/logo.png">
@@ -25,9 +26,6 @@
 </p>
 
 목차
-
-## :woman: 팀원소개
-## :page_facing_up: 개요
 ## :hammer: 기술 및 도구
 ## :computer: 기능구현
 ### 1.예약 사이트
