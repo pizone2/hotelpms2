@@ -1,6 +1,6 @@
 # :bell: 호텔 PMS 
 ## :blue_book: 목차
-<b>
+
 - :woman: [팀원](#팀원소개)
 - :page_facing_up: [개요](#개요)
 - :hammer: [기술 및 도구](#기술-및-도구)
@@ -16,7 +16,7 @@
     - 용역 서비스
 - :golf: [배포](#배포)
 - :rotating_light: [Troubleshooting](#troubleshooting)
-</b>
+
 
 <p align="center">
   <br>
