@@ -18,6 +18,23 @@
 - :rotating_light: [Troubleshooting](#troubleshooting)
 
 ## :woman: 팀원소개
+> **팀장:**  김민지
+>
+> **기획 및 제작:** 김태진
+>
+> **분류:** 개인 프로젝트
+>
+> **제작 기간:** 2021.09 ~ 10.
+>
+> **배포일:** 2021.10.05.
+>
+> **주요 기능:** 라이트/다크 모드, 반응형 웹, Hash Link, Email 전송, 배포 및 커스텀 도메인 연결, open graph
+>
+> **사용 기술:** React, Styled-components, Firebase Hosting
+>
+> **문의:** keemgreat@gmail.com
+
+<br />
 ## :page_facing_up: 개요
 <p align="center">
   <br>
