@@ -41,7 +41,7 @@
 ## :page_facing_up: 개요
 <p align="center">
   <br>
-  <img src="src/main/resources/static/images/login/logo.svg" width="200" height="200">
+  <img src="src/main/resources/static/images/login/logo.svg" width="400" height="200">
   <br>
 </p>
 
