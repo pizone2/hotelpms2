@@ -99,7 +99,7 @@ GIF Images
 ## 구현 기능
 
 ### 기능 1
-
+![Jun-30-2023 21-29-43](https://github.com/pizone2/hotelpms2/assets/120788050/79679360-e924-4a24-a1a5-0f53c62ba243)
 
 ### 기능 2
 
