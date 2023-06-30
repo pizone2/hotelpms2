@@ -99,7 +99,7 @@ GIF Images
 ## 구현 기능
 
 ### 기능 1
-file:///Users/jinseo/Applications/JS/Jun-30-2023%2021-29-43.gif
+
 
 ### 기능 2
 
