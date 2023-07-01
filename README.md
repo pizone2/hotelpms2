@@ -102,6 +102,24 @@ GIF Images
 ![Jun-30-2023 21-29-43](https://github.com/pizone2/hotelpms2/assets/120788050/79679360-e924-4a24-a1a5-0f53c62ba243)
 
 ### 기능 2
+![Jul-01-2023 00-30-53](https://github.com/pizone2/hotelpms2/assets/120788050/721aeb0c-b93c-401a-95d2-ddc88b519abf)
+
+
+![Jul-01-2023 15-49-57](https://github.com/pizone2/hotelpms2/assets/120788050/fea93a4a-7c39-4109-88cb-6ed42d125a8c)
+
+
+![Jul-01-2023 17-03-57](https://github.com/pizone2/hotelpms2/assets/120788050/a2cb0bfd-9902-44a8-b578-89c11bdd1305)
+
+
+![Jul-01-2023 17-23-18](https://github.com/pizone2/hotelpms2/assets/120788050/3e7277bc-920b-4577-a875-1fcf06650377)
+
+
+![Jul-01-2023 19-59-28](https://github.com/pizone2/hotelpms2/assets/120788050/e96d3fd5-158a-4bd3-9e59-0d6ba88c0696)
+
+
+
+![Jul-01-2023 20-05-32](https://github.com/pizone2/hotelpms2/assets/120788050/a6ad8e1c-895f-457c-b476-c7ad4dced6d2)
+
 
 ### 기능 3
 
