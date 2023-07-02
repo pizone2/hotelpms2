@@ -4,7 +4,7 @@
 ## 예약
 - 비로그인 시 예약처리
   -  'Authentication'와 'SecurityContextHolder'를 이용하여 해결
-- 결제금액 오류
+-결제금액 오류
   -  'toLocaleString()'로 대체하여 해결
 
 
@@ -45,7 +45,7 @@ function requestPay() {
 
 
 
-#### 결제금액 오류
+####결제금액 오류
 - 결제금액이 천 단위 이하 금액은 책정되지 않는 문제발생
 ```jsp
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
