@@ -17,7 +17,7 @@
 - :golf: [배포](#배포)
 - :rotating_light: [Troubleshooting](#troubleshooting)
 - 
-  [pay](master/TroubleShooting/pay.md)
+  [pay](TroubleShooting/pay.md)
 
 
 ## :woman: 팀원소개
