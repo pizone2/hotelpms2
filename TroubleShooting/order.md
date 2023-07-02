@@ -5,7 +5,9 @@
 
 ## 발주
 - 페이지 'Reload' 시 'WebSocket'으로 구현한 알림이 사라짐
-  - 'WebSocket' 전송 시 DB에 해당 알림을 저장 'Reload' 시 ajax를 이용하여 데이터를 불러옴
+  - 'WebSocket' 전송 시 DB에 해당 알림을 저장 'Reload' 시 ajax를 이용하여 데이터를 불러와 문제 해결
+- 관리자와 업체 알림 구분이 안됨
+  - 'WebSocket' 전송 시 'message'의 키워드를 이용하여 구분하여 문제 해결
 
 
 #### 페이지 'Reload' 시 'WebSocket'으로 구현한 알림이 사라짐
@@ -70,5 +72,31 @@ function fetchNotifications() {
 ```
 
 > 'reload'시 fetchNotifications()를 호출
+
+#### 관리자와 업체 알림 구분이 안됨
+- 관리자와 업체가 받는 알림이 각각 다른데 구분없이 모든 알림이 들어오는 문제 발생
+```js
+  function showMessage(message) {
+    let hrefValue = "";
+
+    if (message.includes("부족")) {
+        if (message.includes("발주요청")) {
+            hrefValue = "../partnerManager/partnerManagerStockList";
+        } else if (message.includes("부족")) {
+            hrefValue = "../stock/managerStockList";
+        } else {
+            hrefValue = "#!";
+        }
+
+        $("#messages").append(
+            "<a class=\"dropdown-item dropdown-notifications-item\" href=\"" + hrefValue + "\">" +
+            "<div class=\"dropdown-notifications-item-content-text\">" + message + "</div>" +
+            "</a>"
+        );
+    }
+}
+```
+
+> 'message'의 키워드를 이용하여 구분
 
 
