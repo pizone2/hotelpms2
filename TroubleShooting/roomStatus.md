@@ -12,7 +12,7 @@
 #### 간트차트의 테이블 고장
 - 테이블이 일정 부분만 구현되는 문제 발생
 ```sql
- SELECT
+        SELECT
         a.ROOMTYPE,
         a.ROOMNUMBER,
         DATE(a.RESERVATIONDATE) AS reservationDate,
