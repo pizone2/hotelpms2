@@ -79,7 +79,13 @@
 ### 2.호텔 PMS
 ## :golf: 배포
 ## :rotating_light: Troubleshooting
+
 - [pay](TroubleShooting/pay.md)
+>- Oracle JDK 설치
+>- Tomcat8 설치 및 설정
+
+
+
 
 <p align="justify">
 프로젝트 개요/동기
