@@ -85,10 +85,10 @@
                                         <td>${roomClean.cleanNum}</td>
                                         <td>
                                             <span class="modal-trigger roomNumber" data-note="${roomClean.note}" data-savedName="${roomClean.savedName}" data-cleanNum="${roomClean.cleanNum}">
-                                                    ${roomClean.roomNumber}
+                                                    ${roomClean.roomNumber}호
                                             </span>
                                         </td>
-                                        <td>${roomClean.scheduleNumber}</td>
+                                        <td>${roomClean.scheduleNumber}팀</td>
                                         <td>${roomClean.dateOfRegistration}</td>
                                         <td style="color: ${roomClean.confirmationStatus == '확인' ? 'blue' : 'red'}"  >${roomClean.confirmationStatus}</td>
                                         <td>${roomClean.note}</td>
