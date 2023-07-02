@@ -58,7 +58,6 @@ function showMessage(message) {
 }
 
 function fetchNotifications() {
-
     $.ajax({
         url: '/alarm/dbAlarm',  // 알림을 조회하는 API 엔드포인트
         type: 'GET',

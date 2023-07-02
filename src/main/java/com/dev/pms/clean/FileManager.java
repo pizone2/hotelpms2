@@ -22,10 +22,6 @@ public class FileManager {
             file.mkdirs();
         }
 
-        // 확장자 추가
-
-
-
         String name = UUID.randomUUID().toString();
         String originalFilename = multipartFile.getOriginalFilename();
         name = name + "." + originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
