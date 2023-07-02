@@ -1,4 +1,4 @@
-:octocat: [Main]([hotelpms2](https://github.com/hotelpms2))
+:octocat: [Main][hotelpms2](https://github.com/hotelpms2)
 > Trouble Shooting
 
 ## 예약
