@@ -1,4 +1,4 @@
-:octocat: [Main](../../)
+:octocat: [Main](/)
 > Trouble Shooting
 
 ## 예약
