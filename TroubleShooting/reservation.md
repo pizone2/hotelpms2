@@ -27,6 +27,28 @@
 > 'SecurityContextHolder.getContext().getAuthentication()'을 통해 현재 사용자의 인증 정보를 가져온 다음,로그인 시 'true'를
   부여,그렇지 않으면 'false'
 
+```js
+function requestPay() {
+     let loggedIn = document.getElementById("loggedInValue").value === "true";
+
+     if (loggedIn) {
+        //로그인 시 결제
+     } else {
+        // 사용자가 로그인되어 있지 않은 경우, 로그인 창 열기
+      alert("로그인 후 사용할 수 있습니다.");
+      window.location.href = "../customer/login";
+  }
+
+```
+
+> 결제버튼 클릭 시 로그인 중 이라면 결제가 정상적으로 진행되며,비로그인 상태면 예약페이지로 이동
+
+
+
+
+
+
+
 #### 시간 계산 문제
 - timezone문제로 `2010-05-24T24:00:00+0900`와 같은 시간 사용했었는데 크롬에서는 문제 없던 것이 익스에서는 제대로 동작을 안함
 - moemntjs라는 좋은 라이브러리를 알게 됨 (http://momentjs.com/)
