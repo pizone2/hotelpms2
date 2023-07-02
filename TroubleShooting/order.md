@@ -50,7 +50,7 @@
 
 > 'saveNotificationToDatabase'에서 'content'를 DB로 보내서 저장
 
-```js
+```javascript
 function fetchNotifications() {
     $.ajax({
         url: '/alarm/dbAlarm',  // 알림을 조회하는 API 엔드포인트
