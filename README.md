@@ -16,6 +16,9 @@
     - 용역 서비스
 - :golf: [배포](#배포)
 - :rotating_light: [Troubleshooting](#troubleshooting)
+- 
+  [pay](https://github.com/pizone2/hotelpms2/blob/master/TroubleShooting/pay.md)
+
 
 ## :woman: 팀원소개
 > **팀장:** 김민지
