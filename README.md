@@ -81,20 +81,17 @@
 ## :rotating_light: Troubleshooting
 
 - [예약](TroubleShooting/reservation.md)
->- Oracle JDK 설치
->- Tomcat8 설치 및 설정
+>- 비로그인 시 예약처리
+>- 결제금액 오류
 - [예약리스트](TroubleShooting/reservationList.md)
-
-- [객실설정](TroubleShooting/roomSetting.md)
- 
+>- 환불 실패
 - [객실현황](TroubleShooting/roomStatus.md)
-    
+>- 간트차트의 테이블 고장
 - [객실청소상태 보고 및 확인](TroubleShooting/roomCleaningStatus.md)
-
-- [재고리스트](TroubleShooting/inventoryList.md)
-
+>- 객실청소상태 확인 시 사진파일 로드 X
 - [발주](TroubleShooting/order.md)
-
+>- 페이지 'Reload' 시 'WebSocket'으로 구현한 알림이 사라짐
+>- 관리자와 업체 알림 구분이 안됨
 
 
 
