@@ -80,9 +80,20 @@
 ## :golf: 배포
 ## :rotating_light: Troubleshooting
 
-- [pay](TroubleShooting/pay.md)
+- [예약](TroubleShooting/pay.md)
 >- Oracle JDK 설치
 >- Tomcat8 설치 및 설정
+- [예약리스트](TroubleShooting/pay.md)
+
+- [객실설정](TroubleShooting/pay.md)
+ 
+- [객실현황](TroubleShooting/pay.md)
+    
+- [객실청소상태 보고 및 확인](TroubleShooting/pay.md)
+
+- [재고리스트](TroubleShooting/pay.md)
+
+- [발주](TroubleShooting/pay.md)
 
 
 
