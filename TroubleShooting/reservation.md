@@ -5,8 +5,8 @@
 - 비로그인 시 예약처리
   -  'Authentication'와 'SecurityContextHolder'를 이용하여 해결
 - 결제금액 오류
-  - 
-- selectbox 커스텀
+  -  'toLocaleString()'로 대체하여 해결
+
 
 
 #### 비로그인 시 예약처리
