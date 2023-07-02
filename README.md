@@ -76,7 +76,13 @@
 |DateBase|AWS RDS, Oracle, Docker|
 ## :computer: 기능구현
 ### 1.예약 사이트
+  #### 1-1. 예약
+
+  #### 1-2. 예약리스트
+
 ### 2.호텔 PMS
+
+
 ## :golf: 배포
 ## :rotating_light: Troubleshooting
 
