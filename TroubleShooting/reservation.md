@@ -1,4 +1,4 @@
-:octocat: [denlyou/TroubleShooting](https://github.com/denlyou/TroubleShooting)
+:octocat: [Main](hotelpms2)
 > Trouble Shooting
 
 ## 예약
