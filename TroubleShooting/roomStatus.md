@@ -3,65 +3,47 @@
 > Trouble Shooting
 
 ## 객실현황
-- 간트차트의 테이블 
+- 간트차트의 테이블 고장
   -  Mapper 수정으로 문제 해결
-- 
-  -  'toLocaleString()'로 대체하여 해결
 
 
 
-#### 예역자정보(튤팁) 오류
-- '예약완료','퇴실','재실'
-```jsp
-<%@ page import="org.springframework.security.core.Authentication" %>
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
 
-<%
-    // Check if the user is logged in
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    boolean loggedIn = authentication != null && authentication.isAuthenticated() &&             
-                       !authentication.getPrincipal().equals("anonymousUser");
-%>
-    <input type="hidden" id="loggedInValue" value="<%= loggedIn %>">
+#### 간트차트의 테이블 고장
+- 테이블이 일정 부분만 구현되는 문제 발생
+```sql
+ SELECT
+        a.ROOMTYPE,
+        a.ROOMNUMBER,
+        DATE(a.RESERVATIONDATE) AS reservationDate,
+        CASE
+        WHEN b.ROOMNUMBER IS NULL THEN NULL
+        ELSE MAX(CASE
+        WHEN a.ROOMSTATUS = '예약완료' THEN '예약완료'
+        WHEN a.ROOMSTATUS = '재실' THEN '재실'
+        WHEN a.ROOMSTATUS = '퇴실' THEN '퇴실'
+        ELSE 0
+        END)
+        END AS roomStatus,
+        b.NAME,
+        b.RESERVATIONNUMBER,
+        b.PHONENUMBER,
+        b.CHECKINDATE,
+        b.CHECKOUTDATE
+        FROM
+        RESERVED a
+        LEFT JOIN
+        BOOKING b ON a.ROOMNUMBER = b.ROOMNUMBER
+        AND DATE(a.RESERVATIONDATE) >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)
+        AND DATE(a.RESERVATIONDATE) &lt; DATE_ADD(DATE_SUB(CURDATE(), INTERVAL 1 DAY), INTERVAL 2 WEEK)
+        AND DATE(a.RESERVATIONDATE) BETWEEN b.CHECKINDATE AND b.CHECKOUTDATE
+        WHERE
+        DATE(a.RESERVATIONDATE) BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND DATE_ADD(DATE_SUB(CURDATE(), INTERVAL 1 DAY), INTERVAL 2 WEEK)
+        GROUP BY
+        a.ROOMTYPE, a.ROOMNUMBER, DATE(a.RESERVATIONDATE)
+        ORDER BY
+        a.ROOMTYPE, a.ROOMNUMBER, DATE(a.RESERVATIONDATE);
 ```
 
-> JSP에서 'SecurityContextHolder.getContext().getAuthentication()'을 통해 현재 사용자의 인증 정보를 가져온 다음,로그인 시 'true'를 부여,그렇지 않으면 'false'를 input 값에 넣음
+> 'INNER JOIN'을 사용하여 데이터 값으로 테이블를 생성하였더니 데이터가 존재하는 부분만 생성되어 'LEFT JOIN'으로 Mapper 수정
 
-```js
-function requestPay() {
-     let loggedIn = document.getElementById("loggedInValue").value === "true";
-
-     if (loggedIn) {
-        //로그인 시 결제
-     } else {
-        // 사용자가 로그인되어 있지 않은 경우, 로그인 창 열기
-      alert("로그인 후 사용할 수 있습니다.");
-      window.location.href = "../customer/login";
-  }
-
-```
-
-> JS파일에서 결제버튼 클릭 시 로그인 중 이라면 결제가 정상적으로 진행되며,비로그인 상태면 예약페이지로 이동
-
-
-
-
-#### 결제금액 오류
-- 결제금액이 천 단위 이하 금액은 책정되지 않는 문제발생
-```jsp
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<fmt:formatNumber value="" pattern="#,###"/>원
-```
-
->  JSP파일에서 천 단위 구분 기호를 추가 한 뒤 결제금액을 계산해서 문제 발생
-
-```js
-  // //총합계금액 삽입해주기
-    $("#paymentAmount").val(f);
-    $("#paymentAmount1").text((f).toLocaleString()+'원');
-    $("#discount").text('-'+(calculatedF).toLocaleString()+'원');
-    $("#paymentAmount2").text((f-calculatedF).toLocaleString()+'원');
-```
-
-> JS파일에서 결제금액 계산 후 천 단위 기호를 추가하여 문제 해결
