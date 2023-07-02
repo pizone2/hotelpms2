@@ -16,8 +16,7 @@
     - 용역 서비스
 - :golf: [배포](#배포)
 - :rotating_light: [Troubleshooting](#troubleshooting)
-- 
-  [pay](TroubleShooting/pay.md)
+
 
 
 ## :woman: 팀원소개
@@ -80,6 +79,7 @@
 ### 2.호텔 PMS
 ## :golf: 배포
 ## :rotating_light: Troubleshooting
+- [pay](TroubleShooting/pay.md)
 
 <p align="justify">
 프로젝트 개요/동기
