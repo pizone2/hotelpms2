@@ -141,14 +141,3 @@
 - [발주](TroubleShooting/order.md)
 >- 페이지 'Reload' 시 'WebSocket'으로 구현한 알림이 사라짐
 >- 관리자와 업체 알림 구분이 안됨
-
-## 라이센스
-
-MIT &copy; [NoHack](mailto:lbjp114@gmail.com)
-
-<!-- Stack Icon Refernces -->
-
-[js]: /images/stack/javascript.svg
-[ts]: /images/stack/typescript.svg
-[react]: /images/stack/react.svg
-[node]: /images/stack/node.svg
