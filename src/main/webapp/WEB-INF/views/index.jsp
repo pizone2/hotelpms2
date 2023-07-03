@@ -193,5 +193,9 @@
 <script src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
 <script src="/js/chart-area-demo.js"></script>
+<script src="/js/managerStock.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="/js/partnerWebSocket.js"></script>
 </body>
 </html>

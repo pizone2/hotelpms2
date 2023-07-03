@@ -35,7 +35,6 @@
         a.ROOMTYPE, a.ROOMNUMBER, DATE(a.RESERVATIONDATE)
         ORDER BY
         a.ROOMTYPE, a.ROOMNUMBER, DATE(a.RESERVATIONDATE);
-
     </select>
 
     <select id="getRoomStatusListMonth"  resultType="RoomStatusVO">

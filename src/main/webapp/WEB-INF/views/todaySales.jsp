@@ -60,7 +60,7 @@
                     <td>${vo.roomType}</td>
                     <td>ROOM</td>
 <%--                    <td align="right">${vo.todaySales}원</td>--%>
-                    <td><fmt:formatNumber value="${vo.todaySales}" pattern="#,###"/>원</td>
+                    <td align="right"><fmt:formatNumber value="${vo.todaySales}" pattern="#,###"/>원</td>
                 </tr>
             </c:forEach>
             </tbody>
