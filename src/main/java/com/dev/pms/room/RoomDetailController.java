@@ -87,7 +87,7 @@ public class RoomDetailController {
     public ModelAndView setStatusHouse(BookingVO bookingVO) throws Exception{
         ModelAndView mv = new ModelAndView();
         int result = roomService.setStatusHouse(bookingVO);
-        mv.setViewName("redirect:/room/roommanager");
+        mv.setViewName("redirect:../room/roommanager");
         return mv;
     }
 
@@ -116,7 +116,7 @@ public class RoomDetailController {
     public ModelAndView setStatusClean(BookingVO bookingVO) throws Exception{
         ModelAndView mv = new ModelAndView();
         int result = roomService.setCleanAsk(bookingVO);
-        mv.setViewName("redirect:/room/roommanager");
+        mv.setViewName("redirect:../room/roommanager");
         return mv;
     }
 

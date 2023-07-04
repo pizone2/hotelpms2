@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page import="java.util.*, java.text.*" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     // 오늘 날짜 가져오기
     Calendar cal = Calendar.getInstance();
@@ -128,37 +129,23 @@
                                                 <th>매출</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="myTable">
+                                            <%--<c:forEach var="monthVO" items="${monthVO}">
                                             <tr>
-                                                <td>더블</td>
+                                                <td>${monthVO.roomType}</td>
                                                 <td>ROOM</td>
-                                                <td>${monthVO[0].total}</td>
+                                                <td align="right"><span class="total">${monthVO.total}</span>원</td>
                                             </tr>
-                                            <tr>
-                                                <td>디럭스</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[1].total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>스위트</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[2].total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>스탠다드</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[3].total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>트윈</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[4].total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>합계</td>
-                                                <td>ROOM</td>
-                                                <td>${monthVO[5].total}</td>
-                                            </tr>
+                                            </c:forEach>--%>
+                                            <c:forEach var="monthVO" items="${monthVO}">
+                                                <!-- 유저 정보-->
+                                                <tr>
+                                                    <td>${monthVO.roomType}</td>
+                                                    <td>ROOM</td>
+                                                        <%--                    <td align="right">${vo.todaySales}원</td>--%>
+                                                    <td><fmt:formatNumber value="${monthVO.total}" pattern="#,###"/>원</td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -204,5 +191,9 @@
 <script src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
 <script src="/js/chart-area-demo.js"></script>
+<script src="/js/managerStock.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="/js/partnerWebSocket.js"></script>
 </body>
 </html>

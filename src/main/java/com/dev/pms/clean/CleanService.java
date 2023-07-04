@@ -67,11 +67,9 @@ public class CleanService {
     }
 
     public int saveFile(MultipartFile multipartFile) throws Exception {
-//        if (multipartFile.isEmpty()) {
-//            return null;
-//        }
+
         int result = 0;
-        //사용자 OS에 맞춰 경로 선택
+
         String realPath = servletContext.getRealPath("/resources/static/images/");
 
         realPath = fileManager.fileSave(multipartFile, realPath);
@@ -82,7 +80,8 @@ public class CleanService {
         result = cleanDAO.insertFile(fileVO);
         cleanDAO.updateCleanNum();
             return result;
-        }
+    }
+
     public int setRoomClean(RoomCleanVO roomCleanVO)throws Exception{
         return cleanDAO.setRoomClean(roomCleanVO);
     }

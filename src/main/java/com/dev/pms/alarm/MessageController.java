@@ -47,7 +47,6 @@ public class MessageController {
         String notificationContent = message.getMessageContent();
 
         // 알림 내용을 데이터베이스에 저장
-
         try {
             saveNotificationToDatabase(notificationContent);
         } catch (Exception e) {
@@ -83,22 +82,16 @@ public class MessageController {
 
 
     private void saveNotificationToDatabase(String content) throws Exception {
-        System.out.println("2");
         // 알림 객체 생성
         AlarmVO alarm = new AlarmVO();
         alarm.setAlarmContent(content);
         LocalDateTime localDateTime = LocalDateTime.now();
         Date sqlDate = Date.valueOf(localDateTime.toLocalDate());
         alarm.setAlarmDate(sqlDate);
-        System.out.println("흠");
-        // 알림을 데이터베이스에 저장
-//        alarmRepository.save(alarm);
-        System.out.println(alarm);
 
+        // 알림을 데이터베이스에 저장
         messageService.setAlarm(alarm);
         System.out.println("messageService");
-
-
     }
 
 

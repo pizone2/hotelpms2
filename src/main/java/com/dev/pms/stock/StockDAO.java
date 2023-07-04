@@ -44,4 +44,8 @@ public interface StockDAO {
     public List<RoomStockVO> getRoomTypeStock(String roomType) throws  Exception;
 
 
+    public void insertPartner(PartnerVO partner) throws  Exception;
+    public PartnerVO findPartner(String businessNumber) throws  Exception;
+    public Integer countPartners() throws  Exception;
+    public Integer countPartnerStocks(String businessNumber) throws  Exception;
 }

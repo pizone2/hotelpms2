@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -54,44 +55,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>더블</td>
-                <td>ROOM</td>
-                <td>${selectedSales[0].total}</td>
-            </tr>
-            <tr>
-                <td>디럭스</td>
-                <td>ROOM</td>
-                <td>${selectedSales[1].total}</td>
-            </tr>
-            <tr>
-                <td>스위트</td>
-                <td>ROOM</td>
-                <td>${selectedSales[2].total}</td>
-            </tr>
-            <tr>
-                <td>스탠다드</td>
-                <td>ROOM</td>
-                <td>${selectedSales[3].total}</td>
-            </tr>
-            <tr>
-                <td>트윈</td>
-                <td>ROOM</td>
-                <td>${selectedSales[4].total}</td>
-            </tr>
-            <tr>
-                <td>합계</td>
-                <td>ROOM</td>
-                <td>${selectedSales[5].total}</td>
-            </tr>
+            <c:forEach var="monthVO" items="${monthVO}">
+                <!-- 유저 정보-->
+                <tr>
+                    <td>${monthVO.roomType}</td>
+                    <td>ROOM</td>
+                        <%--                    <td align="right">${vo.todaySales}원</td>--%>
+                    <td><fmt:formatNumber value="${monthVO.total}" pattern="#,###"/>원</td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
 </div>
 </body>
-<script>
-    // 페이지 로드 시 차트 그리기 함수 호출
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-</script>
 </html>

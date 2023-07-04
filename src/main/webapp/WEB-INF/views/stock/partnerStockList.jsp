@@ -63,7 +63,10 @@
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
-                                <th data-orderable="false"><input type="checkbox" id="checkAll" class="myCheckbox"></th>
+                                <th data-orderable="false"><div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                    <input type="checkbox" id="checkAll" class="myCheckbox">
+                                </div>
+                                </th>
                                 <th>품목번호</th>
                                 <th>상호명</th>
                                 <th>품목명</th>
@@ -89,12 +92,15 @@
                             <c:forEach var="vo" items="${list}">
                                 <!-- 유저 정보-->
                                 <tr>
-                                    <td><input type="checkbox" class="myCheckbox"></td>
+                                    <td><div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                        <input type="checkbox" class="myCheckbox">
+                                    </div>
+                                    </td>
                                     <td>${vo.itemId}</td>
                                     <td>${vo.partnerVOS[0].companyName}</td>
                                     <td>${vo.productName}</td>
                                     <td>${vo.itemCode}</td>
-                                    <td>${vo.unitPrice}</td>
+                                    <td>${vo.unitPrice}원</td>
                                     <td>${vo.unit}</td>
                                     <td>
                                         <div class="truncate-text">${vo.remarks}</div>
@@ -124,10 +130,24 @@
                                            name="productName" type="text">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="itemCode">분류코드</label>
-                                    <input class="form-control form-control-solid form-input" id="itemCode"
+                                    <%--<label for="itemCode">분류코드</label>
+                                    <div>
+                                        <select id="itemCode" name="itemCode" style="height: 30px;">
+                                            <option value="${itemCode}">${itemCode}</option>
+                                        </select>
+                                    </div>--%>
+
+                                    <label>분류코드</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${itemCode}</button>
+                                        <div class="dropdown-menu animated--fade-in-up" aria-labelledby="selectedRoomTypeButton">
+                                            <a class="dropdown-item" href="#" data-itemCode="${itemCode}">${itemCode}</a>
+                                        </div>
+                                        <input type="hidden" id="itemCodeInput" name="itemCode" value="${itemCode}" />
+                                    </div>
+                                    <%--<input class="form-control form-control-solid form-input" id="itemCode"
                                            name="itemCode" type="text">
-                                    <span class="code-message"></span>
+                                    <span class="code-message"></span>--%>
                                 </div>
                                 <div class="mb-3">
                                     <label for="unitPrice">단가</label>
@@ -175,10 +195,15 @@
                                            name="productName" type="text">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="itemCode0">분류코드</label>
-                                    <input class="form-control form-control-solid form-update" id="itemCode0"
-                                           name="itemCode" type="text">
-                                    <span class="code-message"></span>
+                                    <%--update모달 분류코드 오류--%>
+                                    <label>분류코드</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="itemCodeBtn"></button>
+                                        <div class="dropdown-menu animated--fade-in-up" aria-labelledby="selectedRoomTypeButton">
+                                            <a class="dropdown-item" href="#" id="itemCode0"></a>
+                                        </div>
+                                        <input type="hidden" id="itemCodeUpdate" name="itemCode" />
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="unitPrice0">단가</label>

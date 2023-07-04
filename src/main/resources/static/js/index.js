@@ -47,7 +47,7 @@ $('#btn-day').click(function() {
 
 $('#btn-month').click(function() {
     // 버튼이 클릭될 때마다 endDate 값을 갱신
-    selectedDate = $('#endDate').val();
+    var selectedDate = $('#endDate').val();
 
     $.ajax({
         url: "/monthSales",
@@ -62,3 +62,4 @@ $('#btn-month').click(function() {
         }
     });
 });
+
