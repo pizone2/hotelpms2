@@ -64,7 +64,7 @@
 >
 > **문의:** kimmin7932@gmail.com
 
-## :hammer: 기술 및 도구
+## 기술 및 도구
 
 |Category|Detail|
 |:--:|:--:|
@@ -77,7 +77,7 @@
 |Document|Google Drive, KakaoOven, ERDCloud, EdrawMind|
 |CI|Github|
 |DateBase|AWS RDS, Oracle, Docker|
-## :computer: 기능구현
+## 기능구현
 ### 1.예약 사이트
 
   #### 1-1. 다국어
@@ -141,8 +141,8 @@
  
 
 
-## :golf: 배포
-## :rotating_light: Troubleshooting
+## 배포
+## Troubleshooting
 
 - [예약](TroubleShooting/reservation.md)
 >- 비로그인 시 예약처리
