@@ -80,10 +80,10 @@
 ## :computer: 기능구현
 ### 1.예약 사이트
 #### 1-1. 다국어
-<img src="src/main/resources/static/images/gif/다국어.gif">
-- en 클릭 시 header, body, footer 등 언어가 모두 영어로 변경
-- ko 클릭시 이하 동문 모두 한국어로 변경
-- 반응형 웹을 고려하여 모바일로 접근 시 네비게이션 메뉴 변경, 동일하게 다국어 지원
+   <img src="src/main/resources/static/images/gif/다국어.gif">
+  - en 클릭 시 header, body, footer 등 언어가 모두 영어로 변경
+  - ko 클릭시 이하 동문 모두 한국어로 변경
+  - 반응형 웹을 고려하여 모바일로 접근 시 네비게이션 메뉴 변경, 동일하게 다국어 지원
 
   #### 1-1. 예약
    <img src="src/main/resources/static/images/gif/Jun-30-2023%2021-29-43.gif">
