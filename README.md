@@ -1,10 +1,10 @@
-# :bell: 호텔 PMS 
-## :blue_book: 목차
+# 🔔 호텔 PMS 
+## 📘 목차
 
-- :woman: [팀원](#-팀원소개)
-- :page_facing_up: [개요](#개요)
-- :hammer: [기술 및 도구](#기술-및-도구)
-- :computer: [기능구현](#-기능구현)
+- 👩 [팀원](#-팀원소개)
+- 📄 [개요](#-개요)
+- 🔨 [기술 및 도구](#-기술-및-도구)
+- 💻 [기능구현](#-기능구현)
   - [예약 사이트](#1-예약-사이트)
     - 로그인 및 회원가입
     - 마이페이지
@@ -14,12 +14,12 @@
     - 관리자(및 매니저)
     - 상품 판매
     - 용역 서비스
-- :golf: [배포](#배포)
-- :rotating_light: [Troubleshooting](#troubleshooting)
+- ⛳️ [배포](#-배포)
+- 🚨 [Troubleshooting](#-troubleshooting)
 
 
 
-## **📝 팀원소개**
+## **👩 팀원소개**
 > **팀장:** 김민지
 > 
 > 예약사이트: 메인페이지, 일반 회원가입, 카카오 소셜 로그인(API), 일반 로그인, 다국어 설정, 전체예약캘린더
@@ -43,7 +43,7 @@
 >
 
 
-## 개요
+## **📄 개요**
 <p align="center">
   <br>
   <img src="src/main/resources/static/images/login/logo.svg" width="500" height="200">
@@ -64,7 +64,7 @@
 >
 > **문의:** kimmin7932@gmail.com
 
-## 기술 및 도구
+## **🔨 기술 및 도구**
 
 |Category|Detail|
 |:--:|:--:|
@@ -77,7 +77,7 @@
 |Document|Google Drive, KakaoOven, ERDCloud, EdrawMind|
 |CI|Github|
 |DateBase|AWS RDS, Oracle, Docker|
-## 기능구현
+## **💻 기능구현**
 ### 1. 예약 사이트
 
   #### 1-1. 다국어
@@ -141,8 +141,8 @@
  
 
 
-## 배포
-## Troubleshooting
+## **⛳️ 배포**
+## **🚨 Troubleshooting**
 
 - [예약](TroubleShooting/reservation.md)
 >- 비로그인 시 예약처리
