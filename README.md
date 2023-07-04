@@ -1,7 +1,7 @@
 # :bell: 호텔 PMS 
 ## :blue_book: 목차
 
-- :woman: [팀원](#팀원소개)
+- :woman: [팀원](#-팀원소개)
 - :page_facing_up: [개요](#개요)
 - :hammer: [기술 및 도구](#기술-및-도구)
 - :computer: [기능구현](#-기능구현)
@@ -77,7 +77,7 @@
 |Document|Google Drive, KakaoOven, ERDCloud, EdrawMind|
 |CI|Github|
 |DateBase|AWS RDS, Oracle, Docker|
-## **:computer: 기능구현**
+## 기능구현
 ### 1. 예약 사이트
 
   #### 1-1. 다국어
