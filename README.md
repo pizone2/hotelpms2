@@ -77,8 +77,8 @@
 |Document|Google Drive, KakaoOven, ERDCloud, EdrawMind|
 |CI|Github|
 |DateBase|AWS RDS, Oracle, Docker|
-## 기능구현
-### 1.예약 사이트
+## **:computer: 기능구현**
+### 1. 예약 사이트
 
   #### 1-1. 다국어
    <img src="src/main/resources/static/images/gif/다국어.gif">
@@ -101,7 +101,7 @@
   - 예약 상세정보들을 확인 할 수 있으며 환불 가능
   - 예약리스트에 예약중인 객실이 없으면 예약페이지로 이동 링크 생성
   
-### 2.호텔 PMS 
+### 2. 호텔 PMS 
 
   #### 2-1. 객실현황
    <img src="src/main/resources/static/images/gif/Jul-01-2023 17-03-57.gif">
