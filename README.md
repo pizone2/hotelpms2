@@ -79,6 +79,9 @@
 |DateBase|AWS RDS, Oracle, Docker|
 ## :computer: 기능구현
 ### 1.예약 사이트
+  #### 1-0. 다국어
+   <img src="src/main/resources/static/images/gif/다국어gif.gif">
+
 
   #### 1-1. 예약
    <img src="src/main/resources/static/images/gif/Jun-30-2023%2021-29-43.gif">
