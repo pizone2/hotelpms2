@@ -81,13 +81,33 @@
 ### 1. 예약 사이트
 
   #### 1-1. 다국어
-   <img src="src/main/resources/static/images/gif/다국어.gif">
+   <img src="src/main/resources/static/images/gif/Languages.gif">
 
   - en 클릭 시 header, body, footer 등 언어가 모두 영어로 변경
   - ko 클릭시 이하 동문 모두 한국어로 변경 
   - 반응형 웹을 고려하여 모바일로 접근 시 네비게이션 메뉴 변경, 동일하게 다국어 지원
 
-  #### 1-1. 예약
+  #### 1-2. 회원가입 및 로그인
+   <img src="src/main/resources/static/images/gif/JoinAndLogin.gif">
+
+  - 일반 회원가입 후 로그인 기능
+  - 구글 이메일 API 사용
+  
+  <img src="src/main/resources/static/images/gif/JoinForm.gif">
+  
+  - Spring form 유효성 검사 사용
+  - 이름, 이메일, 전화번호 중복 검사, 비밀번호 체크기능 등
+
+  <img src="src/main/resources/static/images/gif/KakaoLogin.gif">
+
+  - 카카오 소셜 로그인(API) 구현
+
+  #### 1-3. 예약 캘린더
+   <img src="src/main/resources/static/images/gif/JoinAndLogin.gif">
+
+  - 일반 회원가입 후 로그인 기능
+
+  #### 1-4. 예약
    <img src="src/main/resources/static/images/gif/Jun-30-2023%2021-29-43.gif">
 
   - PG 결제 연동 API를 사용하여 결제 기능 구현
