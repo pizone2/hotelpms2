@@ -96,7 +96,7 @@
   <img src="src/main/resources/static/images/gif/JoinForm.gif">
   
   - Spring form 유효성 검사 사용
-  - 이름, 이메일, 전화번호 중복 검사, 비밀번호 체크기능 등
+  - 아이디, 이메일, 전화번호 중복 검사, 비밀번호 체크기능 등
 
   <img src="src/main/resources/static/images/gif/KakaoLogin.gif">
 
@@ -176,3 +176,5 @@
 - [발주](TroubleShooting/order.md)
 >- 페이지 'Reload' 시 'WebSocket'으로 구현한 알림이 사라짐
 >- 관리자와 업체 알림 구분이 안됨
+- [통계](TroubleShooting/statistics.md)
+>- 월별 매출 통계 오류
