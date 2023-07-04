@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page import="java.util.*, java.text.*" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     // 오늘 날짜 가져오기
     Calendar cal = Calendar.getInstance();
@@ -129,12 +130,21 @@
                                             </tr>
                                             </thead>
                                             <tbody id="myTable">
-                                            <c:forEach var="monthVO" items="${monthVO}">
+                                            <%--<c:forEach var="monthVO" items="${monthVO}">
                                             <tr>
                                                 <td>${monthVO.roomType}</td>
                                                 <td>ROOM</td>
                                                 <td align="right"><span class="total">${monthVO.total}</span>원</td>
                                             </tr>
+                                            </c:forEach>--%>
+                                            <c:forEach var="monthVO" items="${monthVO}">
+                                                <!-- 유저 정보-->
+                                                <tr>
+                                                    <td>${monthVO.roomType}</td>
+                                                    <td>ROOM</td>
+                                                        <%--                    <td align="right">${vo.todaySales}원</td>--%>
+                                                    <td><fmt:formatNumber value="${monthVO.total}" pattern="#,###"/>원</td>
+                                                </tr>
                                             </c:forEach>
                                             </tbody>
                                         </table>
@@ -173,18 +183,6 @@
     // 페이지 로드 시 차트 그리기 함수 호출
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-
-    //금액은 ,로 3자리마다 구분
-    window.onload = function() {
-        let cells = document.querySelectorAll('#myTable .total');
-
-        for (let i = 0; i < cells.length; i++) {
-            let cell = cells[i];
-            let value = Number(cell.innerText);
-            cell.innerText = value.toLocaleString();
-        }
-    }
-
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>

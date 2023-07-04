@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -55,10 +56,12 @@
             </thead>
             <tbody>
             <c:forEach var="monthVO" items="${monthVO}">
+                <!-- 유저 정보-->
                 <tr>
                     <td>${monthVO.roomType}</td>
                     <td>ROOM</td>
-                    <td align="right"><span class="total">${monthVO.total}</span>원</td>
+                        <%--                    <td align="right">${vo.todaySales}원</td>--%>
+                    <td><fmt:formatNumber value="${monthVO.total}" pattern="#,###"/>원</td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -66,20 +69,4 @@
     </div>
 </div>
 </body>
-<%--<script>
-    // 페이지 로드 시 차트 그리기 함수 호출
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    //금액은 ,로 3자리마다 구분
-    window.onload = function() {
-        let cells = document.querySelectorAll('#myTable .total');
-
-        for (let i = 0; i < cells.length; i++) {
-            let cell = cells[i];
-            let value = Number(cell.innerText);
-            cell.innerText = value.toLocaleString();
-        }
-    }
-</script>--%>
 </html>
