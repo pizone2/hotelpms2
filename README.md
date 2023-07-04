@@ -80,7 +80,6 @@
 ## :computer: 기능구현
 ### 1.예약 사이트
   #### 1-0. 다국어
-   <img src="src/main/resources/static/images/gif/다국어gif.gif">
 
 
   #### 1-1. 예약
