@@ -43,7 +43,7 @@
 >
 
 
-## :page_facing_up: 개요
+## 개요
 <p align="center">
   <br>
   <img src="src/main/resources/static/images/login/logo.svg" width="500" height="200">
