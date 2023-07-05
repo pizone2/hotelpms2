@@ -49,7 +49,6 @@ public class HomeController {
         List<HomeVO> bookingVOList = homeService.getDayCircualyr();
         mv.addObject("data",bookingVOList);
         mv.addObject("statisticsVO",statisticsVOs);
-        mv.setViewName("statistics/circular");
         mv.setViewName("todaySales");
         return mv;
     }
