@@ -14,7 +14,7 @@ $('#btn-day').click(function() {
     });
 });// 버튼 3 클릭 함수
 function clickButton3() {
-    var button3 = document.getElementById('btn-day');
+    let button3 = document.getElementById('btn-day');
     button3.click();
 }
 
