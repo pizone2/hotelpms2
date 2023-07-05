@@ -25,6 +25,6 @@ ON R.ROOMTYPE = B.ROOMTYPE
 AND B.PAYMENTDATE BETWEEN CONCAT(DATE_FORMAT(CURDATE(), '%Y-%m'), '-01') AND CURDATE()
 GROUP BY R.ROOMTYPE WITH ROLLUP;  
 ```
-> ON 절에 조건을 넣는 경우 SQL은 JOIN을 실행하기 전에 해당 조건을 적용하기 때문에 JOIN과정에서 처음부터 조건에 맞지 않는 행이 제외
+> ON 절에 AND를 사용하여 조건을 넣는 경우 SQL은 JOIN을 실행하기 전에 해당 조건을 적용하기 때문에 JOIN과정에서 처음부터 조건에 맞지 않는 행이 제외
 > <br>  
 > 달의 1일부터 금일 사이 날짜에 있지 않은 예약에 해당하는 ROOMTYPE은 결과에 포함되지만, TOTAL 값이 0으로 계산
