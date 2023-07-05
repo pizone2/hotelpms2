@@ -13,7 +13,7 @@
         <div id="piechart" style="width: 900px; height: 500px;"></div>
 
         <script>
-            let chartData = [
+            var chartData = [
                 <c:forEach var="vo" items="${data}" varStatus="status">
                 ['${vo.roomType} (${vo.count})', ${vo.count}]${!status.last ? ',' : ''}
                 </c:forEach>
@@ -21,7 +21,7 @@
 
             // 차트 그리기 함수
             function drawChart() {
-                let data = google.visualization.arrayToDataTable([
+                var data = google.visualization.arrayToDataTable([
                     ['Room Type', 'Count'],
                     ...chartData
                 ]);
@@ -34,7 +34,7 @@
                     }
                 };
 
-                let chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
                 chart.draw(data, options);
             }

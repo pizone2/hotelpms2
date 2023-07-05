@@ -12,19 +12,20 @@ $('#btn-day').click(function() {
             console.error('오류가 발생했습니다. 관리자에게 문의해주세요.');
         }
     });
-});// 버튼 3 클릭 함수
-function clickButton3() {
-    let button3 = document.getElementById('btn-day');
-    button3.click();
-}
-
-// '#btn-day' 버튼 클릭 이벤트 리스너 등록
-document.getElementById('btn-day').addEventListener('click', function() {
-    clickButton3();
-    clickButton3();
-    clickButton3();
-
 });
+// // 버튼 3 클릭 함수
+// function clickButton3() {
+//     let button3 = document.getElementById('btn-day');
+//     button3.click();
+// }
+//
+// // '#btn-day' 버튼 클릭 이벤트 리스너 등록
+// document.getElementById('btn-day').addEventListener('click', function() {
+//     clickButton3();
+//     clickButton3();
+//     clickButton3();
+//
+// });
 
 
 $('#btn-day').click(function() {
