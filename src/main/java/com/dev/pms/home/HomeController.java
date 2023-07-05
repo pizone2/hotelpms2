@@ -46,7 +46,7 @@ public class HomeController {
         ModelAndView mv = new ModelAndView();
 
         List<HomeVO> statisticsVOs = homeService.getTodaySales(homeVO);
-        List<HomeVO> bookingVOList = homeService.getDayCircualyr();
+        List<HomeVO> bookingVOList = homeService.getDayCircualyr(homeVO);
         mv.addObject("data",bookingVOList);
         mv.addObject("statisticsVO",statisticsVOs);
         mv.setViewName("todaySales");
