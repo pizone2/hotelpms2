@@ -179,8 +179,8 @@
   
  #### 2-9. 정산 리스트
  <img src="src/main/resources/static/images/gif/정산내역.gif">
-  - 사업자 별 / 월별 정산 리스트 
-  - 해당 사업자에게 구입한 품목 별 합계 금액 과 사업자 별 전체 합계 금액을 표시
+ - 사업자 별 / 월별 정산 리스트 
+ -  해당 사업자에게 구입한 품목 별 합계 금액 과 사업자 별 전체 합계 금액을 표시 
 
  #### 2-10. 매출분석(일별)
  <img src="src/main/resources/static/images/gif/Jul-02-2023 23-04-50.gif">
