@@ -232,10 +232,11 @@
   - 비품명, 비품코드로 구분하며 개수 설정이 가능
   - 고객이 체크인 시 설정한 비품이 호텔재고에서 차감
 
- #### 2-14. 매출분석(일별)
- <img src="src/main/resources/static/images/gif/Jul-02-2023 23-04-50.gif">
+ #### 2-14. 매출분석
+ <img src="src/main/resources/static/images/gif/Statistics.gif">
 
-  - 객실별 예약 및 매출통계 확인 가능
+  - 월별, 일별 객실별 예약 및 매출통계 확인 가능
+  - 일별 예약된 객실 개수 그래프
  
 
 
