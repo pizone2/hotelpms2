@@ -90,7 +90,7 @@
   - en 클릭 시 header, body, footer 등 언어가 모두 영어로 변경
   - ko 클릭시 이하 동문 모두 한국어로 변경 
   - 반응형 웹을 고려하여 모바일로 접근 시 네비게이션 메뉴 변경, 동일하게 다국어 지원
-  - 
+
   #### 1-1. 예약 캘린더
    <img src="src/main/resources/static/images/gif/예약하기.gif">
 
@@ -107,7 +107,7 @@
   - 예약 불가능한 객실 타입은 선택 불가
   - 기준/최대 인원 초과시 선택 불가
   - 투숙 기간에 따라 결제 요금이 변경 되도록 구현
-  
+#### 
    <img src="src/main/resources/static/images/gif/Jun-30-2023%2021-29-43.gif">
 
   - PG 결제 연동 API를 사용하여 결제 기능 구현
@@ -122,7 +122,13 @@
   - 예약리스트에 예약중인 객실이 없으면 예약페이지로 이동 링크 생성
   
 ### 2. 호텔 PMS 
-
+ 
+  #### 2-1. 객실현황
+   <img src="src/main/resources/static/images/gif/Jul-01-2023 17-03-57.gif">
+  
+  - 2,3,4주 단위로 객실현황을 확인 할 수 있음
+  - 타입,룸,날짜 별로 객실상태를 확인 할 수 있으며 튤팁을 활용하여 예약정보를 확인 할 수 있음
+  
   #### 2-1. 객실현황
    <img src="src/main/resources/static/images/gif/Jul-01-2023 17-03-57.gif">
   
