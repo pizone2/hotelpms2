@@ -177,4 +177,4 @@
 >- 페이지 'Reload' 시 'WebSocket'으로 구현한 알림이 사라짐
 >- 관리자와 업체 알림 구분이 안됨
 - [통계](TroubleShooting/statistics.md)
->- 월별 매출 통계 오류
+>- 월별 매출 통계 잘못된 추출
