@@ -107,7 +107,7 @@
   - 예약 불가능한 객실 타입은 선택 불가
   - 기준/최대 인원 초과시 선택 불가
   - 투숙 기간에 따라 결제 요금이 변경 되도록 구현
-#### 
+
    <img src="src/main/resources/static/images/gif/Jun-30-2023%2021-29-43.gif">
 
   - PG 결제 연동 API를 사용하여 결제 기능 구현
@@ -123,11 +123,11 @@
   
 ### 2. 호텔 PMS 
  
-  #### 2-1. 객실현황
-   <img src="src/main/resources/static/images/gif/Jul-01-2023 17-03-57.gif">
+  #### 2-1. 실시간 객실 현황
+   <img src="src/main/resources/static/images/gif/실시간객실.gif">
   
-  - 2,3,4주 단위로 객실현황을 확인 할 수 있음
-  - 타입,룸,날짜 별로 객실상태를 확인 할 수 있으며 튤팁을 활용하여 예약정보를 확인 할 수 있음
+  - 실시간 객실 상태를 확인 가능
+  - 
   
   #### 2-1. 객실현황
    <img src="src/main/resources/static/images/gif/Jul-01-2023 17-03-57.gif">
@@ -140,7 +140,14 @@
 
   - 청소담당자는 청소 후 청소상태를 보고 할 수 있으며 관리자는 청소상태를 확인 할 수 있음
   - 객실청소 확인 시 확인여부 변경 (미확인->확인)
-    
+  
+  #### 2-3. 전체 품목 리스트
+  <img src="src/main/resources/static/images/gif/전체리스트.gif">
+
+  - 재고수량이 자동발주수량이하로 떨어지면 발주상태는 '양호'에서 '재고부족'으로 변경되며
+    관리자에게 알림 발송 ( 3번 상품의 재고가 부족합니다.)
+  - 자동발주수량 수정가능  
+  
   #### 2-3. 재고리스트
   <img src="src/main/resources/static/images/gif/Jul-01-2023 19-59-28.gif">
 
@@ -157,6 +164,16 @@
   
   #### 2-5. 객실설정
  <img src="src/main/resources/static/images/gif/Jul-01-2023 15-49-57.gif">
+
+  - 객실타입별로 인원 및 가격을 수정 가능
+ 
+ #### 2-5. 사업자 등록
+ <img src="src/main/resources/static/images/gif/사업자등록.gif">
+
+  - 객실타입별로 인원 및 가격을 수정 가능
+  
+ #### 2-5. 정산 리스트
+ <img src="src/main/resources/static/images/gif/정산내역.gif">
 
   - 객실타입별로 인원 및 가격을 수정 가능
 
