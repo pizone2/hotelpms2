@@ -100,6 +100,13 @@
   - 객실 타입 클릭시 예약 내역 페이지로 이동
   
   #### 1-1. 예약
+   <img src="src/main/resources/static/images/gif/상세예약페이지.gif">
+  
+  - 
+  - 결제 후 결제 및 예약정보를 확인 할 수 있으며 환불 가능
+  - 첫 예약 시 10% 할인 적용
+  - 비로그인시 로그인 페이지로 이동하며  약관동의에 체크 완료 시 결제가능
+  
    <img src="src/main/resources/static/images/gif/Jun-30-2023%2021-29-43.gif">
 
   - PG 결제 연동 API를 사용하여 결제 기능 구현
