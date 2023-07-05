@@ -24,10 +24,19 @@
         RT.ROOMTYPE WITH ROLLUP;
     </select>
 
-    <select id="getDayCircualyr" resultType="HomeVO">
+
+ <!--체크인 날짜 기준으로 그룹-->
+<!--    <select id="getDayCircualyr" resultType="HomeVO">-->
+<!--        SELECT ROOMTYPE, COUNT(*) AS COUNT-->
+<!--        FROM BOOKING-->
+<!--        WHERE DATE(CHECKINDATE) = CURDATE()-->
+<!--        GROUP BY ROOMTYPE;-->
+<!--    </select>-->
+
+    <select id="getDayCircualyr" resultType="HomeVO" parameterType="Date">
         SELECT ROOMTYPE, COUNT(*) AS COUNT
-        FROM BOOKING
-        WHERE DATE(CHECKINDATE) = CURDATE()
+        FROM THE BOOKING
+        WHERE PAYMENTDATE=#{paymentDate}
         GROUP BY ROOMTYPE;
     </select>
 
