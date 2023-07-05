@@ -103,9 +103,10 @@
   - 카카오 소셜 로그인(API) 구현
 
   #### 1-3. 예약 캘린더
-   <img src="src/main/resources/static/images/gif/JoinAndLogin.gif">
+   <img src="src/main/resources/static/images/gif/Calender.gif">
 
-  - 일반 회원가입 후 로그인 기능
+  - 주,일,달 별로 예약 가능한 객실 확인 가능
+  - 빨간색은 이미 예약이 완료된 객실타입, 파란색을 예약 가능한 객실타입
 
   #### 1-4. 예약
    <img src="src/main/resources/static/images/gif/Jun-30-2023%2021-29-43.gif">
@@ -123,7 +124,21 @@
   
 ### 2. 호텔 PMS 
 
-  #### 2-1. 객실현황
+  #### 2-1. 예약등록, Check In/Out
+   <img src="src/main/resources/static/images/gif/ResModule.gif">
+
+  - 객실상태가 예약완료 또는 재실일 때 프론트 직원이 접근 가능
+  - 예약완료인 객실을 눌러 '초기화, 저장, 문자발송, 체크인' 기능 조작
+  - 고객의 요청에 따라 인 수 조정과 레이트 체크아웃 가능
+  - 고객의 예약 정보에 응하여 문자 전송 (SMS API)
+  - 체크인 시 재실로 변경 동시에 비품 차감
+
+   <img src="src/main/resources/static/images/gif/CheckInModule.gif">
+
+  - 재실 상태인 객실에서 세 가지는 동일 기능
+  - 용역 서비스 업체에 청소요청 가능
+
+  #### 2-2. 객실현황
    <img src="src/main/resources/static/images/gif/Jul-01-2023 17-03-57.gif">
   
   - 2,3,4주 단위로 객실현황을 확인 할 수 있음
@@ -134,27 +149,49 @@
 
   - 청소담당자는 청소 후 청소상태를 보고 할 수 있으며 관리자는 청소상태를 확인 할 수 있음
   - 객실청소 확인 시 확인여부 변경 (미확인->확인)
-    
-  #### 2-3. 재고리스트
+
+  #### 2-3. 업체 리스트
+  <img src="src/main/resources/static/images/gif/ParterList.gif">
+  
+  - 관리자도 사업자 등록이 가능
+  - 업체 삭제 가능, 이때 로그인 정보도 삭제
+  - 사업자 등록 직후 등록상태가 '등록신청', 관리자가 상태 변경시 '등록완료'로 변경
+  - '등록완료' 후 사업자 번호로 로그인 정보 생성
+
+  #### 2-3. 업체별 품목 리스트
+  <img src="src/main/resources/static/images/gif/ParterStockList.gif">
+
+  - 품목 추가시 '품목명, 분류코드, 단가, 단위, 비고' 작성
+  - 분류코드는 자동으로 영대문자+숫자 세자리로 자동 부여
+  - 품목 수정 삭제도 가능
+
+  #### 2-4. 재고리스트
   <img src="src/main/resources/static/images/gif/Jul-01-2023 19-59-28.gif">
 
   - 재고수량이 자동발주수량이하로 떨어지면 발주상태는 '양호'에서 '재고부족'으로 변경되며
     관리자에게 알림 발송 ( 3번 상품의 재고가 부족합니다.)
   - 자동발주수량 수정가능
     
-  #### 2-4. 발주
- <img src="src/main/resources/static/images/gif/Jul-01-2023 20-05-32.gif">
+  #### 2-5. 발주
+  <img src="src/main/resources/static/images/gif/Jul-01-2023 20-05-32.gif">
 
   - 관리자가 '재고부족' 알림 클릭시 재고리스트 페이지로 이동하며 재고부족 상품을 클릭하면 발주상태가 
     '발주요청'으로 바뀌고 해당 업체로 '발주요청' 알림이 발송 
   - 업체가 '발주요청' 알림클릭 시 업체별 재고 관리 리스트로 이동 후 업체는 해당 상품을 발주가능
   
-  #### 2-5. 객실설정
- <img src="src/main/resources/static/images/gif/Jul-01-2023 15-49-57.gif">
+  #### 2-6. 객실설정
+  <img src="src/main/resources/static/images/gif/Jul-01-2023 15-49-57.gif">
 
   - 객실타입별로 인원 및 가격을 수정 가능
 
- #### 2-5. 매출분석(일별)
+  #### 2-7. 객실별 소모품 설정
+  <img src="src/main/resources/static/images/gif/RoomStock.gif">
+
+  - 객실타입별로 비품 설정
+  - 비품명, 비품코드로 구분하며 개수 설정이 가능
+  - 고객이 체크인 시 설정한 비품이 호텔재고에서 차감
+
+ #### 2-8. 매출분석(일별)
  <img src="src/main/resources/static/images/gif/Jul-02-2023 23-04-50.gif">
 
   - 객실별 예약 및 매출통계 확인 가능
@@ -173,6 +210,9 @@
 >- 간트차트의 테이블 고장
 - [객실청소상태 보고 및 확인](TroubleShooting/roomCleaningStatus.md)
 >- 객실청소상태 확인 시 사진파일 로드 X
+- [사업자 품목 리스트](TroubleShooting/partnerList.md)
+>- 품목코드 SELECT BOX로 자동 부여
+>- 업체별 품목 리스트 분류
 - [발주](TroubleShooting/order.md)
 >- 페이지 'Reload' 시 'WebSocket'으로 구현한 알림이 사라짐
 >- 관리자와 업체 알림 구분이 안됨
