@@ -84,7 +84,7 @@
 ### 1. 예약 사이트
 
   #### 1-1. 다국어
-   <img src="src/main/resources/static/images/gif/다국어.gif">
+   <img src="src/main/resources/static/images/gif/Languages.gif">
 
   - en 클릭 시 header, body, footer 등 언어가 모두 영어로 변경
   - ko 클릭시 이하 동문 모두 한국어로 변경 
