@@ -150,6 +150,5 @@
             <result column="roomType" property="roomType"/>
             <result column="roomStatus" property="roomStatus"/>
         </collection>
-
     </resultMap>
 </mapper>

@@ -128,7 +128,7 @@ public class CleanController {
 
 
 
-        @GetMapping("cleanCheckList")
+    @GetMapping("cleanCheckList")
     @ResponseBody
     public ModelAndView cleanUpdate(CalenderVO calenderVO) throws Exception {
         ModelAndView mv = new ModelAndView();
