@@ -23,8 +23,7 @@ public class Scheduler {
     }
 
     //매일 오전9시 발주완료 변경
-//    @Scheduled(cron = "0 0 9 * * *")
-    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "0 0 9 * * *")
     public void updateOrderCompleted() throws Exception {
         ManagerStockVO managerStockVO = new ManagerStockVO();
         int result = partnerManagerStockService.updateOrderCompleted(managerStockVO);
@@ -32,18 +31,18 @@ public class Scheduler {
         int result3 = partnerManagerStockService.updateOrderCompleted3(managerStockVO);
 
         //발주중이 발주 완료로 변경되면 값도 변경되겠금 구현
-        System.out.println("테스트 테스트");
+        System.out.println("발주완료");
 
     }
-    // 매일 2시에 변경(퇴실 시간 2시였던가?)
-//    @Scheduled(cron = "*/10 * * * * *" )
+    // 매일 2시에 변경
+    @Scheduled(cron = "0 0 14 * * *")
     public void updateCheckout() throws Exception {
         BookingVO bookingVO = new BookingVO();
         int result = cleanService.updateCheckout(bookingVO);
-        System.out.println("퇴실퇴실");
+        System.out.println("퇴실");
     }
     // 2시 10분에 퇴실 방 청소 요청으로 변경(퇴실후 10분뒤)
-    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "10 14 * * *")
     public void updateCheckoutCleaning() throws Exception {
         ReservedVO reservedVO = new ReservedVO();
         int result = cleanService.updateCheckoutCleaning(reservedVO);
