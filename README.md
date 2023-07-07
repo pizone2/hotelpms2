@@ -106,7 +106,12 @@
   - 카카오 소셜 로그인(API) 구현
 
   #### 1-3. MyPage
+  <img src="src/main/resources/static/images/gif/Mypage.gif">
 
+  - 회윈의 상세 정보를 확인하고 수정 가능
+  - 프로필 아래의 비밀번호 변경 버튼을 클릭해 모달창으로 띄워 비밀번호 변경이 가능
+  - 자바스크립트를 사용하여 유효성 검사를 실시
+  - 카카오 상담 api 를 사용하여 1:1 문의 기능 구현
 
   #### 1-4. ID,PW 찾기 
   <img src="src/main/resources/static/images/gif/id.pw 찾기.gif">
